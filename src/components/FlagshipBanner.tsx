@@ -1,5 +1,5 @@
 import { HERO_VIDEO, HERO_POSTER } from "../data";
-import { LogoStacked } from "./Logos";
+
 
 export default function FlagshipBanner() {
   return (
@@ -18,7 +18,7 @@ export default function FlagshipBanner() {
 
       <div className="flagship-banner__inner">
         <div className="flagship-banner__logo" data-scroll data-scroll-speed="0.5">
-          <LogoStacked />
+          <h1 style={{ fontSize: 'clamp(3rem, 8vw, 8rem)', lineHeight: '1.1', fontWeight: 400, fontFamily: 'var(--font-2)', color: '#fff', letterSpacing: '0.05em', textAlign: 'center', textTransform: 'uppercase', margin: 0 }}>Krishna<br/>Sheesh<br/>Mahal</h1>
         </div>
         
         <div className="flagship-banner__txt-cols section section--large">

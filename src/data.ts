@@ -15,19 +15,7 @@ export const MENU: MenuItem[] = [
     label: "Rooms",
     href: "/rooms",
   },
-  {
-    label: "Amenities",
-    href: "#",
-    children: [
-      { label: "Free Wi-Fi", href: "#about" },
-      { label: "Car park", href: "#about" },
-      { label: "Restaurant", href: "/restaurant" },
-      { label: "Rooftop area", href: "#about" },
-      { label: "Family room", href: "#about" },
-    ],
-  },
   { label: "Restaurant", href: "/restaurant" },
-  { label: "Landmarks", href: "#news" },
   { label: "About Us", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
@@ -41,7 +29,7 @@ export interface ImageLink {
 
 export const IMAGE_LINK_ROWS: ImageLink[][] = [
   [
-    { title: "Premium Room", href: "#rooms", src: `${U}/2026/03/Monza13-2560x1440.webp`, alt: "Premium" },
+    { title: "Restaurant", href: "/restaurant", src: `${U}/2026/03/Monza13-2560x1440.webp`, alt: "Restaurant" },
   ],
   [
     { title: "Super Deluxe", href: "#rooms", src: `${U}/2026/03/img-5-1600x900.webp`, alt: "Super Deluxe" },
@@ -84,7 +72,7 @@ export interface Quote {
 }
 
 export const QUOTES: Quote[] = [
-  { img: `${U}/2026/03/img-3-790x790.webp`, logo: `${U}/2026/03/logo-the-times.svg`, logoW: 100, logoH: 48, text: "“Exceptionally good hotel with reasonable aminities.”", source: "A K. India" },
+  { img: `${U}/2026/03/img-3-790x790.webp`, logo: `${U}/2026/03/logo-the-times.svg`, logoW: 100, logoH: 48, text: "“Exceptionally good hotel with reasonable amenities.”", source: "A K. India" },
   { img: `${U}/2023/10/Web-re-design-G24-Sept-23-7-790x790.jpg`, logo: `${U}/2026/03/ABC_News_logo_2021.svg`, logoW: 527, logoH: 183, text: "\"Value for money 9.0 out of 10. Cleanliness 8.8. Facilities 8.6.\"", source: "Agoda Reviews" },
   { img: `${U}/2023/11/tpuh-restaurant-790x790.jpg`, logo: `${U}/2026/03/VOGUE_LOGO.svg`, logoW: 1543, logoH: 409, text: "\"Location rating score: 9.1 Exceptional location.\"", source: "Guest Review" },
 ];
