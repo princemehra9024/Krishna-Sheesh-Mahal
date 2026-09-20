@@ -14,9 +14,13 @@ import Rooms from "./pages/Rooms";
 import Restaurant from "./pages/Restaurant";
 import Banquet from "./pages/Banquet";
 
+function ScrollRevealHandler() {
+  useScrollReveal();
+  return null;
+}
+
 export default function App() {
   useScrollEngine();
-  useScrollReveal();
 
   const [bookOpen, setBookOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
@@ -44,6 +48,7 @@ export default function App() {
 
   return (
     <BrowserRouter>
+      <ScrollRevealHandler />
       <div className="page-wrap" id="top">
         <Header onBookNow={openBook} />
         <Routes>
