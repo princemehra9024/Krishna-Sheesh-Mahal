@@ -77,26 +77,45 @@ export default function IngredientsShowcase() {
 
   }, { scope: container });
 
+  const touchStart = useRef(0);
+  const isAnimating = useRef(false);
+
   const handleNext = () => {
+    if (isAnimating.current) return;
+    isAnimating.current = true;
     gsap.to('.ishow-card', { scale: 0.8, opacity: 0, duration: 0.4, stagger: 0.04 });
-    gsap.to('.ishow-bowl-img', { rotation: 10, y: 50, opacity: 0, duration: 0.6 });
+    gsap.to('.ishow-arc-path, .ishow-guide-line', { opacity: 0, duration: 0.4 });
+    gsap.to('.ishow-bowl-img', { rotation: 10, x: -50, y: 50, opacity: 0, duration: 0.6, ease: 'power2.in' });
     gsap.to('.ishow-title-line', { y: '-100%', opacity: 0, duration: 0.4, onComplete: () => {
       setCurrentDish((prev) => (prev + 1) % DISHES.length);
       gsap.fromTo('.ishow-title-line', { y: '100%', opacity: 0 }, { y: '0%', opacity: 1, stagger: 0.08, duration: 0.9, ease: 'power3.out' });
-      gsap.fromTo('.ishow-bowl-img', { rotation: -10, y: 120, scale: 0.85, opacity: 0 }, { rotation: 0, y: 0, scale: 1, opacity: 1, duration: 1.1, ease: 'expo.out', delay: 0.2 });
-      gsap.fromTo('.ishow-card', { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, stagger: 0.08, duration: 1, ease: 'back.out(1.4)', delay: 0.4 });
+      gsap.fromTo('.ishow-bowl-img', { rotation: -10, x: 50, y: 50, scale: 0.85, opacity: 0 }, { rotation: 0, x: 0, y: 0, scale: 1, opacity: 1, duration: 1.1, ease: 'expo.out', delay: 0.1 });
+      gsap.fromTo('.ishow-arc-path', { strokeDasharray: 4000, strokeDashoffset: 4000, opacity: 1 }, { strokeDashoffset: 0, duration: 1.5, ease: 'power2.inOut', delay: 0.2 });
+      gsap.fromTo('.ishow-guide-line', { strokeDasharray: 1000, strokeDashoffset: 1000, opacity: 1 }, { strokeDashoffset: 0, duration: 1, ease: 'power2.out', delay: 0.2 });
+      gsap.fromTo('.ishow-card', { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, stagger: 0.08, duration: 1, ease: 'back.out(1.4)', delay: 0.3, onComplete: () => isAnimating.current = false });
     }});
   };
 
   const handlePrev = () => {
+    if (isAnimating.current) return;
+    isAnimating.current = true;
     gsap.to('.ishow-card', { scale: 0.8, opacity: 0, duration: 0.4, stagger: 0.04 });
-    gsap.to('.ishow-bowl-img', { rotation: -10, y: 50, opacity: 0, duration: 0.6 });
+    gsap.to('.ishow-arc-path, .ishow-guide-line', { opacity: 0, duration: 0.4 });
+    gsap.to('.ishow-bowl-img', { rotation: -10, x: 50, y: 50, opacity: 0, duration: 0.6, ease: 'power2.in' });
     gsap.to('.ishow-title-line', { y: '-100%', opacity: 0, duration: 0.4, onComplete: () => {
       setCurrentDish((prev) => (prev - 1 + DISHES.length) % DISHES.length);
       gsap.fromTo('.ishow-title-line', { y: '100%', opacity: 0 }, { y: '0%', opacity: 1, stagger: 0.08, duration: 0.9, ease: 'power3.out' });
-      gsap.fromTo('.ishow-bowl-img', { rotation: 10, y: 120, scale: 0.85, opacity: 0 }, { rotation: 0, y: 0, scale: 1, opacity: 1, duration: 1.1, ease: 'expo.out', delay: 0.2 });
-      gsap.fromTo('.ishow-card', { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, stagger: 0.08, duration: 1, ease: 'back.out(1.4)', delay: 0.4 });
+      gsap.fromTo('.ishow-bowl-img', { rotation: 10, x: -50, y: 50, scale: 0.85, opacity: 0 }, { rotation: 0, x: 0, y: 0, scale: 1, opacity: 1, duration: 1.1, ease: 'expo.out', delay: 0.1 });
+      gsap.fromTo('.ishow-arc-path', { strokeDasharray: 4000, strokeDashoffset: 4000, opacity: 1 }, { strokeDashoffset: 0, duration: 1.5, ease: 'power2.inOut', delay: 0.2 });
+      gsap.fromTo('.ishow-guide-line', { strokeDasharray: 1000, strokeDashoffset: 1000, opacity: 1 }, { strokeDashoffset: 0, duration: 1, ease: 'power2.out', delay: 0.2 });
+      gsap.fromTo('.ishow-card', { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, stagger: 0.08, duration: 1, ease: 'back.out(1.4)', delay: 0.3, onComplete: () => isAnimating.current = false });
     }});
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => { touchStart.current = e.touches[0].clientX; };
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    const diff = e.changedTouches[0].clientX - touchStart.current;
+    if (Math.abs(diff) > 50) { diff < 0 ? handleNext() : handlePrev(); }
   };
 
   const getCardStyle = (index: number) => {
@@ -111,19 +130,20 @@ export default function IngredientsShowcase() {
   };
 
   return (
-    <section ref={container} className="ishow-section">
+    <section ref={container} className="ishow-section" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
       <style>{`
         .ishow-section { position: relative; width: 100%; height: 100vh; background-color: #251C19; overflow: hidden; color: #F3EDE4; font-family: 'Inter', system-ui, sans-serif; }
         .ishow-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(243, 237, 228, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(243, 237, 228, 0.04) 1px, transparent 1px); background-size: 40px 40px; pointer-events: none; }
         .ishow-bg::after { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle at center, rgba(243, 237, 228, 0.2) 1px, transparent 1px); background-size: 160px 160px; background-position: -20px -20px; }
         .ishow-top { position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; padding-top: 40px; text-align: center; }
         .ishow-pill { display: inline-block; padding: 8px 24px; background: #F3EDE4; border: 1px solid rgba(243, 237, 228, 0.2); border-radius: 40px; font-size: 13px; text-transform: capitalize; letter-spacing: 0.05em; margin-bottom: 24px; color: #251C19; }
-        .ishow-title { font-size: clamp(36px, 3vw, 48px); font-weight: 500; line-height: 1.15; max-width: 700px; color: #F3EDE4 !important; font-family: 'Inter', system-ui, sans-serif !important; letter-spacing: -0.01em; }
+        .ishow-title { font-size: clamp(36px, 3vw, 48px); font-weight: 500; line-height: 1.15; max-width: 700px; color: #F3EDE4 !important; font-family: 'Inter', system-ui, sans-serif !important; letter-spacing: -0.01em; margin-bottom: 40px; }
         .ishow-title-mask { overflow: hidden; display: inline-block; vertical-align: top; }
         .ishow-title-line { display: inline-block; will-change: transform, opacity; padding-right: 8px; }
-        .ishow-bowl-container { position: absolute; bottom: -5%; left: 50%; transform: translateX(-50%); width: 70vw; min-width: 700px; max-width: 1200px; z-index: 5; display: flex; align-items: flex-end; justify-content: center; height: 70vh; }
+        .ishow-bowl-container { position: absolute; bottom: -5%; left: 50%; transform: translateX(-50%); width: 90vw; min-width: 800px; max-width: 1300px; z-index: 5; display: flex; align-items: flex-end; justify-content: center; height: 70vh; }
         .ishow-bowl-img { width: 100%; max-height: 100%; object-fit: contain; display: block; transform-origin: center bottom; will-change: transform, opacity; }
-        .ishow-gradient-fade { position: absolute; bottom: 0; left: 0; width: 100%; height: 40%; background: linear-gradient(to bottom, transparent, #251C19 80%); z-index: 6; pointer-events: none; }
+        .ishow-gradient-fade { position: absolute; bottom: 0; left: 0; width: 100%; height: 25%; background: linear-gradient(to bottom, transparent, #251C19 90%); z-index: 6; pointer-events: none; }
+
         .ishow-arcs { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 1920px; height: 1080px; z-index: 2; pointer-events: none; }
         .ishow-arc-path { fill: none; stroke: rgba(243, 237, 228, 0.08); stroke-width: 1.5; }
         .ishow-guide-line { stroke: rgba(243, 237, 228, 0.05); stroke-width: 1; }
