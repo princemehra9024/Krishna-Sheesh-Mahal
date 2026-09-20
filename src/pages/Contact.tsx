@@ -59,7 +59,7 @@ export default function Contact() {
       <style>
         {`
           .contact-page-wrapper {
-            background-color: #fff;
+            background-color: var(--cream);
             color: var(--text-color);
             min-height: 100vh;
             display: flex;
@@ -68,10 +68,10 @@ export default function Contact() {
           
           /* Header Section */
           .contact-header {
-            background-color: #f9f9f9;
+            background-color: var(--cream);
             padding: 80px 0 60px;
             text-align: left;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
           }
           .breadcrumb {
             font-size: var(--text-mini);
@@ -141,7 +141,8 @@ export default function Contact() {
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            background-color: #f5f2ef;
+            background-color: rgba(255,255,255,0.7);
+            border: 1px solid rgba(0,0,0,0.05);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -206,7 +207,8 @@ export default function Contact() {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            background-color: #fafafa;
+            background-color: rgba(255,255,255,0.7);
+            border: 1px solid rgba(0,0,0,0.05);
             border-radius: 20px;
             padding: 40px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.02);
@@ -221,11 +223,11 @@ export default function Contact() {
             left: 0;
             width: 100%;
             height: 6px;
-            background-color: #eee;
+            background-color: rgba(0,0,0,0.05);
           }
           .form-progress-bar {
             height: 100%;
-            background-color: var(--neon);
+            background-color: var(--gold);
             transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
           }
 
@@ -339,10 +341,10 @@ export default function Contact() {
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
           }
           .tf-btn:hover {
-            background-color: var(--neon);
-            color: var(--heading-color);
+            background-color: var(--gold);
+            color: #fff;
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(16, 233, 142, 0.2);
+            box-shadow: 0 10px 20px rgba(197, 157, 58, 0.2);
           }
           .tf-btn:disabled {
             background-color: color-mix(in srgb, var(--border-color) 20%, transparent);
@@ -397,13 +399,13 @@ export default function Contact() {
           .success-icon {
             width: 80px;
             height: 80px;
-            background-color: var(--neon);
+            background-color: var(--gold);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 2rem;
-            color: var(--heading-color);
+            color: #fff;
           }
 
           @media (max-width: 768px) {
@@ -455,7 +457,7 @@ export default function Contact() {
               </div>
               <div className="contact-item-text">
                 <span className="contact-item-title">Phone Number</span>
-                <a href="tel:+919876543210" className="contact-item-detail">+91 98765 43210</a>
+                <a href="tel:+919024546041" className="contact-item-detail">+91 90245 46041</a>
               </div>
             </div>
 

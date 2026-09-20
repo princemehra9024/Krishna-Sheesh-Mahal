@@ -39,7 +39,7 @@ export default function PopupModal({ open, onClose }: PopupModalProps) {
           <i className="popup-modal__close" role="button" aria-label="Close" onClick={onClose} />
           <div className="popup-modal__content-txt content">
             <h2 className="h4">
-              Welcome to <em>The Pop-Up Hotel</em>
+              Welcome to <em>Krishna Sheesh Mahal</em>
             </h2>
             <p>Experience unparalleled comfort and unforgettable moments at the world's greatest events.</p>
           </div>

@@ -18,7 +18,7 @@ export default function Rooms() {
       <style>
         {`
           .rooms-container {
-            background-color: #fff;
+            background-color: var(--cream);
             padding: 0;
           }
           /* Improve header visibility on scroll for this page */
@@ -33,7 +33,7 @@ export default function Rooms() {
             margin: 0;
             width: 100%;
             overflow: hidden;
-            background: #fff;
+            background: var(--cream);
           }
           .room-image-wrapper {
             position: absolute;
@@ -134,7 +134,7 @@ export default function Rooms() {
           .feature-dot {
             width: 8px;
             height: 8px;
-            background-color: #ff9f87;
+            background-color: var(--maroon);
             border-radius: 50%;
           }
           .price-tag {
@@ -156,7 +156,7 @@ export default function Rooms() {
             width: 100%;
             min-height: 100vh;
             padding-top: calc(var(--header-height) + 16px);
-            background-color: #faf9f8;
+            background-color: var(--cream);
             display: flex;
             flex-direction: column;
             gap: 16px;
@@ -173,7 +173,7 @@ export default function Rooms() {
 
           .rg-text-block {
             flex: 1;
-            background: #faf9f8;
+            background: var(--cream);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -186,7 +186,7 @@ export default function Rooms() {
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 0.4em;
-            color: #777;
+            color: var(--charcoal);
             margin-bottom: 20px;
             font-weight: 600;
           }
@@ -195,7 +195,7 @@ export default function Rooms() {
             font-size: clamp(3.5rem, 5.5vw, 6.5rem);
             font-family: var(--font-2);
             line-height: 1.05;
-            color: #111;
+            color: var(--charcoal);
             margin-bottom: 24px;
             font-weight: 500;
           }
@@ -204,12 +204,12 @@ export default function Rooms() {
             font-family: var(--font-3);
             font-style: italic;
             font-weight: 400;
-            color: #d88373;
+            color: var(--body-gray);
           }
 
           .rg-desc {
             font-size: 1.05rem;
-            color: #555;
+            color: var(--body-gray);
             line-height: 1.6;
             max-width: 90%;
             margin-bottom: 40px;
@@ -222,7 +222,7 @@ export default function Rooms() {
           }
 
           .rg-btn-primary {
-            background: #111;
+            background: var(--maroon);
             color: #fff;
             padding: 16px 36px;
             border-radius: 40px;
@@ -259,7 +259,7 @@ export default function Rooms() {
           }
 
           .rg-btn-secondary {
-            color: #111;
+            color: var(--charcoal);
             text-decoration: none;
             font-weight: 500;
             display: flex;
@@ -300,7 +300,7 @@ export default function Rooms() {
 
           .rg-feature-box {
             flex: 1;
-            background: #f2f0ec;
+            background: var(--cream);
             display: flex;
             align-items: center;
             padding: 2% 4%;
@@ -335,21 +335,21 @@ export default function Rooms() {
 
           .rg-feature-col h4 {
             font-size: 0.95rem;
-            color: #111;
+            color: var(--charcoal);
             margin-bottom: 8px;
             font-weight: 600;
             letter-spacing: 0.02em;
           }
           .rg-feature-col p {
             font-size: 0.85rem;
-            color: #777;
+            color: var(--body-gray);
             line-height: 1.6;
           }
 
           .rg-arrow-box {
             flex: 0 0 22vh;
             max-width: 250px;
-            background: #111;
+            background: var(--maroon);
             border-top-left-radius: 40px;
             border-bottom-left-radius: 40px;
             display: flex;
@@ -362,7 +362,7 @@ export default function Rooms() {
             animation: rgFadeInRight 0.8s cubic-bezier(0.2, 1, 0.2, 1) 0.6s forwards;
           }
           .rg-arrow-box:hover {
-            background: #222;
+            background: var(--charcoal);
             box-shadow: 0 15px 30px rgba(0,0,0,0.2);
           }
           .rg-arrow-box:hover svg {
@@ -697,7 +697,7 @@ export default function Rooms() {
               <h3 style={{ fontSize: 'var(--h3)', lineHeight: '1.1', marginBottom: '10px', fontFamily: 'var(--font-2)', color: 'var(--heading-color)' }}>
                 Single <em style={{ fontFamily: 'var(--font-3)', fontStyle: 'italic', fontWeight: '300' }}>Room</em>
               </h3>
-              <div style={{ width: '40px', height: '2px', backgroundColor: '#ff9f87', margin: '20px 0' }}></div>
+              <div style={{ width: '40px', height: '2px', backgroundColor: 'var(--maroon)', margin: '20px 0' }}></div>
               <p style={{ fontSize: '1.05rem', lineHeight: '1.7', marginBottom: '20px', color: 'color-mix(in srgb, var(--text-color) 70%, transparent)' }}>
                 Perfect for solo travelers and business professionals, our Single Room offers a cozy retreat with a plush single bed, dedicated workspace, and modern amenities.
               </p>
@@ -729,7 +729,7 @@ export default function Rooms() {
               <h3 style={{ fontSize: 'var(--h3)', lineHeight: '1.1', marginBottom: '10px', fontFamily: 'var(--font-2)', color: 'var(--heading-color)' }}>
                 Double <em style={{ fontFamily: 'var(--font-3)', fontStyle: 'italic', fontWeight: '300' }}>Room</em>
               </h3>
-              <div style={{ width: '40px', height: '2px', backgroundColor: '#ff9f87', margin: '20px 0' }}></div>
+              <div style={{ width: '40px', height: '2px', backgroundColor: 'var(--maroon)', margin: '20px 0' }}></div>
               <p style={{ fontSize: '1.05rem', lineHeight: '1.7', marginBottom: '20px', color: 'color-mix(in srgb, var(--text-color) 70%, transparent)' }}>
                 Designed for couples or companions, our Double Room provides ample space and premium comfort. Enjoy relaxing evenings and wake up refreshed.
               </p>
@@ -761,7 +761,7 @@ export default function Rooms() {
               <h3 style={{ fontSize: 'var(--h3)', lineHeight: '1.1', marginBottom: '10px', fontFamily: 'var(--font-2)', color: 'var(--heading-color)' }}>
                 Premium <em style={{ fontFamily: 'var(--font-3)', fontStyle: 'italic', fontWeight: '300' }}>Suite</em>
               </h3>
-              <div style={{ width: '40px', height: '2px', backgroundColor: '#ff9f87', margin: '20px 0' }}></div>
+              <div style={{ width: '40px', height: '2px', backgroundColor: 'var(--maroon)', margin: '20px 0' }}></div>
               <p style={{ fontSize: '1.05rem', lineHeight: '1.7', marginBottom: '20px', color: 'color-mix(in srgb, var(--text-color) 70%, transparent)' }}>
                 Experience the pinnacle of luxury in our Premium Suite. Featuring a separate living area, panoramic views, and exclusive VIP amenities for an unforgettable stay.
               </p>

@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import RestaurantHeroSlider from "../components/RestaurantHeroSlider";
 import QuoteSlider from "../components/QuoteSlider";
+import IngredientsShowcase from "../components/IngredientsShowcase";
+import PaneerScrollSequence from "../components/PaneerScrollSequence";
 
 export default function Restaurant() {
   useEffect(() => {
@@ -13,6 +15,7 @@ export default function Restaurant() {
         /* ── RESTAURANT PAGE ── */
         .rest-page {
           padding-top: 0;
+          background-color: #F3EDE4;
         }
 
         /* ── FEATURES STRIP ── */
@@ -20,74 +23,72 @@ export default function Restaurant() {
           display: grid;
           grid-template-columns: repeat(4, 1fr);
           gap: 2px;
-          background: #f5f2ef;
-          border-top: 1px solid #eae7e3;
+          background: rgba(37, 28, 25, 0.1);
+          border-top: 1px solid rgba(37, 28, 25, 0.1);
         }
         .rest-feat {
-          background: #fff;
+          background: #F3EDE4;
           padding: 52px 36px;
           text-align: center;
           transition: background 0.4s, transform 0.4s;
         }
         .rest-feat:hover {
-          background: #faf9f7;
+          background: #fff;
           transform: translateY(-4px);
         }
         .rest-feat__icon {
           width: 44px; height: 44px;
           margin: 0 auto 20px;
-          stroke: #344541;
-          opacity: 0.6;
+          stroke: #251C19;
+          opacity: 1;
         }
         .rest-feat__title {
           font-family: var(--font-2);
           font-size: 1.15rem;
-          color: #344541;
+          color: #251C19;
           margin-bottom: 8px;
         }
         .rest-feat__desc {
           font-family: var(--font-1);
           font-size: 0.9rem;
-          color: #6B6B6B;
+          color: #251C19;
+          opacity: 0.8;
           line-height: 1.55;
         }
 
         /* ── SIGNATURE DISH SECTION ── */
         .rest-sig {
+          background-color: #251C19;
           display: flex;
           align-items: stretch;
-          min-height: 70vh;
-          background: #344541;
-          color: #fff;
-        }
-        .rest-sig__img {
-          flex: 0 0 50%;
           overflow: hidden;
-          position: relative;
+        }
+        .rest-sig__img, .rest-sig__text {
+          width: 50%;
         }
         .rest-sig__img img {
           width: 100%; height: 100%;
           object-fit: cover;
+          object-position: center top;
           transition: transform 1.2s cubic-bezier(.2,1,.2,1);
         }
         .rest-sig:hover .rest-sig__img img {
-          transform: scale(1.04);
+          transform: scale(1.05);
         }
         .rest-sig__text {
-          flex: 1;
-          padding: 6% 6%;
+          padding: 8vw 5vw;
           display: flex;
           flex-direction: column;
           justify-content: center;
         }
         .rest-sig__eyebrow {
           font-family: var(--font-1);
-          font-size: 0.78rem;
+          font-size: 0.85rem;
           text-transform: uppercase;
-          letter-spacing: 0.35em;
-          color: #FF9F87;
-          margin-bottom: 20px;
-          font-weight: 600;
+          letter-spacing: 0.25em;
+          font-weight: 700;
+          color: rgba(243, 237, 228, 0.5);
+          margin-bottom: 24px;
         }
         .rest-sig__title {
           font-family: var(--font-2);
@@ -95,24 +96,31 @@ export default function Restaurant() {
           line-height: 1.08;
           margin-bottom: 16px;
           font-weight: 600;
+          color: #F3EDE4;
         }
         .rest-sig__title em {
           font-family: var(--font-3);
-          font-style: italic;
           font-weight: 300;
+          font-style: italic;
           display: block;
+          color: #F3EDE4;
+          opacity: 0.7;
+          font-size: 1.1em;
+          margin-top: 5px;
         }
         .rest-sig__rule {
-          width: 40px; height: 2px;
-          background: #FF9F87;
+          width: 60px;
+          height: 1px;
+          background-color: rgba(243, 237, 228, 0.2);
           border: none;
-          margin-bottom: 24px;
+          margin: 32px 0;
         }
         .rest-sig__body {
           font-family: var(--font-1);
-          font-size: 1.05rem;
+          font-size: 1.15rem;
           line-height: 1.7;
-          color: rgba(255,255,255,0.7);
+          color: #F3EDE4;
+          opacity: 0.9;
           max-width: 460px;
           margin-bottom: 32px;
         }
@@ -120,9 +128,9 @@ export default function Restaurant() {
           display: inline-flex;
           align-items: center;
           gap: 10px;
-          background: #FF9F87;
-          color: #344541;
-          border: none;
+          background: transparent;
+          color: #F3EDE4;
+          border: 2px solid #F3EDE4;
           padding: 14px 34px;
           border-radius: 40px;
           font-family: var(--font-1);
@@ -132,23 +140,86 @@ export default function Restaurant() {
           text-transform: uppercase;
           cursor: pointer;
           text-decoration: none;
-          box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-          transition: background 0.3s, transform 0.3s;
+          transition: background 0.3s, color 0.3s, transform 0.3s, box-shadow 0.2s;
           align-self: flex-start;
+          outline: none;
+        }
+        .rest-sig__cta:focus-visible {
+          box-shadow: 0 0 0 3px rgba(243, 237, 228, 0.5);
         }
         .rest-sig__cta:hover {
-          background: #f08e74;
-          transform: translateY(-2px);
+          background: #F3EDE4;
+          color: #251C19;
         }
-
         @media (max-width: 768px) {
-          .rest-features { grid-template-columns: repeat(2, 1fr); }
           .rest-sig { flex-direction: column; }
-          .rest-sig__img { flex: none; height: 50vh; }
-          .rest-sig__text { padding: 10% 6%; }
+          .rest-sig__img, .rest-sig__text { width: 100%; }
+          .rest-sig__img { height: 50vh; }
+          .rest-sig__text { padding: 10vw 5vw; }
         }
         @media (max-width: 480px) {
           .rest-features { grid-template-columns: 1fr; }
+        }
+
+        /* ── QUOTE SLIDER OVERRIDE ── */
+        .rest-quote-wrapper .section-colorway-green {
+          background-color: #251C19 !important;
+          --background-color: #251C19 !important;
+          --heading-color: #F3EDE4 !important;
+          --text-color: #F3EDE4 !important;
+          --border-color: #F3EDE4 !important;
+        }
+        .rest-quote-wrapper .quote p:not(.subtitle) {
+          color: #F3EDE4 !important;
+        }
+        .rest-quote-wrapper .flickity-page-dots,
+        .rest-quote-wrapper .quote cite strong {
+          color: #F3EDE4 !important;
+        }
+        
+        /* Carousel Controls Overhaul */
+        .rest-quote-wrapper .section-quote-slider {
+          padding-bottom: 40px !important;
+        }
+        .rest-quote-wrapper .flickity__controls {
+          flex-direction: row !important;
+          position: absolute !important;
+          bottom: 20px !important;
+          right: 50% !important;
+          transform: translateX(50%) !important;
+          gap: 20px !important;
+          background: transparent !important;
+        }
+        .rest-quote-wrapper .flickity__controls::after { display: none !important; }
+        .rest-quote-wrapper .flickity-button {
+          width: 50px !important;
+          height: 50px !important;
+          border: 1px solid rgba(243, 237, 228, 0.3) !important;
+          border-radius: 50% !important;
+          background: transparent !important;
+          transition: background 0.3s !important;
+        }
+        .rest-quote-wrapper .flickity-button:hover {
+          background: rgba(243, 237, 228, 0.1) !important;
+        }
+        .rest-quote-wrapper .flickity-button::before {
+          background-color: #F3EDE4 !important;
+        }
+        .rest-quote-wrapper .flickity-page-dots {
+          position: absolute !important;
+          bottom: -10px !important;
+          left: 50% !important;
+          transform: translateX(-50%) !important;
+          top: auto !important;
+        }
+        
+        @media (max-width: 768px) {
+          .rest-quote-wrapper .flickity__controls {
+            bottom: -30px !important;
+          }
+          .rest-quote-wrapper .flickity-page-dots {
+            bottom: -60px !important;
+          }
         }
       `}</style>
 
@@ -198,24 +269,34 @@ export default function Restaurant() {
             />
           </div>
           <div className="rest-sig__text">
-            <p className="rest-sig__eyebrow">OUR PHILOSOPHY</p>
-            <h2 className="rest-sig__title">
-              Flavour
-              <em>Perfected.</em>
-            </h2>
-            <hr className="rest-sig__rule" />
-            <p className="rest-sig__body">
-              Every dish at Krishna Sheesh Mahal tells a story — of locally sourced ingredients, time-honored recipes, and a relentless pursuit of culinary excellence. Our chefs blend traditional Rajasthani flavors with contemporary techniques to create an experience that lingers long after the last bite.
-            </p>
-            <a href="#restaurant-hero" className="rest-sig__cta">
-              RESERVE YOUR TABLE
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </a>
+            <div style={{ maxWidth: '600px', margin: '0 auto' }}>
+              <p className="rest-sig__eyebrow">OUR PHILOSOPHY</p>
+              <h2 className="rest-sig__title">
+                Flavour
+                <em>Perfected.</em>
+              </h2>
+              <hr className="rest-sig__rule" />
+              <p className="rest-sig__body">
+                Every dish at Krishna Sheesh Mahal tells a story — of locally sourced ingredients, time-honored recipes, and a relentless pursuit of culinary excellence. Our chefs blend traditional Rajasthani flavors with contemporary techniques to create an experience that lingers long after the last bite.
+              </p>
+              <a href="#restaurant-hero" className="rest-sig__cta">
+                RESERVE YOUR TABLE
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
           </div>
         </section>
 
+        {/* ── PANEER SCROLL SEQUENCE ── */}
+        <PaneerScrollSequence />
+
+        {/* ── INGREDIENTS SHOWCASE ── */}
+        <IngredientsShowcase />
+
         {/* ── QUOTE SLIDER ── */}
-        <QuoteSlider />
+        <div className="rest-quote-wrapper">
+          <QuoteSlider />
+        </div>
       </div>
     </>
   );

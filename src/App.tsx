@@ -11,6 +11,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Rooms from "./pages/Rooms";
 import Restaurant from "./pages/Restaurant";
+import Banquet from "./pages/Banquet";
 
 export default function App() {
   useScrollEngine();
@@ -49,6 +50,7 @@ export default function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/rooms" element={<Rooms />} />
           <Route path="/restaurant" element={<Restaurant />} />
+          <Route path="/banquet" element={<Banquet />} />
         </Routes>
       </div>
       <Footer />

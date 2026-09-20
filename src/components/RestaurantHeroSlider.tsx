@@ -191,11 +191,11 @@ export default function RestaurantHeroSlider() {
         .rhs {
           position: relative;
           width: 100%;
-          height: 100vh;
+          height: 100svh;
           min-height: 600px;
           overflow: hidden;
-          background: #fff;
-          color: #111;
+          background: #F3EDE4;
+          color: #251C19;
         }
 
         .rhs__track {
@@ -237,25 +237,25 @@ export default function RestaurantHeroSlider() {
         
         .rhs__content { position: relative; z-index: 3; }
         .rhs__decor-1 { position: absolute; z-index: 0; opacity: 0; transition: all 1.2s cubic-bezier(0.2, 1, 0.3, 1) 0.3s; }
-        .rhs__bg-text { position: absolute; font-family: var(--font-2); font-size: 8rem; color: rgba(0,0,0,0.06); text-transform: uppercase; white-space: nowrap; pointer-events: none; z-index: 1; opacity: 0; transition: opacity 1s 0.5s; }
+        .rhs__bg-text { position: absolute; font-family: var(--font-2); font-size: 8rem; color: rgba(0,0,0,0.03); text-transform: uppercase; white-space: nowrap; pointer-events: none; z-index: 0; opacity: 0; transition: opacity 1s 0.5s; }
         
         .rhs__slide.is-active .rhs__decor-1 { opacity: 1; transform: scale(1) translate(0,0) !important; }
         .rhs__slide.is-active .rhs__bg-text { opacity: 1; }
         .rhs__slide:not(.is-active) .rhs__img-wrap img { transform: scale(1.15); }
         
         /* ── TYPOGRAPHY ── */
-        .rhs__eyebrow { font-family: var(--font-1); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.35em; font-weight: 700; color: #344541; margin-bottom: 20px; }
-        .rhs__headline { font-family: var(--font-2); font-size: clamp(4rem, 7.5vw, 8rem); line-height: 0.9; color: #111; margin-bottom: 30px; text-transform: uppercase; letter-spacing: -0.01em; }
-        .rhs__headline em { font-family: var(--font-3); font-weight: 300; font-style: italic; display: block; color: #FF9F87; text-transform: none; font-size: 1.1em; margin-top: 10px; margin-left: 8%; }
+        .rhs__eyebrow { font-family: var(--font-1); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.35em; font-weight: 700; color: #251C19; margin-bottom: 20px; }
+        .rhs__headline { font-family: var(--font-2); font-size: clamp(4rem, 7.5vw, 8rem); line-height: 0.9; color: #251C19; margin-bottom: 30px; text-transform: uppercase; letter-spacing: -0.01em; }
+        .rhs__headline em { font-family: var(--font-3); font-weight: 300; font-style: italic; display: block; color: #251C19; opacity: 0.7; text-transform: none; font-size: 1.1em; margin-top: 5px; margin-left: 0; }
         
         .rhs__desc-box { position: relative; padding-top: 10px; max-width: 550px; }
-        .rhs__desc { font-family: var(--font-1); font-size: 1.15rem; line-height: 1.6; color: #444; margin-bottom: 30px; }
+        .rhs__desc { font-family: var(--font-1); font-size: 1.15rem; line-height: 1.6; color: #251C19; opacity: 1; font-weight: 500; margin-bottom: 30px; }
 
         /* ── LAYOUT 0 ── */
         .layout-0 .rhs__layout { justify-content: center; }
         .layout-0 .rhs__img-container { width: 35%; height: 75%; position: absolute; left: 15%; }
         .layout-0 .rhs__content { width: 45%; margin-left: auto; margin-right: 0; padding-top: 5%; }
-        .layout-0 .rhs__decor-1 { width: 40vw; height: 40vw; max-width: 600px; max-height: 600px; background: linear-gradient(135deg, #FFEFEC 0%, #FFE3DD 100%); border-radius: 50%; top: 10%; left: 5%; transform: scale(0.8); }
+        .layout-0 .rhs__decor-1 { width: 40vw; height: 40vw; max-width: 600px; max-height: 600px; background: #251C19; opacity: 0.05; border-radius: 50%; top: 10%; left: 5%; transform: scale(0.8); }
         .layout-0 .rhs__bg-text { writing-mode: vertical-rl; top: 50%; transform: translateY(-50%) rotate(180deg); left: 5%; }
 
         /* ── LAYOUT 1 ── */
@@ -263,7 +263,7 @@ export default function RestaurantHeroSlider() {
         .layout-1 .rhs__img-container { width: 40%; height: 65%; order: 2; margin-right: 2%; }
         .layout-1 .rhs__img-wrap-secondary { width: 50%; height: 45%; bottom: -10%; left: -25%; }
         .layout-1 .rhs__content { width: 50%; order: 1; padding-bottom: 5%; margin-left: 2%; }
-        .layout-1 .rhs__decor-1 { width: 40%; height: 60%; background: #FAF9F7; bottom: 15%; right: 2%; transform: translateY(100px); }
+        .layout-1 .rhs__decor-1 { width: 40%; height: 60%; background: #251C19; opacity: 0.05; bottom: 15%; right: 2%; transform: translateY(100px); }
         .layout-1 .rhs__bg-text { top: 10%; right: 5%; font-size: 10rem; }
         .layout-1 .rhs__headline { margin-left: 10%; }
 
@@ -272,7 +272,7 @@ export default function RestaurantHeroSlider() {
         .layout-2 .rhs__img-container { width: 45%; height: 75%; margin-right: 2%; }
         .layout-2 .rhs__img-wrap { border-radius: 400px; }
         .layout-2 .rhs__content { width: 48%; margin-left: 2%; z-index: 4; }
-        .layout-2 .rhs__decor-1 { width: 50vw; height: 50vw; background: linear-gradient(135deg, #F5EAE8 0%, #EFE1DE 100%); border-radius: 50%; top: -10%; right: -10%; transform: scale(1.2); }
+        .layout-2 .rhs__decor-1 { width: 50vw; height: 50vw; background: #251C19; opacity: 0.05; border-radius: 50%; top: -10%; right: -10%; transform: scale(1.2); }
         .layout-2 .rhs__bg-text { writing-mode: vertical-rl; top: 50%; transform: translateY(-50%); right: 2%; }
 
         /* ── LAYOUT 3 ── */
@@ -280,20 +280,20 @@ export default function RestaurantHeroSlider() {
         .layout-3 .rhs__img-container { width: 35%; height: 85%; margin-left: 2%; }
         .layout-3 .rhs__img-wrap-secondary { width: 55%; height: 35%; top: 10%; right: -30%; }
         .layout-3 .rhs__content { width: 55%; margin-right: 2%; }
-        .layout-3 .rhs__decor-1 { width: 40%; height: 100%; background: #FDF9F9; top: 0; left: 15%; transform: translateX(-50px); }
+        .layout-3 .rhs__decor-1 { width: 40%; height: 100%; background: #251C19; opacity: 0.05; top: 0; left: 15%; transform: translateX(-50px); }
         .layout-3 .rhs__bg-text { bottom: 15%; left: 2%; }
 
         /* ── LAYOUT 4 (SPLIT SCREEN) ── */
         .layout-4 .rhs__layout { width: 100%; max-width: none; }
         .layout-4 .rhs__left-pane { width: 50%; height: 100%; position: relative; display: flex; flex-direction: column; justify-content: center; padding: 0 10%; }
-        .layout-4 .rhs__right-pane { width: 50%; height: 100%; background: #FDF4F2; display: flex; align-items: center; justify-content: center; padding: 10%; }
+        .layout-4 .rhs__right-pane { width: 50%; height: 100%; background: rgba(37, 28, 25, 0.08); display: flex; align-items: center; justify-content: center; padding: 10%; }
         .layout-4 .rhs__img-container { width: 220px; height: 300px; position: absolute; bottom: 8%; right: 10%; }
         .layout-4 .rhs__img-wrap { box-shadow: 0 10px 40px rgba(0,0,0,0.15); }
         .layout-4 .rhs__headline { font-size: clamp(3rem, 5.5vw, 5.5rem); margin-top: -10%; }
         
         .rhs__form-wrap { background: transparent; width: 100%; max-width: 400px; }
-        .rhs__form-title { font-family: var(--font-2); font-size: 2.5rem; text-transform: uppercase; color: #111; margin-bottom: 10px; }
-        .rhs__form-desc { font-family: var(--font-1); font-size: 1.05rem; color: #555; margin-bottom: 30px; }
+        .rhs__form-title { font-family: var(--font-2); font-size: 2.5rem; text-transform: uppercase; color: #251C19; margin-bottom: 10px; }
+        .rhs__form-desc { font-family: var(--font-1); font-size: 1.05rem; color: rgba(37, 28, 25, 0.8); margin-bottom: 30px; }
 
         /* ── ANIMATIONS ── */
         .rhs-anim { opacity: 0; transform: translateX(80px); transition: all 1.2s cubic-bezier(0.2, 1, 0.3, 1); }
@@ -311,23 +311,23 @@ export default function RestaurantHeroSlider() {
           border-radius: 50%; border: 1px solid rgba(0,0,0,0.05);
           background: #fff; z-index: 10;
           display: flex; align-items: center; justify-content: center; text-align: center;
-          font-family: var(--font-1); font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
-          animation: rhsSpin 20s linear infinite;
           box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
+        .rhs__badge svg { width: 100%; height: 100%; animation: rhsSpin 20s linear infinite; }
+        @media (prefers-reduced-motion: reduce) { .rhs__badge svg { animation: none; } }
         @keyframes rhsSpin { to { transform: rotate(360deg); } }
 
         /* ── BUTTONS ── */
-        .rhs__cta { display: inline-flex; align-items: center; gap: 12px; color: #111; font-family: var(--font-1); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; border-bottom: 2px solid #FF9F87; padding-bottom: 4px; transition: opacity 0.3s; }
+        .rhs__cta { display: inline-flex; align-items: center; gap: 12px; color: #251C19; font-family: var(--font-1); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; border-bottom: 2px solid #251C19; padding-bottom: 4px; transition: opacity 0.3s; }
         .rhs__cta:hover { opacity: 0.6; }
 
         /* Form Inputs */
         .rhs__form { display: flex; flex-direction: column; gap: 15px; }
-        .rhs__input { width: 100%; padding: 15px 20px; border: 1px solid rgba(0,0,0,0.1); border-radius: 0; font-size: 0.95rem; font-family: var(--font-1); background: transparent; color: #111; outline: none; transition: border-color 0.3s; }
-        .rhs__input:focus { border-color: #111; }
-        .rhs__input::placeholder { color: #888; }
-        .rhs__submit { background: #111; color: #fff; border: none; padding: 16px 20px; font-family: var(--font-1); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; transition: background 0.3s; margin-top: 10px; }
-        .rhs__submit:hover { background: #FF9F87; color: #111; }
+        .rhs__input { width: 100%; padding: 15px 20px; border: 1px solid rgba(37, 28, 25, 0.2); border-radius: 0; font-size: 0.95rem; font-family: var(--font-1); background: transparent; color: #251C19; outline: none; transition: border-color 0.3s; }
+        .rhs__input:focus { border-color: #251C19; }
+        .rhs__input::placeholder { color: rgba(37, 28, 25, 0.6); }
+        .rhs__submit { background: #251C19; color: #F3EDE4; border: 1px solid #251C19; padding: 16px 20px; font-family: var(--font-1); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; transition: background 0.3s, color 0.3s; margin-top: 10px; }
+        .rhs__submit:hover { background: transparent; color: #251C19; }
 
         /* ── PAGER ── */
         .rhs__pager {
@@ -341,10 +341,10 @@ export default function RestaurantHeroSlider() {
         }
         .layout-4.is-active ~ .rhs__pager { right: 55%; /* Move pager to left side on last slide */ }
         
-        .rhs__arrow { font-size: 1.5rem; font-family: var(--font-1); color: #111; background: none; border: none; cursor: pointer; transition: transform 0.3s, opacity 0.3s; display: flex; align-items: center; }
+        .rhs__arrow { font-size: 1.5rem; font-family: var(--font-1); color: #251C19; background: none; border: none; cursor: pointer; transition: transform 0.3s, opacity 0.3s; display: flex; align-items: center; }
         .rhs__arrow:hover { opacity: 0.5; transform: scale(1.1); }
-        .rhs__pager-num { font-family: var(--font-2); font-size: 2.8rem; font-weight: 700; color: #111; display: flex; align-items: center; gap: 8px; }
-        .rhs__pager-num::before { content: "*"; color: #FF9F87; font-size: 2.5rem; font-weight: 400; }
+        .rhs__pager-num { font-family: var(--font-2); font-size: 2.8rem; font-weight: 700; color: #251C19; display: flex; align-items: center; gap: 8px; }
+        .rhs__pager-num::before { content: "*"; color: #251C19; opacity: 0.5; font-size: 2.5rem; font-weight: 400; }
 
         @media (max-width: 1024px) {
           .rhs__layout { flex-direction: column !important; justify-content: flex-start !important; padding-top: 10vh; gap: 15px; width: 90%; }
@@ -444,7 +444,14 @@ export default function RestaurantHeroSlider() {
                         )}
                         {i !== 4 && slide.badge && (
                           <div className="rhs__badge">
-                            {slide.badge.split(" ").length > 2 ? slide.badge.split(" ").slice(0, 2).join(" ") + "\n" + slide.badge.split(" ").slice(2).join(" ") : slide.badge}
+                            <svg viewBox="0 0 100 100">
+                              <path id={`textPath${i}`} d="M 50,50 m -35,0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="none" />
+                              <text fill="#251C19" fontSize="10.5" fontFamily="var(--font-1)" fontWeight="700" letterSpacing="0.1em" textTransform="uppercase">
+                                <textPath href={`#textPath${i}`} startOffset="50%" textAnchor="middle">
+                                  {slide.badge} • {slide.badge} • 
+                                </textPath>
+                              </text>
+                            </svg>
                           </div>
                         )}
                       </div>
@@ -461,8 +468,8 @@ export default function RestaurantHeroSlider() {
                           {slide.bullets && slide.bullets.length > 0 && (
                             <ul className="rhs__bullets" style={{ listStyle: 'none', padding: 0, margin: '0 0 25px' }}>
                               {slide.bullets.map(b => (
-                                <li key={b} style={{ fontSize: '1rem', marginBottom: '10px', color: '#344541', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                                  <span style={{ width: '6px', height: '6px', background: '#FF9F87', borderRadius: '50%' }} />
+                                <li key={b} style={{ fontSize: '1rem', marginBottom: '10px', color: '#251C19', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                  <span style={{ width: '6px', height: '6px', background: '#251C19', borderRadius: '50%' }} />
                                   {b}
                                 </li>
                               ))}

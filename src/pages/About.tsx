@@ -75,7 +75,7 @@ export default function About() {
 
           /* ── NEW DARK HIGHLIGHT SECTIONS ── */
           .about-dark-section {
-            background-color: #0d0d0d;
+            background-color: var(--charcoal);
             color: #fff;
             position: relative;
             overflow: hidden;
@@ -122,23 +122,23 @@ export default function About() {
           }
           .fresh-card-content {
             flex: 1;
-            background: linear-gradient(145deg, #161616, #0a0a0a);
-            border: 1px solid rgba(255, 120, 50, 0.25);
+            background: linear-gradient(145deg, #302421, #1f1715);
+            border: 1px solid var(--gold);
             border-radius: 20px;
             padding: 70px 60px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5), inset 0 0 60px rgba(255, 120, 50, 0.03);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5), inset 0 0 60px rgba(197, 157, 58, 0.05);
             position: relative;
             overflow: hidden;
           }
-          /* Subtle orange glow */
+          /* Subtle gold glow */
           .fresh-card-content::before {
             content: "";
             position: absolute;
             top: -30%; left: -30%; width: 160%; height: 160%;
-            background: radial-gradient(circle at center, rgba(255, 120, 50, 0.12) 0%, transparent 60%);
+            background: radial-gradient(circle at center, rgba(197, 157, 58, 0.15) 0%, transparent 60%);
             pointer-events: none;
             z-index: 0;
           }
@@ -146,7 +146,7 @@ export default function About() {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            border: 1px solid rgba(255,120,50,0.3);
+            border: 1px solid var(--gold);
             border-radius: 40px;
             padding: 8px 18px;
             font-size: 0.75rem;
@@ -161,7 +161,7 @@ export default function About() {
             content: "";
             display: block;
             width: 6px; height: 6px;
-            background: #FF7B32;
+            background: var(--gold);
             border-radius: 50%;
           }
           .fresh-card-subtitle {
@@ -181,7 +181,7 @@ export default function About() {
             position: relative;
           }
           .fresh-highlight {
-            color: #FF7B32;
+            color: var(--gold);
             font-style: italic;
             font-family: var(--font-3);
             font-weight: 300;
@@ -226,7 +226,7 @@ export default function About() {
           .showcase-card--center {
             flex: 0 1 45%;
             aspect-ratio: 16/9;
-            box-shadow: 0 30px 70px rgba(0,0,0,0.8), 0 0 30px rgba(255,120,50,0.08);
+            box-shadow: 0 30px 70px rgba(0,0,0,0.8), 0 0 30px rgba(197, 157, 58, 0.08);
             border: 1px solid rgba(255,255,255,0.1);
             z-index: 2;
           }
@@ -274,7 +274,7 @@ export default function About() {
             background: rgba(255,255,255,0.2);
           }
           .showcase-btn-icon {
-            background: #FF7B32;
+            background: var(--gold);
             width: 32px; height: 32px;
             border-radius: 50%;
             display: flex;
@@ -315,7 +315,7 @@ export default function About() {
           </div>
           <div className="flagship-banner__inner section section--large" style={{ justifyContent: 'center', alignItems: 'center', zIndex: 2, position: 'relative' }}>
             <div style={{ textAlign: 'center', maxWidth: '800px' }}>
-              <h4 style={{ color: '#FF7B32', textTransform: 'uppercase', letterSpacing: '0.2em', fontSize: '0.9rem', marginBottom: '1rem', animation: 'revealUp 1s ease forwards', opacity: 0, display: 'inline-block', textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}>
+              <h4 style={{ color: 'var(--gold)', textTransform: 'uppercase', letterSpacing: '0.2em', fontSize: '0.9rem', margin: '0 auto 1rem', animation: 'revealUp 1s ease forwards', opacity: 0, display: 'inline-block', textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}>
                 Krishna Sheesh Mahal
               </h4>
               <h1 style={{ fontSize: 'clamp(4rem, 8vw, 8rem)', color: '#fff', fontFamily: 'var(--font-2)', lineHeight: 1.1, marginBottom: '1.5rem', textShadow: '0 4px 20px rgba(0,0,0,0.8)', animation: 'revealUp 1.2s ease forwards', opacity: 0, animationDelay: '0.2s' }}>
@@ -357,7 +357,7 @@ export default function About() {
       <ScrollingLogos />
 
       {/* Unique Image Collage with Text Section */}
-      <section className="section-image-with-text pv-large section-colorway-white">
+      <section className="section-image-with-text pv-large section-colorway-gray">
         <div className="img-w-txt img-w-txt--img-pair img-w-txt--align-left section section--large" style={{ alignItems: 'center' }}>
           <div className="img-w-txt__img" style={{ width: '45%' }}>
             <div className="image-collage" data-scroll data-scroll-speed="0.1">

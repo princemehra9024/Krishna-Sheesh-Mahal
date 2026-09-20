@@ -12,7 +12,7 @@ export default function Header({ onBookNow }: HeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigateRouter = useNavigate();
   const location = useLocation();
-  const isLightHero = location.pathname === "/rooms";
+  const isLightHero = location.pathname !== "/";
   // open path: [depth0 index, depth1 index]
   const [openPath, setOpenPath] = useState<number[]>([]);
 
@@ -86,7 +86,7 @@ export default function Header({ onBookNow }: HeaderProps) {
     });
 
   return (
-    <header className={`header ${!isLightHero ? "header--over-banner" : ""} header--has-title`}>
+    <header className="header header--has-title">
       <div className="header__inner">
         <div className="header__section header__section--hamburger">
           <i
@@ -99,8 +99,8 @@ export default function Header({ onBookNow }: HeaderProps) {
         </div>
 
         <div className="header__section header__section--book">
-          <div className="header__link">
-            <span role="button" onClick={onBookNow}>BOOK NOW</span>
+          <div className="header__link" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <button className="btn btn--regular" style={{ height: '36px', padding: '0 20px', fontSize: '0.75rem', borderRadius: '40px', backgroundColor: 'var(--maroon)', color: '#F3EDE4' }} onClick={onBookNow}>BOOK NOW</button>
           </div>
         </div>
 

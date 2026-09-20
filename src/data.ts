@@ -16,6 +16,7 @@ export const MENU: MenuItem[] = [
     href: "/rooms",
   },
   { label: "Restaurant", href: "/restaurant" },
+  { label: "Banquet", href: "/banquet" },
   { label: "About Us", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
@@ -128,6 +129,44 @@ export const FOOTER_MENUS: { title: string; items: { label: string; href: string
     title: "Connect",
     items: [
       { label: "Instagram", href: "https://www.instagram.com/krishnasheeshmahal/", external: true },
+    ],
+  },
+];
+
+export interface IngredientCard {
+  label: string;
+  icon: string;
+}
+
+export interface Dish {
+  title: string;
+  bowlImage: string;
+  cards: IngredientCard[];
+}
+
+export const DISHES: Dish[] = [
+  {
+    title: "Lemon Herb Garlic Chicken W/ Organic Quinoa And Grilled Asparagus",
+    bowlImage: "/images/dishes/ChatGPT_Image_Sep_19__2026__11_40_23_PM-removebg-preview.png",
+    cards: [
+      { label: "Veggies", icon: "" },
+      { label: "Protein", icon: "" },
+      { label: "Grains", icon: "" },
+      { label: "Fruit", icon: "" },
+      { label: "Herbs", icon: "" },
+      { label: "Sauce", icon: "" },
+    ],
+  },
+  {
+    title: "Southwest Bean & Quinoa Salad",
+    bowlImage: "/images/dishes/ChatGPT_Image_Sep_19__2026__11_43_07_PM-removebg-preview.png",
+    cards: [
+      { label: "Asparagus", icon: "" },
+      { label: "Chicken", icon: "" },
+      { label: "Veggies", icon: "" },
+      { label: "Herbs", icon: "" },
+      { label: "CousCous", icon: "" },
+      { label: "Olives", icon: "" },
     ],
   },
 ];
