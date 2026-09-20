@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useScrollEngine } from "./hooks/useScrollEngine";
+import { useScrollReveal } from "./hooks/useScrollReveal";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import CustomCursor from "./components/CustomCursor";
@@ -15,6 +16,7 @@ import Banquet from "./pages/Banquet";
 
 export default function App() {
   useScrollEngine();
+  useScrollReveal();
 
   const [bookOpen, setBookOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);

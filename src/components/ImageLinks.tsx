@@ -10,10 +10,10 @@ export default function ImageLinks() {
       <div className="img-links img-links--large">
         {IMAGE_LINK_ROWS.map((row, r) => (
           <div className="img-links__row" key={r}>
-            {row.map((item) => (
+            {row.map((item, i) => (
               <a
                 key={item.title}
-                className="img-links__row-item txt-colorway-light"
+                className={`img-links__row-item txt-colorway-light reveal reveal--delay-${(i % 3) + 1}`}
                 href={item.href}
                 data-cursor-txt="View"
                 onClick={(e) => {

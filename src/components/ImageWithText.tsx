@@ -5,7 +5,7 @@ export default function ImageWithText() {
   return (
     <section id="about" className="section-image-with-text pv-large section-colorway-gray">
       <div className="img-w-txt img-w-txt--img-pair img-w-txt--align-left section section--large">
-        <div className="img-w-txt__img">
+        <div className="img-w-txt__img reveal">
           <picture>
             <img
               loading="lazy"

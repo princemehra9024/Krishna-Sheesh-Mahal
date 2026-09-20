@@ -26,10 +26,10 @@ export default function ScrollingLogos() {
     <section id="section-2-1" className="section-scrolling-logos pv-large section-colorway-gray">
       <style>{css}</style>
       <div className="scrolling-logos">
-        <h2 className="scrolling-logos__subtitle subtitle">
+        <h2 className="scrolling-logos__subtitle subtitle reveal">
           <span>Collaborators &amp; Clients</span>
         </h2>
-        <div className={`scrolling-logos__items scrolling-logos__items--${count} scrolling-logos__items--recolor`} data-scrolled>
+        <div className={`scrolling-logos__items hide-overflow reveal reveal--delay-1 scrolling-logos__items--${count} scrolling-logos__items--recolor`} data-scroll data-scroll-speed="-0.05" data-scrolled>
           {ALL_LOGOS.map((logo, i) => (
             <div className={`scrolling-logos__item scrolling-${count}-${i + 1}`} key={`${logo.alt}-${i}`}>
               <span className="scrolling-logos__item-inner">
