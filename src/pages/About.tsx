@@ -2,12 +2,47 @@ import { HERO_POSTER, ABOUT_IMAGES } from "../data";
 import ScrollingLogos from "../components/ScrollingLogos";
 import QuoteSlider from "../components/QuoteSlider";
 import { Link } from "react-router-dom";
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
 
 export default function About() {
   const statement = "Born from a passion for creating unforgettable memories, our journey began in Kota, where we sought to transform how people experience hospitality.";
-  
   const words = useMemo(() => statement.split(" "), []);
+
+  const [activeIndex, setActiveIndex] = useState(1);
+  const showcaseCards = useMemo(() => [
+    {
+      title: "Fine Dining",
+      subtitle: "Savor the extraordinary.",
+      img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=1600",
+      link: "/restaurant",
+      btnText: "Explore Menu"
+    },
+    {
+      title: "Professional",
+      subtitle: "Fuel Your Ambition.",
+      img: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=1600",
+      link: "/rooms",
+      btnText: "View Suites"
+    },
+    {
+      title: "Relaxation",
+      subtitle: "Unwind in luxury.",
+      img: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&q=80&w=1600",
+      link: "/rooms",
+      btnText: "Discover More"
+    }
+  ], []);
+
+  const prevIdx = (activeIndex - 1 + showcaseCards.length) % showcaseCards.length;
+  const nextIdx = (activeIndex + 1) % showcaseCards.length;
+
+  // Auto-play functionality
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % showcaseCards.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [showcaseCards.length]);
 
   return (
     <>
@@ -196,7 +231,7 @@ export default function About() {
 
           /* Carousel Showcase Section */
           .showcase-section {
-            padding: 100px 0 150px;
+            padding: 60px 0 60px;
             text-align: center;
             position: relative;
             z-index: 1;
@@ -206,7 +241,7 @@ export default function About() {
             justify-content: center;
             align-items: center;
             gap: 30px;
-            margin-bottom: 80px;
+            margin-bottom: 40px;
             overflow: hidden;
             padding: 0 5%;
           }
@@ -222,6 +257,38 @@ export default function About() {
             opacity: 0.6;
             filter: blur(1.5px) grayscale(30%) brightness(0.6);
             transform: scale(0.9);
+          }
+          .showcase-card--side:hover {
+            filter: blur(0px) grayscale(0%) brightness(0.9);
+            transform: scale(0.93);
+            opacity: 0.9;
+          }
+          .showcase-card-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.4);
+            opacity: 0;
+            transition: all 0.3s ease;
+          }
+          .showcase-card--side:hover .showcase-card-overlay {
+            opacity: 1;
+          }
+          .showcase-card-overlay h4 {
+            color: #fff;
+            font-size: 2rem;
+            font-family: var(--font-2);
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            margin: 0;
+          }
+          @keyframes showcaseFade {
+            0% { opacity: 0; transform: scale(0.98); }
+            100% { opacity: 1; transform: scale(1); }
+          }
+          .animate-fade-in {
+            animation: showcaseFade 0.6s cubic-bezier(0.2, 1, 0.2, 1) forwards;
           }
           .showcase-card--center {
             flex: 0 1 45%;
@@ -425,26 +492,32 @@ export default function About() {
         {/* Carousel Showcase Section */}
         <div className="showcase-section">
           <div className="showcase-carousel">
-            <div className="showcase-card showcase-card--side">
-              <img src="https://images.unsplash.com/photo-1542314831-c53cd4185af1?auto=format&fit=crop&q=80&w=1600" alt="Dining" />
+            <div className="showcase-card showcase-card--side" onClick={() => setActiveIndex(prevIdx)} style={{ cursor: 'pointer' }}>
+              <img src={showcaseCards[prevIdx].img} alt={showcaseCards[prevIdx].title} />
+              <div className="showcase-card-overlay">
+                <h4>{showcaseCards[prevIdx].title}</h4>
+              </div>
             </div>
             
             <div className="showcase-card showcase-card--center">
-              <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=1600" alt="Professional Stay" />
-              <div className="showcase-card-content">
-                <h3 className="showcase-card-title">Professional</h3>
-                <p className="showcase-card-subtitle">Fuel Your Ambition.</p>
-                <Link to="/rooms" className="showcase-btn">
+              <img src={showcaseCards[activeIndex].img} alt={showcaseCards[activeIndex].title} key={showcaseCards[activeIndex].img} className="animate-fade-in" />
+              <div className="showcase-card-content animate-fade-in" key={showcaseCards[activeIndex].title}>
+                <h3 className="showcase-card-title">{showcaseCards[activeIndex].title}</h3>
+                <p className="showcase-card-subtitle">{showcaseCards[activeIndex].subtitle}</p>
+                <Link to={showcaseCards[activeIndex].link} className="showcase-btn">
                   <span className="showcase-btn-icon">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="9 18 15 12 9 6"/></svg>
                   </span>
-                  View Suites
+                  {showcaseCards[activeIndex].btnText}
                 </Link>
               </div>
             </div>
 
-            <div className="showcase-card showcase-card--side">
-              <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&q=80&w=1600" alt="Relaxation" />
+            <div className="showcase-card showcase-card--side" onClick={() => setActiveIndex(nextIdx)} style={{ cursor: 'pointer' }}>
+              <img src={showcaseCards[nextIdx].img} alt={showcaseCards[nextIdx].title} />
+              <div className="showcase-card-overlay">
+                <h4>{showcaseCards[nextIdx].title}</h4>
+              </div>
             </div>
           </div>
 

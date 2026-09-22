@@ -38,15 +38,38 @@ export default function ImageWithText() {
             Your <em>Stress-Free</em> Stay Awaits
           </h3>
           <p>
-            Get your trip off to a great start with a stay at this property, which offers free Wi-Fi in all rooms. Conveniently situated in the Rama Krishna Puram part of Kota, this property puts you close to attractions and interesting dining options. This 4.0-star property features a restaurant to make your stay more indulgent and memorable.
+            Get your trip off to a great start with a stay at our property, thoughtfully designed to offer you the best amenities and a prime location in Kota.
           </p>
+          
+          <ul style={{ listStyle: "none", padding: 0, margin: "24px 0 32px", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "16px", fontSize: "0.95rem" }}>
+            <li style={{ display: "flex", alignItems: "center", fontWeight: 500 }}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#712135" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: "10px", flexShrink: 0 }}>
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              Free Wi-Fi in all rooms
+            </li>
+            <li style={{ display: "flex", alignItems: "center", fontWeight: 500 }}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#712135" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: "10px", flexShrink: 0 }}>
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              4.0-Star Property
+            </li>
+            <li style={{ display: "flex", alignItems: "center", fontWeight: 500 }}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#712135" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: "10px", flexShrink: 0 }}>
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              In-house Restaurant
+            </li>
+            <li style={{ display: "flex", alignItems: "center", fontWeight: 500 }}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#712135" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: "10px", flexShrink: 0 }}>
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              Near City Attractions
+            </li>
+          </ul>
           <a
-            href="#rooms"
+            href="/rooms"
             className="btn btn--regular"
-            onClick={(e) => {
-              e.preventDefault();
-              scrollToTarget("#rooms", -70);
-            }}
           >
             Explore Rooms
           </a>

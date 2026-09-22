@@ -6,7 +6,7 @@ const PHOTOS = [
   "https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&q=80&w=1600", // Plated Food
   "https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&q=80&w=1600", // Rooftop Terrace
   "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&q=80&w=1600", // Wine Cellar
-  "https://images.unsplash.com/photo-1414235077428-33898bd1e0d5?auto=format&fit=crop&q=80&w=1600", // Intimate Dining
+  "/images/restaurant-hero-5.jpeg", // Intimate Dining
 ];
 
 /* ── slide data ─────────────────────────────────────────── */
@@ -374,6 +374,7 @@ export default function RestaurantHeroSlider() {
           .rhs__left-pane, .rhs__right-pane { width: 100% !important; height: auto !important; padding: 15% 5% 5% 5% !important; }
           .rhs__left-pane { order: 1; align-items: center; text-align: center; padding-bottom: 0 !important; }
           .rhs__right-pane { order: 2; align-items: center; padding-top: 5% !important; background: transparent; }
+          .layout-4 .rhs__headline { margin-top: 0 !important; }
           .rhs__form-wrap { text-align: center; }
           
           .rhs__pager { right: 50%; transform: translateX(50%); bottom: 15px; gap: 20px; background: rgba(255,255,255,0.85); padding: 5px 20px; border-radius: 40px; backdrop-filter: blur(10px); box-shadow: 0 4px 15px rgba(0,0,0,0.05); }

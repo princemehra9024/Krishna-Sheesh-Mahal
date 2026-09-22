@@ -263,8 +263,8 @@ export default function Restaurant() {
         <section className="rest-sig" aria-label="Signature experience">
           <div className="rest-sig__img">
             <img
-              src="https://thepopuphotel.com/wp-content/uploads/2023/11/tpuh-restaurant-790x790.jpg"
-              alt="Signature dining experience at Krishna Sheesh Mahal"
+              src="/images/paan-shake.jpeg"
+              alt="Paan Shake at Krishna Sheesh Mahal"
               loading="lazy"
             />
           </div>

@@ -400,7 +400,15 @@ export default function Rooms() {
               flex-direction: column;
               height: auto;
             }
-            .rg-feature-box, .rg-arrow-box {
+            .rg-feature-box {
+              border-radius: 0 !important;
+              padding: 40px 6%;
+              flex-direction: column;
+              align-items: flex-start;
+              gap: 30px;
+            }
+            .rg-feature-col { width: 100%; }
+            .rg-arrow-box {
               border-radius: 0 !important;
               padding: 40px 6%;
             }

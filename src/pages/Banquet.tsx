@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import { scrollToTarget } from "../hooks/useScrollEngine";
 
 /* ─── image paths ─── */
-const IMG_HERO = "/banquet-hero.jpg";
-const IMG_WEDDING = "/banquet-wedding.jpg";
-const IMG_CORPORATE = "/banquet-corporate.jpg";
-const IMG_TABLE = "/banquet-table.jpg";
+const IMG_HERO = "/images/banquet-2.jpg";
+const IMG_WEDDING = "/images/banquet-1.jpg";
+const IMG_CORPORATE = "/images/banquet-corporate-new.jpg";
+const IMG_TABLE = "/images/banquet-3.jpg";
 
 export default function Banquet() {
   useEffect(() => {

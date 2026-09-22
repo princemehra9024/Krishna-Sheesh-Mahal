@@ -1,6 +1,6 @@
 const U = "https://thepopuphotel.com/wp-content/uploads";
 
-export const HERO_VIDEO = `${U}/2026/07/HERO-8.mp4`;
+export const HERO_VIDEO = "/videos/home-video.mp4";
 export const HERO_POSTER = `${U}/2026/03/img-4-1600x900.webp`;
 
 export interface MenuItem {
@@ -30,14 +30,14 @@ export interface ImageLink {
 
 export const IMAGE_LINK_ROWS: ImageLink[][] = [
   [
-    { title: "Restaurant", href: "/restaurant", src: `${U}/2026/03/Monza13-2560x1440.webp`, alt: "Restaurant" },
+    { title: "Restaurant", href: "/restaurant", src: "/images/restaurant-img.jpeg", alt: "Restaurant" },
   ],
   [
     { title: "Super Deluxe", href: "#rooms", src: `${U}/2026/03/img-5-1600x900.webp`, alt: "Super Deluxe" },
     { title: "Suite", href: "#rooms", src: `${U}/2026/03/The-Pop-Up-Hotel-Silverstone-1600x900.webp`, alt: "Suite" },
   ],
   [
-    { title: "Deluxe", href: "#rooms", src: `${U}/2026/03/shutterstock_2443373073-1600x900.webp`, alt: "Deluxe" },
+    { title: "Banquet", href: "/banquet", src: "/banquet-hero.jpg", alt: "Banquet" },
   ],
 ];
 
@@ -59,8 +59,8 @@ export const LOGOS: { src: string; alt: string }[] = [
 export const ABOUT_IMAGES = {
   primary: `${U}/2026/03/img-2-655x862.webp`,
   primary2x: `${U}/2026/03/img-2-770x1012.webp`,
-  secondary: `${U}/2026/03/img-1-385x506.webp`,
-  secondary2x: `${U}/2026/03/img-1-770x1012.webp`,
+  secondary: `/images/hotel_receptionist.jpg`,
+  secondary2x: `/images/hotel_receptionist.jpg`,
 };
 
 export interface Quote {
@@ -73,9 +73,9 @@ export interface Quote {
 }
 
 export const QUOTES: Quote[] = [
-  { img: `${U}/2026/03/img-3-790x790.webp`, logo: `${U}/2026/03/logo-the-times.svg`, logoW: 100, logoH: 48, text: "“Exceptionally good hotel with reasonable amenities.”", source: "A K. India" },
-  { img: `${U}/2023/10/Web-re-design-G24-Sept-23-7-790x790.jpg`, logo: `${U}/2026/03/ABC_News_logo_2021.svg`, logoW: 527, logoH: 183, text: "\"Value for money 9.0 out of 10. Cleanliness 8.8. Facilities 8.6.\"", source: "Agoda Reviews" },
-  { img: `${U}/2023/11/tpuh-restaurant-790x790.jpg`, logo: `${U}/2026/03/VOGUE_LOGO.svg`, logoW: 1543, logoH: 409, text: "\"Location rating score: 9.1 Exceptional location.\"", source: "Guest Review" },
+  { img: "/images/quote-fruit-sald.jpeg", logo: `${U}/2026/03/logo-the-times.svg`, logoW: 100, logoH: 48, text: "“Exceptionally good hotel with reasonable amenities.”", source: "A K. India" },
+  { img: "/images/quote-cooking.jpg", logo: `${U}/2026/03/ABC_News_logo_2021.svg`, logoW: 527, logoH: 183, text: "\"Value for money 9.0 out of 10. Cleanliness 8.8. Facilities 8.6.\"", source: "Agoda Reviews" },
+  { img: "/images/quote-sarfing.jpg", logo: `${U}/2026/03/VOGUE_LOGO.svg`, logoW: 1543, logoH: 409, text: "\"Location rating score: 9.1 Exceptional location.\"", source: "Guest Review" },
 ];
 
 export interface Article {
@@ -103,8 +103,8 @@ export const SECONDARY_ARTICLES: Article[] = [
   { title: "Kishor Sagar", date: "5.8 km away", term: "Landmarks", img: `${U}/2026/02/OodExterior2-520x296.jpg`, img2x: `${U}/2026/02/OodExterior2-1060x600.jpg`, href: "#news" },
 ];
 
-export const FOOTER_AVATAR = `${U}/2026/03/img-1-150x150.webp`;
-export const POPUP_IMAGE = `${U}/2026/03/img-1-520x684.webp`;
+export const FOOTER_AVATAR = `/images/hotel_receptionist.jpg`;
+export const POPUP_IMAGE = `/images/hotel_receptionist.jpg`;
 
 export const FOOTER_MENUS: { title: string; items: { label: string; href: string; external?: boolean }[] }[] = [
   {

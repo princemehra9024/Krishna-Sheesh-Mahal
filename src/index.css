@@ -286,7 +286,7 @@ body.scroll-inactive:not(.menu-open) .header--over-banner .header__logo svg * { 
 .main-menu:not(.active)::before { opacity: 0; }
 .main-menu.active { transform: translateX(0); }
 .main-menu .main-menu__inner { width: var(--level-width); height: 100%; overflow: hidden; background-color: var(--heading-color); position: relative; }
-.main-menu .menu { width: 100%; height: 100%; background-color: var(--heading-color); overflow: auto; transition: transform cubic-bezier(0.72, 0.01, 0, 1) 0.6s; padding-top: var(--spacing-medium) !important; }
+.main-menu .menu { width: 100%; height: 100%; background-color: var(--heading-color); overflow: auto; transition: transform cubic-bezier(0.72, 0.01, 0, 1) 0.6s; padding-top: var(--spacing-medium) !important; padding-bottom: 100px !important; }
 .main-menu .menu > .menu-item { font-size: 3rem; font-family: var(--font-1); }
 .main-menu .menu > .menu-item span, .main-menu .menu > .menu-item a:not([class*="btn"]) { color: var(--text-color); }
 .main-menu .menu > .menu-item:nth-child(n + 2) { margin-top: 20px; }
@@ -434,7 +434,7 @@ body.scroll-inactive:not(.menu-open) .header--over-banner .header__logo svg * { 
 @media (max-width: 768px) and (min-width: 451px) { .scrolling-logos__item { width: 25%; } }
 @media (max-width: 450px) {
   .scrolling-logos__subtitle span { width: auto; max-width: none; }
-  .scrolling-logos__items { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; overflow: visible !important; }
+  .scrolling-logos__items { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; overflow: hidden !important; }
   .scrolling-logos__item { width: 100% !important; animation: none !important; transform: none !important; padding: 0 !important; }
   .scrolling-logos__item:nth-child(n+14) { display: none !important; }
 }
@@ -531,6 +531,9 @@ body.scroll-inactive:not(.menu-open) .header--over-banner .header__logo svg * { 
   box-shadow: 0 15px 40px rgba(0,0,0,0.2);
   transform: scale(0.95);
   transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 1s ease;
+  object-fit: cover;
+  object-position: center top;
+  aspect-ratio: 1;
 }
 .flickity--quote .flickity__item.is-selected .flickity__item-img img {
   transform: scale(1);
@@ -675,7 +678,8 @@ body.scroll-inactive:not(.menu-open) .header--over-banner .header__logo svg * { 
   .footer__bottom-extra { margin-left: auto; align-items: flex-end; text-align: right; }
 }
 @media (max-width: 450px) {
-  .footer__main .contact-cta { flex-direction: column; align-items: flex-start; }
+  .footer__main .contact-cta { flex-direction: column; align-items: flex-start; width: 100%; }
+  .footer__main .contact-cta__btn { width: 100%; margin-top: 10px; }
   .footer__bottom-menu, .footer__bottom-extra { width: 100%; align-items: flex-start; }
   .inline-form { flex-direction: column; align-items: stretch; gap: 0; }
   .inline-form__footer { width: 100%; border-top: 1px solid color-mix(in srgb, var(--border-color) 20%, transparent); }
@@ -766,5 +770,18 @@ body:not(.no-touch) .custom-cursor { display: none; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.001s !important; transition-duration: 0.001s !important; }
 }
-\ n / *   S c r o l l   R e v e a l   A n i m a t i o n s   * / \ n . r e v e a l   { \ n     o p a c i t y :   0 ; \ n     t r a n s f o r m :   t r a n s l a t e Y ( 4 0 p x ) ; \ n     t r a n s i t i o n :   o p a c i t y   1 s   c u b i c - b e z i e r ( 0 . 1 6 ,   1 ,   0 . 3 ,   1 ) ,   t r a n s f o r m   1 s   c u b i c - b e z i e r ( 0 . 1 6 ,   1 ,   0 . 3 ,   1 ) ; \ n     w i l l - c h a n g e :   o p a c i t y ,   t r a n s f o r m ; \ n } \ n . r e v e a l . i s - r e v e a l e d   { \ n     o p a c i t y :   1 ; \ n     t r a n s f o r m :   t r a n s l a t e Y ( 0 ) ; \ n } \ n . r e v e a l - - d e l a y - 1   {   t r a n s i t i o n - d e l a y :   0 . 1 s ;   } \ n . r e v e a l - - d e l a y - 2   {   t r a n s i t i o n - d e l a y :   0 . 2 s ;   } \ n . r e v e a l - - d e l a y - 3   {   t r a n s i t i o n - d e l a y :   0 . 3 s ;   } \ n  
- 
+
+/* Scroll Reveal Animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+.reveal.is-revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+.reveal--delay-1 { transition-delay: 0.1s; }
+.reveal--delay-2 { transition-delay: 0.2s; }
+.reveal--delay-3 { transition-delay: 0.3s; }

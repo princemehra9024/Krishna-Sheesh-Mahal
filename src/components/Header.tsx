@@ -105,26 +105,13 @@ export default function Header({ onBookNow }: HeaderProps) {
         </div>
 
         <div className="header__section header__section--center">
-          <a className="header__logo" href="#top" aria-label="Krishna Sheesh Mahal" onClick={(e) => { e.preventDefault(); scrollToTarget(0); }} style={{ textDecoration: 'none' }}>
-            <span className="header__logo-text">Krishna Sheesh Mahal</span>
+          <a className="header__logo" href="#top" aria-label="Krishna Sheesh Mahal" onClick={(e) => { e.preventDefault(); scrollToTarget(0); }} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+            <img src="/logo.jpg" alt="Krishna Sheesh Mahal Logo" style={{ height: '50px', objectFit: 'contain' }} />
           </a>
         </div>
 
         <div className="header__section header__section--right">
-          <a className="header__icon header__icon--wishlist" href="#footer" aria-label="Wishlist" onClick={(e) => { e.preventDefault(); navigate("#footer"); }}>
-            <i className="icon icon--heart"><IconHeart /></i>
-            <span className="header__icon-label" />
-          </a>
-          <span className="header__icon header__icon--search" role="button" aria-label="Search" onClick={() => navigate("#news")}>
-            <i className="icon icon--search"><IconSearch /></i>
-          </span>
-          <span className="header__icon header__icon--account" role="button" aria-label="Account" onClick={() => navigate("#footer")}>
-            <i className="icon icon--account"><IconAccount /></i>
-          </span>
-          <span className="header__icon header__icon--cart" role="button" aria-label="Bag" onClick={onBookNow}>
-            <i className="icon icon--bag"><IconBag /></i>
-            <span className="header__icon-label" />
-          </span>
+          {/* Icons removed as requested */}
         </div>
 
         <nav className={`main-menu${menuOpen ? " active" : ""}`} aria-hidden={!menuOpen}>
