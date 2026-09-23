@@ -58,10 +58,24 @@ export default function Restaurant() {
 
         /* ── SIGNATURE DISH SECTION ── */
         .rest-sig {
-          background-color: #251C19;
+          background: linear-gradient(135deg, #1A1311 0%, #251C19 100%);
           display: flex;
           align-items: stretch;
           overflow: hidden;
+          position: relative;
+        }
+        
+        .rest-sig::after {
+          content: '';
+          position: absolute;
+          top: -50%;
+          right: -10%;
+          width: 800px;
+          height: 800px;
+          background: radial-gradient(circle, rgba(94, 32, 45, 0.15) 0%, rgba(37, 28, 25, 0) 70%);
+          border-radius: 50%;
+          pointer-events: none;
+          z-index: 0;
         }
         .rest-sig__img, .rest-sig__text {
           width: 50%;
@@ -80,38 +94,83 @@ export default function Restaurant() {
           display: flex;
           flex-direction: column;
           justify-content: center;
+          position: relative;
+          z-index: 1;
+        }
+        .rest-sig__text::before {
+          content: '';
+          position: absolute;
+          top: 30px;
+          right: 30px;
+          width: 30%;
+          height: 40%;
+          border-top: 2px solid rgba(243, 237, 228, 0.2);
+          border-right: 2px solid rgba(243, 237, 228, 0.2);
+          pointer-events: none;
+          transition: width 0.5s ease, height 0.5s ease, border-color 0.5s ease;
+          border-top-right-radius: 4px;
+        }
+        .rest-sig__text::after {
+          content: '';
+          position: absolute;
+          bottom: 30px;
+          left: 30px;
+          width: 30%;
+          height: 40%;
+          border-bottom: 2px solid rgba(243, 237, 228, 0.2);
+          border-left: 2px solid rgba(243, 237, 228, 0.2);
+          pointer-events: none;
+          transition: width 0.5s ease, height 0.5s ease, border-color 0.5s ease;
+          border-bottom-left-radius: 4px;
+        }
+        .rest-sig:hover .rest-sig__text::before,
+        .rest-sig:hover .rest-sig__text::after {
+          width: 35%;
+          height: 45%;
+          border-color: rgba(243, 237, 228, 0.5);
         }
         .rest-sig__eyebrow {
           font-family: var(--font-1);
           font-size: 0.85rem;
           text-transform: uppercase;
-          letter-spacing: 0.25em;
+          letter-spacing: 0.35em;
           font-weight: 700;
-          color: rgba(243, 237, 228, 0.5);
+          color: rgba(243, 237, 228, 0.6);
           margin-bottom: 24px;
+          display: flex;
+          align-items: center;
+          gap: 15px;
         }
+        .rest-sig__eyebrow::before {
+          content: '';
+          width: 30px;
+          height: 1px;
+          background: rgba(243, 237, 228, 0.6);
+        }
+        
         .rest-sig__title {
           font-family: var(--font-2);
-          font-size: clamp(2.5rem, 4vw, 4.5rem);
-          line-height: 1.08;
-          margin-bottom: 16px;
-          font-weight: 600;
+          font-size: clamp(3rem, 5vw, 5.5rem);
+          line-height: 1.05;
+          margin-bottom: 20px;
+          font-weight: 500;
           color: #F3EDE4;
+          text-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
         .rest-sig__title em {
           font-family: var(--font-3);
           font-weight: 300;
           font-style: italic;
           display: block;
-          color: #F3EDE4;
-          opacity: 0.7;
-          font-size: 1.1em;
+          color: var(--cream, #F3EDE4);
+          opacity: 0.8;
+          font-size: 1.15em;
           margin-top: 5px;
         }
         .rest-sig__rule {
-          width: 60px;
-          height: 1px;
-          background-color: rgba(243, 237, 228, 0.2);
+          width: 80px;
+          height: 2px;
+          background: linear-gradient(90deg, var(--maroon, #5E202D), transparent);
           border: none;
           margin: 32px 0;
         }
@@ -127,29 +186,51 @@ export default function Restaurant() {
         .rest-sig__cta {
           display: inline-flex;
           align-items: center;
-          gap: 10px;
+          gap: 12px;
           background: transparent;
           color: #F3EDE4;
-          border: 2px solid #F3EDE4;
-          padding: 14px 34px;
+          border: 1px solid rgba(243, 237, 228, 0.3);
+          padding: 16px 36px;
           border-radius: 40px;
           font-family: var(--font-1);
-          font-size: 0.78rem;
+          font-size: 0.8rem;
           font-weight: 700;
-          letter-spacing: 0.14em;
+          letter-spacing: 0.15em;
           text-transform: uppercase;
           cursor: pointer;
           text-decoration: none;
-          transition: background 0.3s, color 0.3s, transform 0.3s, box-shadow 0.2s;
+          transition: all 0.4s ease;
           align-self: flex-start;
           outline: none;
+          position: relative;
+          overflow: hidden;
+        }
+        .rest-sig__cta::before {
+          content: '';
+          position: absolute;
+          top: 0; left: 0; width: 100%; height: 100%;
+          background: #F3EDE4;
+          transform: translateX(-101%);
+          transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+          z-index: -1;
         }
         .rest-sig__cta:focus-visible {
           box-shadow: 0 0 0 3px rgba(243, 237, 228, 0.5);
         }
         .rest-sig__cta:hover {
-          background: #F3EDE4;
           color: #251C19;
+          border-color: #F3EDE4;
+          transform: translateY(-2px);
+          box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .rest-sig__cta:hover::before {
+          transform: translateX(0);
+        }
+        .rest-sig__cta svg {
+          transition: transform 0.4s ease;
+        }
+        .rest-sig__cta:hover svg {
+          transform: translateX(4px);
         }
         @media (max-width: 768px) {
           .rest-sig { flex-direction: column; }

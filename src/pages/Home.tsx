@@ -2,6 +2,7 @@ import FlagshipBanner from "../components/FlagshipBanner";
 import ImageLinks from "../components/ImageLinks";
 import ScrollingLogos from "../components/ScrollingLogos";
 import ImageWithText from "../components/ImageWithText";
+import Amenities from "../components/Amenities";
 import QuoteSlider from "../components/QuoteSlider";
 import ArticleList from "../components/ArticleList";
 
@@ -12,6 +13,7 @@ export default function Home() {
       <ImageLinks />
       <ScrollingLogos />
       <ImageWithText />
+      <Amenities />
       <QuoteSlider />
       <ArticleList />
     </>

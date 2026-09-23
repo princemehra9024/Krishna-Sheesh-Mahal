@@ -98,8 +98,8 @@ export default function PaneerScrollSequence() {
       scrollTrigger: {
         trigger: containerRef.current,
         start: "top top",
-        end: "+=3000",
-        scrub: 1, // 1 second smoothing
+        end: "+=4500",
+        scrub: 2.5, // 2.5 seconds smoothing for a very fluid, buttery feel
         pin: true,
       },
       onUpdate: () => render(playhead.frame)

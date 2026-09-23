@@ -55,37 +55,62 @@ export default function Footer() {
 
   return (
     <div className="page-wrap" id="footer">
-      <footer className="footer pt-medium pb-small" style={{ position: 'relative', overflow: 'hidden', backgroundColor: '#251C19', color: '#F3EDE4' }}>
+      <footer className="footer pt-medium pb-small premium-footer">
         <style>{`
-          .footer-input::placeholder { color: rgba(243, 237, 228, 0.7) !important; opacity: 1 !important; }
+          .premium-footer { position: relative; overflow: hidden; background-color: #1A1311; color: #FFF2DF; font-family: var(--font-1, sans-serif); border-top: 1px solid rgba(255, 215, 140, 0.1); }
+          .premium-footer-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(243, 237, 228, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(243, 237, 228, 0.03) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; z-index: 0; }
+          .premium-footer-bg::after { content: ''; position: absolute; bottom: -50%; left: 50%; transform: translateX(-50%); width: 150vw; height: 100vw; max-width: 1600px; max-height: 1600px; background: radial-gradient(circle, rgba(94, 32, 45, 0.5) 0%, rgba(200, 150, 100, 0.15) 30%, transparent 60%); border-radius: 50%; filter: blur(100px); animation: footerPulseGlow 10s ease-in-out infinite alternate; pointer-events: none; }
+          @keyframes footerPulseGlow { 0% { opacity: 0.5; transform: translateX(-50%) scale(0.9); } 100% { opacity: 1; transform: translateX(-50%) scale(1.1); } }
+          
+          .footer-input::placeholder { color: rgba(255, 242, 223, 0.5) !important; opacity: 1 !important; }
+          
+          .premium-avatar-wrap { width: 80px; height: 80px; border-radius: 50%; padding: 4px; background: linear-gradient(135deg, rgba(255, 215, 140, 0.8), rgba(94, 32, 45, 0.8)); box-shadow: 0 0 20px rgba(255, 215, 140, 0.4); animation: avatarBreathe 4s infinite alternate; transition: transform 0.4s; }
+          .premium-avatar-wrap:hover { transform: scale(1.1) rotate(5deg); box-shadow: 0 0 40px rgba(255, 215, 140, 0.8); }
+          .premium-avatar-inner { width: 100%; height: 100%; border-radius: 50%; overflow: hidden; border: 2px solid #1A1311; }
+          @keyframes avatarBreathe { 0% { box-shadow: 0 0 15px rgba(255, 215, 140, 0.3); } 100% { box-shadow: 0 0 30px rgba(255, 215, 140, 0.6); } }
+          
+          .premium-btn { border-radius: 50px; padding: 14px 32px; font-weight: 700; background: linear-gradient(90deg, rgba(255, 215, 140, 0.1), rgba(255, 215, 140, 0.2)); color: #FFF2DF; border: 1px solid rgba(255, 215, 140, 0.4); backdrop-filter: blur(10px); box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 10px rgba(255, 215, 140, 0.1); transition: all 0.4s ease; text-transform: uppercase; letter-spacing: 0.1em; font-size: 12px; }
+          .premium-btn:hover { background: rgba(255, 215, 140, 0.2); border-color: rgba(255, 215, 140, 0.8); transform: translateY(-4px); box-shadow: 0 15px 40px rgba(94, 32, 45, 0.5), 0 0 25px rgba(255, 215, 140, 0.4); color: #FFF; }
+          
+          .premium-menu-link { text-decoration: none; color: rgba(255, 242, 223, 0.7); position: relative; padding-bottom: 4px; transition: color 0.3s ease; font-weight: 500; font-size: 15px; }
+          .premium-menu-link::after { content: ''; position: absolute; left: 0; bottom: 0; width: 0; height: 1px; background: rgba(255, 215, 140, 0.8); transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1); box-shadow: 0 0 8px rgba(255, 215, 140, 0.8); }
+          .premium-menu-link:hover { color: #FFF2DF; }
+          .premium-menu-link:hover::after { width: 100%; }
+          
+          .premium-input-wrap { display: flex; background: rgba(30, 22, 20, 0.5); backdrop-filter: blur(15px); border: 1px solid rgba(255, 215, 140, 0.25); border-radius: 50px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 15px rgba(255, 215, 140, 0.05); transition: border-color 0.3s, box-shadow 0.3s; }
+          .premium-input-wrap:focus-within { border-color: rgba(255, 215, 140, 0.6); box-shadow: 0 15px 40px rgba(0,0,0,0.6), inset 0 0 20px rgba(255, 215, 140, 0.15), 0 0 20px rgba(255, 215, 140, 0.2); }
+          
+          .premium-subscribe-btn { padding: 0 30px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; font-size: 11px; background: rgba(255, 215, 140, 0.15); color: #FFF2DF; border-left: 1px solid rgba(255, 215, 140, 0.25); transition: all 0.4s; }
+          .premium-subscribe-btn:hover { background: rgba(255, 215, 140, 0.3); color: #FFF; box-shadow: inset 0 0 20px rgba(255, 215, 140, 0.4); }
+          
+          .premium-logo-text { font-size: clamp(40px, 8vw, 110px); font-weight: 700; font-family: var(--font-2, serif); line-height: 1; letter-spacing: -0.01em; color: transparent; background: linear-gradient(180deg, #FFFFFF 0%, #E8CDA6 100%); -webkit-background-clip: text; background-clip: text; padding-bottom: 40px; margin-bottom: 40px; border-bottom: 1px solid rgba(255, 215, 140, 0.15); filter: drop-shadow(0 15px 30px rgba(0,0,0,0.8)); position: relative; }
+          .premium-logo-text::after { content: ''; position: absolute; left: 0; bottom: -1px; width: 30%; height: 1px; background: linear-gradient(90deg, rgba(255, 215, 140, 0.8), transparent); }
         `}</style>
-        {/* Decorative background element */}
-        <div style={{ position: 'absolute', top: '-20%', left: '-10%', width: '40%', height: '50%', background: 'radial-gradient(circle, rgba(243, 237, 228, 0.05) 0%, transparent 70%)', filter: 'blur(60px)', zIndex: 0, pointerEvents: 'none' }} />
-        <div style={{ position: 'absolute', bottom: '-20%', right: '-10%', width: '40%', height: '50%', background: 'radial-gradient(circle, rgba(243, 237, 228, 0.03) 0%, transparent 70%)', filter: 'blur(60px)', zIndex: 0, pointerEvents: 'none' }} />
         
-        <div className="footer__inner section section--large" style={{ position: 'relative', zIndex: 1 }}>
+        <div className="premium-footer-bg" />
+        
+        <div className="footer__inner section section--large relative z-10">
           <div className="footer__main">
             <div className="contact-cta group">
-              <p className="contact-cta__subtitle subtitle mb-2 uppercase tracking-widest text-xs" style={{ color: 'rgba(243, 237, 228, 0.7)' }}>We're Online</p>
-              <div className="contact-cta__content flex items-center gap-4 mb-6 transition-transform duration-500 hover:-translate-y-1">
-                <div className="contact-cta__avatar rounded-full overflow-hidden border-2 border-transparent transition-all duration-300 shadow-[0_0_15px_rgba(243, 237, 228,0.15)] hover:shadow-[0_0_25px_rgba(243, 237, 228,0.4)]" style={{ borderColor: 'rgba(243, 237, 228, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }} onMouseEnter={(e) => e.currentTarget.style.borderColor = '#F3EDE4'} onMouseLeave={(e) => e.currentTarget.style.borderColor = 'rgba(243, 237, 228, 0.1)'}>
-                  <img loading="lazy" className="img-full object-cover" width={150} height={150} src={FOOTER_AVATAR} alt="" style={{ width: '64px', height: '64px', borderRadius: '50%' }} />
+              <p className="subtitle mb-2 uppercase tracking-widest text-[11px] font-bold" style={{ color: 'rgba(255, 215, 140, 0.7)' }}>We're Online</p>
+              <div className="contact-cta__content flex items-center gap-6 mb-8">
+                <div className="premium-avatar-wrap">
+                  <div className="premium-avatar-inner">
+                    <img loading="lazy" className="w-full h-full object-cover" src={FOOTER_AVATAR} alt="Let's Chat" />
+                  </div>
                 </div>
                 <div className="contact-cta__txt content content--small">
-                  <h4 style={{ fontFamily: 'var(--font-2)', fontSize: '2.5rem', margin: 0, color: '#F3EDE4' }}>
-                    Let’s <em style={{ fontStyle: 'italic', color: '#F3EDE4' }}>Chat</em>
+                  <h4 style={{ fontFamily: 'var(--font-2)', fontSize: '3.5rem', margin: 0, color: '#FFF2DF', lineHeight: 1 }}>
+                    Let’s <em style={{ fontStyle: 'italic', color: 'rgba(255, 215, 140, 0.9)' }}>Chat</em>
                   </h4>
                 </div>
               </div>
               <div className="contact-cta__btn">
                 <a
                   href="https://api.whatsapp.com/send/?phone=%2B919024546041&text&type=phone_number&app_absent=0"
-                  className="btn--full btn btn--regular transition-all duration-300"
+                  className="premium-btn inline-block"
                   target="_blank"
                   rel="noreferrer"
-                  style={{ borderRadius: '50px', padding: '12px 24px', fontWeight: 'bold', backgroundColor: '#F3EDE4', color: '#251C19', border: '1px solid #F3EDE4' }}
-                  onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#F3EDE4'; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = '#F3EDE4'; e.currentTarget.style.color = '#251C19'; }}
                 >
                   Open WhatsApp
                 </a>
@@ -95,20 +120,18 @@ export default function Footer() {
             <nav className="footer__menus">
               {menus.map((menu) => (
                 <div className="footer__menu" key={menu.title}>
-                  <p className="subtitle mb-mini uppercase tracking-wider text-xs font-bold" style={{ color: '#F3EDE4', opacity: 0.8 }}>{menu.title}</p>
-                  <ul className="menu">
+                  <p className="subtitle mb-6 uppercase tracking-widest text-[11px] font-bold" style={{ color: 'rgba(255, 215, 140, 0.7)' }}>{menu.title}</p>
+                  <ul className="menu space-y-4">
                     {menu.items.map((item) => (
-                      <li className="menu-item overflow-hidden" key={item.label}>
+                      <li className="menu-item" key={item.label}>
                         <a
                           href={item.href}
                           target={item.external ? "_blank" : undefined}
                           rel={item.external ? "noreferrer" : undefined}
                           onClick={(e) => go(e, item.href, item.external)}
-                          className="inline-block transition-all duration-300 hover:translate-x-2 relative group"
-                          style={{ textDecoration: 'none', color: '#F3EDE4' }}
+                          className="premium-menu-link inline-block"
                         >
-                          <span style={{ opacity: 0.9 }}>{item.label}</span>
-                          <span className="absolute left-0 bottom-0 w-0 h-[1px] transition-all duration-300 group-hover:w-full" style={{ backgroundColor: '#F3EDE4' }}></span>
+                          {item.label}
                         </a>
                       </li>
                     ))}
@@ -118,24 +141,24 @@ export default function Footer() {
             </nav>
           </div>
 
-          <div className="footer__subscribe">
-            <div className="txt-small content content--small mb-4">
+          <div className="footer__subscribe pt-8">
+            <div className="txt-small content content--small mb-6">
               <p>
-                <span className="subtitle uppercase tracking-widest text-xs font-bold" style={{ color: '#F3EDE4' }}>Join Our Community</span>
+                <span className="subtitle uppercase tracking-widest text-[11px] font-bold" style={{ color: 'rgba(255, 215, 140, 0.9)' }}>Join Our Community</span>
               </p>
-              <p className="text-sm mt-2 font-medium" style={{ color: 'rgba(243, 237, 228, 0.8)' }}>Be the first to hear about special offers, exciting updates, and curated content tailored just for you.</p>
+              <p className="text-[15px] mt-3 font-medium leading-relaxed" style={{ color: 'rgba(255, 242, 223, 0.6)' }}>
+                Be the first to hear about special offers, exciting updates, and curated content tailored just for you.
+              </p>
             </div>
             <div className="footer__subscribe-form">
               {done ? (
-                <div className="p-4 rounded-lg text-center animate-fade-in" style={{ backgroundColor: 'rgba(243, 237, 228,0.1)', border: '1px solid rgba(243, 237, 228,0.3)' }}>
-                  <p className="txt-small font-semibold" style={{ color: '#F3EDE4' }}>✨ Thank you — you’re on the list.</p>
+                <div className="p-5 rounded-2xl text-center animate-fade-in" style={{ background: 'rgba(255, 215, 140, 0.1)', border: '1px solid rgba(255, 215, 140, 0.3)', backdropFilter: 'blur(10px)' }}>
+                  <p className="txt-small font-bold" style={{ color: '#FFF2DF', letterSpacing: '0.05em' }}>✨ Thank you — you’re on the list.</p>
                 </div>
               ) : (
-                <form className="inline-form group relative" onSubmit={submit} noValidate>
-                  <div className="inline-form__body relative z-10 overflow-hidden transition-all duration-300 flex" style={{ backgroundColor: 'transparent', border: '1px solid rgba(243, 237, 228,0.3)', borderRadius: '50px' }}>
-                    <label htmlFor="footer-email" className="sr-only">
-                      Email Address
-                    </label>
+                <form className="inline-form w-full max-w-md" onSubmit={submit} noValidate>
+                  <div className="premium-input-wrap">
+                    <label htmlFor="footer-email" className="sr-only">Email Address</label>
                     <input
                       id="footer-email"
                       type="email"
@@ -144,10 +167,10 @@ export default function Footer() {
                       onChange={(e) => setEmail(e.target.value)}
                       required
                       className="footer-input bg-transparent px-6 py-4 w-full outline-none"
-                      style={{ color: '#F3EDE4' }}
+                      style={{ color: '#FFF2DF', fontSize: '15px' }}
                     />
-                    <button className="px-6 font-bold tracking-wide transition-colors duration-300" type="submit" aria-label="Subscribe" style={{ backgroundColor: '#F3EDE4', color: '#251C19', borderRadius: '0 50px 50px 0', borderLeft: '1px solid rgba(243, 237, 228,0.3)' }} onMouseEnter={(e) => e.currentTarget.style.opacity = '0.9'} onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}>
-                      <span className="uppercase text-xs tracking-widest">Subscribe</span>
+                    <button className="premium-subscribe-btn" type="submit" aria-label="Subscribe">
+                      Subscribe
                     </button>
                   </div>
                 </form>
@@ -155,40 +178,28 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="footer__logo mt-16 group cursor-default">
-            <span 
-              className="block pb-5 mb-5 transition-all duration-700 bg-clip-text text-transparent group-hover:bg-gradient-to-r group-hover:from-[#F3EDE4] group-hover:to-[rgba(243, 237, 228,0.5)]"
-              style={{ 
-                fontSize: '4.5rem', 
-                fontWeight: 700, 
-                fontFamily: 'var(--font-2)', 
-                color: '#F3EDE4', 
-                letterSpacing: '0.02em', 
-                borderBottom: '1px solid rgba(243, 237, 228, 0.1)',
-                textShadow: '0 10px 30px rgba(0,0,0,0.5)',
-                lineHeight: '1.1'
-              }}
-            >
+          <div className="footer__logo mt-24">
+            <div className="premium-logo-text">
               Krishna Sheesh Mahal
-            </span>
+            </div>
           </div>
 
-          <div className="footer__bottom flex justify-between items-center pt-2" style={{ borderTop: 'none' }}>
+          <div className="footer__bottom flex flex-col md:flex-row justify-between items-start md:items-center gap-6 pb-8">
             <div className="footer__bottom-menu">
-              <ul className="menu flex gap-6">
+              <ul className="menu flex flex-wrap gap-x-8 gap-y-3">
                 <li className="menu-item">
-                  <a href="#footer" onClick={(e) => e.preventDefault()} className="transition-colors duration-300 text-sm font-medium" style={{ color: 'rgba(243, 237, 228,0.7)' }} onMouseEnter={(e) => e.currentTarget.style.color = '#F3EDE4'} onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(243, 237, 228,0.7)'}>Privacy Policy</a>
+                  <a href="#footer" onClick={(e) => e.preventDefault()} className="premium-menu-link text-[13px]">Privacy Policy</a>
                 </li>
                 <li className="menu-item">
-                  <a href="#footer" onClick={(e) => e.preventDefault()} className="transition-colors duration-300 text-sm font-medium" style={{ color: 'rgba(243, 237, 228,0.7)' }} onMouseEnter={(e) => e.currentTarget.style.color = '#F3EDE4'} onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(243, 237, 228,0.7)'}>Terms &amp; Conditions</a>
+                  <a href="#footer" onClick={(e) => e.preventDefault()} className="premium-menu-link text-[13px]">Terms &amp; Conditions</a>
                 </li>
               </ul>
             </div>
-            <div className="footer__bottom-extra text-xs text-right font-medium" style={{ wordBreak: 'break-word', color: 'rgba(243, 237, 228,0.8)' }}>
-              <p className="mb-1 transition-colors hover:text-[#fff]">Near Gad Circle, Sector - B, Shrinath Puram, Kota, Rajasthan 324010, India</p>
+            <div className="footer__bottom-extra text-[13px] md:text-right font-medium leading-relaxed" style={{ color: 'rgba(255, 242, 223, 0.5)' }}>
+              <p className="mb-1 hover:text-[#FFF2DF] transition-colors cursor-default">Near Gad Circle, Sector - B, Shrinath Puram, Kota, Rajasthan</p>
               <p className="mb-1">© {new Date().getFullYear()} Krishna Sheesh Mahal</p>
               <p>
-                <a href="https://www.fhoke.com" target="_blank" rel="noreferrer" className="transition-colors hover:text-[#F3EDE4]" style={{ color: 'rgba(243, 237, 228,0.8)' }}>
+                <a href="https://www.fhoke.com" target="_blank" rel="noreferrer" className="hover:text-[#FFF2DF] transition-colors" style={{ textDecoration: 'underline', textDecorationColor: 'rgba(255,215,140,0.3)', textUnderlineOffset: '4px' }}>
                   Web Design by Fhoke
                 </a>
               </p>

@@ -239,7 +239,7 @@ export default function RestaurantHeroSlider() {
         .rhs__decor-1 { position: absolute; z-index: 0; opacity: 0; transition: all 1.2s cubic-bezier(0.2, 1, 0.3, 1) 0.3s; }
         .rhs__bg-text { position: absolute; font-family: var(--font-2); font-size: 8rem; color: rgba(0,0,0,0.03); text-transform: uppercase; white-space: nowrap; pointer-events: none; z-index: 0; opacity: 0; transition: opacity 1s 0.5s; }
         
-        .rhs__slide.is-active .rhs__decor-1 { opacity: 1; transform: scale(1) translate(0,0) !important; }
+        .rhs__slide.is-active .rhs__decor-1 { opacity: 0.05 !important; transform: scale(1) translate(0,0) !important; }
         .rhs__slide.is-active .rhs__bg-text { opacity: 1; }
         .rhs__slide:not(.is-active) .rhs__img-wrap img { transform: scale(1.15); }
         
@@ -290,6 +290,7 @@ export default function RestaurantHeroSlider() {
         .layout-4 .rhs__img-container { width: 220px; height: 300px; position: absolute; bottom: 8%; right: 10%; }
         .layout-4 .rhs__img-wrap { box-shadow: 0 10px 40px rgba(0,0,0,0.15); }
         .layout-4 .rhs__headline { font-size: clamp(3rem, 5.5vw, 5.5rem); margin-top: -10%; }
+        .layout-4 .rhs__bg-text, .layout-4 .rhs__decor-1 { display: none !important; }
         
         .rhs__form-wrap { background: transparent; width: 100%; max-width: 400px; }
         .rhs__form-title { font-family: var(--font-2); font-size: 2.5rem; text-transform: uppercase; color: #251C19; margin-bottom: 10px; }
@@ -414,8 +415,10 @@ export default function RestaurantHeroSlider() {
                           {slide.headBold}
                           <em>{slide.headItalic}</em>
                         </h2>
-                        <div className="rhs__img-wrap rhs-anim delay-3">
-                          <img src={PHOTOS[i]} alt={slide.headBold} loading="lazy" />
+                        <div className="rhs__img-container rhs-anim delay-3">
+                          <div className="rhs__img-wrap">
+                            <img src={PHOTOS[i]} alt={slide.headBold} loading="lazy" />
+                          </div>
                         </div>
                       </div>
                       <div className="rhs__right-pane">

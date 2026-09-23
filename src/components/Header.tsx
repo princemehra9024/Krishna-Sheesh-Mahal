@@ -89,18 +89,24 @@ export default function Header({ onBookNow }: HeaderProps) {
     <header className="header header--has-title">
       <div className="header__inner">
         <div className="header__section header__section--hamburger">
-          <i
-            className={`header__menu-toggle${menuOpen ? " active" : ""}`}
-            role="button"
-            aria-label="Toggle menu"
-            aria-expanded={menuOpen}
-            onClick={() => setMenuOpen((v) => !v)}
-          />
+          <style>{`
+            .premium-hamburger-wrap { width: 50px; height: 50px; border-radius: 50%; border: 1px solid rgba(255, 215, 140, 0.4); display: flex; align-items: center; justify-content: center; margin: 0 auto; transition: all 0.4s ease; box-shadow: 0 0 10px rgba(255, 215, 140, 0.1); cursor: pointer; }
+            .premium-hamburger-wrap:hover { background: rgba(255, 215, 140, 0.1); box-shadow: 0 0 20px rgba(255, 215, 140, 0.4); transform: scale(1.05); }
+          `}</style>
+          <div className="premium-hamburger-wrap" onClick={() => setMenuOpen((v) => !v)}>
+            <i
+              className={`header__menu-toggle${menuOpen ? " active" : ""}`}
+              role="button"
+              aria-label="Toggle menu"
+              aria-expanded={menuOpen}
+              style={{ width: '22px', height: '18px' }}
+            />
+          </div>
         </div>
 
         <div className="header__section header__section--book">
           <div className="header__link" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <button className="btn btn--regular" style={{ height: '36px', padding: '0 20px', fontSize: '0.75rem', borderRadius: '40px', backgroundColor: 'var(--maroon)', color: '#F3EDE4' }} onClick={onBookNow}>BOOK NOW</button>
+            <button className="btn btn--regular" style={{ height: '36px', padding: '0 20px', fontSize: '0.75rem', borderRadius: '40px', backgroundColor: 'var(--maroon)', color: '#F3EDE4', border: '1px solid rgba(255, 215, 140, 0.4)', transition: 'all 0.3s' }} onMouseEnter={(e) => e.currentTarget.style.boxShadow = '0 0 15px rgba(255, 215, 140, 0.4)'} onMouseLeave={(e) => e.currentTarget.style.boxShadow = 'none'} onClick={onBookNow}>BOOK NOW</button>
           </div>
         </div>
 

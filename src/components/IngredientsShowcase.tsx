@@ -75,6 +75,34 @@ export default function IngredientsShowcase() {
       });
     });
 
+    // ── AWARD WINNING INTERACTIVE PARALLAX ──
+    const bowlXTo = gsap.quickTo('.ishow-bowl-img', 'x', { duration: 0.8, ease: 'power3' });
+    const bowlYTo = gsap.quickTo('.ishow-bowl-img', 'y', { duration: 0.8, ease: 'power3' });
+    
+    const cardsLeftXTo = gsap.quickTo('.ishow-card:nth-child(-n+3)', 'x', { duration: 1.2, ease: 'power2.out' });
+    const cardsLeftYTo = gsap.quickTo('.ishow-card:nth-child(-n+3)', 'y', { duration: 1.2, ease: 'power2.out' });
+    
+    const cardsRightXTo = gsap.quickTo('.ishow-card:nth-child(n+4)', 'x', { duration: 1.2, ease: 'power2.out' });
+    const cardsRightYTo = gsap.quickTo('.ishow-card:nth-child(n+4)', 'y', { duration: 1.2, ease: 'power2.out' });
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const { innerWidth, innerHeight } = window;
+      const x = (e.clientX / innerWidth - 0.5);
+      const y = (e.clientY / innerHeight - 0.5);
+      
+      bowlXTo(x * -30);
+      bowlYTo(y * -30);
+      
+      cardsLeftXTo(x * 25);
+      cardsLeftYTo(y * 25);
+      
+      cardsRightXTo(x * 35);
+      cardsRightYTo(y * 35);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+
   }, { scope: container });
 
   const touchStart = useRef(0);
@@ -132,40 +160,39 @@ export default function IngredientsShowcase() {
   return (
     <section ref={container} className="ishow-section" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
       <style>{`
-        .ishow-section { position: relative; width: 100%; height: 100vh; background-color: #251C19; overflow: hidden; color: #F3EDE4; font-family: 'Inter', system-ui, sans-serif; }
-        .ishow-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(243, 237, 228, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(243, 237, 228, 0.04) 1px, transparent 1px); background-size: 40px 40px; pointer-events: none; }
-        .ishow-bg::after { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle at center, rgba(243, 237, 228, 0.2) 1px, transparent 1px); background-size: 160px 160px; background-position: -20px -20px; }
-        .ishow-top { position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; padding-top: 40px; text-align: center; }
-        .ishow-pill { display: inline-block; padding: 8px 24px; background: #F3EDE4; border: 1px solid rgba(243, 237, 228, 0.2); border-radius: 40px; font-size: 13px; text-transform: capitalize; letter-spacing: 0.05em; margin-bottom: 24px; color: #251C19; }
-        .ishow-title { font-size: clamp(36px, 3vw, 48px); font-weight: 500; line-height: 1.15; max-width: 700px; color: #F3EDE4 !important; font-family: 'Inter', system-ui, sans-serif !important; letter-spacing: -0.01em; margin-bottom: 40px; }
+        .ishow-section { position: relative; width: 100%; height: 100vh; background: #1A1311; overflow: hidden; color: #F3EDE4; font-family: var(--font-1, sans-serif); }
+        .ishow-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(243, 237, 228, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(243, 237, 228, 0.03) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; z-index: 0; }
+        .ishow-bg::after { content: ''; position: absolute; bottom: -30%; left: 50%; transform: translateX(-50%); width: 100vw; height: 100vw; max-width: 1400px; max-height: 1400px; background: radial-gradient(circle, rgba(94, 32, 45, 0.4) 0%, rgba(200, 150, 100, 0.1) 40%, transparent 70%); border-radius: 50%; z-index: 1; filter: blur(80px); animation: pulseGlow 8s ease-in-out infinite alternate; }
+        @keyframes pulseGlow { 0% { opacity: 0.6; transform: translateX(-50%) scale(0.9); } 100% { opacity: 1; transform: translateX(-50%) scale(1.1); } }
+        
+        .ishow-top { position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; padding-top: 8vh; text-align: center; }
+        .ishow-pill { display: inline-block; padding: 10px 28px; background: rgba(30, 22, 20, 0.4); backdrop-filter: blur(10px); border: 1px solid rgba(243, 237, 228, 0.4); border-radius: 40px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.3em; margin-bottom: 30px; color: #F3EDE4; font-weight: 700; box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 10px rgba(243, 237, 228, 0.1); position: relative; overflow: hidden; }
+        .ishow-pill::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: conic-gradient(transparent, rgba(255, 215, 140, 0.6), transparent 30%); animation: spin 4s linear infinite; }
+        .ishow-pill::after { content: 'Ingredients That Matter'; position: absolute; inset: 1px; background: #1A1311; border-radius: 40px; display: flex; align-items: center; justify-content: center; }
+        @keyframes spin { 100% { transform: rotate(1turn); } }
+        
+        .ishow-title { font-size: clamp(46px, 5vw, 76px); font-weight: 400; line-height: 1.05; max-width: 1100px; color: #FFF2DF !important; font-family: var(--font-2, serif) !important; letter-spacing: 0.02em; margin-bottom: 40px; text-shadow: 0 0 40px rgba(255, 215, 140, 0.6), 0 5px 15px rgba(0,0,0,0.8); }
         .ishow-title-mask { overflow: hidden; display: inline-block; vertical-align: top; }
-        .ishow-title-line { display: inline-block; will-change: transform, opacity; padding-right: 8px; }
-        .ishow-bowl-container { position: absolute; bottom: -5%; left: 50%; transform: translateX(-50%); width: 90vw; min-width: 800px; max-width: 1300px; z-index: 5; display: flex; align-items: flex-end; justify-content: center; height: 70vh; }
-        .ishow-bowl-img { width: 100%; max-height: 100%; object-fit: contain; display: block; transform-origin: center bottom; will-change: transform, opacity; }
-        .ishow-gradient-fade { position: absolute; bottom: 0; left: 0; width: 100%; height: 25%; background: linear-gradient(to bottom, transparent, #251C19 90%); z-index: 6; pointer-events: none; }
+        .ishow-title-line { display: inline-block; will-change: transform, opacity; padding-right: 12px; }
+        .ishow-bowl-container { position: absolute; bottom: -15%; left: 50%; transform: translateX(-50%); width: 110vw; min-width: 1000px; max-width: 1600px; z-index: 5; display: flex; align-items: flex-end; justify-content: center; height: 85vh; animation: bowlBreathe 6s ease-in-out infinite alternate; }
+        @keyframes bowlBreathe { 0% { transform: translateX(-50%) translateY(0) scale(1); } 100% { transform: translateX(-50%) translateY(-20px) scale(1.02); } }
+        .ishow-bowl-img { width: 100%; max-height: 100%; object-fit: contain; display: block; transform-origin: center bottom; will-change: transform, opacity; filter: drop-shadow(0 40px 60px rgba(0,0,0,0.7)); }
+        .ishow-gradient-fade { position: absolute; bottom: 0; left: 0; width: 100%; height: 25%; background: linear-gradient(to bottom, transparent, #1A1311 90%); z-index: 6; pointer-events: none; }
 
         .ishow-arcs { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 1920px; height: 1080px; z-index: 2; pointer-events: none; }
-        .ishow-arc-path { fill: none; stroke: rgba(243, 237, 228, 0.08); stroke-width: 1.5; }
-        .ishow-guide-line { stroke: rgba(243, 237, 228, 0.05); stroke-width: 1; }
+        .ishow-arc-path { fill: none; stroke: rgba(255, 215, 140, 0.3); stroke-width: 2; stroke-dasharray: 10 20; animation: dashFlow 30s linear infinite; filter: drop-shadow(0 0 8px rgba(255, 215, 140, 0.5)); }
+        .ishow-guide-line { stroke: rgba(255, 215, 140, 0.2); stroke-width: 1.5; stroke-dasharray: 4 10; animation: dashFlow 15s linear infinite reverse; filter: drop-shadow(0 0 5px rgba(255, 215, 140, 0.4)); }
+        @keyframes dashFlow { 100% { stroke-dashoffset: 1000; } }
         
-        .ishow-card-wrapper {
-            position: absolute;
-            left: 50%;
-            top: 0;
-            width: 1920px;
-            height: 1080px;
-            transform: translateX(-50%);
-            z-index: 10;
-        }
-
-        .ishow-card { position: absolute; width: 208px; height: 66px; border-radius: 12px; background: rgba(37, 28, 25, 0.85); border: 1px solid rgba(243, 237, 228, 0.1); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); display: flex; align-items: center; padding: 8px 12px; gap: 12px; cursor: pointer; transition: background 0.3s, transform 0.3s, border-color 0.3s; will-change: transform, opacity; }
-        .ishow-card:hover { background: rgba(243, 237, 228, 0.15); border-color: rgba(243, 237, 228, 0.2); transform: translateY(-4px) !important; }
-        .ishow-card-icon { width: 44px; height: 44px; border-radius: 8px; background: rgba(243, 237, 228, 0.08); display: flex; align-items: center; justify-content: center; transition: transform 0.3s; overflow: hidden; padding: 6px; }
-        .ishow-card-icon img { width: 100%; height: 100%; object-fit: contain; }
-        .ishow-card:hover .ishow-card-icon { transform: scale(1.08); background: rgba(243, 237, 228, 0.15); }
-        .ishow-card-label { font-size: 15px; font-weight: 500; color: #F3EDE4; letter-spacing: 0.02em; }
-        .ishow-nav { position: absolute; bottom: 25%; width: 56px; height: 56px; border-radius: 50%; background: rgba(243, 237, 228, 0.05); border: 1px solid rgba(243, 237, 228, 0.15); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 20; color: #F3EDE4; transition: background 0.3s, transform 0.3s; }
-        .ishow-nav:hover { background: rgba(243, 237, 228, 0.15); transform: scale(1.05); }
+        .ishow-card-wrapper { position: absolute; left: 50%; top: 0; width: 1920px; height: 1080px; transform: translateX(-50%); z-index: 10; }
+        .ishow-card { position: absolute; width: 180px; height: 50px; border-radius: 25px; background: rgba(30, 22, 20, 0.4); border: 1px solid rgba(255, 215, 140, 0.25); box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(255, 215, 140, 0.1); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); display: flex; align-items: center; justify-content: center; padding: 0 20px; cursor: pointer; transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); will-change: transform, opacity; }
+        .ishow-card::after { content: ''; position: absolute; inset: -1px; border-radius: 25px; background: linear-gradient(135deg, rgba(255, 215, 140, 0.3) 0%, transparent 100%); z-index: -1; opacity: 0; transition: opacity 0.4s ease; }
+        .ishow-card:hover::after { opacity: 1; }
+        .ishow-card:hover { background: rgba(255, 215, 140, 0.1); border-color: rgba(255, 215, 140, 0.6); transform: translateY(-8px) scale(1.08) !important; box-shadow: 0 15px 40px rgba(94, 32, 45, 0.6), 0 0 35px rgba(255, 215, 140, 0.4); }
+        .ishow-card-label { font-size: 16px; font-weight: 600; color: #FFF2DF; letter-spacing: 0.05em; font-family: var(--font-1, sans-serif); text-shadow: 0 2px 4px rgba(0,0,0,0.8); }
+        
+        .ishow-nav { position: absolute; bottom: 20%; width: 64px; height: 64px; border-radius: 50%; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(243, 237, 228, 0.2); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 20; color: #F3EDE4; transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); backdrop-filter: blur(10px); }
+        .ishow-nav:hover { background: #F3EDE4; color: #1A1311; transform: scale(1.1); box-shadow: 0 10px 25px rgba(243, 237, 228, 0.2); }
         .ishow-nav-prev { left: 8vw; }
         .ishow-nav-next { right: 8vw; }
         .ishow-menu { position: absolute; right: 40px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 24px; z-index: 20; }
@@ -225,9 +252,6 @@ export default function IngredientsShowcase() {
             
             return (
               <div className="ishow-card" key={idx} style={style}>
-                <div className="ishow-card-icon">
-                  {/* Provide your own icon image or svg here later */}
-                </div>
                 <span className="ishow-card-label">{card.label}</span>
               </div>
             );
