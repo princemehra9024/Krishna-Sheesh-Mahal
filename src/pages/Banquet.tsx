@@ -8,7 +8,11 @@ const IMG_WEDDING = "/images/banquet-1.jpg";
 const IMG_CORPORATE = "/images/banquet-corporate-new.jpg";
 const IMG_TABLE = "/images/banquet-3.jpg";
 
-export default function Banquet() {
+interface BanquetProps {
+  onBookNow?: (type: string) => void;
+}
+
+export default function Banquet({ onBookNow }: BanquetProps) {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -683,7 +687,7 @@ export default function Banquet() {
           <div className="section section--tiny">
             <h2 className="subtitle">Plan Your Event</h2>
             <h3 className="h2" style={{ marginBottom: 'var(--spacing-small)' }}>Your Grand Celebration <em>Awaits</em></h3>
-            <Link to="/contact" className="btn btn--regular">Book a Site Visit</Link>
+            <button onClick={() => onBookNow?.("Banquet")} className="btn btn--regular" style={{ background: 'transparent', border: '1px solid var(--heading-color)', color: 'var(--heading-color)', cursor: 'pointer' }}>Book Now</button>
           </div>
         </section>
 

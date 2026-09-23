@@ -13,7 +13,7 @@ export default function FlagshipBanner() {
       </div>
       
       <h1 className="flagship-banner__title h2" data-scroll data-scroll-speed="0.25">
-        <em>Your Comfort Zone Begins With Us</em>
+        <em>Your Comfort, Our Priority</em>
       </h1>
 
       <div className="flagship-banner__inner">

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { HERO_POSTER } from "../data";
+import { HERO_POSTER, WHATSAPP_BOOKING_LINK } from "../data";
 import QuoteSlider from "../components/QuoteSlider";
 
 const U = "https://thepopuphotel.com/wp-content/uploads";
@@ -8,7 +8,11 @@ const ROOM_SINGLE = `${U}/2026/03/Monza13-2560x1440.webp`;
 const ROOM_DOUBLE = `${U}/2026/03/img-5-1600x900.webp`;
 const ROOM_SUITE = `${U}/2026/03/The-Pop-Up-Hotel-Silverstone-1600x900.webp`;
 
-export default function Rooms() {
+interface RoomsProps {
+  onBookNow?: (type: string) => void;
+}
+
+export default function Rooms({ onBookNow }: RoomsProps) {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -423,7 +427,7 @@ export default function Rooms() {
           /* --- SERVICES GRID --- */
           .services-section {
             background-color: #050505;
-            height: 100vh;
+            min-height: 100vh;
             width: 100%;
             padding: 0;
             margin: 0;
@@ -442,14 +446,24 @@ export default function Rooms() {
             display: grid;
             width: 100%;
             height: 100%;
+            /* 4 columns on desktop */
             grid-template-columns: repeat(4, 1fr);
-            grid-template-rows: repeat(2, 1fr);
+            grid-auto-rows: minmax(300px, 1fr);
             gap: 2px;
             background: #111;
           }
+          
+          /* Grid placement */
+          .srv-block:nth-child(1) { grid-column: 1 / 3; grid-row: 1 / 3; } /* Large left */
+          .srv-block:nth-child(2) { grid-column: 3 / 4; grid-row: 1 / 2; }
+          .srv-block:nth-child(3) { grid-column: 4 / 5; grid-row: 1 / 2; }
+          .srv-block:nth-child(4) { grid-column: 3 / 4; grid-row: 2 / 3; }
+          .srv-block:nth-child(5) { grid-column: 4 / 5; grid-row: 2 / 3; }
+          .srv-block:nth-child(6) { grid-column: 1 / 5; grid-row: 3 / 4; } /* Wide banner at bottom */
+
           .srv-block {
             position: relative;
-            padding: 3vw;
+            padding: clamp(20px, 3vw, 40px);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -463,8 +477,8 @@ export default function Rooms() {
           }
           .srv-block:hover {
             background-color: #1a1a1a;
-            transform: scale(0.95);
-            border-radius: 24px;
+            transform: scale(0.98);
+            border-radius: 12px;
             box-shadow: 0 20px 50px rgba(0,0,0,0.8);
             z-index: 10;
           }
@@ -511,17 +525,17 @@ export default function Rooms() {
             transition: transform 1.5s cubic-bezier(0.2, 1, 0.2, 1);
           }
           .srv-block:hover .srv-block-bg {
-            transform: scale(1.08);
+            transform: scale(1.05);
           }
           .srv-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.9));
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.95));
             z-index: 1;
             transition: opacity 0.5s ease;
           }
           .srv-block:hover .srv-overlay {
-            opacity: 0.8;
+            opacity: 0.7;
           }
           
           .srv-content {
@@ -536,7 +550,7 @@ export default function Rooms() {
             position: absolute;
             top: 2vw;
             right: 2vw;
-            font-size: 1.5rem;
+            font-size: clamp(1.2rem, 2vw, 1.5rem);
             font-family: var(--font-2);
             color: rgba(255,255,255,0.15);
             font-weight: 300;
@@ -548,8 +562,8 @@ export default function Rooms() {
           }
           
           .srv-icon {
-            width: 48px;
-            height: 48px;
+            width: clamp(32px, 4vw, 48px);
+            height: clamp(32px, 4vw, 48px);
             stroke: rgba(255,255,255,0.4);
             margin-bottom: auto;
             transition: all 0.5s cubic-bezier(0.2, 1, 0.2, 1);
@@ -562,7 +576,7 @@ export default function Rooms() {
           }
           
           .srv-title {
-            font-size: 2rem;
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
             font-family: var(--font-2);
             line-height: 1.1;
             margin-bottom: 10px;
@@ -574,13 +588,13 @@ export default function Rooms() {
           }
           
           .srv-desc {
-            font-size: 1.05rem;
-            color: rgba(255,255,255,0.5);
+            font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+            color: rgba(255,255,255,0.6);
             line-height: 1.5;
             transition: color 0.4s ease, transform 0.4s ease;
           }
           .srv-block:hover .srv-desc {
-            color: rgba(255,255,255,0.9);
+            color: rgba(255,255,255,1);
             transform: translateY(-2px);
           }
           
@@ -612,19 +626,40 @@ export default function Rooms() {
           }
 
           .srv-block--large .srv-title {
-            font-size: 3.5rem;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+          }
+          .srv-block--large .srv-desc {
+            font-size: clamp(1rem, 2vw, 1.2rem);
           }
 
           @media (max-width: 1024px) {
             .services-section { height: auto; min-height: 100vh; padding: 2px 0; }
-            .services-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: auto; }
-            .srv-block { grid-column: span 1 !important; grid-row: span 1 !important; min-height: 400px; padding: 40px; }
-            .srv-block--large { grid-column: span 2 !important; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: auto; }
+            
+            /* On tablet: */
+            .srv-block:nth-child(1) { grid-column: 1 / 3; grid-row: auto; min-height: 400px; }
+            .srv-block:nth-child(2) { grid-column: 1 / 2; grid-row: auto; min-height: 250px; }
+            .srv-block:nth-child(3) { grid-column: 2 / 3; grid-row: auto; min-height: 250px; }
+            .srv-block:nth-child(4) { grid-column: 1 / 2; grid-row: auto; min-height: 250px; }
+            .srv-block:nth-child(5) { grid-column: 2 / 3; grid-row: auto; min-height: 250px; }
+            .srv-block:nth-child(6) { grid-column: 1 / 3; grid-row: auto; min-height: 350px; }
+            
             .srv-block-num { top: 20px; right: 20px; }
           }
           @media (max-width: 650px) {
             .services-grid { grid-template-columns: 1fr; }
-            .srv-block--large { grid-column: span 1 !important; }
+            
+            /* On mobile: stack everything */
+            .srv-block:nth-child(1),
+            .srv-block:nth-child(2),
+            .srv-block:nth-child(3),
+            .srv-block:nth-child(4),
+            .srv-block:nth-child(5),
+            .srv-block:nth-child(6) {
+              grid-column: 1 / -1;
+              min-height: 300px;
+              padding: 30px 20px;
+            }
           }
         `}
       </style>      {/* Rooms Grid Hero */}
@@ -693,97 +728,129 @@ export default function Rooms() {
       </section>
 
       <div className="rooms-container">
-        {/* Single / Deluxe Room Section */}
-        <section id="single-room">
+        {/* Deluxe Room Section */}
+        <section id="deluxe">
           <div className="room-card">
             <div className="room-image-wrapper">
-              <img src={ROOM_SINGLE} alt="Single Room" className="room-img" loading="lazy" />
+              <img src={ROOM_SINGLE} alt="Deluxe Room" className="room-img" loading="lazy" />
             </div>
             
             <div className="room-content">
               <h2 className="subtitle" style={{ letterSpacing: '0.2em', color: 'color-mix(in srgb, var(--heading-color) 60%, transparent)' }}>COMFORT & STYLE</h2>
               <h3 style={{ fontSize: 'var(--h3)', lineHeight: '1.1', marginBottom: '10px', fontFamily: 'var(--font-2)', color: 'var(--heading-color)' }}>
-                Single <em style={{ fontFamily: 'var(--font-3)', fontStyle: 'italic', fontWeight: '300' }}>Room</em>
+                Deluxe <em style={{ fontFamily: 'var(--font-3)', fontStyle: 'italic', fontWeight: '300' }}>Room</em>
               </h3>
               <div style={{ width: '40px', height: '2px', backgroundColor: 'var(--maroon)', margin: '20px 0' }}></div>
               <p style={{ fontSize: '1.05rem', lineHeight: '1.7', marginBottom: '20px', color: 'color-mix(in srgb, var(--text-color) 70%, transparent)' }}>
-                Perfect for solo travelers and business professionals, our Single Room offers a cozy retreat with a plush single bed, dedicated workspace, and modern amenities.
+                Perfect for your stay, offering comfort and style with modern amenities. Size: 19m²
               </p>
               <ul className="feature-list">
-                <li className="feature-item"><div className="feature-dot"></div> 1 King Size or Twin Bed</li>
-                <li className="feature-item"><div className="feature-dot"></div> High-speed Wi-Fi & Smart TV</li>
-                <li className="feature-item"><div className="feature-dot"></div> En-suite bathroom with rain shower</li>
+                <li className="feature-item"><div className="feature-dot"></div> Free Wi-Fi</li>
+                <li className="feature-item"><div className="feature-dot"></div> Smart TV</li>
+                <li className="feature-item"><div className="feature-dot"></div> AC & Tea Kettle</li>
               </ul>
               <div style={{ marginTop: '30px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '15px' }}>
                 <div>
-                  <div className="price-tag">$120</div>
+                  <div className="price-tag">₹1200</div>
                   <div className="price-label">Per Night</div>
                 </div>
-                <a href="#book" className="btn btn--regular" style={{ backgroundColor: 'var(--heading-color)', color: '#fff', border: 'none', padding: '12px 30px', borderRadius: '30px' }}>Book Now</a>
+                <button onClick={(e) => { e.preventDefault(); onBookNow?.("Room"); }} className="btn btn--regular" style={{ backgroundColor: 'var(--heading-color)', color: '#fff', border: 'none', padding: '12px 30px', borderRadius: '30px' }}>Book Now</button>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Double Room Section */}
-        <section id="double-room">
+        {/* Super Deluxe Room Section */}
+        <section id="super-deluxe">
           <div className="room-card room-card--reverse">
             <div className="room-image-wrapper">
-              <img src={ROOM_DOUBLE} alt="Double Room" className="room-img" loading="lazy" />
+              <img src={ROOM_DOUBLE} alt="Super Deluxe Room" className="room-img" loading="lazy" />
             </div>
             
             <div className="room-content">
               <h2 className="subtitle" style={{ letterSpacing: '0.2em', color: 'color-mix(in srgb, var(--heading-color) 60%, transparent)' }}>SPACIOUS LUXURY</h2>
               <h3 style={{ fontSize: 'var(--h3)', lineHeight: '1.1', marginBottom: '10px', fontFamily: 'var(--font-2)', color: 'var(--heading-color)' }}>
-                Double <em style={{ fontFamily: 'var(--font-3)', fontStyle: 'italic', fontWeight: '300' }}>Room</em>
+                Super Deluxe <em style={{ fontFamily: 'var(--font-3)', fontStyle: 'italic', fontWeight: '300' }}>Room</em>
               </h3>
               <div style={{ width: '40px', height: '2px', backgroundColor: 'var(--maroon)', margin: '20px 0' }}></div>
               <p style={{ fontSize: '1.05rem', lineHeight: '1.7', marginBottom: '20px', color: 'color-mix(in srgb, var(--text-color) 70%, transparent)' }}>
-                Designed for couples or companions, our Double Room provides ample space and premium comfort. Enjoy relaxing evenings and wake up refreshed.
+                Provides ample space and premium comfort for relaxing evenings. Size: 20m²
               </p>
               <ul className="feature-list">
-                <li className="feature-item"><div className="feature-dot"></div> 1 Large Double Bed</li>
-                <li className="feature-item"><div className="feature-dot"></div> Scenic City Views</li>
-                <li className="feature-item"><div className="feature-dot"></div> Complimentary minibar & espresso machine</li>
+                <li className="feature-item"><div className="feature-dot"></div> Free Wi-Fi</li>
+                <li className="feature-item"><div className="feature-dot"></div> Smart TV</li>
+                <li className="feature-item"><div className="feature-dot"></div> AC & Tea Kettle</li>
               </ul>
               <div style={{ marginTop: '30px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '15px' }}>
                 <div>
-                  <div className="price-tag">$190</div>
+                  <div className="price-tag">₹1500</div>
                   <div className="price-label">Per Night</div>
                 </div>
-                <a href="#book" className="btn btn--regular" style={{ backgroundColor: 'var(--heading-color)', color: '#fff', border: 'none', padding: '12px 30px', borderRadius: '30px' }}>Book Now</a>
+                <button onClick={(e) => { e.preventDefault(); onBookNow?.("Room"); }} className="btn btn--regular" style={{ backgroundColor: 'var(--heading-color)', color: '#fff', border: 'none', padding: '12px 30px', borderRadius: '30px' }}>Book Now</button>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Premium Suite Section */}
-        <section id="suite">
+        {/* Premium Room Section */}
+        <section id="premium">
           <div className="room-card">
             <div className="room-image-wrapper">
-              <img src={ROOM_SUITE} alt="Premium Suite" className="room-img" loading="lazy" />
+              <img src={ROOM_SUITE} alt="Premium Room" className="room-img" loading="lazy" />
+            </div>
+            
+            <div className="room-content">
+              <h2 className="subtitle" style={{ letterSpacing: '0.2em', color: 'color-mix(in srgb, var(--heading-color) 60%, transparent)' }}>ELEVATED COMFORT</h2>
+              <h3 style={{ fontSize: 'var(--h3)', lineHeight: '1.1', marginBottom: '10px', fontFamily: 'var(--font-2)', color: 'var(--heading-color)' }}>
+                Premium <em style={{ fontFamily: 'var(--font-3)', fontStyle: 'italic', fontWeight: '300' }}>Room</em>
+              </h3>
+              <div style={{ width: '40px', height: '2px', backgroundColor: 'var(--maroon)', margin: '20px 0' }}></div>
+              <p style={{ fontSize: '1.05rem', lineHeight: '1.7', marginBottom: '20px', color: 'color-mix(in srgb, var(--text-color) 70%, transparent)' }}>
+                Elevate your experience with upgraded amenities and additional space. Size: 22m²
+              </p>
+              <ul className="feature-list">
+                <li className="feature-item"><div className="feature-dot"></div> Free Wi-Fi</li>
+                <li className="feature-item"><div className="feature-dot"></div> Smart TV</li>
+                <li className="feature-item"><div className="feature-dot"></div> AC & Tea Kettle</li>
+              </ul>
+              <div style={{ marginTop: '30px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '15px' }}>
+                <div>
+                  <div className="price-tag">₹1800</div>
+                  <div className="price-label">Per Night</div>
+                </div>
+                <button onClick={(e) => { e.preventDefault(); onBookNow?.("Room"); }} className="btn btn--regular" style={{ backgroundColor: 'var(--heading-color)', color: '#fff', border: 'none', padding: '12px 30px', borderRadius: '30px' }}>Book Now</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Suite Section */}
+        <section id="suite">
+          <div className="room-card room-card--reverse">
+            <div className="room-image-wrapper">
+              <img src={ROOM_SUITE} alt="Suite" className="room-img" loading="lazy" />
             </div>
             
             <div className="room-content">
               <h2 className="subtitle" style={{ letterSpacing: '0.2em', color: 'color-mix(in srgb, var(--heading-color) 60%, transparent)' }}>ULTIMATE EXPERIENCE</h2>
               <h3 style={{ fontSize: 'var(--h3)', lineHeight: '1.1', marginBottom: '10px', fontFamily: 'var(--font-2)', color: 'var(--heading-color)' }}>
-                Premium <em style={{ fontFamily: 'var(--font-3)', fontStyle: 'italic', fontWeight: '300' }}>Suite</em>
+                Suite <em style={{ fontFamily: 'var(--font-3)', fontStyle: 'italic', fontWeight: '300' }}></em>
               </h3>
               <div style={{ width: '40px', height: '2px', backgroundColor: 'var(--maroon)', margin: '20px 0' }}></div>
               <p style={{ fontSize: '1.05rem', lineHeight: '1.7', marginBottom: '20px', color: 'color-mix(in srgb, var(--text-color) 70%, transparent)' }}>
-                Experience the pinnacle of luxury in our Premium Suite. Featuring a separate living area, panoramic views, and exclusive VIP amenities for an unforgettable stay.
+                Experience the pinnacle of luxury with a spacious layout for an unforgettable stay. Size: 25m²
               </p>
               <ul className="feature-list">
-                <li className="feature-item"><div className="feature-dot"></div> Separate Living & Bedroom Areas</li>
-                <li className="feature-item"><div className="feature-dot"></div> Luxury Bathtub & Premium Toiletries</li>
-                <li className="feature-item"><div className="feature-dot"></div> 24/7 Dedicated Butler Service</li>
+                <li className="feature-item"><div className="feature-dot"></div> Free Wi-Fi</li>
+                <li className="feature-item"><div className="feature-dot"></div> Smart TV</li>
+                <li className="feature-item"><div className="feature-dot"></div> AC & Tea Kettle</li>
               </ul>
               <div style={{ marginTop: '30px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '15px' }}>
                 <div>
-                  <div className="price-tag">$350</div>
+                  <div className="price-tag">₹3500</div>
                   <div className="price-label">Per Night</div>
                 </div>
-                <a href="#book" className="btn btn--regular" style={{ backgroundColor: 'var(--heading-color)', color: '#fff', border: 'none', padding: '12px 30px', borderRadius: '30px' }}>Book Now</a>
+                <button onClick={(e) => { e.preventDefault(); onBookNow?.("Room"); }} className="btn btn--regular" style={{ backgroundColor: 'var(--heading-color)', color: '#fff', border: 'none', padding: '12px 30px', borderRadius: '30px' }}>Book Now</button>
               </div>
             </div>
           </div>
@@ -796,7 +863,7 @@ export default function Rooms() {
           <div className="services-grid">
             
             {/* Block 1 (Large Intro) */}
-            <a href="#book" className="srv-block srv-block--large" style={{ gridColumn: '1 / 2', gridRow: '1 / 3' }}>
+            <button onClick={(e) => { e.preventDefault(); onBookNow?.("Room"); }} className="srv-block srv-block--large" style={{ background: 'transparent', border: 'none', cursor: 'pointer' }}>
               <div className="srv-block-bg" style={{ backgroundImage: `url(${ROOM_SUITE})` }}></div>
               <div className="srv-overlay"></div>
               <div className="srv-content" style={{ justifyContent: 'flex-end' }}>
@@ -804,10 +871,10 @@ export default function Rooms() {
                 <p className="srv-desc" style={{ color: 'rgba(255,255,255,0.8)' }}>With country's leading hospitality experts.</p>
                 <span className="srv-link">Book Now</span>
               </div>
-            </a>
+            </button>
 
             {/* Block 2 (Fine Dining) */}
-            <a href="#dining" className="srv-block" style={{ gridColumn: '2 / 3', gridRow: '1 / 2' }}>
+            <a href="#dining" className="srv-block">
               <span className="srv-block-num">01</span>
               <div className="srv-content">
                 <svg className="srv-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
@@ -819,7 +886,7 @@ export default function Rooms() {
             </a>
 
             {/* Block 3 (Concierge) */}
-            <a href="#concierge" className="srv-block" style={{ gridColumn: '3 / 4', gridRow: '1 / 2' }}>
+            <a href="#concierge" className="srv-block">
               <span className="srv-block-num">02</span>
               <div className="srv-content">
                 <svg className="srv-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
@@ -831,7 +898,7 @@ export default function Rooms() {
             </a>
 
             {/* Block 4 (Spa) */}
-            <a href="#spa" className="srv-block" style={{ gridColumn: '2 / 3', gridRow: '2 / 3' }}>
+            <a href="#spa" className="srv-block">
               <span className="srv-block-num">03</span>
               <div className="srv-content">
                 <svg className="srv-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
@@ -843,7 +910,7 @@ export default function Rooms() {
             </a>
 
             {/* Block 5 (24/7 Service) */}
-            <a href="#service" className="srv-block" style={{ gridColumn: '3 / 4', gridRow: '2 / 3' }}>
+            <a href="#service" className="srv-block">
               <span className="srv-block-num">04</span>
               <div className="srv-content">
                 <svg className="srv-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
@@ -855,7 +922,7 @@ export default function Rooms() {
             </a>
 
             {/* Block 6 (Experiences - Large Right) */}
-            <a href="#experiences" className="srv-block srv-block--large" style={{ gridColumn: '4 / 5', gridRow: '1 / 3' }}>
+            <a href="#experiences" className="srv-block srv-block--large">
               <div className="srv-block-bg" style={{ backgroundImage: `url(${ROOM_SINGLE})` }}></div>
               <div className="srv-overlay"></div>
               <div className="srv-content" style={{ justifyContent: 'flex-end' }}>

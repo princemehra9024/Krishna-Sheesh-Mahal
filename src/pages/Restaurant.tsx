@@ -4,7 +4,11 @@ import QuoteSlider from "../components/QuoteSlider";
 import IngredientsShowcase from "../components/IngredientsShowcase";
 import PaneerScrollSequence from "../components/PaneerScrollSequence";
 
-export default function Restaurant() {
+interface RestaurantProps {
+  onBookNow?: (type: string) => void;
+}
+
+export default function Restaurant({ onBookNow }: RestaurantProps) {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

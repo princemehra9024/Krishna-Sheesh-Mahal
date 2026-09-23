@@ -126,7 +126,7 @@ export default function Header({ onBookNow }: HeaderProps) {
               {renderItems(MENU, 0)}
               <li className="menu-item menu-item--btn menu-item--mobile">
                 <span>
-                  <a href="#hotels" className="btn--full btn btn--regular" onClick={(e) => { e.preventDefault(); navigate("#hotels"); }}>Book Now</a>
+                  <button className="btn--full btn btn--regular" onClick={(e) => { e.preventDefault(); onBookNow(); }}>Book Now</button>
                 </span>
               </li>
               <li className="menu-item menu-item--secondary menu-item--mobile">

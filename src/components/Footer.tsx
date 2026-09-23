@@ -29,7 +29,7 @@ export default function Footer() {
           ...menu.items,
           { label: "WhatsApp", href: "https://api.whatsapp.com/send/?phone=%2B919024546041", external: true },
           { label: "Phone", href: "tel:+919024546041", external: true },
-          { label: "Location", href: "https://maps.google.com/?q=Krishna+Sheesh+Mahal,+Kota", external: true },
+          { label: "Location", href: "https://share.google/SjYib0PPddAqTZfFZ", external: true },
         ]
       };
     }
@@ -196,7 +196,7 @@ export default function Footer() {
               </ul>
             </div>
             <div className="footer__bottom-extra text-[13px] md:text-right font-medium leading-relaxed" style={{ color: 'rgba(255, 242, 223, 0.5)' }}>
-              <p className="mb-1 hover:text-[#FFF2DF] transition-colors cursor-default">Near Gad Circle, Sector - B, Shrinath Puram, Kota, Rajasthan</p>
+              <p className="mb-1 hover:text-[#FFF2DF] transition-colors cursor-default">Krishna Sheesh Mahal, 33-D, Sector - B, Shrinath Puram, Kota</p>
               <p className="mb-1">© {new Date().getFullYear()} Krishna Sheesh Mahal</p>
               <p>
                 <a href="https://www.fhoke.com" target="_blank" rel="noreferrer" className="hover:text-[#FFF2DF] transition-colors" style={{ textDecoration: 'underline', textDecorationColor: 'rgba(255,215,140,0.3)', textUnderlineOffset: '4px' }}>

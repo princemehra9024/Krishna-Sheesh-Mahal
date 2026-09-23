@@ -13,6 +13,7 @@ import Contact from "./pages/Contact";
 import Rooms from "./pages/Rooms";
 import Restaurant from "./pages/Restaurant";
 import Banquet from "./pages/Banquet";
+import { WHATSAPP_BOOKING_LINK } from "./data";
 
 function ScrollRevealHandler() {
   useScrollReveal();
@@ -25,7 +26,12 @@ export default function App() {
   const [bookOpen, setBookOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
 
-  const openBook = useCallback(() => setBookOpen(true), []);
+  const [bookType, setBookType] = useState("Room");
+
+  const openBook = useCallback((type = "Room") => {
+    setBookType(type);
+    setBookOpen(true);
+  }, []);
   const closeBook = useCallback(() => setBookOpen(false), []);
   const closeModal = useCallback(() => setModalOpen(false), []);
 
@@ -55,13 +61,13 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/rooms" element={<Rooms />} />
-          <Route path="/restaurant" element={<Restaurant />} />
-          <Route path="/banquet" element={<Banquet />} />
+          <Route path="/rooms" element={<Rooms onBookNow={openBook} />} />
+          <Route path="/restaurant" element={<Restaurant onBookNow={openBook} />} />
+          <Route path="/banquet" element={<Banquet onBookNow={openBook} />} />
         </Routes>
       </div>
       <Footer />
-      <BookNowPopover open={bookOpen} onClose={closeBook} />
+      <BookNowPopover open={bookOpen} onClose={closeBook} initialType={bookType} />
       <PopupModal open={modalOpen} onClose={closeModal} />
       <CustomCursor />
     </BrowserRouter>

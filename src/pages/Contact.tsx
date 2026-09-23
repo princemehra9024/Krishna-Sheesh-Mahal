@@ -470,7 +470,7 @@ export default function Contact() {
               </div>
               <div className="contact-item-text">
                 <span className="contact-item-title">Email</span>
-                <a href="mailto:hello@krishnasheeshmahal.com" className="contact-item-detail">hello@krishnasheeshmahal.com</a>
+                <a href="mailto:krishnasheeshmahal73@gmail.com" className="contact-item-detail">krishnasheeshmahal73@gmail.com</a>
               </div>
             </div>
 
@@ -483,7 +483,7 @@ export default function Contact() {
               </div>
               <div className="contact-item-text">
                 <span className="contact-item-title">Address</span>
-                <span className="contact-item-detail">RK Puram, Kota,<br/>Rajasthan 324009</span>
+                <span className="contact-item-detail">Krishna Sheesh Mahal, 33-D,<br/>Sector - B, Shrinath Puram, Kota</span>
               </div>
             </div>
 

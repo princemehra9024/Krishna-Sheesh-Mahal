@@ -3,6 +3,21 @@ const U = "https://thepopuphotel.com/wp-content/uploads";
 export const HERO_VIDEO = "/videos/home-video.mp4";
 export const HERO_POSTER = `${U}/2026/03/img-4-1600x900.webp`;
 
+export const WHATSAPP_BOOKING_LINK = "https://api.whatsapp.com/send/?phone=919024546041&text=Hello!%20I%20would%20like%20to%20book%20a%20room%20at%20Hotel%20Krishna%20Sheesh%20Mahal.%0A%0A*Name:*%20%0A*Check-in%20Date:*%20%0A*Check-out%20Date:*%20%0A*Room%20Type:*%20%0A*Number%20of%20Guests:*%20%0A*Special%20Requests:*";
+
+export function generateWhatsAppLink(details: {
+  type: string;
+  name: string;
+  date: string;
+  guests: string;
+  requests: string;
+}) {
+  const phone = "919024546041";
+  const intro = `Hello! I would like to make a ${details.type} booking at Hotel Krishna Sheesh Mahal.`;
+  const message = `${intro}\n\n*Name:* ${details.name}\n*Date:* ${details.date}\n*Number of Guests:* ${details.guests}\n*Special Requests:* ${details.requests || 'None'}`;
+  return `https://api.whatsapp.com/send/?phone=${phone}&text=${encodeURIComponent(message)}`;
+}
+
 export interface MenuItem {
   label: string;
   href: string;

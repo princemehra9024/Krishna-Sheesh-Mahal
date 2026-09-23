@@ -459,7 +459,14 @@ export default function About() {
             </h3>
             <div style={{ width: '40px', height: '1px', backgroundColor: 'var(--heading-color)', margin: 'var(--spacing-mini) 0' }}></div>
             <p style={{ fontSize: '1.125rem', lineHeight: '1.7', marginBottom: 'var(--spacing-small)', maxWidth: '450px', color: 'color-mix(in srgb, var(--text-color) 80%, transparent)' }}>
-              At Krishna Sheesh Mahal, we redefine your stay experience by blending immersive luxury, comfort, and seamless hospitality to create unforgettable memories. Our mission is simple: to deliver exceptional service, impeccable comfort, and a carefully curated environment that enhances every moment of your visit beyond expectation.
+              At Krishna Sheesh Mahal, we redefine your stay experience by blending immersive luxury, comfort, and seamless hospitality to create unforgettable memories.
+              <br/><br/>
+              <strong>Check-in / Check-out:</strong> 11 AM TO 11 PM<br/>
+              <strong>Total Rooms:</strong> 16 (3 Deluxe, 10 Super Deluxe, 1 Premium, 2 Suites)<br/>
+              <strong>Floors:</strong> 2nd or 3rd<br/>
+              <strong>Guest Capacity:</strong> 50-60<br/>
+              <strong>Facilities:</strong> Free Wi-Fi, Smart TV, AC, Tea Kettle, Big space parking<br/>
+              <strong>Services:</strong> Water, Food, Bath Towels
             </p>
             <Link to="/" className="btn btn--regular">
               OUR HOTELS
