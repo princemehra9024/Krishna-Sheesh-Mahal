@@ -12,6 +12,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Rooms from "./pages/Rooms";
 import Restaurant from "./pages/Restaurant";
+import Cafe from "./pages/Cafe";
 import Banquet from "./pages/Banquet";
 import { WHATSAPP_BOOKING_LINK } from "./data";
 
@@ -63,6 +64,7 @@ export default function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/rooms" element={<Rooms onBookNow={openBook} />} />
           <Route path="/restaurant" element={<Restaurant onBookNow={openBook} />} />
+          <Route path="/cafe" element={<Cafe onBookNow={openBook} />} />
           <Route path="/banquet" element={<Banquet onBookNow={openBook} />} />
         </Routes>
       </div>

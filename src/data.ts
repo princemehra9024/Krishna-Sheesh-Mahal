@@ -31,6 +31,7 @@ export const MENU: MenuItem[] = [
     href: "/rooms",
   },
   { label: "Restaurant", href: "/restaurant" },
+  { label: "Cafe", href: "/cafe" },
   { label: "Banquet", href: "/banquet" },
   { label: "About Us", href: "/about" },
   { label: "Contact", href: "/contact" },
@@ -49,7 +50,7 @@ export const IMAGE_LINK_ROWS: ImageLink[][] = [
   ],
   [
     { title: "Super Deluxe", href: "#rooms", src: `${U}/2026/03/img-5-1600x900.webp`, alt: "Super Deluxe" },
-    { title: "Suite", href: "#rooms", src: `${U}/2026/03/The-Pop-Up-Hotel-Silverstone-1600x900.webp`, alt: "Suite" },
+    { title: "Cafe", href: "/cafe", src: `/images/cafe/cafe_hero.jpg`, alt: "Cafe" },
   ],
   [
     { title: "Banquet", href: "/banquet", src: "/banquet-hero.jpg", alt: "Banquet" },
@@ -127,7 +128,7 @@ export const FOOTER_MENUS: { title: string; items: { label: string; href: string
     items: [
       { label: "Premium", href: "/rooms#premium" },
       { label: "Super Deluxe", href: "/rooms#super-deluxe" },
-      { label: "Suite", href: "/rooms#suite" },
+      { label: "Cafe", href: "/cafe" },
       { label: "Deluxe", href: "/rooms#deluxe" },
     ],
   },
