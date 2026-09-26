@@ -291,6 +291,211 @@ export default function Cafe({ onBookNow }: CafeProps) {
           font-weight: 600;
         }
         
+        /* ── AVANT-GARDE COLLAGE ── */
+        .cafe-crazy {
+          padding: 150px 5vw 250px;
+          background-color: #1A1311;
+          color: #F8F5F0;
+          position: relative;
+        }
+        .cafe-crazy__bg-text-wrapper {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          pointer-events: none;
+        }
+        .cafe-crazy__bg-text {
+          position: absolute;
+          top: 50%; left: 0%;
+          width: 200%;
+          transform: translateY(-50%);
+          font-family: var(--font-2);
+          font-size: 30vw;
+          line-height: 0.8;
+          color: transparent;
+          -webkit-text-stroke: 2px rgba(255, 215, 140, 0.05);
+          white-space: nowrap;
+          z-index: 0;
+          animation: marquee 40s linear infinite;
+        }
+        @keyframes marquee {
+          0% { transform: translate(0, -50%); }
+          100% { transform: translate(-50%, -50%); }
+        }
+
+        .cafe-crazy__container {
+          max-width: 1400px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: repeat(12, 1fr);
+          gap: 40px;
+          position: relative;
+          z-index: 1;
+        }
+
+        /* TEXT BLOCK */
+        .crazy-text-block {
+          grid-column: 1 / 6;
+          position: sticky;
+          top: 150px;
+          align-self: start;
+          z-index: 5;
+        }
+        .crazy-title {
+          font-family: var(--font-2);
+          font-size: clamp(3rem, 6vw, 6.5rem);
+          line-height: 0.85;
+          color: #FFD78C;
+          margin-bottom: 40px;
+          text-transform: uppercase;
+        }
+        .crazy-title span {
+          display: block;
+          color: transparent;
+          -webkit-text-stroke: 2px #FFD78C;
+          font-style: italic;
+          margin-left: 15%;
+        }
+        .crazy-desc {
+          font-family: var(--font-1);
+          font-size: 1.3rem;
+          color: rgba(248, 245, 240, 0.9);
+          max-width: 450px;
+          border-left: 3px solid #5E202D;
+          padding-left: 25px;
+          line-height: 1.6;
+        }
+        
+        .crazy-profile {
+          margin-top: 60px;
+          display: flex;
+          flex-direction: column;
+          gap: 25px;
+          padding-left: 25px;
+          border-left: 1px solid rgba(255, 215, 140, 0.2);
+        }
+        .crazy-profile-item {
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+        }
+        .crazy-profile-item .label {
+          font-family: var(--font-1);
+          font-size: 0.8rem;
+          text-transform: uppercase;
+          letter-spacing: 0.25em;
+          color: #FFD78C;
+          opacity: 0.7;
+        }
+        .crazy-profile-item .value {
+          font-family: var(--font-2);
+          font-size: 1.8rem;
+          color: #fff;
+          letter-spacing: 0.02em;
+        }
+
+
+        /* IMAGES COLUMN */
+        .crazy-images {
+          grid-column: 6 / 13;
+          display: flex;
+          flex-direction: column;
+          gap: 120px;
+          margin-top: 100px;
+          position: relative;
+          z-index: 2;
+        }
+        
+        .crazy-img-wrap {
+          position: relative;
+          overflow: hidden;
+          box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+          transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .crazy-img-wrap::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+          pointer-events: none;
+        }
+        .crazy-img-wrap:hover {
+          transform: translateY(-20px) scale(1.02);
+        }
+        .crazy-img-wrap img {
+          width: 100%; height: 100%; object-fit: cover;
+          transition: transform 1.5s ease;
+        }
+        .crazy-img-wrap:hover img {
+          transform: scale(1.1);
+        }
+
+        .crazy-img-1 {
+          height: 700px;
+          width: 85%;
+          align-self: flex-end;
+          border-radius: 300px 300px 0 0;
+          border-bottom: 6px solid #FFD78C;
+        }
+
+        .crazy-img-2 {
+          height: 500px;
+          width: 500px;
+          align-self: flex-start;
+          border-radius: 50%;
+          margin-left: -120px;
+          border: 15px solid rgba(255, 215, 140, 0.05);
+        }
+        .crazy-img-2::after {
+          border-radius: 50%;
+        }
+
+        .crazy-img-3 {
+          height: 400px;
+          width: 90%;
+          align-self: flex-end;
+          border-radius: 0 200px 200px 0;
+        }
+
+        /* CIRCULAR TEXT BADGE */
+        .crazy-badge {
+          position: absolute;
+          top: 50px; right: 5%;
+          width: 180px; height: 180px;
+          z-index: 10;
+          animation: spinBadge 15s linear infinite;
+        }
+        @keyframes spinBadge {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        .crazy-badge svg {
+          width: 100%; height: 100%;
+          fill: #FFD78C;
+        }
+
+        /* MOUSE HOVER TAGS */
+        .crazy-tag {
+          position: absolute;
+          bottom: 40px; left: 40px;
+          background: rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(15px);
+          color: #fff;
+          font-family: var(--font-1);
+          font-size: 0.9rem;
+          text-transform: uppercase;
+          letter-spacing: 0.25em;
+          padding: 12px 24px;
+          border-radius: 40px;
+          border: 1px solid rgba(255,255,255,0.3);
+          opacity: 0;
+          transform: translateY(20px);
+          transition: all 0.5s ease;
+        }
+        .crazy-img-wrap:hover .crazy-tag {
+          opacity: 1;
+          transform: translateY(0);
+        }
         /* ── HIGHLIGHT SECTION ── */
         .cafe-highlight {
           background: #251C19;
@@ -592,12 +797,78 @@ export default function Cafe({ onBookNow }: CafeProps) {
           transform: translateX(4px);
         }
 
-        @media (max-width: 900px) {
-          .cafe-story { grid-template-columns: 1fr; gap: 40px; }
-          .cafe-story__images { height: 400px; margin-bottom: 40px; }
+        @media (max-width: 1024px) {
+          .crazy-text-block { position: relative; top: 0; grid-column: 1 / -1; margin-bottom: 60px; }
+          
+          /* Cluster Grid for Crazy Section */
+          .crazy-images {
+            grid-column: 1 / -1;
+            display: block;
+            position: relative;
+            height: 600px;
+            margin-top: 0;
+          }
+          .crazy-img-wrap { position: absolute; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+          .crazy-img-1 {
+            top: 0; left: 0;
+            width: 75%; height: 400px;
+            border-radius: 150px 150px 0 0;
+            border-bottom: 4px solid #FFD78C;
+          }
+          .crazy-img-2 {
+            top: 250px; right: 0;
+            width: 250px; height: 250px;
+            border-radius: 50%;
+            border: 8px solid rgba(255, 215, 140, 0.1);
+            margin: 0;
+            z-index: 3;
+          }
+          .crazy-img-3 {
+            bottom: 0; left: 10%;
+            width: 80%; height: 200px;
+            border-radius: 100px;
+            z-index: 2;
+          }
+          .crazy-badge { display: none; }
         }
+
+        @media (max-width: 900px) {
+          .cafe-story { grid-template-columns: 1fr; gap: 40px; padding: 80px 5vw; }
+          .cafe-story__images { 
+             height: 450px; 
+             margin-bottom: 20px; 
+             display: flex;
+             align-items: center;
+             justify-content: center;
+          }
+          .cafe-story__img-1 {
+            position: relative;
+            width: 90%;
+            height: 90%;
+            border-radius: 12px;
+          }
+          .cafe-story__img-2 {
+            width: 50%;
+            height: auto;
+            aspect-ratio: 1;
+            position: absolute;
+            bottom: -20px;
+            right: 5%;
+            border-width: 6px;
+            border-radius: 12px;
+          }
+          .cafe-crazy__container { grid-template-columns: 1fr; gap: 40px; }
+        }
+
         @media (max-width: 600px) {
           .cafe-features { grid-template-columns: 1fr; }
+          .cafe-story__images { height: 350px; }
+          .crazy-images { height: 500px; }
+          .crazy-img-1 { width: 85%; height: 350px; }
+          .crazy-img-2 { width: 180px; height: 180px; top: 220px; border-width: 4px; }
+          .crazy-img-3 { width: 90%; height: 150px; left: 5%; bottom: 20px; }
+          .crazy-title { font-size: clamp(2.5rem, 10vw, 3.5rem); }
+          .crazy-desc { font-size: 1.1rem; margin-left: 0; padding-left: 15px; border-width: 2px; }
         }
       `}</style>
 
@@ -687,6 +958,69 @@ export default function Cafe({ onBookNow }: CafeProps) {
           </div>
         </section>
 
+        {/* ── AVANT-GARDE COLLAGE ── */}
+        <section className="cafe-crazy">
+          <div className="cafe-crazy__bg-text-wrapper">
+            <div className="cafe-crazy__bg-text" aria-hidden="true">
+              ROAST • BREW • SIP • ROAST • BREW • SIP •
+            </div>
+          </div>
+
+          <div className="crazy-badge" aria-hidden="true">
+            <svg viewBox="0 0 100 100">
+              <path id="circlePath" fill="none" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" />
+              <text>
+                <textPath href="#circlePath" startOffset="0%" textLength="232" style={{fontSize: '10px', letterSpacing: '2px', fontWeight: 'bold', fill: '#FFD78C'}}>
+                  ARTISAN COFFEE • PREMIUM ROAST • FRESH BAKE • 
+                </textPath>
+              </text>
+            </svg>
+          </div>
+
+          <div className="cafe-crazy__container">
+            <div className="crazy-text-block">
+              <h2 className="crazy-title">
+                The Art <span>Of</span> Roasting
+              </h2>
+              <p className="crazy-desc">
+                Step into a world where coffee is an experience, not just a drink. Bold flavors, careful craftsmanship, and a space designed to inspire.
+              </p>
+              
+              <div className="crazy-profile">
+                <div className="crazy-profile-item">
+                  <span className="label">Origin</span>
+                  <span className="value">Ethiopia & Colombia</span>
+                </div>
+                <div className="crazy-profile-item">
+                  <span className="label">Roast Level</span>
+                  <span className="value">Medium-Dark</span>
+                </div>
+                <div className="crazy-profile-item">
+                  <span className="label">Flavor Notes</span>
+                  <span className="value">Dark Chocolate, Caramel, Berry</span>
+                </div>
+              </div>
+            </div>
+
+
+            <div className="crazy-images">
+              <div className="crazy-img-wrap crazy-img-1">
+                <img src="/images/cafe/cafe_hero.jpg" alt="Atmosphere" />
+                <div className="crazy-tag">Vibe</div>
+              </div>
+
+              <div className="crazy-img-wrap crazy-img-2">
+                <img src="/images/cafe/cafe_special.jpg" alt="Latte Art" />
+                <div className="crazy-tag">Art</div>
+              </div>
+
+              <div className="crazy-img-wrap crazy-img-3">
+                <img src="/images/cafe/cafe_story_1.jpg" alt="Hand Pour" />
+                <div className="crazy-tag">Craft</div>
+              </div>
+            </div>
+          </div>
+        </section>
         {/* ── HIGHLIGHT ── */}
         <section className="cafe-highlight">
           <div className="cafe-highlight__inner">

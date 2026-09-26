@@ -141,7 +141,7 @@ h1 em, h2 em, h3 em, h4 em, h5 em, h6 em, .h1 em, .h2 em, .h3 em, .h4 em, .artic
 .hide-overflow { overflow: hidden; }
 
 /* layout */
-.page-wrap { width: 100%; background-color: var(--cream); overflow-x: hidden; }
+.page-wrap { width: 100%; background-color: var(--cream); overflow-x: clip; }
 .section, .intro { width: 92%; margin-right: auto; margin-left: auto; }
 .section--large, .intro--align-left { max-width: var(--section-large); }
 .section--tiny { max-width: var(--section-tiny); }
