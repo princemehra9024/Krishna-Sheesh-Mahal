@@ -14,6 +14,7 @@ import Rooms from "./pages/Rooms";
 import Restaurant from "./pages/Restaurant";
 import Cafe from "./pages/Cafe";
 import Banquet from "./pages/Banquet";
+import Booking from "./pages/Booking";
 import { WHATSAPP_BOOKING_LINK } from "./data";
 
 function ScrollRevealHandler() {
@@ -66,6 +67,7 @@ export default function App() {
           <Route path="/restaurant" element={<Restaurant onBookNow={openBook} />} />
           <Route path="/cafe" element={<Cafe onBookNow={openBook} />} />
           <Route path="/banquet" element={<Banquet onBookNow={openBook} />} />
+          <Route path="/booking" element={<Booking />} />
         </Routes>
       </div>
       <Footer />

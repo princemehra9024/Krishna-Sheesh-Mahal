@@ -33,6 +33,7 @@ export const MENU: MenuItem[] = [
   { label: "Restaurant", href: "/restaurant" },
   { label: "Cafe", href: "/cafe" },
   { label: "Banquet", href: "/banquet" },
+  { label: "Team", href: "/team" },
   { label: "About Us", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];

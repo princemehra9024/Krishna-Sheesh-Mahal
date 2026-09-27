@@ -1,13 +1,14 @@
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { lockScroll, scrollToTarget } from "../hooks/useScrollEngine";
 
 const U = "https://thepopuphotel.com/wp-content/uploads";
 
 const HOTELS = [
-  { title: "Rooms & Suites", src: `${U}/2026/03/img-5-1600x900.webp`, href: "/rooms" },
-  { title: "Banquet & Events", src: "/images/banquet-corporate-new.jpg", href: "/banquet" },
-  { title: "Fine Dining", src: "/images/restaurant-img.jpeg", href: "/restaurant" },
-  { title: "Cafe", src: "/images/cafe/cafe_hero.jpg", href: "/cafe" },
+  { title: "Rooms & Suites", src: `${U}/2026/03/img-5-1600x900.webp`, href: "/booking?type=rooms" },
+  { title: "Banquet & Events", src: "/images/banquet-corporate-new.jpg", href: "/booking?type=banquet" },
+  { title: "Fine Dining", src: "/images/restaurant-img.jpeg", href: "/booking?type=dining" },
+  { title: "Cafe", src: "/images/cafe/cafe_hero.jpg", href: "/booking?type=cafe" },
 ];
 
 interface Props {
@@ -39,10 +40,10 @@ export default function BookNowPopover({ open, onClose }: Props) {
             <div className="img-links img-links--small">
               {HOTELS.map((h) => (
                 <div className="img-links__row" key={h.title}>
-                  <a
+                  <Link
                     className="img-links__row-item txt-colorway-light"
-                    href={h.href}
-                    onClick={(e) => {
+                    to={h.href}
+                    onClick={() => {
                       onClose();
                     }}
                   >
@@ -50,7 +51,7 @@ export default function BookNowPopover({ open, onClose }: Props) {
                       <img loading="lazy" className="img-full" width={655} height={368} src={h.src} alt={h.title} />
                     </div>
                     <p className="img-links__row-item-title h3 txt-script">{h.title}</p>
-                  </a>
+                  </Link>
                 </div>
               ))}
             </div>
