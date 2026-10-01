@@ -1,7 +1,10 @@
 import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+import { useSEO } from "../hooks/useSEO";
+
 export default function Contact() {
+  useSEO("Contact Us | Krishna Sheesh Mahal Kota", "Get in touch with Krishna Sheesh Mahal. Bookings, inquiries, location details, and support for your luxurious stay in Kota.");
   const [formData, setFormData] = useState({ firstName: "", lastName: "", email: "", message: "" });
   const [step, setStep] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);

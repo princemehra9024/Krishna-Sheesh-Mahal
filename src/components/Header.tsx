@@ -41,8 +41,13 @@ export default function Header({ onBookNow }: HeaderProps) {
         }, 100);
       }
     } else if (href.startsWith("/")) {
-      navigateRouter(href);
-      setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 10);
+      const [path, hash] = href.split("#");
+      navigateRouter(path);
+      if (hash) {
+        setTimeout(() => scrollToTarget("#" + hash, -70), 100);
+      } else {
+        setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 10);
+      }
     } else {
       window.open(href, "_blank", "noopener");
     }

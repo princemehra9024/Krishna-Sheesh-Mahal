@@ -263,7 +263,7 @@ body.scroll-inactive:not(.menu-open) .header--over-banner .header__logo svg * { 
 @media (max-width: 1000px) {
   .header__inner { flex-wrap: nowrap; }
   .header__section--hamburger { width: 60px; }
-  .header__section--book { display: none; }
+  .header__section--book { width: auto; padding: 0 10px; border-right: none; }
   .header__section--right { padding-right: 10px; }
   .header__icon--wishlist { display: none; }
   .header__icon--account { display: none; }
@@ -303,9 +303,14 @@ body.scroll-inactive:not(.menu-open) .header--over-banner .header__logo svg * { 
 .main-menu.active .menu > .menu-item:nth-child(5) > * { transition-delay: 0.3s; }
 .main-menu.active .menu > .menu-item:nth-child(6) > * { transition-delay: 0.35s; }
 .main-menu.active .menu > .menu-item:nth-child(7) > * { transition-delay: 0.4s; }
+.main-menu.active .menu > .menu-item:nth-child(8) > * { transition-delay: 0.45s; }
+.main-menu.active .menu > .menu-item:nth-child(9) > * { transition-delay: 0.5s; }
+.main-menu.active .menu > .menu-item:nth-child(10) > * { transition-delay: 0.55s; }
+.main-menu.active .menu > .menu-item:nth-child(11) > * { transition-delay: 0.6s; }
+.main-menu.active .menu > .menu-item:nth-child(12) > * { transition-delay: 0.65s; }
 
-.main-menu .menu-item a.btn { color: var(--btn-txt-color); margin-top: 30px; transform: none !important; opacity: 1 !important; }
-.main-menu .menu-item--secondary > a { font-size: var(--text-small); font-family: var(--font-1); text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.6) !important; transform: none !important; opacity: 1 !important; }
+.main-menu .menu-item a.btn { color: var(--btn-txt-color); margin-top: 30px; }
+.main-menu .menu-item--secondary > a { font-size: var(--text-small); font-family: var(--font-1); text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.6) !important; }
 .main-menu .menu-item-has-children > a::after, .main-menu .menu-item-has-children > span::after {
   content: ""; width: 24px; aspect-ratio: 18 / 12; background-color: #fff; transition: background-color 0.3s ease;
   -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 12'%3E%3Cline x1='15' y1='6' x2='1' y2='6' fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'/%3E%3Cpolyline points='12 1 17 6 12 11' fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'/%3E%3C/svg%3E") center / contain no-repeat;

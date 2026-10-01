@@ -25,7 +25,7 @@ export interface MenuItem {
 }
 
 export const MENU: MenuItem[] = [
-  { label: "Home", href: "#top" },
+  { label: "Home", href: "/" },
   {
     label: "Rooms",
     href: "/rooms",
@@ -87,12 +87,53 @@ export interface Quote {
   logoH: number;
   text: string;
   source: string;
+  score?: string;
+  rating?: number;
+  tag?: string;
+  badge?: string;
+  imageCaption?: string;
 }
 
 export const QUOTES: Quote[] = [
-  { img: "/images/quote-fruit-sald.jpeg", logo: `${U}/2026/03/logo-the-times.svg`, logoW: 100, logoH: 48, text: "“Exceptionally good hotel with reasonable amenities.”", source: "A K. India" },
-  { img: "/images/quote-cooking.jpg", logo: `${U}/2026/03/ABC_News_logo_2021.svg`, logoW: 527, logoH: 183, text: "\"Value for money 9.0 out of 10. Cleanliness 8.8. Facilities 8.6.\"", source: "Agoda Reviews" },
-  { img: "/images/quote-sarfing.jpg", logo: `${U}/2026/03/VOGUE_LOGO.svg`, logoW: 1543, logoH: 409, text: "\"Location rating score: 9.1 Exceptional location.\"", source: "Guest Review" },
+  {
+    img: "/images/quote-cooking.jpg",
+    logo: `${U}/2026/03/ABC_News_logo_2021.svg`,
+    logoW: 527,
+    logoH: 183,
+    text: "Value for money 9.0 out of 10. Cleanliness 8.8. Facilities 8.6. Exceptional culinary hospitality and royal warmth.",
+    source: "Agoda Certified Reviews",
+    score: "9.0 / 10 Superb",
+    rating: 5,
+    tag: "Culinary & Dining",
+    badge: "Agoda Choice",
+    imageCaption: "Live Wok Artistry & Fine Dining",
+  },
+  {
+    img: "/images/quote-fruit-sald.jpeg",
+    logo: `${U}/2026/03/logo-the-times.svg`,
+    logoW: 100,
+    logoH: 48,
+    text: "Exceptionally good hotel with reasonable amenities, attentive staff, and timeless heritage elegance.",
+    source: "A. K. • The Times Feature",
+    score: "4.9 / 5.0",
+    rating: 5,
+    tag: "Heritage & Comfort",
+    badge: "The Times Feature",
+    imageCaption: "Garden Fresh Breakfast & Ambience",
+  },
+  {
+    img: "/images/quote-sarfing.jpg",
+    logo: `${U}/2026/03/VOGUE_LOGO.svg`,
+    logoW: 1543,
+    logoH: 409,
+    text: "Location rating score: 9.1 Exceptional central location in Kota with serene royal sheesh vibes.",
+    source: "Verified Guest Review • Vogue Spotlight",
+    score: "9.1 / 10 Prime Location",
+    rating: 5,
+    tag: "City Landmark & Stay",
+    badge: "Vogue Spotlight",
+    imageCaption: "Panoramic City & Riverfront Retreat",
+  },
 ];
 
 export interface Article {
@@ -136,10 +177,10 @@ export const FOOTER_MENUS: { title: string; items: { label: string; href: string
   {
     title: "Information",
     items: [
-      { label: "Amenities", href: "#about" },
+      { label: "Amenities", href: "/#about" },
       { label: "About Us", href: "/about" },
       { label: "Contact", href: "/contact" },
-      { label: "Landmarks", href: "#news" },
+      { label: "Landmarks", href: "/#news" },
     ],
   },
   {

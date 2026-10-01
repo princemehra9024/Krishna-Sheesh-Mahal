@@ -8,7 +8,10 @@ interface RestaurantProps {
   onBookNow?: (type: string) => void;
 }
 
+import { useSEO } from "../hooks/useSEO";
+
 export default function Restaurant({ onBookNow }: RestaurantProps) {
+  useSEO("Fine Dining Restaurant | Krishna Sheesh Mahal Kota", "Indulge in an exquisite culinary journey at Krishna Sheesh Mahal's flagship restaurant in Kota. Enjoy authentic multi-cuisine delicacies in a royal ambiance.");
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

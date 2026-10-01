@@ -6,7 +6,11 @@ import { LOGOS } from "../data";
  * far right and continues — an infinite conveyor. animation-delay is tied to the
  * scroll position (--scrolled) so the belt speeds up as you scroll, like the original.
  */
-export default function ScrollingLogos() {
+interface ScrollingLogosProps {
+  title?: string;
+}
+
+export default function ScrollingLogos({ title }: ScrollingLogosProps = {}) {
   // Duplicate logos for a denser, seamless conveyor belt
   const ALL_LOGOS = [...LOGOS, ...LOGOS];
   const count = ALL_LOGOS.length;
@@ -26,9 +30,11 @@ export default function ScrollingLogos() {
     <section id="section-2-1" className="section-scrolling-logos pv-large section-colorway-gray">
       <style>{css}</style>
       <div className="scrolling-logos">
-        <h2 className="scrolling-logos__subtitle subtitle reveal">
-          <span>Collaborators &amp; Clients</span>
-        </h2>
+        {title && (
+          <h2 className="scrolling-logos__subtitle subtitle reveal">
+            <span>{title}</span>
+          </h2>
+        )}
         <div className={`scrolling-logos__items hide-overflow reveal reveal--delay-1 scrolling-logos__items--${count} scrolling-logos__items--recolor`} data-scroll data-scroll-speed="-0.05" data-scrolled>
           {ALL_LOGOS.map((logo, i) => (
             <div className={`scrolling-logos__item scrolling-${count}-${i + 1}`} key={`${logo.alt}-${i}`}>

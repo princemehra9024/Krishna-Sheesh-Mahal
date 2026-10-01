@@ -4,7 +4,10 @@ import QuoteSlider from "../components/QuoteSlider";
 import { Link } from "react-router-dom";
 import { useMemo, useState, useEffect } from "react";
 
+import { useSEO } from "../hooks/useSEO";
+
 export default function About() {
+  useSEO("About Us | Krishna Sheesh Mahal Kota", "Learn about the rich heritage, majestic architecture, and luxurious royal hospitality at Krishna Sheesh Mahal, the finest 4-star property in Kota.");
   const statement = "Born from a passion for creating unforgettable memories, our journey began in Kota, where we sought to transform how people experience hospitality.";
   const words = useMemo(() => statement.split(" "), []);
 

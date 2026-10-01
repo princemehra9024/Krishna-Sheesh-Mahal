@@ -46,8 +46,13 @@ export default function Footer() {
     if (external) return;
     e.preventDefault();
     if (href.startsWith("/")) {
-      navigateRouter(href);
-      setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 10);
+      const [path, hash] = href.split("#");
+      navigateRouter(path);
+      if (hash) {
+        setTimeout(() => scrollToTarget("#" + hash, -70), 100);
+      } else {
+        setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 10);
+      }
     } else {
       scrollToTarget(href, -70);
     }

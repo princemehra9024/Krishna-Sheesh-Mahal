@@ -12,7 +12,10 @@ interface RoomsProps {
   onBookNow?: (type: string) => void;
 }
 
+import { useSEO } from "../hooks/useSEO";
+
 export default function Rooms({ onBookNow }: RoomsProps) {
+  useSEO("Luxury Rooms & Suites | Krishna Sheesh Mahal Kota", "Book your luxurious stay in Kota. Explore our Premium, Super Deluxe, and Deluxe rooms featuring world-class amenities, stunning views, and royal comfort.");
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

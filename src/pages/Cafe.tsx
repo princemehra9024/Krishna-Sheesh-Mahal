@@ -5,7 +5,10 @@ interface CafeProps {
   onBookNow?: (type: string) => void;
 }
 
+import { useSEO } from "../hooks/useSEO";
+
 export default function Cafe({ onBookNow }: CafeProps) {
+  useSEO("The Cafe | Krishna Sheesh Mahal Kota", "Relax and unwind at our premium cafe in Kota. Enjoy artisan coffee, delicious pastries, and a serene atmosphere perfect for business or leisure.");
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

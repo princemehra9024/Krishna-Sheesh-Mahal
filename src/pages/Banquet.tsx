@@ -12,7 +12,10 @@ interface BanquetProps {
   onBookNow?: (type: string) => void;
 }
 
+import { useSEO } from "../hooks/useSEO";
+
 export default function Banquet({ onBookNow }: BanquetProps) {
+  useSEO("Banquet & Events | Krishna Sheesh Mahal Kota", "Host your dream wedding, corporate event, or private party at our majestic banquet hall. State-of-the-art facilities and royal catering in Kota.");
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
