@@ -15,11 +15,26 @@ export default function Header({ onBookNow }: HeaderProps) {
   const isLightHero = location.pathname !== "/";
   // open path: [depth0 index, depth1 index]
   const [openPath, setOpenPath] = useState<number[]>([]);
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+
+  const MENU_IMAGES: Record<string, string> = {
+    "Home": "/logo.jpg", 
+    "Rooms": "https://thepopuphotel.com/wp-content/uploads/2026/03/img-5-1600x900.webp",
+    "Restaurant": "/images/restaurant-img.jpeg",
+    "Cafe": "/images/cafe/cafe_hero.jpg",
+    "Banquet": "/banquet-hero.jpg",
+    "Team": "/images/hotel_receptionist.jpg",
+    "About Us": "https://thepopuphotel.com/wp-content/uploads/2026/03/img-2-770x1012.webp",
+    "Contact": "/images/quote-cooking.jpg"
+  };
 
   useEffect(() => {
     document.body.classList.toggle("menu-open", menuOpen);
     lockScroll(menuOpen);
-    if (!menuOpen) setOpenPath([]);
+    if (!menuOpen) {
+      setOpenPath([]);
+      setHoveredItem(null);
+    }
   }, [menuOpen]);
 
   useEffect(() => {
@@ -67,7 +82,12 @@ export default function Header({ onBookNow }: HeaderProps) {
       const hasChildren = !!item.children?.length;
       const isOpen = openPath[depth] === i;
       return (
-        <li key={item.label} className={`menu-item${hasChildren ? " menu-item-has-children" : ""}${isOpen ? " sub-menu-open" : ""}`}>
+        <li 
+          key={item.label} 
+          className={`menu-item${hasChildren ? " menu-item-has-children" : ""}${isOpen ? " sub-menu-open" : ""}`}
+          onMouseEnter={() => setHoveredItem(item.label)}
+          onMouseLeave={() => setHoveredItem(null)}
+        >
           {hasChildren ? (
             <span role="button" tabIndex={0} onClick={() => toggleAt(depth, i)} onKeyDown={(e) => e.key === "Enter" && toggleAt(depth, i)}>
               {item.label}
@@ -97,6 +117,37 @@ export default function Header({ onBookNow }: HeaderProps) {
           <style>{`
             .premium-hamburger-wrap { width: 50px; height: 50px; border-radius: 50%; border: 1px solid rgba(255, 215, 140, 0.4); display: flex; align-items: center; justify-content: center; margin: 0 auto; transition: all 0.4s ease; box-shadow: 0 0 10px rgba(255, 215, 140, 0.1); cursor: pointer; }
             .premium-hamburger-wrap:hover { background: rgba(255, 215, 140, 0.1); box-shadow: 0 0 20px rgba(255, 215, 140, 0.4); transform: scale(1.05); }
+            
+            .main-menu .menu {
+              background-color: transparent !important;
+            }
+            .menu-bg-container {
+              position: absolute;
+              top: 0; left: 0; right: 0; bottom: 0;
+              z-index: 0;
+              pointer-events: none;
+              overflow: hidden;
+            }
+            .menu-bg-image {
+              position: absolute;
+              top: 0; left: 0; right: 0; bottom: 0;
+              background-size: cover;
+              background-position: center;
+              transition: opacity 0.6s ease, transform 6s linear;
+              opacity: 0;
+              transform: scale(1);
+            }
+            .menu-bg-image.active {
+              opacity: 0.3;
+              transform: scale(1.05);
+            }
+            .main-menu__inner {
+              background-color: var(--heading-color) !important;
+            }
+            .menu-item > a, .menu-item > span {
+              position: relative;
+              z-index: 2;
+            }
           `}</style>
           <div className="premium-hamburger-wrap" onClick={() => setMenuOpen((v) => !v)}>
             <i
@@ -127,7 +178,16 @@ export default function Header({ onBookNow }: HeaderProps) {
 
         <nav className={`main-menu${menuOpen ? " active" : ""}`} aria-hidden={!menuOpen}>
           <div className="main-menu__inner">
-            <ul className="menu">
+            <div className="menu-bg-container">
+              {Object.entries(MENU_IMAGES).map(([label, src]) => (
+                <div 
+                  key={label}
+                  className={`menu-bg-image ${hoveredItem === label ? 'active' : ''}`}
+                  style={{ backgroundImage: `url(${src})` }}
+                />
+              ))}
+            </div>
+            <ul className="menu" style={{ position: 'relative', zIndex: 1 }}>
               {renderItems(MENU, 0)}
               <li className="menu-item menu-item--btn menu-item--mobile">
                 <span>

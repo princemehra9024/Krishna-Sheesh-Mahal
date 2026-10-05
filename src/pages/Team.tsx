@@ -115,14 +115,44 @@ export default function Team() {
           }
           .team-card-link-arrow { transition: transform 0.3s ease; }
           .team-card:hover .team-card-link-arrow { transform: translate(3px, -3px); }
+          
+          .hero-img-container:hover .hero-outline {
+            transform: translate(-10px, -10px);
+          }
+          .hero-img-container:hover .hero-img-inner {
+            transform: scale(1.05);
+          }
         `}</style>
 
         {/* HERO SECTION */}
         <div style={{ display: "flex", flexWrap: "wrap", gap: "50px", marginBottom: "120px", alignItems: "center" }}>
           {/* Left Side Image */}
-          <div className="reveal" style={{ flex: "1.5 1 55%", minWidth: "300px" }}>
-            <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", overflow: "hidden", borderRadius: "12px", border: "1px solid rgba(0,0,0,0.1)", boxShadow: "0 20px 40px rgba(0,0,0,0.05)" }}>
-              <img src="/images/hotel_receptionist.jpg" alt="Krishna Sheesh Mahal Team" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+          <div className="reveal" style={{ flex: "1.5 1 55%", minWidth: "300px", padding: "20px" }}>
+            <div className="hero-img-container" style={{ position: "relative", width: "100%", aspectRatio: "16/9" }}>
+              {/* Custom Outline */}
+              <div className="hero-outline" style={{
+                position: "absolute",
+                top: "20px",
+                left: "-20px",
+                width: "100%",
+                height: "100%",
+                border: "2px solid var(--terracotta)",
+                borderRadius: "80px 0 80px 0",
+                zIndex: 0,
+                transition: "transform 0.5s ease"
+              }}></div>
+              {/* Image Container */}
+              <div style={{ 
+                position: "relative", 
+                width: "100%", 
+                height: "100%",
+                overflow: "hidden", 
+                borderRadius: "80px 0 80px 0", 
+                boxShadow: "0 20px 40px rgba(0,0,0,0.15)",
+                zIndex: 1
+              }}>
+                <img className="hero-img-inner" src="/images/hotel_receptionist.jpg" alt="Krishna Sheesh Mahal Team" style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.7s ease" }} />
+              </div>
             </div>
           </div>
           
