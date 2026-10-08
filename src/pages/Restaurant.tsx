@@ -3,6 +3,7 @@ import RestaurantHeroSlider from "../components/RestaurantHeroSlider";
 import QuoteSlider from "../components/QuoteSlider";
 import IngredientsShowcase from "../components/IngredientsShowcase";
 import PaneerScrollSequence from "../components/PaneerScrollSequence";
+import RestaurantMenuViewer from "../components/RestaurantMenuViewer";
 
 interface RestaurantProps {
   onBookNow?: (type: string) => void;
@@ -377,6 +378,9 @@ export default function Restaurant({ onBookNow }: RestaurantProps) {
 
         {/* ── PANEER SCROLL SEQUENCE ── */}
         <PaneerScrollSequence />
+
+        {/* ── FULL RESTAURANT MENU ── */}
+        <RestaurantMenuViewer />
 
         {/* ── INGREDIENTS SHOWCASE ── */}
         <IngredientsShowcase />

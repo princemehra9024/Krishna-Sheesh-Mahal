@@ -171,7 +171,7 @@ export default function IngredientsShowcase() {
         .ishow-pill::after { content: 'Ingredients That Matter'; position: absolute; inset: 1px; background: #1A1311; border-radius: 40px; display: flex; align-items: center; justify-content: center; }
         @keyframes spin { 100% { transform: rotate(1turn); } }
         
-        .ishow-title { font-size: clamp(46px, 5vw, 76px); font-weight: 400; line-height: 1.05; max-width: 1100px; color: #FFF2DF !important; font-family: var(--font-2, serif) !important; letter-spacing: 0.02em; margin-bottom: 40px; text-shadow: 0 0 40px rgba(255, 215, 140, 0.6), 0 5px 15px rgba(0,0,0,0.8); }
+        .ishow-title { font-size: clamp(32px, 6vw, 76px); font-weight: 400; line-height: 1.05; max-width: 1100px; color: #FFF2DF !important; font-family: var(--font-2, serif) !important; letter-spacing: 0.02em; margin-bottom: 30px; text-shadow: 0 0 40px rgba(255, 215, 140, 0.6), 0 5px 15px rgba(0,0,0,0.8); }
         .ishow-title-mask { overflow: hidden; display: inline-block; vertical-align: top; }
         .ishow-title-line { display: inline-block; will-change: transform, opacity; padding-right: 12px; }
         .ishow-bowl-container { position: absolute; bottom: -15%; left: 50%; transform: translateX(-50%); width: 110vw; min-width: 1000px; max-width: 1600px; z-index: 5; display: flex; align-items: flex-end; justify-content: center; height: 85vh; animation: bowlBreathe 6s ease-in-out infinite alternate; }
@@ -211,9 +211,9 @@ export default function IngredientsShowcase() {
           .ishow-bowl-container { width: 100vw; min-width: unset; bottom: -5%; }
           .ishow-nav-prev { left: 20px; bottom: 20px; width: 60px; height: 60px; }
           .ishow-nav-next { right: 20px; bottom: 20px; width: 60px; height: 60px; }
-          .ishow-cards-mobile { position: absolute; top: 250px; left: 0; width: 100%; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; padding: 0 20px; z-index: 10; }
-          .ishow-card-mobile { border-radius: 16px; background: rgba(243, 237, 228, 0.06); backdrop-filter: blur(8px); display: flex; align-items: center; padding: 6px 12px; }
-          .ishow-card-label { font-size: 14px; }
+          .ishow-cards-mobile { position: relative; width: 100%; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; padding: 0 15px; z-index: 10; margin-bottom: 20px; }
+          .ishow-card-mobile { border-radius: 20px; background: rgba(243, 237, 228, 0.15); border: 1px solid rgba(243, 237, 228, 0.25); backdrop-filter: blur(8px); display: flex; align-items: center; padding: 8px 16px; color: #FFF2DF; font-weight: 500; }
+          .ishow-card-label { font-size: 13px; letter-spacing: 0.5px; }
         }
         @media (min-width: 769px) { .ishow-cards-mobile { display: none; } }
       `}</style>

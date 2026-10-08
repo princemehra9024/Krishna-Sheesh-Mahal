@@ -127,124 +127,149 @@ export default function Banquet({ onBookNow }: BanquetProps) {
             border-radius: 20px;
           }
 
-          /* Packages - Premium Redesign */
-          .pkg-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+          /* KITTY PARTY MENU STYLES */
+          .kitty-menu-container {
+            width: 100%;
+            overflow-x: auto;
             margin-top: 40px;
-          }
-          @media (max-width: 900px) {
-            .pkg-grid { grid-template-columns: 1fr; }
-          }
-          .pkg-card {
-            background: #fff;
-            padding: 40px 30px;
-            border: 1px solid rgba(0,0,0,0.08);
+            background-color: #f6f3eb; /* Creamy paper background */
+            background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h20v20H0V0zm10 10h10v10H10V10zM0 10h10v10H0V10z' fill='%23ebe7dd' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
+            padding: 30px;
             border-radius: 12px;
-            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+          }
+          
+          .kitty-table {
+            width: 100%;
+            min-width: 900px;
+            border-collapse: collapse;
+          }
+          
+          .kitty-table th, .kitty-table td {
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            vertical-align: top;
+            text-align: center;
+          }
+          
+          .kitty-table tr:last-child td {
+            border-bottom: none;
+          }
+          
+          .kitty-table td.col-category {
+            text-align: left;
+            font-weight: 800;
+            color: #2b1f17;
+            font-size: 1.15rem;
+            width: 20%;
+            vertical-align: top;
+            padding-top: 20px;
+          }
+          
+          /* Header Styling */
+          .kitty-header {
             display: flex;
             flex-direction: column;
-            transition: box-shadow 0.4s ease, border-color 0.4s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
-            text-align: left;
-            
-            /* Scroll animation */
-            opacity: max(min((var(--progress, 1) - 0.2) * 3, 1), 0);
-            transform: scale(calc(0.9 + (var(--progress, 1) * 0.1))) translateY(calc((1 - var(--progress, 1)) * 50px));
-          }
-          .pkg-card:hover {
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-            border-color: rgba(0,0,0,0.15);
-          }
-          .pkg-card--premium {
-            background: linear-gradient(145deg, var(--maroon) 0%, #300f16 100%);
-            color: #fff;
-            border: 1px solid var(--gold);
-            box-shadow: 0 15px 40px rgba(90, 31, 43, 0.2);
-            z-index: 2;
-            
-            /* Enhanced scale for premium */
-            transform: scale(calc(0.95 + (var(--progress, 1) * 0.1))) translateY(calc((1 - var(--progress, 1)) * 50px));
-          }
-          @media (max-width: 900px) {
-            .pkg-card--premium {
-               transform: scale(calc(0.9 + (var(--progress, 1) * 0.1))) translateY(calc((1 - var(--progress, 1)) * 50px));
-            }
-          }
-          .pkg-card--premium:hover {
-            box-shadow: 0 25px 50px rgba(90, 31, 43, 0.3), 0 0 40px rgba(197, 157, 58, 0.15);
-            border-color: var(--gold);
-          }
-          .pkg-card--premium h3, .pkg-card--premium h4, .pkg-card--premium p, .pkg-card--premium li, .pkg-card--premium .pkg-card__price {
-            color: #fff;
-          }
-          @keyframes goldGlow {
-            0% { box-shadow: 0 0 5px rgba(197,157,58,0.2); }
-            50% { box-shadow: 0 0 20px rgba(197,157,58,0.6); }
-            100% { box-shadow: 0 0 5px rgba(197,157,58,0.2); }
-          }
-          .pkg-card__badge {
-            position: absolute;
-            top: -16px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--gold);
-            color: #fff;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            padding: 8px 20px;
-            font-weight: bold;
-            border-radius: 30px;
-            animation: goldGlow 2s infinite;
-          }
-          .pkg-card__price {
-            font-size: 3rem;
-            font-family: var(--font-2);
-            margin: 20px 0;
-            line-height: 1;
-            color: var(--heading-color);
-          }
-          .pkg-card__price span {
-            font-size: 1rem;
-            font-family: var(--font-1);
-            opacity: 0.6;
-            font-weight: normal;
-          }
-          .pkg-list {
-            margin-bottom: 30px;
-            flex-grow: 1;
-            padding: 0;
-            list-style: none;
-            font-size: 15px;
-            line-height: 1.6;
-          }
-          .pkg-list li {
-            position: relative;
-            padding-left: 28px;
+            align-items: center;
             margin-bottom: 15px;
-            opacity: 0.85;
-            transition: transform 0.3s ease, color 0.3s ease;
           }
-          .pkg-list li:hover {
-            transform: translateX(5px);
-            color: #000;
+          
+          .kitty-badge {
+            display: flex;
+            align-items: stretch;
+            margin-bottom: 25px;
+            transform: scale(0.9);
           }
-          .pkg-card--premium .pkg-list li:hover {
+          
+          .kitty-badge-text {
+            background-color: #8c2633; /* deep maroon */
             color: #fff;
+            font-weight: 800;
+            font-size: 1.5rem;
+            padding: 8px 20px;
+            border-radius: 30px 0 0 30px;
+            letter-spacing: 1px;
+            box-shadow: 2px 4px 10px rgba(140, 38, 51, 0.2);
+            font-family: "Inter", sans-serif;
           }
-          .pkg-list li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            top: 0;
-            font-size: 14px;
-            color: var(--heading-color);
+          
+          .kitty-badge-no {
+            background-color: #b73a43; /* lighter red */
+            color: #fff;
+            padding: 6px 15px;
+            border-radius: 0 15px 15px 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-weight: 800;
+            font-size: 1.4rem;
+            line-height: 1;
+            box-shadow: 2px 4px 10px rgba(183, 58, 67, 0.2);
+            font-family: "Inter", sans-serif;
+          }
+          
+          .kitty-badge-no span {
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: -2px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+          }
+          
+          .kitty-price {
+            background-color: #1a1a1a;
+            color: #e2b761; /* dull gold */
+            font-family: "Georgia", serif;
+            font-size: 1.8rem;
             font-weight: bold;
+            padding: 6px 30px;
+            border-radius: 255px 15px 225px 15px/15px 225px 15px 255px; /* organic brush shape */
+            transform: rotate(-2deg);
+            box-shadow: 2px 5px 12px rgba(0,0,0,0.3);
+            display: inline-block;
           }
-          .pkg-card--premium .pkg-list li::before {
-            color: var(--neon);
+          
+          .kitty-price span {
+            font-family: sans-serif;
+            margin-right: 2px;
+          }
+
+          /* Content Styling */
+          .kitty-item-line {
+            font-size: 1.05rem;
+            color: #111;
+            font-weight: 500;
+            line-height: 1.4;
+            margin-bottom: 4px;
+          }
+          
+          .kitty-item-any2 {
+            font-size: 0.9rem;
+            color: #444;
+            font-weight: 500;
+            margin-top: 6px;
+            font-style: italic;
+          }
+          
+          .kitty-dash {
+            color: #222;
+            font-weight: 700;
+          }
+          
+          .kitty-footer {
+            text-align: left;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #111;
+            padding-top: 20px;
+            padding-bottom: 10px;
+          }
+          
+          .kitty-footer span {
+            display: inline-block;
+            width: 150px;
+            border-bottom: 1px dashed #333;
           }
 
           /* Brutalist Cards */
@@ -475,16 +500,16 @@ export default function Banquet({ onBookNow }: BanquetProps) {
         <section className="section-colorway-gray pv-inset border-top border-bottom" style={{ borderColor: 'rgba(52,69,65,0.1)', borderStyle: 'solid', borderWidth: '1px 0' }}>
           <div className="section section--large" style={{ display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap', gap: '20px', textAlign: 'center' }}>
             <div>
-              <div className="h3">500+</div>
+              <div className="h3">50-80</div>
               <div className="subtitle" style={{ fontSize: '10px' }}>Guest Capacity</div>
             </div>
             <div>
-              <div className="h3">8,000</div>
-              <div className="subtitle" style={{ fontSize: '10px' }}>Sq.Ft Space</div>
+              <div className="h3">Packages</div>
+              <div className="subtitle" style={{ fontSize: '10px' }}>₹350, ₹450, ₹600</div>
             </div>
             <div>
-              <div className="h3">1,200+</div>
-              <div className="subtitle" style={{ fontSize: '10px' }}>Events Hosted</div>
+              <div className="h3">+91 8690393734</div>
+              <div className="subtitle" style={{ fontSize: '10px' }}>Booking Contact</div>
             </div>
           </div>
         </section>
@@ -524,7 +549,7 @@ export default function Banquet({ onBookNow }: BanquetProps) {
                 
                 <div className="brutal-card__footer">
                   <span></span>
-                  <span style={{textAlign: 'center', flex: 1}}>500 GUESTS</span>
+                  <span style={{textAlign: 'center', flex: 1}}>50-80 GUESTS</span>
                   <span></span>
                 </div>
               </div>
@@ -554,7 +579,7 @@ export default function Banquet({ onBookNow }: BanquetProps) {
                 
                 <div className="brutal-card__footer">
                   <span></span>
-                  <span style={{textAlign: 'center', flex: 1}}>300 GUESTS</span>
+                  <span style={{textAlign: 'center', flex: 1}}>50-80 GUESTS</span>
                   <span></span>
                 </div>
               </div>
@@ -584,7 +609,7 @@ export default function Banquet({ onBookNow }: BanquetProps) {
                 
                 <div className="brutal-card__footer">
                   <span></span>
-                  <span style={{textAlign: 'center', flex: 1}}>50-200 GUESTS</span>
+                  <span style={{textAlign: 'center', flex: 1}}>50-80 GUESTS</span>
                   <span></span>
                 </div>
               </div>
@@ -593,60 +618,172 @@ export default function Banquet({ onBookNow }: BanquetProps) {
           </div>
         </section>
 
-        {/* PACKAGES SECTION */}
+        {/* KITTY PARTY MENUS SECTION */}
         <section className="section-colorway-gray pv-large">
           <div className="section section--large">
             <div className="content" style={{ textAlign: 'center', marginBottom: 'var(--spacing-small)' }}>
-              <h2 className="subtitle">Pricing</h2>
-              <h3 className="h2">Tailored <em>Packages</em></h3>
-              <p style={{ maxWidth: '600px', margin: '0 auto' }}>Every celebration deserves a bespoke experience. Choose a package crafted to perfection.</p>
+              <h2 className="subtitle">Pricing & Menus</h2>
+              <h3 className="h2">Kitty Party <em>Packages</em></h3>
+              <p style={{ maxWidth: '600px', margin: '0 auto' }}>Host an unforgettable Kitty Party with our specially curated menus. Choose the perfect spread for your celebration.</p>
             </div>
 
-            <div className="pkg-grid">
-              {/* Silver */}
-              <div className="pkg-card" data-scroll data-scroll-css-progress>
-                <h4 className="subtitle">Classic</h4>
-                <div className="pkg-card__price">₹850<span style={{ fontSize: '1rem', fontFamily: 'var(--font-1)' }}> / plate</span></div>
-                <ul className="pkg-list">
-                  <li>Welcome Beverages</li>
-                  <li>3-Course Dinner</li>
-                  <li>Basic Floral Décor</li>
-                  <li>PA System</li>
-                  <li>Standard Seating</li>
-                </ul>
-                <button className="btn btn--regular btn--full">Inquire Now</button>
-              </div>
-
-              {/* Signature */}
-              <div className="pkg-card pkg-card--premium" data-scroll data-scroll-css-progress>
-                <div className="pkg-card__badge">Most Popular</div>
-                <h4 className="subtitle" style={{ color: 'var(--gold)' }}>Signature</h4>
-                <div className="pkg-card__price">₹1,400<span style={{ fontSize: '1rem', fontFamily: 'var(--font-1)' }}> / plate</span></div>
-                <ul className="pkg-list">
-                  <li>Premium Welcome Drinks</li>
-                  <li>5-Course Gourmet Dinner</li>
-                  <li>Premium Floral Décor</li>
-                  <li>Full AV System</li>
-                  <li>Luxury Seating</li>
-                  <li>Dedicated Event Manager</li>
-                </ul>
-                <button className="btn btn--white btn--full">Select Signature</button>
-              </div>
-
-              {/* Platinum */}
-              <div className="pkg-card" data-scroll data-scroll-css-progress>
-                <h4 className="subtitle">Bespoke</h4>
-                <div className="pkg-card__price">Custom</div>
-                <ul className="pkg-list">
-                  <li>All Signature Perks</li>
-                  <li>Unlimited Beverages</li>
-                  <li>Celebrity Chef Menu</li>
-                  <li>3D Floral & Light Art</li>
-                  <li>Live Entertainment</li>
-                  <li>Valet Parking</li>
-                </ul>
-                <button className="btn btn--regular btn--full">Contact Us</button>
-              </div>
+            <div className="kitty-menu-container" data-scroll data-scroll-css-progress style={{ opacity: 'max(min((var(--progress, 1) - 0.2) * 3, 1), 0)', transform: 'translateY(calc((1 - var(--progress, 1)) * 50px))' }}>
+              <table className="kitty-table">
+                <thead>
+                  <tr>
+                    <th className="col-category"></th>
+                    <th>
+                      <div className="kitty-header">
+                        <div className="kitty-badge">
+                          <div className="kitty-badge-text">KITTY PARTY</div>
+                          <div className="kitty-badge-no"><span>Menu</span>01</div>
+                        </div>
+                        <div className="kitty-price">
+                          <span>₹</span> 299/-
+                        </div>
+                      </div>
+                    </th>
+                    <th>
+                      <div className="kitty-header">
+                        <div className="kitty-badge">
+                          <div className="kitty-badge-text">KITTY PARTY</div>
+                          <div className="kitty-badge-no"><span>Menu</span>02</div>
+                        </div>
+                        <div className="kitty-price">
+                          <span>₹</span> 330/-
+                        </div>
+                      </div>
+                    </th>
+                    <th>
+                      <div className="kitty-header">
+                        <div className="kitty-badge">
+                          <div className="kitty-badge-text">KITTY PARTY</div>
+                          <div className="kitty-badge-no"><span>Menu</span>03</div>
+                        </div>
+                        <div className="kitty-price">
+                          <span>₹</span> 350/-
+                        </div>
+                      </div>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="col-category">Welcome Drink</td>
+                    <td>
+                      <div className="kitty-item-line">Tea / Coffee / Soup</div>
+                    </td>
+                    <td>
+                      <div className="kitty-item-line">Tea / Coffee / Soup</div>
+                    </td>
+                    <td>
+                      <div className="kitty-item-line">Tea / Coffee / Soup</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="col-category">Starter</td>
+                    <td>
+                      <div className="kitty-item-line">Spring Roll-2pc, Harabara</div>
+                      <div className="kitty-item-line">kabab-2Pc / Veg Pakoda /</div>
+                      <div className="kitty-item-line">Crispi Corn / Honey Chilli Potato</div>
+                      <div className="kitty-item-any2">any 2</div>
+                    </td>
+                    <td>
+                      <div className="kitty-item-line">Spring Roll-2pc, Harabara</div>
+                      <div className="kitty-item-line">kabab-2Pc / Veg Pakoda /</div>
+                      <div className="kitty-item-line">Crispi Corn / Honey Chilli Potato</div>
+                      <div className="kitty-item-any2">any 2</div>
+                    </td>
+                    <td>
+                      <div className="kitty-item-line">Spring Roll-2pc, Harabara</div>
+                      <div className="kitty-item-line">kabab-2Pc / Veg Pakoda /</div>
+                      <div className="kitty-item-line">Crispi Corn / Honey Chilli Potato</div>
+                      <div className="kitty-item-any2">any 2</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="col-category">Main Course</td>
+                    <td>
+                      <div className="kitty-item-line">Mix Dal, Kadi</div>
+                      <div className="kitty-item-line">2 Bati</div>
+                      <div className="kitty-item-line">Churma <span style={{fontSize: '0.85em'}}>(Desi ghee)</span></div>
+                      <div className="kitty-item-line">Pulao</div>
+                      <div className="kitty-item-line">Lehsun Ki Chutney</div>
+                    </td>
+                    <td>
+                      <div className="kitty-item-line">Chola Bhatura</div>
+                      <div className="kitty-item-line">Pav Bhaji</div>
+                      <div className="kitty-item-line">Masala Dosa</div>
+                    </td>
+                    <td>
+                      <div className="kitty-item-line">Paneer Veg</div>
+                      <div className="kitty-item-line">Mix Veg</div>
+                      <div className="kitty-item-line">Dal Tadka</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="col-category">Salad</td>
+                    <td><div className="kitty-item-line">Onion Salad</div></td>
+                    <td><div className="kitty-item-line">Onion Salad</div></td>
+                    <td><div className="kitty-item-line">Green Salad</div></td>
+                  </tr>
+                  <tr>
+                    <td className="col-category">Curd Preparation</td>
+                    <td><div className="kitty-item-line">Chhachh</div></td>
+                    <td><span className="kitty-dash">-</span></td>
+                    <td><div className="kitty-item-line">Boondi Raita</div></td>
+                  </tr>
+                  <tr>
+                    <td className="col-category">Rice Preparation</td>
+                    <td><div className="kitty-item-line">Pulao</div></td>
+                    <td><span className="kitty-dash">-</span></td>
+                    <td><div className="kitty-item-line">Veg Pulao</div></td>
+                  </tr>
+                  <tr>
+                    <td className="col-category">Indian Bread</td>
+                    <td><span className="kitty-dash">-</span></td>
+                    <td><span className="kitty-dash">-</span></td>
+                    <td><div className="kitty-item-line">Butter Roti / Lachha</div></td>
+                  </tr>
+                  <tr>
+                    <td className="col-category">Accompaniments</td>
+                    <td><span className="kitty-dash">-</span></td>
+                    <td><span className="kitty-dash">-</span></td>
+                    <td><div className="kitty-item-line">Achar, Papad, Chutney</div></td>
+                  </tr>
+                  <tr>
+                    <td className="col-category">Desert</td>
+                    <td><span className="kitty-dash">-</span></td>
+                    <td><div className="kitty-item-line">Gulab Jamun</div></td>
+                    <td><div className="kitty-item-line">Gulab Jamun</div></td>
+                  </tr>
+                  <tr>
+                    <td className="col-category">Ice Cream</td>
+                    <td><span className="kitty-dash">-</span></td>
+                    <td><span className="kitty-dash">-</span></td>
+                    <td><span className="kitty-dash">-</span></td>
+                  </tr>
+                  <tr>
+                    <td className="col-category">Premium Desert</td>
+                    <td><span className="kitty-dash">-</span></td>
+                    <td><span className="kitty-dash">-</span></td>
+                    <td><span className="kitty-dash">-</span></td>
+                  </tr>
+                  <tr>
+                    <td className="col-category">Mouth Freshner</td>
+                    <td><span className="kitty-dash">-</span></td>
+                    <td><div className="kitty-item-line">Pan Shot <span style={{fontSize: '0.85em'}}>(one time)</span></div></td>
+                    <td><div className="kitty-item-line">Pan Shot <span style={{fontSize: '0.85em'}}>(one time)</span></div></td>
+                  </tr>
+                  <tr style={{borderBottom: 'none'}}>
+                    <td colSpan={4}>
+                      <div className="kitty-footer">
+                        Additional Item Charge Extra: <span></span>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </section>
@@ -666,21 +803,22 @@ export default function Banquet({ onBookNow }: BanquetProps) {
             </div>
 
             <div className="img-w-txt__txt content parallax-opacity" data-scroll data-scroll-css-progress>
-              <h2 className="subtitle">The Space</h2>
+              <h2 className="subtitle">Banquet & Venue</h2>
               <h3>
-                Infinite <em>Configurations</em>
+                Krishna Sheesh Mahal <em>Banquet</em>
               </h3>
               <p>
-                Our versatile hall adapts to your vision — Theatre style, Banquet rounds, U-shape, or a combination. Our spatial designers work hand-in-hand with you weeks before the event to ensure every detail is meticulously planned.
+                Our versatile banquet hall is the perfect venue for your next event. We offer comprehensive facilities including professional DJ, sound systems, and stunning decorations to bring your vision to life.
               </p>
               <ul style={{ marginBottom: '30px', marginTop: '20px', listStyleType: 'disc', paddingLeft: '20px' }}>
-                <li style={{ marginBottom: '10px' }}><strong>Theatre:</strong> Up to 500 Guests</li>
-                <li style={{ marginBottom: '10px' }}><strong>Banquet Rounds:</strong> Up to 350 Guests</li>
-                <li style={{ marginBottom: '10px' }}><strong>U-Shape:</strong> Up to 120 Guests</li>
+                <li style={{ marginBottom: '10px' }}><strong>Capacity:</strong> 50 to 80 Guests</li>
+                <li style={{ marginBottom: '10px' }}><strong>Packages:</strong> ₹350, ₹450, and ₹600</li>
+                <li style={{ marginBottom: '10px' }}><strong>Facilities & Amenities:</strong> DJ, Sound System, Decoration</li>
+                <li style={{ marginBottom: '10px' }}><strong>Booking Contact:</strong> +91 8690393734</li>
               </ul>
-              <Link to="/contact" className="btn btn--regular">
-                Download Floor Plan
-              </Link>
+              <a href="tel:+918690393734" className="btn btn--regular">
+                Call Now
+              </a>
             </div>
           </div>
         </section>
