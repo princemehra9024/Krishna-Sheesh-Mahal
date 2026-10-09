@@ -42,9 +42,11 @@ export default function RestaurantMenuViewer() {
         .pdf-menu-header-logo h2 {
           color: #fff;
           font-family: var(--font-2);
-          font-size: 2.5rem;
+          font-size: clamp(1.8rem, 8vw, 2.5rem);
           margin: 0;
           line-height: 1.1;
+          word-break: break-word;
+          hyphens: auto;
         }
 
         .pdf-menu-header-logo p {
@@ -66,6 +68,20 @@ export default function RestaurantMenuViewer() {
           .pdf-menu-wrapper {
             padding: 20px;
             border-width: 8px;
+          }
+          .pdf-menu-header-logo {
+            padding: 15px 20px;
+            border-radius: 60px 60px 10px 10px;
+          }
+          .pdf-menu-item-name {
+            font-size: 0.95rem;
+            max-width: 75%;
+          }
+          .pdf-menu-item-price {
+            font-size: 0.95rem;
+          }
+          .pdf-menu-footer-terms {
+            padding: 20px;
           }
         }
 
