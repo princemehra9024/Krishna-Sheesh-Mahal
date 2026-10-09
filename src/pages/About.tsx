@@ -8,11 +8,12 @@ import { motion, useMotionValue, useTransform, useSpring, useScroll } from "fram
 
 export default function About() {
   useSEO("About Us | Krishna Sheesh Mahal Kota", "Experience an era of royal elegance reimagined for the modern traveler.");
-  
+
   const statement = "Born from a passion for creating unforgettable memories, our journey began in Kota, where we sought to transform how people experience hospitality.";
   const words = useMemo(() => statement.split(" "), [statement]);
 
   // Framer Motion physics for dragging the 3D cylinder
+
   const dragX = useMotionValue(0);
   const smoothDragX = useSpring(dragX, { damping: 30, stiffness: 90 });
   const rotationY = useTransform(smoothDragX, [-1500, 1500], [-90, 90]);
@@ -27,13 +28,13 @@ export default function About() {
 
   // --- LXL Creative Premium Card Animation Math ---
   const lxlRef = useRef(null);
-  
+
   // 1. Scroll Parallax
   const { scrollYProgress } = useScroll({
     target: lxlRef,
     offset: ["start end", "end start"]
   });
-  
+
   // Card moves up slightly on scroll
   const cardScrollY = useTransform(scrollYProgress, [0, 1], [100, -100]);
   // Image moves down inside the card on scroll (inner parallax)
@@ -42,7 +43,7 @@ export default function About() {
   // 2. 3D Magnetic Hover Tilt
   const mouseX = useMotionValue(0.5);
   const mouseY = useMotionValue(0.5);
-  
+
   const springConfig = { damping: 25, stiffness: 150, mass: 0.5 };
   const smoothMouseX = useSpring(mouseX, springConfig);
   const smoothMouseY = useSpring(mouseY, springConfig);
@@ -50,7 +51,7 @@ export default function About() {
   // Map mouse 0-1 to rotation degrees
   const cardRotateX = useTransform(smoothMouseY, [0, 1], [12, -12]);
   const cardRotateY = useTransform(smoothMouseX, [0, 1], [-12, 12]);
-  
+
   // Map mouse to magnetic arrow movement
   const arrowX = useTransform(smoothMouseX, [0, 1], [-20, 20]);
   const arrowY = useTransform(smoothMouseY, [0, 1], [-20, 20]);
@@ -60,7 +61,7 @@ export default function About() {
     mouseX.set((e.clientX - rect.left) / rect.width);
     mouseY.set((e.clientY - rect.top) / rect.height);
   };
-  
+
   const handleCardMouseLeave = () => {
     mouseX.set(0.5);
     mouseY.set(0.5);
@@ -426,8 +427,8 @@ export default function About() {
         <span className="jl-ui jl-ui-tr">PROFILE</span>
         <span className="jl-ui jl-ui-bl">FEATURED / FULL</span>
         <span className="jl-ui jl-ui-br">DRAG TO EXPLORE</span>
-        
-        <motion.div 
+
+        <motion.div
           className="jl-drag-area"
           drag="x"
           dragConstraints={{ left: -1000, right: 1000 }}
@@ -440,8 +441,8 @@ export default function About() {
             <motion.div className="jl-carousel" style={{ rotateY: rotationY }}>
               <div className="jl-floor"></div>
               {cards.map((c, i) => (
-                <div 
-                  key={i} 
+                <div
+                  key={i}
                   className="jl-card"
                   style={{ transform: `rotateY(${c.angle}deg) translateZ(var(--radius))` }}
                 >
@@ -526,9 +527,9 @@ export default function About() {
             transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           >
             <Link to="/rooms" className="lxl-btn">
-              Explore all 
+              Explore all
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
+                <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </Link>
           </motion.div>
@@ -536,10 +537,10 @@ export default function About() {
 
         <div className="lxl-image-container">
           <svg className="lxl-squiggle" viewBox="0 0 400 600" preserveAspectRatio="none">
-            <motion.path 
+            <motion.path
               d="M -50 0 C 150 100 250 200 100 300 C -50 400 150 500 250 600 C 350 700 150 800 -50 900"
-              fill="none" 
-              stroke="var(--about-accent)" 
+              fill="none"
+              stroke="var(--about-accent)"
               strokeWidth="24"
               strokeLinecap="round"
               initial={{ pathLength: 0 }}
@@ -550,11 +551,11 @@ export default function About() {
           </svg>
 
           {/* Premium Parallax & Magnetic Tilt Card */}
-          <motion.div 
+          <motion.div
             className="lxl-card"
-            style={{ 
-              y: cardScrollY, 
-              rotateX: cardRotateX, 
+            style={{
+              y: cardScrollY,
+              rotateX: cardRotateX,
               rotateY: cardRotateY,
             }}
             onMouseMove={handleCardMouseMove}
@@ -565,23 +566,23 @@ export default function About() {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
             {/* Inner Image Parallax */}
-            <motion.img 
-              src={ABOUT_IMAGES.primary2x} 
-              alt="Luxury Stays" 
-              style={{ 
-                y: imageScrollY, 
-                width: '100%', 
-                height: '140%', 
+            <motion.img
+              src={ABOUT_IMAGES.primary2x}
+              alt="Luxury Stays"
+              style={{
+                y: imageScrollY,
+                width: '100%',
+                height: '140%',
                 objectFit: 'cover',
-                scale: 1.05 
-              }} 
+                scale: 1.05
+              }}
             />
             <div className="lxl-card-label">LUXURY STAYS</div>
-            
+
             {/* Magnetic Arrow */}
             <motion.div className="lxl-card-arrow" style={{ x: arrowX, y: arrowY }}>
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
+                <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </motion.div>
           </motion.div>
