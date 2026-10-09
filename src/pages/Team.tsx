@@ -64,8 +64,8 @@ export default function Team() {
   };
 
   return (
-    <div className="page-wrap" style={{ backgroundColor: "var(--cream)", color: "var(--charcoal)", paddingTop: "var(--header-height)", minHeight: "100vh" }}>
-      <div className="section section--large" style={{ padding: "60px 20px" }}>
+    <div className="page-wrap" style={{ backgroundColor: "var(--cream)", color: "var(--charcoal)", minHeight: "100vh" }}>
+      <div className="section section--large" style={{ padding: "clamp(20px, 5vw, 60px) 20px" }}>
         
         <style>{`
           .team-card { 
@@ -121,6 +121,21 @@ export default function Team() {
           }
           .hero-img-container:hover .hero-img-inner {
             transform: scale(1.05);
+          }
+          .team-book-box {
+            display: flex; flex-wrap: wrap; justify-content: space-between; alignItems: center; margin-bottom: 120px; gap: 40px; padding: clamp(20px, 5vw, 60px); background: #fff; border-radius: 16px; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+          }
+          .team-book-title {
+            font-size: clamp(2rem, 8vw, 4rem); line-height: 1.1; text-transform: uppercase; display: flex; flex-wrap: wrap; align-items: flex-start; gap: 10px; font-family: var(--font-2); color: var(--charcoal); word-break: break-word; hyphens: auto;
+          }
+          .team-faq-wrap {
+            display: flex; flex-wrap: wrap; gap: 60px; margin-bottom: 80px; align-items: flex-start;
+          }
+          .team-faq-left {
+            flex: 1 1 300px;
+          }
+          @media (min-width: 992px) {
+            .team-faq-left { position: sticky; top: 120px; }
           }
         `}</style>
 
@@ -199,11 +214,11 @@ export default function Team() {
         </div>
 
         {/* READY TO BOOK SECTION */}
-        <div className="reveal" style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", marginBottom: "120px", gap: "40px", padding: "60px", background: "#fff", borderRadius: "16px", border: "1px solid rgba(0,0,0,0.05)", boxShadow: "0 10px 40px rgba(0,0,0,0.03)" }}>
-          <div style={{ flex: "1 1 400px" }}>
-            <h2 style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", lineHeight: 1.1, textTransform: "uppercase", display: "flex", alignItems: "flex-start", gap: "20px", fontFamily: "var(--font-2)", color: "var(--charcoal)" }}>
+        <div className="reveal team-book-box">
+          <div style={{ flex: "1 1 min(100%, 300px)" }}>
+            <h2 className="team-book-title">
               Ready to <br /> Experience Royalty?
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginTop: "10px", color: "var(--maroon)" }}>
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginTop: "10px", color: "var(--maroon)", flexShrink: 0 }}>
                 <line x1="5" y1="5" x2="19" y2="19"></line>
                 <polyline points="19 9 19 19 9 19"></polyline>
               </svg>
@@ -235,9 +250,9 @@ export default function Team() {
         </div>
 
         {/* FAQ SECTION */}
-        <div className="reveal" style={{ display: "flex", flexWrap: "wrap", gap: "60px", marginBottom: "80px", alignItems: "flex-start" }}>
+        <div className="reveal team-faq-wrap">
           {/* Left Column: Title (Sticky) */}
-          <div style={{ flex: "1 1 300px", position: "sticky", top: "120px" }}>
+          <div className="team-faq-left">
             <h2 style={{ fontSize: "clamp(3rem, 5vw, 4rem)", lineHeight: 1.1, marginBottom: "20px", textTransform: "uppercase", fontFamily: "var(--font-2)", color: "var(--charcoal)" }}>
               Got <em style={{ fontFamily: "var(--font-3)", color: "var(--maroon)", fontStyle: "italic", textTransform: "lowercase" }}>Questions?</em>
             </h2>

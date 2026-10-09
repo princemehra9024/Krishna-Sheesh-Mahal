@@ -768,10 +768,12 @@ export default function Contact() {
           }
           .cta-title {
             font-family: var(--font-2);
-            font-size: clamp(2.5rem, 4vw, 4rem);
+            font-size: clamp(2.5rem, 8vw, 4rem);
             margin-bottom: 1.5rem;
             color: #fff;
             line-height: 1.1;
+            word-break: break-word;
+            hyphens: auto;
           }
           .cta-title i {
             color: var(--gold);
