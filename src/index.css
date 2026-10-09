@@ -287,9 +287,9 @@ body.scroll-inactive:not(.menu-open) .header--over-banner .header__logo svg * { 
 .main-menu.active { transform: translateX(0); }
 .main-menu .main-menu__inner { width: var(--level-width); height: 100%; overflow: hidden; background-color: var(--heading-color); position: relative; }
 .main-menu .menu { width: 100%; height: 100%; background-color: var(--heading-color); overflow-y: auto; overflow-x: hidden; transition: transform cubic-bezier(0.72, 0.01, 0, 1) 0.6s; padding-top: var(--spacing-medium) !important; padding-bottom: 150px !important; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
-.main-menu .menu > .menu-item { font-size: 3rem; font-family: var(--font-1); }
+.main-menu .menu > .menu-item { font-size: clamp(2rem, 8vw, 3rem); font-family: var(--font-1); }
 .main-menu .menu > .menu-item span, .main-menu .menu > .menu-item a:not([class*="btn"]) { color: var(--text-color); }
-.main-menu .menu > .menu-item:nth-child(n + 2) { margin-top: 20px; }
+.main-menu .menu > .menu-item:nth-child(n + 2) { margin-top: clamp(10px, 3vw, 20px); }
 .main-menu .menu > .menu-item > a, .main-menu .menu > .menu-item > span { 
   display: flex; justify-content: space-between; align-items: center; gap: 20px; font-size: inherit; line-height: 100%; 
   transform: translateX(-20px); opacity: 0; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -358,6 +358,7 @@ body.scroll-inactive:not(.menu-open) .header--over-banner .header__logo svg * { 
   .main-menu .sub-menu__title-back { width: 10px; aspect-ratio: 1; transform: translateY(2px); background-color: var(--heading-color); cursor: pointer;
     -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 10'%3E%3Cpolyline points='5 1 1 5 5 9' fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'/%3E%3C/svg%3E") center / contain no-repeat;
     mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 10'%3E%3Cpolyline points='5 1 1 5 5 9' fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'/%3E%3C/svg%3E") center / contain no-repeat; }
+  .main-menu .menu { padding-bottom: 20px !important; padding-top: 20px !important; }
 }
 
 /* ------------------------------------------------------------------
