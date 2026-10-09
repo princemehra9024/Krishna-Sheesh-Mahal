@@ -65,7 +65,7 @@ export default function Team() {
 
   return (
     <div className="page-wrap" style={{ backgroundColor: "var(--cream)", color: "var(--charcoal)", minHeight: "100vh" }}>
-      <div className="section section--large" style={{ padding: "clamp(20px, 5vw, 60px) 20px" }}>
+      <div className="section section--large" style={{ padding: "clamp(120px, 15vw, 160px) 20px clamp(40px, 8vw, 80px) 20px" }}>
         
         <style>{`
           .team-card { 
