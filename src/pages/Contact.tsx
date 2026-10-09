@@ -90,6 +90,7 @@ export default function Contact() {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            overflow-x: hidden;
           }
           
           /* Header Section */
@@ -878,6 +879,10 @@ export default function Contact() {
             .tf-row {
               flex-direction: column;
               gap: 2rem;
+            }
+            .contact-info-side, .contact-form-side {
+              flex: 1 1 100%;
+              max-width: 100%;
             }
             .contact-form-side {
               padding: 40px 20px;
