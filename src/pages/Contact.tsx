@@ -822,15 +822,19 @@ export default function Contact() {
           }
 
           @media (max-width: 992px) {
+            .cta-wrapper {
+              padding: 40px 20px;
+            }
             .cta-box-unique {
               flex-direction: column;
               border-radius: 40px;
             }
             .cta-unique-img {
-              min-height: 300px;
+              min-height: 150px;
+              border-radius: 40px 40px 0 0;
             }
             .cta-unique-img::after {
-              background: linear-gradient(to bottom, rgba(26,28,35,0) 50%, var(--heading-color) 100%);
+              background: linear-gradient(to bottom, rgba(26,28,35,0) 10%, var(--heading-color) 100%);
             }
             .cta-unique-content {
               padding: 40px 30px 60px;

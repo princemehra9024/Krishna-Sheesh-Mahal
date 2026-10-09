@@ -194,8 +194,13 @@ export default function Header({ onBookNow }: HeaderProps) {
                   <button className="btn--full btn btn--regular" onClick={(e) => { e.preventDefault(); onBookNow(); }}>Book Now</button>
                 </span>
               </li>
-              <li className="menu-item menu-item--secondary menu-item--mobile">
-                <a href="#footer" onClick={(e) => { e.preventDefault(); navigate("#footer"); }}>Log In</a>
+              <li className="menu-item menu-item--mobile" style={{ marginTop: 'auto', paddingTop: '40px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '15px', opacity: 0.8 }}>
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                  </svg>
+                  <span style={{ fontFamily: 'var(--font-3)', color: 'var(--gold)', fontSize: '1.5rem', fontStyle: 'italic' }}>Experience Royalty</span>
+                </div>
               </li>
             </ul>
           </div>
