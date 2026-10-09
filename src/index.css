@@ -278,7 +278,7 @@ body.scroll-inactive:not(.menu-open) .header--over-banner .header__logo svg * { 
    ------------------------------------------------------------------ */
 .main-menu {
   --heading-color: var(--charcoal); --text-color: var(--cream); --border-color: var(--gold);
-  width: 100%; height: calc(100dvh - var(--header-height) + 1px); position: fixed; top: var(--header-height); left: 0; z-index: 900;
+  width: 100%; position: fixed; top: var(--header-height); bottom: 0; left: 0; z-index: 900;
   transition: transform cubic-bezier(0.72, 0.01, 0, 1) 0.6s;
 }
 .main-menu::before { content: ""; width: 300vw; height: calc(100% + 1px); position: absolute; top: 0; left: 0; background-color: color-mix(in srgb, #000 30%, transparent); z-index: -3; transition: opacity cubic-bezier(0.72, 0.01, 0, 1) 0.6s; backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); }

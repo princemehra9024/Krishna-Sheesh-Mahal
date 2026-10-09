@@ -836,7 +836,7 @@ export default function Cafe({ onBookNow }: CafeProps) {
         }
 
         @media (max-width: 900px) {
-          .cafe-story { grid-template-columns: 1fr; gap: 40px; padding: 80px 5vw; }
+          .cafe-story { grid-template-columns: 1fr; gap: 40px; padding: 60px 5vw; }
           .cafe-story__images { 
              height: 450px; 
              margin-bottom: 20px; 
@@ -861,6 +861,11 @@ export default function Cafe({ onBookNow }: CafeProps) {
             border-radius: 12px;
           }
           .cafe-crazy__container { grid-template-columns: 1fr; gap: 40px; }
+          .cafe-crazy { padding: 80px 5vw 100px; }
+          .cafe-menu-preview { padding: 80px 5vw; }
+          .cafe-process { padding: 80px 5vw; }
+          .cafe-cta { padding: 80px 5vw; }
+          .cafe-highlight { padding: 80px 5vw; }
         }
 
         @media (max-width: 600px) {
@@ -872,6 +877,12 @@ export default function Cafe({ onBookNow }: CafeProps) {
           .crazy-img-3 { width: 90%; height: 150px; left: 5%; bottom: 20px; }
           .crazy-title { font-size: clamp(2.5rem, 10vw, 3.5rem); }
           .crazy-desc { font-size: 1.1rem; margin-left: 0; padding-left: 15px; border-width: 2px; }
+          
+          .cafe-crazy { padding: 60px 5vw 80px; }
+          .cafe-menu-preview { padding: 60px 5vw; }
+          .cafe-process { padding: 60px 5vw; }
+          .cafe-cta { padding: 60px 5vw; }
+          .cafe-highlight { padding: 60px 5vw; }
         }
       `}</style>
 
