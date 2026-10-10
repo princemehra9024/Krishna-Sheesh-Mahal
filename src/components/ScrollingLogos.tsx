@@ -29,9 +29,10 @@ export default function ScrollingLogos({ title = "DISCOVER OUR SPACES" }: Scroll
     offset: ["start end", "end start"]
   });
 
-  const y1 = useTransform(scrollYProgress, [0, 1], ["0%", "-50%"]);
-  const y2 = useTransform(scrollYProgress, [0, 1], ["-50%", "0%"]);
-  const y3 = useTransform(scrollYProgress, [0, 1], ["0%", "-50%"]);
+  // Use constrained ranges to ensure we never run out of duplicated images at the top or bottom
+  const y1 = useTransform(scrollYProgress, [0, 1], ["-15%", "-40%"]);
+  const y2 = useTransform(scrollYProgress, [0, 1], ["-40%", "-15%"]);
+  const y3 = useTransform(scrollYProgress, [0, 1], ["-20%", "-45%"]);
 
   // Split images into 3 columns
   const col1 = SPACE_IMAGES.slice(0, 4);
