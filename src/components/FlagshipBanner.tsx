@@ -11,14 +11,14 @@ export default function FlagshipBanner() {
           </video>
         </div>
       </div>
-      
-      <h1 className="flagship-banner__title h2" data-scroll data-scroll-speed="0.25">
-        <em>Your Comfort, Our Priority</em>
-      </h1>
 
-      <div className="flagship-banner__inner">
+      <div className="flagship-banner__inner" style={{ paddingTop: '10vh' }}>
+        <h2 className="flagship-banner__title-inline" style={{ textAlign: 'center', color: 'rgba(255,255,255,0.9)', marginBottom: '-2rem', zIndex: 2, position: 'relative' }} data-scroll data-scroll-speed="0.3">
+          <em>Your Comfort, Our Priority</em>
+        </h2>
+
         <div className="flagship-banner__logo" data-scroll data-scroll-speed="0.5">
-          <h1 style={{ fontSize: 'clamp(3rem, 8vw, 8rem)', lineHeight: '1.1', fontWeight: 400, fontFamily: 'var(--font-2)', color: '#fff', letterSpacing: '0.05em', textAlign: 'center', textTransform: 'uppercase', margin: 0 }}>Krishna<br/>Sheesh<br/>Mahal</h1>
+          <h1 style={{ fontSize: 'clamp(3.5rem, 9vw, 9rem)', lineHeight: '1', fontWeight: 400, fontFamily: 'var(--font-2)', color: '#fff', letterSpacing: '0.05em', textAlign: 'center', textTransform: 'uppercase', margin: 0, textShadow: '0 10px 30px rgba(0,0,0,0.3)' }}>Krishna<br/>Sheesh<br/>Mahal</h1>
         </div>
         
         <div className="flagship-banner__txt-cols section section--large">
