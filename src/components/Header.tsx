@@ -162,7 +162,7 @@ export default function Header({ onBookNow }: HeaderProps) {
 
         <div className="header__section header__section--book">
           <div className="header__link" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <button className="btn btn--regular" style={{ height: '36px', padding: '0 20px', fontSize: '0.75rem', borderRadius: '40px', backgroundColor: 'var(--maroon)', color: '#F3EDE4', border: '1px solid rgba(255, 215, 140, 0.4)', transition: 'all 0.3s' }} onMouseEnter={(e) => e.currentTarget.style.boxShadow = '0 0 15px rgba(255, 215, 140, 0.4)'} onMouseLeave={(e) => e.currentTarget.style.boxShadow = 'none'} onClick={onBookNow}>BOOK NOW</button>
+            <button className="btn btn--regular" style={{ height: '36px', padding: '0 20px', fontSize: '0.75rem', borderRadius: '40px', backgroundColor: 'var(--maroon)', color: '#F3EDE4', border: '1px solid rgba(255, 215, 140, 0.4)', transition: 'all 0.3s' }} onMouseEnter={(e) => e.currentTarget.style.boxShadow = '0 0 15px rgba(255, 215, 140, 0.4)'} onMouseLeave={(e) => e.currentTarget.style.boxShadow = 'none'} onClick={() => { setMenuOpen(false); onBookNow(); }}>BOOK NOW</button>
           </div>
         </div>
 
@@ -191,7 +191,7 @@ export default function Header({ onBookNow }: HeaderProps) {
               {renderItems(MENU, 0)}
               <li className="menu-item menu-item--btn menu-item--mobile">
                 <span>
-                  <button className="btn--full btn btn--regular" onClick={(e) => { e.preventDefault(); onBookNow(); }}>Book Now</button>
+                  <button className="btn--full btn btn--regular" onClick={(e) => { e.preventDefault(); setMenuOpen(false); onBookNow(); }}>Book Now</button>
                 </span>
               </li>
               <li className="menu-item menu-item--mobile" style={{ marginTop: 'auto', paddingTop: '40px' }}>
