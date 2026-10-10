@@ -26,46 +26,58 @@ export default function About() {
     { title: "Design", subtitle: "Timeless Architecture", img: ABOUT_IMAGES.secondary2x, angle: 80 },
   ];
 
-  // --- LXL Creative Premium Card Animation Math ---
-  const lxlRef = useRef(null);
-
-  // 1. Scroll Parallax
-  const { scrollYProgress } = useScroll({
-    target: lxlRef,
-    offset: ["start end", "end start"]
+  // --- Scroll-Pinned Card Stack Math ---
+  const stackRef = useRef(null);
+  const { scrollYProgress: stackProgress } = useScroll({
+    target: stackRef,
+    offset: ["start start", "end end"]
   });
 
-  // Card moves up slightly on scroll
-  const cardScrollY = useTransform(scrollYProgress, [0, 1], [100, -100]);
-  // Image moves down inside the card on scroll (inner parallax)
-  const imageScrollY = useTransform(scrollYProgress, [0, 1], [-80, 80]);
-
-  // 2. 3D Magnetic Hover Tilt
-  const mouseX = useMotionValue(0.5);
-  const mouseY = useMotionValue(0.5);
-
-  const springConfig = { damping: 25, stiffness: 150, mass: 0.5 };
-  const smoothMouseX = useSpring(mouseX, springConfig);
-  const smoothMouseY = useSpring(mouseY, springConfig);
-
-  // Map mouse 0-1 to rotation degrees
-  const cardRotateX = useTransform(smoothMouseY, [0, 1], [12, -12]);
-  const cardRotateY = useTransform(smoothMouseX, [0, 1], [-12, 12]);
-
-  // Map mouse to magnetic arrow movement
-  const arrowX = useTransform(smoothMouseX, [0, 1], [-20, 20]);
-  const arrowY = useTransform(smoothMouseY, [0, 1], [-20, 20]);
-
-  const handleCardMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    mouseX.set((e.clientX - rect.left) / rect.width);
-    mouseY.set((e.clientY - rect.top) / rect.height);
+  const generateDeceleration = (start: number, end: number) => {
+    const d = end - start;
+    // 5 points for an incredibly smooth, continuous deceleration curve
+    return [
+      start, 
+      start + d * 0.2, 
+      start + d * 0.45, 
+      start + d * 0.75, 
+      end
+    ];
   };
 
-  const handleCardMouseLeave = () => {
-    mouseX.set(0.5);
-    mouseY.set(0.5);
-  };
+  const p2 = generateDeceleration(0, 0.25);
+  const p3 = generateDeceleration(0.3, 0.55);
+  const p4 = generateDeceleration(0.6, 0.85);
+
+  const yVals = ["-130vh", "-80vh", "-40vh", "-10vh", "0vh"];
+  const rotVals = [35, 22, 12, 4, 0];
+  const scaleVals = [1.2, 1.12, 1.06, 1.02, 1];
+  const shadowVals = [
+    "0 60px 120px rgba(0,0,0,0.3)",
+    "0 45px 90px rgba(0,0,0,0.25)",
+    "0 30px 60px rgba(0,0,0,0.2)",
+    "0 15px 45px rgba(0,0,0,0.15)",
+    "0 10px 30px rgba(0,0,0,0.1)"
+  ];
+
+  const y2 = useTransform(stackProgress, p2, yVals);
+  const rot2 = useTransform(stackProgress, p2, rotVals);
+  const scale2 = useTransform(stackProgress, p2, scaleVals);
+  const shadow2 = useTransform(stackProgress, p2, shadowVals);
+
+  const y3 = useTransform(stackProgress, p3, yVals);
+  const rot3 = useTransform(stackProgress, p3, rotVals);
+  const scale3 = useTransform(stackProgress, p3, scaleVals);
+  const shadow3 = useTransform(stackProgress, p3, shadowVals);
+
+  const y4 = useTransform(stackProgress, p4, yVals);
+  const rot4 = useTransform(stackProgress, p4, rotVals);
+  const scale4 = useTransform(stackProgress, p4, scaleVals);
+  const shadow4 = useTransform(stackProgress, p4, shadowVals);
+
+  const squigglePath = useTransform(stackProgress, [0.8, 1], [0, 1]);
+  // Make the squiggle float down slightly as we scroll
+  const squiggleY = useTransform(stackProgress, [0, 1], ["-60%", "-30%"]);
 
   return (
     <>
@@ -261,37 +273,44 @@ export default function About() {
           .pillar-title { font-size: 2rem; font-family: var(--font-2); margin-bottom: 1.5rem; color: var(--about-text); letter-spacing: -0.01em; }
           .pillar-desc { font-size: 1.1rem; line-height: 1.7; color: #666; font-weight: 300; }
 
-          /* --- LXL Creative Style Services Section --- */
-          .lxl-section {
-            background-color: #fff;
-            color: var(--about-text);
-            padding: 120px 5%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            min-height: 100vh;
+          /* --- Scroll-Pinned Card Stack Section --- */
+          .stack-section {
             position: relative;
-            overflow: hidden;
+            height: 400vh; /* 4 cards = 400vh scroll distance */
+            background-color: #fff;
+            z-index: 10;
             font-family: var(--font-1), sans-serif;
           }
 
-          .lxl-content {
+          .stack-sticky {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            overflow: hidden;
+            padding: 0 5%;
+          }
+
+          .stack-left {
             flex: 1;
             max-width: 500px;
-            position: relative;
             z-index: 10;
             padding-left: 5%;
           }
 
-          .lxl-script {
+          .stack-script {
             font-family: 'Caveat', cursive;
             color: var(--about-accent);
             font-size: clamp(4rem, 8vw, 6rem);
             line-height: 0.5;
             display: inline-block;
+            transform: rotate(-5deg);
+            margin-bottom: 20px;
           }
 
-          .lxl-title {
+          .stack-title {
             font-size: clamp(3.5rem, 7vw, 6rem);
             font-family: var(--font-1), sans-serif;
             font-weight: 900;
@@ -301,7 +320,7 @@ export default function About() {
             color: var(--about-text);
           }
 
-          .lxl-text {
+          .stack-text {
             font-size: 1.15rem;
             color: #666;
             line-height: 1.6;
@@ -309,7 +328,7 @@ export default function About() {
             font-weight: 400;
           }
 
-          .lxl-btn {
+          .stack-btn {
             background-color: var(--about-accent);
             color: #fff;
             padding: 1rem 2rem;
@@ -321,79 +340,91 @@ export default function About() {
             gap: 12px;
             transition: all 0.3s ease;
           }
-          .lxl-btn:hover {
+          .stack-btn:hover {
             background-color: var(--about-text);
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
           }
 
-          .lxl-image-container {
+          .stack-right {
             flex: 1.2;
+            height: 100vh;
             position: relative;
             display: flex;
-            justify-content: center;
             align-items: center;
-            height: 100vh;
-            perspective: 1500px; /* Important for 3D tilt */
+            justify-content: center;
           }
 
-          /* Squiggly line */
-          .lxl-squiggle {
+          .stack-squiggle {
             position: absolute;
-            right: 0%;
+            right: -10%;
             top: 50%;
-            transform: translateY(-50%);
+            /* Removed fixed transform to allow Framer Motion to control Y */
             width: 100%;
             height: 120%;
             pointer-events: none;
-            z-index: 1;
+            z-index: 0;
             overflow: visible;
           }
 
-          .lxl-card {
-            position: relative;
-            width: 75%;
-            height: 85%;
-            border-radius: 20px;
+          .stack-card {
+            position: absolute;
+            inset: 0;
+            margin: auto;
+            width: 28vw;
+            height: 37.3vw;
+            max-width: 550px;
+            max-height: 733px;
+            border-radius: 16px;
             overflow: hidden;
-            z-index: 2;
             box-shadow: 0 30px 60px rgba(0,0,0,0.15);
             background: #e8e4dc;
-            transform-style: preserve-3d;
+            will-change: transform;
           }
 
-          /* Inner shadow overlay for premium look */
-          .lxl-card::after {
+          .stack-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+
+          .stack-card::after {
             content: '';
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 40%);
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
             pointer-events: none;
-            z-index: 2;
+            z-index: 1;
           }
 
-          .lxl-card-label {
+          .stack-card-title {
             position: absolute;
-            bottom: 35px;
-            left: 35px;
+            bottom: 30px;
+            left: 30px;
             color: #fff;
             font-family: var(--font-1);
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-weight: 800;
-            letter-spacing: 0.05em;
             text-transform: uppercase;
-            text-shadow: 0 5px 15px rgba(0,0,0,0.8);
-            z-index: 3;
-            pointer-events: none;
+            letter-spacing: 0.05em;
+            z-index: 2;
+            margin: 0;
           }
 
-          .lxl-card-arrow {
+          .stack-card-arrow {
             position: absolute;
-            bottom: 35px;
-            right: 35px;
-            color: var(--about-accent);
-            z-index: 3;
-            pointer-events: none;
+            bottom: 30px;
+            right: 30px;
+            color: #fff;
+            z-index: 2;
+            display: flex;
+            background: var(--about-accent);
+            border-radius: 50%;
+            padding: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
           }
 
           /* Responsive */
@@ -401,12 +432,15 @@ export default function About() {
              .jl-hero { --radius: 80vw; }
              .jl-card { width: 45vw; height: 50vh; margin-left: -22.5vw; margin-top: -25vh; }
              
-             .lxl-section { flex-direction: column; padding: 100px 5%; text-align: left; }
-             .lxl-content { padding-left: 0; margin-bottom: 80px; max-width: 100%; }
-             .lxl-script { transform: rotate(-5deg) translateY(10px); }
-             .lxl-image-container { width: 100%; height: 60vh; }
-             .lxl-card { width: 90%; height: 100%; }
-             .lxl-squiggle { right: -20%; }
+             .stack-sticky { flex-direction: column; justify-content: flex-start; padding: 0; }
+             .stack-left { padding: 60px 5% 20px; max-width: 100%; text-align: center; flex: 0 0 auto; }
+             .stack-script { margin-bottom: 10px; }
+             .stack-text { margin-bottom: 2rem; }
+             .stack-right { flex: 1; width: 100%; }
+             .stack-card { width: 45vw; height: 60vw; }
+             .stack-card-title { font-size: 1.5rem; bottom: 20px; left: 20px; }
+             .stack-card-arrow { bottom: 20px; right: 20px; }
+             .stack-squiggle { right: -20%; }
           }
           @media (max-width: 600px) {
              .jl-hero { --radius: 100vw; }
@@ -416,7 +450,9 @@ export default function About() {
              
              .about-story { padding: 80px 5%; }
              .pillars-grid { gap: 3rem; }
-             .lxl-title { font-size: 3.5rem; }
+             .stack-title { font-size: 3rem; }
+             .stack-card { width: 80vw; height: 106vw; }
+             .stack-left { padding: 40px 5% 10px; }
           }
         `}
       </style>
@@ -490,102 +526,113 @@ export default function About() {
         </div>
       </section>
 
-      {/* LXL Creative Clone Section */}
-      <section className="lxl-section" ref={lxlRef}>
-        <div className="lxl-content">
-          <motion.div
-            initial={{ opacity: 0, y: 30, rotate: -15 }}
-            whileInView={{ opacity: 1, y: 0, rotate: -5 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="lxl-script"
-          >
-            Our
-          </motion.div>
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="lxl-title"
-          >
-            AMENITIES
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="lxl-text"
-          >
-            From luxurious stays to majestic celebrations, we create and curate experiences that are thoughtful, tailored, and built to leave a lasting impression across every touchpoint.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <Link to="/rooms" className="lxl-btn">
-              Explore all
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </Link>
-          </motion.div>
-        </div>
-
-        <div className="lxl-image-container">
-          <svg className="lxl-squiggle" viewBox="0 0 400 600" preserveAspectRatio="none">
-            <motion.path
-              d="M -50 0 C 150 100 250 200 100 300 C -50 400 150 500 250 600 C 350 700 150 800 -50 900"
-              fill="none"
-              stroke="var(--about-accent)"
-              strokeWidth="24"
-              strokeLinecap="round"
-              initial={{ pathLength: 0 }}
-              whileInView={{ pathLength: 1 }}
+      {/* Scroll-Pinned Card Stack Section */}
+      <section className="stack-section" ref={stackRef}>
+        <div className="stack-sticky">
+          <div className="stack-left">
+            <motion.div 
+              className="stack-script"
+              initial={{ opacity: 0, y: 30, rotate: -15 }}
+              whileInView={{ opacity: 1, y: 0, rotate: -5 }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 2.5, ease: "easeInOut" }}
-            />
-          </svg>
-
-          {/* Premium Parallax & Magnetic Tilt Card */}
-          <motion.div
-            className="lxl-card"
-            style={{
-              y: cardScrollY,
-              rotateX: cardRotateX,
-              rotateY: cardRotateY,
-            }}
-            onMouseMove={handleCardMouseMove}
-            onMouseLeave={handleCardMouseLeave}
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          >
-            {/* Inner Image Parallax */}
-            <motion.img
-              src={ABOUT_IMAGES.primary2x}
-              alt="Luxury Stays"
-              style={{
-                y: imageScrollY,
-                width: '100%',
-                height: '140%',
-                objectFit: 'cover',
-                scale: 1.05
-              }}
-            />
-            <div className="lxl-card-label">LUXURY STAYS</div>
-
-            {/* Magnetic Arrow */}
-            <motion.div className="lxl-card-arrow" style={{ x: arrowX, y: arrowY }}>
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            >
+              Our
             </motion.div>
-          </motion.div>
+            <motion.h2 
+              className="stack-title"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            >
+              AMENITIES
+            </motion.h2>
+            <motion.p 
+              className="stack-text"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            >
+              From luxurious stays to majestic celebrations, we create and curate experiences that are thoughtful, tailored, and built to leave a lasting impression across every touchpoint.
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <Link to="/rooms" className="stack-btn">
+                Explore all
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </motion.div>
+          </div>
+
+          <div className="stack-right">
+            <motion.svg 
+              className="stack-squiggle" 
+              viewBox="0 0 400 600" 
+              preserveAspectRatio="none"
+              style={{ y: squiggleY }}
+            >
+              <motion.path
+                d="M -50 0 C 150 100 250 200 100 300 C -50 400 150 500 250 600 C 350 700 150 800 -50 900"
+                fill="none"
+                stroke="var(--about-accent)"
+                strokeWidth="24"
+                strokeLinecap="round"
+                style={{ pathLength: squigglePath }}
+              />
+            </motion.svg>
+
+            {/* Card 1: Base */}
+            <motion.div className="stack-card" style={{ zIndex: 1, boxShadow: shadowVals[4] }}>
+              <img src={ABOUT_IMAGES.primary2x} alt="Luxury Stays" />
+              <h3 className="stack-card-title">Luxury Stays</h3>
+              <div className="stack-card-arrow">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </div>
+            </motion.div>
+
+            {/* Card 2 */}
+            <motion.div className="stack-card" style={{ zIndex: 2, y: y2, rotate: rot2, scale: scale2, boxShadow: shadow2 }}>
+              <img src={ABOUT_IMAGES.secondary2x} alt="Dining" />
+              <h3 className="stack-card-title">Dining</h3>
+              <div className="stack-card-arrow">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </div>
+            </motion.div>
+
+            {/* Card 3 */}
+            <motion.div className="stack-card" style={{ zIndex: 3, y: y3, rotate: rot3, scale: scale3, boxShadow: shadow3 }}>
+              <img src={HERO_POSTER} alt="Events" />
+              <h3 className="stack-card-title">Events</h3>
+              <div className="stack-card-arrow">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </div>
+            </motion.div>
+
+            {/* Card 4 */}
+            <motion.div className="stack-card" style={{ zIndex: 4, y: y4, rotate: rot4, scale: scale4, boxShadow: shadow4 }}>
+              <img src={ABOUT_IMAGES.primary2x} alt="Heritage" />
+              <h3 className="stack-card-title">Heritage</h3>
+              <div className="stack-card-arrow">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 

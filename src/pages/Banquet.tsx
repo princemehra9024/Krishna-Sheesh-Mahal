@@ -508,7 +508,7 @@ export default function Banquet({ onBookNow }: BanquetProps) {
               <div className="subtitle" style={{ fontSize: '10px' }}>₹350, ₹450, ₹600</div>
             </div>
             <div>
-              <div className="h3">+91 8690393734</div>
+              <div className="h3">+91 9024546041</div>
               <div className="subtitle" style={{ fontSize: '10px' }}>Booking Contact</div>
             </div>
           </div>
@@ -814,9 +814,9 @@ export default function Banquet({ onBookNow }: BanquetProps) {
                 <li style={{ marginBottom: '10px' }}><strong>Capacity:</strong> 50 to 80 Guests</li>
                 <li style={{ marginBottom: '10px' }}><strong>Packages:</strong> ₹350, ₹450, and ₹600</li>
                 <li style={{ marginBottom: '10px' }}><strong>Facilities & Amenities:</strong> DJ, Sound System, Decoration</li>
-                <li style={{ marginBottom: '10px' }}><strong>Booking Contact:</strong> +91 8690393734</li>
+                <li style={{ marginBottom: '10px' }}><strong>Booking Contact:</strong> +91 9024546041</li>
               </ul>
-              <a href="tel:+918690393734" className="btn btn--regular">
+              <a href="tel:+919024546041" className="btn btn--regular">
                 Call Now
               </a>
             </div>
