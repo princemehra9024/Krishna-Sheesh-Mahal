@@ -15,7 +15,8 @@ export default function About() {
   // Framer Motion physics for dragging the 3D cylinder
 
   const dragX = useMotionValue(0);
-  const smoothDragX = useSpring(dragX, { damping: 30, stiffness: 90 });
+  // Adjusted spring config for a smoother, floatier feel
+  const smoothDragX = useSpring(dragX, { damping: 25, stiffness: 40, mass: 1.2 });
   const rotationY = useTransform(smoothDragX, [-1500, 1500], [-90, 90]);
 
   const cards = [
@@ -218,7 +219,7 @@ export default function About() {
             font-size: 0.85rem;
             letter-spacing: 0.4em;
             text-transform: uppercase;
-            color: var(--about-accent);
+            color: #ffffff; /* Changed from var(--about-accent) for visibility */
             z-index: 10;
             background: rgba(0,0,0,0.75);
             padding: 8px 20px;
@@ -238,40 +239,119 @@ export default function About() {
 
           /* --- Story Section --- */
           .about-story {
-            padding: 120px 5%;
+            padding: 160px 5%;
             background-color: var(--about-light);
             text-align: center;
             position: relative;
             z-index: 5;
+            display: flex;
+            justify-content: center;
           }
           .about-story-text {
-            font-family: var(--font-1);
-            font-size: clamp(2rem, 4vw, 3.5rem);
-            line-height: 1.35;
-            max-width: 1100px;
-            margin: 0 auto;
+            font-family: var(--font-2), serif;
+            font-size: clamp(2.5rem, 4vw, 4rem);
+            line-height: 1.4;
+            max-width: 1200px;
             color: var(--about-text);
-            letter-spacing: -0.01em;
+            position: relative;
+            letter-spacing: -0.02em;
           }
-          .word-wrap { display: inline-block; overflow: hidden; vertical-align: top; margin-right: 0.25em; }
-          .word-reveal { display: inline-block; opacity: 0; transform: translateY(100%); animation: revealText 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-          @keyframes revealText { 0% { opacity: 0; transform: translateY(100%); } 100% { opacity: 1; transform: translateY(0); } }
+          .quote-mark {
+            font-family: var(--font-2);
+            font-size: 8rem;
+            color: var(--about-accent);
+            opacity: 0.15;
+            position: absolute;
+            top: -50px;
+            left: -40px;
+            line-height: 1;
+            pointer-events: none;
+            user-select: none;
+          }
+          .quote-mark.right {
+            top: auto;
+            bottom: -90px;
+            left: auto;
+            right: -20px;
+            transform: rotate(180deg);
+          }
+          .word-wrap { display: inline-block; overflow: hidden; vertical-align: top; margin-right: 0.25em; padding-bottom: 0.1em; }
+          .word-reveal { display: inline-block; transform-origin: left bottom; }
 
           /* --- Pillars Section --- */
           .about-pillars {
-            padding: 40px 5% 120px;
+            padding: 80px 5% 160px;
             background-color: var(--about-light);
             position: relative;
             z-index: 5;
           }
-          .pillars-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 4rem; max-width: 1300px; margin: 0 auto; }
-          .pillar-card { border-top: 1px solid rgba(0,0,0,0.1); padding-top: 2.5rem; transition: all 0.4s ease; position: relative; }
-          .pillar-card::before { content: ''; position: absolute; top: -1px; left: 0; width: 0; height: 1px; background-color: var(--about-accent); transition: width 0.4s ease; }
-          .pillar-card:hover::before { width: 100%; }
-          .pillar-card:hover { transform: translateY(-10px); }
-          .pillar-num { font-family: var(--font-2); font-size: 3rem; color: var(--about-accent); margin-bottom: 1.5rem; opacity: 0.8; line-height: 1; }
-          .pillar-title { font-size: 2rem; font-family: var(--font-2); margin-bottom: 1.5rem; color: var(--about-text); letter-spacing: -0.01em; }
-          .pillar-desc { font-size: 1.1rem; line-height: 1.7; color: #666; font-weight: 300; }
+          .pillars-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 3rem; 
+            max-width: 1300px; 
+            margin: 0 auto; 
+          }
+          .pillar-card { 
+            background: #ffffff;
+            padding: 3.5rem 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            border: 1px solid rgba(0,0,0,0.04);
+            overflow: hidden;
+            text-align: left;
+          }
+          .pillar-card::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; left: 0; 
+            width: 100%; height: 5px; 
+            background: var(--about-accent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+          }
+          .pillar-card:hover::before { transform: scaleX(1); }
+          .pillar-card:hover { 
+            transform: translateY(-12px); 
+            box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+          }
+          .pillar-num { 
+            font-family: var(--font-2); 
+            font-size: 5rem; 
+            color: var(--about-accent); 
+            margin-bottom: 1rem; 
+            opacity: 0.1; 
+            line-height: 1; 
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: none;
+          }
+          .pillar-card:hover .pillar-num {
+            opacity: 0.25;
+            transform: scale(1.1) translateY(-10px);
+          }
+          .pillar-title { 
+            font-size: 2.2rem; 
+            font-family: var(--font-2); 
+            margin-bottom: 1.5rem; 
+            color: var(--about-text); 
+            letter-spacing: -0.01em; 
+            position: relative;
+            z-index: 2;
+          }
+          .pillar-desc { 
+            font-size: 1.15rem; 
+            line-height: 1.8; 
+            color: #555; 
+            font-weight: 400; 
+            position: relative;
+            z-index: 2;
+          }
 
           /* --- Scroll-Pinned Card Stack Section --- */
           .stack-section {
@@ -494,36 +574,75 @@ export default function About() {
 
       {/* The Story */}
       <section className="about-story">
-        <div className="about-story-text" data-scroll>
+        <motion.div 
+          className="about-story-text"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={{
+            visible: { transition: { staggerChildren: 0.03 } }
+          }}
+        >
+          <div className="quote-mark">“</div>
           {words.map((word, i) => (
             <span className="word-wrap" key={i}>
-              <span className="word-reveal" style={{ animationDelay: `${0.1 + (i * 0.025)}s` }}>
+              <motion.span 
+                className="word-reveal"
+                variants={{
+                  hidden: { opacity: 0, y: "120%", rotate: 8 },
+                  visible: { opacity: 1, y: "0%", rotate: 0, transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } }
+                }}
+              >
                 {word}
-              </span>
+              </motion.span>
             </span>
           ))}
-        </div>
+          <div className="quote-mark right">”</div>
+        </motion.div>
       </section>
 
       {/* Core Pillars Grid */}
       <section className="about-pillars">
-        <div className="pillars-grid" data-scroll data-scroll-speed="0.05">
-          <div className="pillar-card">
-            <div className="pillar-num">01</div>
-            <h3 className="pillar-title">Our Story & History</h3>
-            <p className="pillar-desc">Opening our doors on 15 Feb 2025, Krishna Sheesh Mahal was born from a passion for creating unforgettable memories and a desire to transform hospitality in Kota.</p>
-          </div>
-          <div className="pillar-card">
-            <div className="pillar-num">02</div>
-            <h3 className="pillar-title">Our Mission</h3>
-            <p className="pillar-desc">To provide impeccable luxury and culinary excellence, ensuring every guest experiences tailored hospitality, royal comfort, and a truly unforgettable stay.</p>
-          </div>
-          <div className="pillar-card">
-            <div className="pillar-num">03</div>
-            <h3 className="pillar-title">Our Vision</h3>
-            <p className="pillar-desc">To be the premier destination in Kota for majestic celebrations and luxurious stays, setting new standards in the hospitality industry for generations to come.</p>
-          </div>
-        </div>
+        <motion.div 
+          className="pillars-grid"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={{
+            visible: { transition: { staggerChildren: 0.15 } }
+          }}
+        >
+          {[
+            {
+              num: "01",
+              title: "Our Story",
+              desc: "Opening our doors on 15 Feb 2025, Krishna Sheesh Mahal was born from a passion for creating unforgettable memories and a desire to transform hospitality in Kota."
+            },
+            {
+              num: "02",
+              title: "Our Mission",
+              desc: "To provide impeccable luxury and culinary excellence, ensuring every guest experiences tailored hospitality, royal comfort, and a truly unforgettable stay."
+            },
+            {
+              num: "03",
+              title: "Our Vision",
+              desc: "To be the premier destination in Kota for majestic celebrations and luxurious stays, setting new standards in the hospitality industry for generations to come."
+            }
+          ].map((pillar, i) => (
+            <motion.div 
+              className="pillar-card"
+              key={i}
+              variants={{
+                hidden: { opacity: 0, y: 60, scale: 0.95 },
+                visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+              }}
+            >
+              <div className="pillar-num">{pillar.num}</div>
+              <h3 className="pillar-title">{pillar.title}</h3>
+              <p className="pillar-desc">{pillar.desc}</p>
+            </motion.div>
+          ))}
+        </motion.div>
       </section>
 
       {/* Scroll-Pinned Card Stack Section */}
