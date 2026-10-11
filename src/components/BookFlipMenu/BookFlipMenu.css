@@ -1,0 +1,1464 @@
+/* ==========================================================================
+   KRISHNA SHEESH MAHAL - 3D REALISTIC BOOK FLIP MENU
+   Theme: Light Heritage Luxury (Ivory, Cream Sandstone, Royal Maroon & Antique Gold)
+   ========================================================================== */
+
+/* ── Container & Atmosphere (Light Luxury Palette) ── */
+.book-flip-viewport {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding: 44px 16px 74px;
+  background-color: #FAF6EE;
+  background-image: 
+    radial-gradient(ellipse at 50% 12%, #FFFFFF 0%, #FAF6EE 45%, #F0E8DA 85%, #E8DCCF 100%),
+    linear-gradient(to bottom, #FAF7F2 0%, #F0E9DC 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  user-select: none;
+  font-family: var(--font-1, 'Satoshi', sans-serif);
+}
+
+/* ── LIGHTING EFFECTS: Overhead Radiant Spotlight & Soft Ambient Halo ── */
+.book-overhead-spotlight {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1040px;
+  height: 620px;
+  background: radial-gradient(
+    ellipse at 50% 0%, 
+    rgba(255, 255, 255, 0.95) 0%, 
+    rgba(255, 248, 230, 0.6) 35%, 
+    rgba(197, 157, 58, 0.12) 60%, 
+    transparent 80%
+  );
+  filter: blur(28px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.book-ambient-warmth {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1200px;
+  height: 800px;
+  background: radial-gradient(
+    ellipse at center, 
+    rgba(197, 157, 58, 0.08) 0%, 
+    rgba(140, 38, 51, 0.03) 50%, 
+    transparent 75%
+  );
+  filter: blur(50px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Section Header (Light Aesthetic) ── */
+.book-menu-hero-header {
+  text-align: center;
+  margin-bottom: 22px;
+  z-index: 2;
+  position: relative;
+}
+
+.book-menu-hero-eyebrow {
+  font-family: var(--font-1);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  color: #8C2633;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.book-menu-hero-eyebrow::before,
+.book-menu-hero-eyebrow::after {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background: #C59D3A;
+  opacity: 0.7;
+}
+
+.book-menu-hero-title {
+  font-family: var(--font-2, 'Noe Display', Georgia, serif);
+  font-size: clamp(2.1rem, 4.5vw, 3.1rem);
+  color: #251C19;
+  font-weight: 500;
+  line-height: 1.15;
+  margin-bottom: 4px;
+  text-shadow: 0 2px 10px rgba(37, 28, 25, 0.08);
+}
+
+.book-menu-hero-subtitle {
+  font-family: var(--font-3, 'Noe Text', Georgia, serif);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #6B6046;
+  letter-spacing: 0.03em;
+}
+
+/* ── Category Navigation Tabs (Light Frosted Luxury) ── */
+.book-nav-tabs-wrapper {
+  max-width: 1120px;
+  width: 100%;
+  margin-bottom: 24px;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+}
+
+.book-nav-tabs-scroll {
+  display: flex;
+  gap: 6px;
+  padding: 6px 12px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(197, 157, 58, 0.4) transparent;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(197, 157, 58, 0.38);
+  border-radius: 40px;
+  box-shadow: 0 6px 20px rgba(37, 28, 25, 0.06);
+}
+
+.book-nav-tabs-scroll::-webkit-scrollbar {
+  height: 4px;
+}
+.book-nav-tabs-scroll::-webkit-scrollbar-thumb {
+  background: rgba(197, 157, 58, 0.4);
+  border-radius: 4px;
+}
+
+.book-nav-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 14px;
+  border-radius: 30px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+  color: #4A3E39;
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  font-family: var(--font-1);
+}
+
+.book-tab-icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  opacity: 0.85;
+}
+
+.book-tab-svg-icon {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  display: block;
+}
+
+.book-nav-tab-btn:hover {
+  color: #8C2633;
+  background: rgba(140, 38, 51, 0.06);
+  border-color: rgba(197, 157, 58, 0.3);
+}
+
+.book-nav-tab-btn.is-active {
+  background: linear-gradient(135deg, #8C2633 0%, #6E1B26 100%);
+  color: #FFFFFF;
+  border-color: var(--gold, #C59D3A);
+  box-shadow: 0 4px 12px rgba(140, 38, 51, 0.25);
+}
+
+.book-nav-tab-btn.is-active .book-tab-icon-wrap {
+  opacity: 1;
+}
+
+/* ── Book Stage & Elevation ── */
+.book-stage-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1120px;
+  z-index: 5;
+  overflow: visible;
+}
+
+/* Discrete Spine Marker Tab (Sits strictly ABOVE the top spine, never overlaps text) */
+.book-spine-marker-tab {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #8C2633 0%, #6E1B26 100%);
+  border: 1px solid var(--gold, #C59D3A);
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: 14px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  z-index: 40;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(37, 28, 25, 0.25);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.book-spine-marker-tab:hover {
+  transform: translateX(-50%) translateY(-2px);
+  background: #A32C3C;
+}
+
+/* Master Book Frame with Table Drop Shadow & Smooth Single-Frame Centering Transition */
+.book-master-frame {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Soft, elegant drop shadow on the light sandstone table */
+.book-table-shadow {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 96%;
+  height: 50px;
+  background: radial-gradient(ellipse at center, rgba(37, 28, 25, 0.25) 0%, rgba(37, 28, 25, 0.1) 50%, transparent 75%);
+  filter: blur(12px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Host Container where page-flip mounts */
+.book-flip-host {
+  position: relative;
+  margin: 0 auto;
+  z-index: 10;
+  box-shadow: 
+    0 25px 55px -12px rgba(37, 28, 25, 0.25),
+    0 12px 25px -5px rgba(37, 28, 25, 0.12),
+    0 0 40px rgba(197, 157, 58, 0.1);
+  border-radius: 8px;
+}
+
+/* ── Central Spine Binder Overlay ── */
+.book-central-spine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 32px;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 30;
+  background: linear-gradient(
+    90deg, 
+    rgba(37, 28, 25, 0.32) 0%, 
+    rgba(37, 28, 25, 0.1) 30%, 
+    rgba(255, 255, 255, 0.18) 50%, 
+    rgba(37, 28, 25, 0.1) 70%, 
+    rgba(37, 28, 25, 0.32) 100%
+  );
+  box-shadow: 0 0 15px rgba(37, 28, 25, 0.2);
+  display: none;
+}
+.book-central-spine.is-landscape {
+  display: block;
+}
+
+/* ── PAGE FLIP INTERNAL PAGE STYLES ── */
+.book-page-unit {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* ── HARD COVER STYLING (Pages 0 & 15 - Single Frame Presentation) ── */
+.book-hardcover {
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 50% 25%, #FFFDF9 0%, #F8F3EA 50%, #ECE3D2 100%);
+  border: 10px solid #DFCDB8;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px 32px;
+  color: #251C19;
+  overflow: hidden;
+  box-shadow: inset 0 0 35px rgba(197, 157, 58, 0.22), 0 15px 35px rgba(37, 28, 25, 0.12);
+}
+
+/* Leather Texture Simulation */
+.book-hardcover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(rgba(197, 157, 58, 0.12) 1px, transparent 1px),
+    radial-gradient(rgba(37, 28, 25, 0.04) 1px, transparent 1px);
+  background-size: 8px 8px, 6px 6px;
+  background-position: 0 0, 3px 3px;
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+/* Stitched Gold Borders */
+.book-cover-stitch-border {
+  position: absolute;
+  inset: 12px;
+  border: 2px dashed rgba(197, 157, 58, 0.75);
+  box-shadow: inset 0 0 0 2px rgba(140, 38, 51, 0.35);
+  pointer-events: none;
+  border-radius: 4px;
+}
+
+.book-cover-inner-frame {
+  position: absolute;
+  inset: 22px;
+  border: 1px solid rgba(197, 157, 58, 0.45);
+  pointer-events: none;
+}
+
+/* Brass Corner Accents on Covers */
+.brass-corner {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  pointer-events: none;
+  z-index: 10;
+}
+.brass-corner-tl { top: 0; left: 0; }
+.brass-corner-tr { top: 0; right: 0; }
+.brass-corner-bl { bottom: 0; left: 0; }
+.brass-corner-br { bottom: 0; right: 0; }
+
+.brass-corner svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(1px 2px 3px rgba(37, 28, 25, 0.25));
+}
+
+/* Front Cover Branding Typography */
+.book-cover-crest-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 25px;
+  z-index: 5;
+}
+
+.book-cover-royal-crest {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 16px;
+  filter: drop-shadow(0 4px 10px rgba(140, 38, 51, 0.15));
+}
+
+.book-cover-hotel-title {
+  font-family: var(--font-2, 'Noe Display', Georgia, serif);
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  line-height: 1.05;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #8C2633 0%, #A6293B 50%, #63121E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.8));
+  margin: 0;
+}
+
+.book-cover-hotel-sub {
+  font-family: var(--font-3, 'Noe Text', Georgia, serif);
+  font-style: italic;
+  font-size: 1.25rem;
+  color: #70582F;
+  letter-spacing: 0.08em;
+  margin-top: 8px;
+}
+
+.book-cover-divider-flourish {
+  width: 140px;
+  height: 14px;
+  margin: 20px auto;
+  stroke: var(--gold, #C59D3A);
+  opacity: 0.85;
+}
+
+.book-cover-center-badge {
+  text-align: center;
+  z-index: 5;
+  margin: 10px 0;
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(197, 157, 58, 0.55);
+  border-radius: 6px;
+  padding: 12px 16px;
+  box-shadow: 0 4px 14px rgba(197, 157, 58, 0.15);
+}
+
+.book-cover-pill-text {
+  font-family: var(--font-1);
+  font-size: 0.76rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #8C2633;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.book-cover-compendium-title {
+  font-family: var(--font-2, Georgia, serif);
+  font-size: 1.5rem;
+  color: #251C19;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.book-cover-footer-note {
+  text-align: center;
+  z-index: 5;
+  padding-bottom: 10px;
+}
+
+.book-cover-cta-open {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 28px;
+  background: linear-gradient(135deg, #8C2633 0%, #6E1B26 100%);
+  color: #FFFFFF;
+  border: 1px solid #C59D3A;
+  border-radius: 30px;
+  font-family: var(--font-1);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(140, 38, 51, 0.28);
+  transition: all 0.3s ease;
+}
+.book-cover-cta-open:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(140, 38, 51, 0.42);
+  filter: brightness(1.08);
+}
+.book-cover-corner-hint {
+  margin-top: 8px;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: #70582F;
+  text-transform: uppercase;
+}
+
+/* ── SOFT PARCHMENT PAGES (Pages 1 to 14 - Crisp Light Paper) ── */
+.book-parchment-page {
+  width: 100%;
+  height: 100%;
+  background: #fdfbf7;
+  background-image: 
+    radial-gradient(#e2d9c7 0.6px, transparent 0.6px),
+    linear-gradient(to bottom, #FFFFFF 0%, #FAF6EE 50%, #F5EFE3 100%);
+  background-size: 16px 16px, 100% 100%;
+  box-sizing: border-box;
+  padding: 30px 28px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  color: #251C19;
+}
+
+/* Royal Watermark Background */
+.book-parchment-page::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 240px;
+  height: 240px;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 5 L60 30 L85 20 L75 45 L98 50 L75 55 L85 80 L60 70 L50 95 L40 70 L15 80 L25 55 L2 50 L25 45 L15 20 L40 30 Z' fill='none' stroke='%238c2633' stroke-width='1' opacity='0.08'/%3E%3C/svg%3E") no-repeat center;
+  background-size: contain;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Page Curvature & Gutter Shadows */
+.book-parchment-page.page-left {
+  box-shadow: inset -18px 0 24px -10px rgba(37, 28, 25, 0.28);
+  border-right: 1px solid rgba(37, 28, 25, 0.12);
+}
+.book-parchment-page.page-right {
+  box-shadow: inset 18px 0 24px -10px rgba(37, 28, 25, 0.28);
+  border-left: 1px solid rgba(37, 28, 25, 0.12);
+}
+
+/* Delicate Ornamental Page Border */
+.book-page-ornament-border {
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(140, 38, 51, 0.2);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.book-page-ornament-border::before {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border: 1px dashed rgba(197, 157, 58, 0.32);
+}
+
+/* Corner Flourishes */
+.page-corner-flourish {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.65;
+}
+.pcf-tl { top: 12px; left: 12px; }
+.pcf-tr { top: 12px; right: 12px; transform: scaleX(-1); }
+.pcf-bl { bottom: 12px; left: 12px; transform: scaleY(-1); }
+.pcf-br { bottom: 12px; right: 12px; transform: scale(-1); }
+
+/* Page Header */
+.book-page-header {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+.book-page-category-banner {
+  display: inline-block;
+  background: #8C2633;
+  color: #fff;
+  padding: 4px 18px;
+  border-radius: 4px;
+  font-family: var(--font-2, Georgia, serif);
+  font-size: 1.15rem;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(140, 38, 51, 0.22);
+}
+
+.book-page-category-sub {
+  font-family: var(--font-3, Georgia, serif);
+  font-style: italic;
+  font-size: 0.8rem;
+  color: #635C56;
+  margin-top: 4px;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.book-header-line-flourish {
+  width: 100px;
+  height: 8px;
+  margin: 6px auto 0;
+  stroke: #C59D3A;
+  opacity: 0.75;
+}
+
+/* Page Body Content */
+.book-page-content {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-right: 0;
+}
+.book-page-content::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* Sub-sections within page */
+.book-menu-subsection {
+  margin-bottom: 4px;
+}
+
+.book-subsection-title {
+  font-family: var(--font-1);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #8C2633;
+  border-bottom: 1px solid rgba(140, 38, 51, 0.18);
+  padding-bottom: 3px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Individual Menu Item Rows */
+.book-menu-item-row {
+  position: relative;
+  margin-bottom: 10px;
+  padding-bottom: 4px;
+  transition: transform 0.2s ease;
+}
+
+.book-menu-item-row:hover {
+  transform: translateX(2px);
+}
+
+.book-menu-item-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+}
+
+.book-item-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #fdfbf7;
+  padding-right: 6px;
+  position: relative;
+  z-index: 2;
+  max-width: 80%;
+}
+
+/* Indian Veg Mark */
+.veg-dietary-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 13px;
+  height: 13px;
+  border: 1.5px solid #2e7d32;
+  border-radius: 2px;
+  flex-shrink: 0;
+  background: #fff;
+}
+.veg-dietary-badge::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: #2e7d32;
+  border-radius: 50%;
+}
+
+.book-item-name {
+  font-family: var(--font-1);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #251C19;
+  letter-spacing: 0.01em;
+  line-height: 1.25;
+}
+
+/* Tags & Badges */
+.book-item-tag {
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px 6px;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+.book-item-tag.tag-bestseller {
+  background: #C59D3A;
+  color: #1A1210;
+}
+.book-item-tag.tag-chef-special {
+  background: #8C2633;
+  color: #fff;
+}
+.book-item-tag.tag-royal-heritage {
+  background: #5E202D;
+  color: #E9D29F;
+  border: 1px solid #C59D3A;
+}
+.book-item-tag.tag-popular {
+  background: #e4933d;
+  color: #fff;
+}
+.book-item-tag.tag-must-try {
+  background: #397e56;
+  color: #fff;
+}
+.book-item-tag.tag-house-special {
+  background: #251C19;
+  color: #F3EDE4;
+}
+
+/* Dotted Leader Line */
+.book-item-dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 4px;
+  height: 1px;
+  border-bottom: 1.5px dotted rgba(37, 28, 25, 0.32);
+  z-index: 1;
+}
+
+.book-item-right {
+  display: flex;
+  align-items: center;
+  background: #fdfbf7;
+  padding-left: 6px;
+  position: relative;
+  z-index: 2;
+}
+
+.book-item-price {
+  font-family: var(--font-1);
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #8C2633;
+  white-space: nowrap;
+}
+
+.book-item-description {
+  font-family: var(--font-1);
+  font-size: 0.74rem;
+  line-height: 1.35;
+  color: #5c524b;
+  margin-top: 2px;
+  padding-left: 19px;
+  padding-right: 8px;
+}
+
+/* Page Footer Folio */
+.book-page-footer {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  border-top: 1px solid rgba(140, 38, 51, 0.15);
+  padding-top: 8px;
+  margin-top: 6px;
+}
+
+.book-page-folio-number {
+  font-family: var(--font-2, Georgia, serif);
+  font-size: 0.8rem;
+  color: #8C2633;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+}
+
+.book-page-folio-label {
+  font-family: var(--font-1);
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(99, 92, 86, 0.7);
+  display: block;
+  margin-top: 2px;
+}
+
+/* ── TABLE OF CONTENTS PAGES (Pages 1 & 2) ── */
+.book-toc-header {
+  text-align: center;
+  margin-bottom: 12px;
+}
+.book-toc-title {
+  font-family: var(--font-2, Georgia, serif);
+  font-size: 1.55rem;
+  color: #8C2633;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  margin-bottom: 2px;
+}
+.book-toc-subtitle {
+  font-family: var(--font-3, Georgia, serif);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: #635C56;
+}
+
+.book-toc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.book-toc-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  position: relative;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+.book-toc-row:hover {
+  background: rgba(140, 38, 51, 0.06);
+}
+
+.book-toc-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fdfbf7;
+  padding-right: 8px;
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-1);
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #251C19;
+}
+
+.book-toc-row:hover .book-toc-left {
+  color: #8C2633;
+}
+
+.book-toc-roman {
+  color: #C59D3A;
+  font-family: var(--font-2, Georgia, serif);
+  font-size: 0.8rem;
+  font-weight: 700;
+  width: 24px;
+}
+
+.book-toc-dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 6px;
+  height: 1px;
+  border-bottom: 1.5px dotted rgba(140, 38, 51, 0.3);
+  z-index: 1;
+}
+
+.book-toc-page-num {
+  background: #fdfbf7;
+  padding-left: 8px;
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-2, Georgia, serif);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #8C2633;
+}
+
+.book-chef-note-card {
+  background: rgba(197, 157, 58, 0.12);
+  border: 1px solid rgba(197, 157, 58, 0.35);
+  border-radius: 6px;
+  padding: 12px 14px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.book-chef-note-title {
+  font-family: var(--font-2, Georgia, serif);
+  font-size: 0.92rem;
+  color: #8C2633;
+  margin-bottom: 4px;
+}
+
+.book-chef-note-p {
+  font-family: var(--font-3, Georgia, serif);
+  font-style: italic;
+  font-size: 0.76rem;
+  line-height: 1.45;
+  color: #251C19;
+}
+
+.book-chef-sign {
+  font-family: var(--font-5, 'Honeymoon Hand', cursive);
+  font-size: 1.25rem;
+  color: #8C2633;
+  margin-top: 6px;
+}
+
+/* ── BACK COVER STYLING (Page 15 - Single Frame Presentation) ── */
+.book-backcover-content {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  text-align: center;
+}
+
+.book-backcover-header h3 {
+  font-family: var(--font-2, Georgia, serif);
+  font-size: 1.7rem;
+  color: #8C2633;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+.book-backcover-header p {
+  color: #70582F;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.book-backcover-info-card {
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(197, 157, 58, 0.45);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 14px 0;
+  text-align: left;
+  box-shadow: 0 4px 16px rgba(37, 28, 25, 0.06);
+}
+
+.book-backcover-info-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-size: 0.8rem;
+  color: #382E2B;
+  line-height: 1.4;
+}
+.book-backcover-info-row strong {
+  color: #251C19;
+}
+.book-backcover-info-row:last-child {
+  margin-bottom: 0;
+}
+.book-backcover-info-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #8C2633;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.book-backcover-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #8C2633 0%, #6E1B26 100%);
+  color: #FFFFFF;
+  border: 1px solid #C59D3A;
+  border-radius: 30px;
+  font-family: var(--font-1);
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(140, 38, 51, 0.3);
+  transition: all 0.3s ease;
+  margin-bottom: 14px;
+}
+.book-backcover-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(140, 38, 51, 0.45);
+  filter: brightness(1.08);
+}
+
+.book-backcover-guidelines {
+  font-size: 0.68rem;
+  color: #70582F;
+  line-height: 1.4;
+}
+
+/* ── BOTTOM DOCK CONTROLS (LIGHT FROSTED LUXURY) ── */
+.book-control-dock {
+  margin-top: 26px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.book-dock-nav-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(197, 157, 58, 0.4);
+  padding: 6px 14px;
+  border-radius: 40px;
+  box-shadow: 0 8px 24px rgba(37, 28, 25, 0.08);
+}
+
+.book-dock-arrow-btn {
+  background: rgba(140, 38, 51, 0.08);
+  color: #8C2633;
+  border: 1px solid rgba(140, 38, 51, 0.2);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1.1rem;
+}
+.book-dock-arrow-btn:hover:not(:disabled) {
+  background: #8C2633;
+  color: #FFFFFF;
+  border-color: #8C2633;
+  transform: scale(1.08);
+}
+.book-dock-arrow-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.book-dock-page-indicator {
+  font-family: var(--font-2, Georgia, serif);
+  font-size: 0.95rem;
+  color: #251C19;
+  padding: 0 14px;
+  min-width: 120px;
+  text-align: center;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.book-dock-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(197, 157, 58, 0.4);
+  color: #251C19;
+  padding: 10px 18px;
+  border-radius: 30px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: var(--font-1);
+  box-shadow: 0 8px 24px rgba(37, 28, 25, 0.08);
+}
+.book-dock-action-btn:hover {
+  background: rgba(140, 38, 51, 0.08);
+  border-color: #8C2633;
+  color: #8C2633;
+}
+.book-dock-action-btn.is-active {
+  background: #8C2633;
+  color: #fff;
+  border-color: #C59D3A;
+}
+
+/* ── REALISTIC BOOK SHADOW & MULTI-LAYERED PAGE EDGES ── */
+.book-flip-host {
+  box-shadow: 
+    0 22px 50px -10px rgba(37, 28, 25, 0.32),
+    0 10px 20px -5px rgba(37, 28, 25, 0.15),
+    4px 0 0 #F5EDE0,
+    7px 0 0 #ECE1CE,
+    10px 0 0 #E0D2BE,
+    0 0 35px rgba(197, 157, 58, 0.12) !important;
+}
+
+/* ── RESPONSIVE TWEAKS ── */
+@media (max-width: 900px) and (min-width: 769px) {
+  .book-flip-viewport {
+    padding: 30px 8px 60px;
+  }
+  .book-spine-marker-tab {
+    display: none;
+  }
+  .book-parchment-page {
+    padding: 24px 18px 20px;
+  }
+  .book-hardcover {
+    padding: 30px 20px;
+  }
+  .book-item-description {
+    padding-right: 4px;
+  }
+  .book-dock-page-indicator {
+    min-width: 80px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .book-flip-viewport {
+    padding: 20px 8px 45px !important;
+    overflow-x: hidden !important;
+    width: 100% !important;
+  }
+  .book-overhead-spotlight {
+    width: 100% !important;
+    height: 380px !important;
+  }
+  .book-ambient-warmth {
+    width: 100% !important;
+    height: 480px !important;
+  }
+  .book-menu-hero-header {
+    margin-bottom: 12px !important;
+  }
+  .book-menu-hero-eyebrow {
+    font-size: 0.7rem !important;
+    letter-spacing: 0.22em !important;
+    margin-bottom: 4px !important;
+  }
+  .book-menu-hero-eyebrow::before,
+  .book-menu-hero-eyebrow::after {
+    width: 18px !important;
+  }
+  .book-menu-hero-title {
+    font-size: clamp(1.75rem, 6vw, 2.2rem) !important;
+    margin-bottom: 2px !important;
+  }
+  .book-menu-hero-subtitle {
+    font-size: 0.95rem !important;
+  }
+  .book-nav-tabs-wrapper {
+    margin-bottom: 14px !important;
+    padding: 0 4px !important;
+    max-width: 100% !important;
+  }
+  .book-nav-tabs-scroll {
+    gap: 4px !important;
+    padding: 4px 8px !important;
+    border-radius: 30px !important;
+    max-width: 100% !important;
+  }
+  .book-nav-tab-btn {
+    padding: 5px 10px !important;
+    font-size: 0.74rem !important;
+    gap: 4px !important;
+  }
+  .book-stage-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    overflow: visible !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+  .book-spine-marker-tab {
+    display: none !important;
+  }
+  .book-master-frame {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 4px 0 !important;
+    margin: 0 auto !important;
+    transform: none !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+  .book-flip-host {
+    width: 100% !important;
+    max-width: 380px !important;
+    height: 560px !important;
+    margin: 0 auto !important;
+    border-radius: 8px !important;
+    box-shadow: 
+      0 16px 36px -8px rgba(37, 28, 25, 0.35),
+      0 6px 14px -3px rgba(37, 28, 25, 0.2),
+      3px 0 0 #F5EDE0,
+      6px 0 0 #ECE1CE,
+      0 0 20px rgba(197, 157, 58, 0.1) !important;
+  }
+  .book-central-spine {
+    display: none !important;
+  }
+  .book-table-shadow {
+    width: 90% !important;
+    height: 35px !important;
+    bottom: -6px !important;
+  }
+
+  /* Hardcover on mobile */
+  .book-hardcover {
+    padding: 22px 16px 18px !important;
+    border-width: 6px !important;
+  }
+  .brass-corner {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  .book-cover-stitch-border {
+    inset: 8px !important;
+  }
+  .book-cover-inner-frame {
+    inset: 14px !important;
+  }
+  .book-cover-crest-container {
+    margin-top: 10px !important;
+  }
+  .book-cover-royal-crest {
+    width: 52px !important;
+    height: 52px !important;
+    margin-bottom: 8px !important;
+  }
+  .book-cover-hotel-title {
+    font-size: 1.85rem !important;
+    letter-spacing: 0.04em !important;
+  }
+  .book-cover-hotel-sub {
+    font-size: 0.95rem !important;
+    margin-top: 4px !important;
+  }
+  .book-cover-divider-flourish {
+    width: 100px !important;
+    height: 10px !important;
+    margin: 8px auto !important;
+  }
+  .book-cover-center-badge {
+    padding: 8px 10px !important;
+    margin: 4px 0 !important;
+  }
+  .book-cover-pill-text {
+    font-size: 0.64rem !important;
+    letter-spacing: 0.18em !important;
+    margin-bottom: 2px !important;
+  }
+  .book-cover-compendium-title {
+    font-size: 1.2rem !important;
+  }
+  .book-cover-footer-note {
+    padding-bottom: 4px !important;
+  }
+  .book-cover-cta-open {
+    padding: 9px 20px !important;
+    font-size: 0.78rem !important;
+    letter-spacing: 0.12em !important;
+  }
+  .book-cover-corner-hint {
+    font-size: 0.65rem !important;
+    margin-top: 5px !important;
+  }
+
+  /* Parchment pages on mobile */
+  .book-parchment-page {
+    padding: 18px 14px 12px !important;
+  }
+  .book-page-ornament-border {
+    inset: 8px !important;
+  }
+  .page-corner-flourish {
+    width: 16px !important;
+    height: 16px !important;
+  }
+  .pcf-tl { top: 8px !important; left: 8px !important; }
+  .pcf-tr { top: 8px !important; right: 8px !important; }
+  .pcf-bl { bottom: 8px !important; left: 8px !important; }
+  .pcf-br { bottom: 8px !important; right: 8px !important; }
+
+  .book-page-header {
+    margin-bottom: 8px !important;
+  }
+  .book-page-category-banner {
+    font-size: 0.96rem !important;
+    padding: 3px 14px !important;
+    letter-spacing: 0.04em !important;
+  }
+  .book-page-category-sub {
+    font-size: 0.72rem !important;
+    margin-top: 2px !important;
+    line-height: 1.25 !important;
+  }
+  .book-header-line-flourish {
+    width: 80px !important;
+    height: 6px !important;
+    margin-top: 4px !important;
+  }
+
+  /* Content items */
+  .book-page-content {
+    gap: 8px !important;
+    padding-right: 2px !important;
+  }
+  .book-menu-subsection {
+    margin-bottom: 2px !important;
+  }
+  .book-subsection-title {
+    font-size: 0.65rem !important;
+    margin-bottom: 4px !important;
+    padding-bottom: 2px !important;
+    letter-spacing: 0.12em !important;
+  }
+  .book-menu-item-row {
+    margin-bottom: 5px !important;
+    padding-bottom: 2px !important;
+  }
+  .book-item-left {
+    max-width: 78% !important;
+    gap: 5px !important;
+    padding-right: 4px !important;
+  }
+  .veg-dietary-badge {
+    width: 11px !important;
+    height: 11px !important;
+  }
+  .veg-dietary-badge::after {
+    width: 5px !important;
+    height: 5px !important;
+  }
+  .book-item-name {
+    font-size: 0.8rem !important;
+    line-height: 1.2 !important;
+  }
+  .book-item-price {
+    font-size: 0.82rem !important;
+  }
+  .book-item-right {
+    padding-left: 4px !important;
+  }
+  .book-item-description {
+    font-size: 0.67rem !important;
+    line-height: 1.25 !important;
+    padding-left: 16px !important;
+    padding-right: 2px !important;
+    margin-top: 1px !important;
+  }
+  .book-item-tag {
+    font-size: 0.52rem !important;
+    padding: 1px 4px !important;
+  }
+
+  /* Table of Contents on mobile */
+  .book-toc-header {
+    margin-bottom: 8px !important;
+  }
+  .book-toc-title {
+    font-size: 1.15rem !important;
+  }
+  .book-toc-subtitle {
+    font-size: 0.72rem !important;
+  }
+  .book-toc-row {
+    padding: 4px 0 !important;
+    margin-bottom: 3px !important;
+  }
+  .book-toc-left {
+    font-size: 0.78rem !important;
+  }
+  .book-toc-page-num {
+    font-size: 0.74rem !important;
+  }
+  .book-chef-note-card {
+    padding: 6px 10px !important;
+    margin: 4px 0 !important;
+  }
+  .book-chef-note-title {
+    font-size: 0.62rem !important;
+  }
+  .book-chef-note-p {
+    font-size: 0.68rem !important;
+    line-height: 1.25 !important;
+  }
+  .book-chef-sign {
+    font-size: 0.62rem !important;
+  }
+
+  /* Back cover on mobile */
+  .book-backcover-info-card {
+    padding: 10px !important;
+    margin: 8px 0 !important;
+  }
+  .book-backcover-info-row {
+    font-size: 0.72rem !important;
+    gap: 6px !important;
+    margin-bottom: 6px !important;
+  }
+  .book-backcover-cta-btn {
+    padding: 9px !important;
+    font-size: 0.78rem !important;
+    margin-bottom: 8px !important;
+  }
+  .book-backcover-guidelines {
+    font-size: 0.62rem !important;
+  }
+
+  /* Page Footer */
+  .book-page-footer {
+    padding-top: 4px !important;
+    margin-top: 4px !important;
+  }
+  .book-page-folio-number {
+    font-size: 0.72rem !important;
+  }
+  .book-page-folio-label {
+    font-size: 0.52rem !important;
+  }
+
+  /* Control Dock */
+  .book-control-dock {
+    margin-top: 14px !important;
+    gap: 8px !important;
+  }
+  .book-dock-nav-group {
+    padding: 4px 10px !important;
+    gap: 6px !important;
+  }
+  .book-dock-arrow-btn {
+    width: 32px !important;
+    height: 32px !important;
+  }
+  .book-dock-page-indicator {
+    min-width: 84px !important;
+    font-size: 0.8rem !important;
+    padding: 0 6px !important;
+  }
+  .book-dock-action-btn {
+    padding: 8px 14px !important;
+    font-size: 0.75rem !important;
+  }
+}

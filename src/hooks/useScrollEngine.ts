@@ -93,13 +93,17 @@ export function useScrollEngine() {
         }
         item.lastProgress = progress;
 
-        if (item.speed !== null && !isNaN(item.speed) && !isTouch) {
+        const isMobileScreen = window.innerWidth <= 768;
+        if (item.speed !== null && !isNaN(item.speed) && !isTouch && !isMobileScreen) {
           const t = item.inFold ? Math.max(0, progress) : mapRange(0, 1, -1, 1, progress);
           const translate = t * winH * item.speed * -1;
           if (translate !== item.translate) {
             item.translate = translate;
             item.el.style.transform = `translate3d(0, ${translate}px, 0)`;
           }
+        } else if (isMobileScreen && item.el.style.transform) {
+          item.el.style.transform = "";
+          item.translate = 0;
         }
       }
 
