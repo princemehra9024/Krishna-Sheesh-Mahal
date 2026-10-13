@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Raw asset dumps & archives
+Hotel .zip
+Hotel/
+room/
+inside-img-in -web/
+IMG/
+

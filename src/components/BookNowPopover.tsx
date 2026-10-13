@@ -5,10 +5,10 @@ import { lockScroll, scrollToTarget } from "../hooks/useScrollEngine";
 const U = "https://thepopuphotel.com/wp-content/uploads";
 
 const HOTELS = [
-  { title: "Rooms & Suites", src: `${U}/2026/03/img-5-1600x900.webp`, href: "/booking?type=rooms" },
-  { title: "Banquet & Events", src: "/images/banquet-corporate-new.jpg", href: "/booking?type=banquet" },
+  { title: "Rooms & Suites", src: "/images/rooms/room-hero-page-img.png", href: "/booking?type=rooms" },
+  { title: "Banquet & Events", src: "/images/banquet/wedding-canopy.png", href: "/booking?type=banquet" },
   { title: "Fine Dining", src: "/images/restaurant-img.jpeg", href: "/booking?type=dining" },
-  { title: "Cafe", src: "/images/cafe/cafe_hero.jpg", href: "/booking?type=cafe" },
+  { title: "Cafe", src: "/images/cafe/neon-lit-cafe-lounge-interior.png", href: "/booking?type=cafe" },
 ];
 
 interface Props {

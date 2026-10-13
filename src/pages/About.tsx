@@ -1,4 +1,3 @@
-import { HERO_POSTER, ABOUT_IMAGES } from "../data";
 import ScrollingLogos from "../components/ScrollingLogos";
 import QuoteSlider from "../components/QuoteSlider";
 import { Link } from "react-router-dom";
@@ -20,11 +19,11 @@ export default function About() {
   const rotationY = useTransform(smoothDragX, [-1500, 1500], [-90, 90]);
 
   const cards = [
-    { title: "Dining", subtitle: "Culinary Excellence", img: ABOUT_IMAGES.primary2x, angle: -80 },
-    { title: "Heritage", subtitle: "Our Legacy", img: ABOUT_IMAGES.secondary2x, angle: -40 },
-    { title: "Events", subtitle: "Grand Celebrations", img: HERO_POSTER, angle: 0 },
-    { title: "Stays", subtitle: "Premium Comfort", img: ABOUT_IMAGES.primary2x, angle: 40 },
-    { title: "Design", subtitle: "Timeless Architecture", img: ABOUT_IMAGES.secondary2x, angle: 80 },
+    { title: "Dining", subtitle: "Culinary Excellence", img: "/images/restaurant-dining-2.png", angle: -80 },
+    { title: "Heritage", subtitle: "Our Legacy", img: "/images/hotel-ceiling.png", angle: -40 },
+    { title: "Events", subtitle: "Grand Celebrations", img: "/images/banquet/wedding-canopy.png", angle: 0 },
+    { title: "Stays", subtitle: "Premium Comfort", img: "/images/rooms/room-hero-page-img.png", angle: 40 },
+    { title: "Design", subtitle: "Timeless Architecture", img: "/images/hotel-exterior.png", angle: 80 },
   ];
 
   // --- Scroll-Pinned Card Stack Math ---
@@ -710,46 +709,54 @@ export default function About() {
 
             {/* Card 1: Base */}
             <motion.div className="stack-card" style={{ zIndex: 1, boxShadow: shadowVals[4] }}>
-              <img src={ABOUT_IMAGES.primary2x} alt="Luxury Stays" />
-              <h3 className="stack-card-title">Luxury Stays</h3>
-              <div className="stack-card-arrow">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </div>
+              <Link to="/rooms" style={{ display: 'block', width: '100%', height: '100%', color: 'inherit', textDecoration: 'none' }}>
+                <img src="/images/rooms/room-hero-page-img.png" alt="Luxury Stays" />
+                <h3 className="stack-card-title">Luxury Stays</h3>
+                <div className="stack-card-arrow">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </Link>
             </motion.div>
 
             {/* Card 2 */}
             <motion.div className="stack-card" style={{ zIndex: 2, y: y2, rotate: rot2, scale: scale2, boxShadow: shadow2 }}>
-              <img src={ABOUT_IMAGES.secondary2x} alt="Dining" />
-              <h3 className="stack-card-title">Dining</h3>
-              <div className="stack-card-arrow">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </div>
+              <Link to="/restaurant" style={{ display: 'block', width: '100%', height: '100%', color: 'inherit', textDecoration: 'none' }}>
+                <img src="/images/restaurant-dining-2.png" alt="Dining" />
+                <h3 className="stack-card-title">Dining</h3>
+                <div className="stack-card-arrow">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </Link>
             </motion.div>
 
             {/* Card 3 */}
             <motion.div className="stack-card" style={{ zIndex: 3, y: y3, rotate: rot3, scale: scale3, boxShadow: shadow3 }}>
-              <img src={HERO_POSTER} alt="Events" />
-              <h3 className="stack-card-title">Events</h3>
-              <div className="stack-card-arrow">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </div>
+              <Link to="/banquet" style={{ display: 'block', width: '100%', height: '100%', color: 'inherit', textDecoration: 'none' }}>
+                <img src="/images/banquet/wedding-canopy.png" alt="Events" />
+                <h3 className="stack-card-title">Events</h3>
+                <div className="stack-card-arrow">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </Link>
             </motion.div>
 
             {/* Card 4 */}
             <motion.div className="stack-card" style={{ zIndex: 4, y: y4, rotate: rot4, scale: scale4, boxShadow: shadow4 }}>
-              <img src={ABOUT_IMAGES.primary2x} alt="Heritage" />
-              <h3 className="stack-card-title">Heritage</h3>
-              <div className="stack-card-arrow">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </div>
+              <Link to="/about" style={{ display: 'block', width: '100%', height: '100%', color: 'inherit', textDecoration: 'none' }}>
+                <img src="/images/hotel-ceiling.png" alt="Heritage" />
+                <h3 className="stack-card-title">Heritage</h3>
+                <div className="stack-card-arrow">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </Link>
             </motion.div>
           </div>
         </div>

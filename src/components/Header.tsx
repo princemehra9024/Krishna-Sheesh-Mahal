@@ -18,14 +18,14 @@ export default function Header({ onBookNow }: HeaderProps) {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
   const MENU_IMAGES: Record<string, string> = {
-    "Home": "/logo.jpg", 
-    "Rooms": "https://thepopuphotel.com/wp-content/uploads/2026/03/img-5-1600x900.webp",
-    "Restaurant": "/images/restaurant-img.jpeg",
-    "Cafe": "/images/cafe/cafe_hero.jpg",
-    "Banquet": "/banquet-hero.jpg",
-    "Team": "/images/hotel_receptionist.jpg",
-    "About Us": "https://thepopuphotel.com/wp-content/uploads/2026/03/img-2-770x1012.webp",
-    "Contact": "/images/quote-cooking.jpg"
+    "Home": "/images/hotel-exterior.png", 
+    "Rooms": "/images/rooms/room-hero-page-img.png",
+    "Restaurant": "/images/restaurant-dining-2.png",
+    "Cafe": "/images/cafe/neon-lit-cafe-lounge-interior.png",
+    "Banquet": "/images/banquet/wedding-canopy.png",
+    "Team": "/images/hotel-reception-lobby.png",
+    "About Us": "/images/hotel-exterior.png",
+    "Contact": "/images/hotel-reception-lobby.png"
   };
 
   useEffect(() => {

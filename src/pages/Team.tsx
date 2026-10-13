@@ -7,25 +7,25 @@ const TEAM_MEMBERS = [
     name: "RAJESH",
     role: "General Manager",
     desc: "With over 15 years in luxury hospitality, Rajesh ensures every guest at Krishna Sheesh Mahal receives a royal experience.",
-    img: "/images/hotel_receptionist.jpg",
+    img: "/images/team/team_arjun.jpg",
   },
   {
     name: "ANITA",
     role: "Executive Chef",
     desc: "Anita brings traditional Rajasthani flavors to life with modern culinary techniques, crafting unforgettable dining experiences.",
-    img: "/images/cafe/cafe_hero.jpg",
+    img: "/images/team/team_priya.jpg",
   },
   {
     name: "VIKRAM",
     role: "Head of Operations",
     desc: "Vikram coordinates seamlessly behind the scenes to maintain the impeccable standards of our heritage property.",
-    img: "/images/restaurant-img.jpeg",
+    img: "/images/team/team_vikram.jpg",
   },
   {
     name: "SNEHA",
     role: "Guest Relations",
     desc: "Sneha's warm hospitality and attention to detail make every visitor feel like family during their stay.",
-    img: "/images/quote-cooking.jpg",
+    img: "/images/team/team_ananya.jpg",
   },
 ];
 
@@ -166,7 +166,7 @@ export default function Team() {
                 boxShadow: "0 20px 40px rgba(0,0,0,0.15)",
                 zIndex: 1
               }}>
-                <img className="hero-img-inner" src="/images/hotel_receptionist.jpg" alt="Krishna Sheesh Mahal Team" style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.7s ease" }} />
+                <img className="hero-img-inner" src="/images/hotel-reception-lobby.png" alt="Krishna Sheesh Mahal Reception & Team" style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.7s ease" }} />
               </div>
             </div>
           </div>

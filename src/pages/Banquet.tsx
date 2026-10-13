@@ -1,12 +1,11 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
 import { scrollToTarget } from "../hooks/useScrollEngine";
 
 /* ─── image paths ─── */
-const IMG_HERO = "/images/banquet-2.jpg";
-const IMG_WEDDING = "/images/banquet-1.jpg";
-const IMG_CORPORATE = "/images/banquet-corporate-new.jpg";
-const IMG_TABLE = "/images/banquet-3.jpg";
+const IMG_HERO = "/images/banquet/festive-facade.png";
+const IMG_WEDDING = "/images/banquet/wedding-canopy.png";
+const IMG_CORPORATE = "/images/banquet/conference-hall.png";
+const IMG_TABLE = "/images/banquet/elegant-interior.png";
 
 interface BanquetProps {
   onBookNow?: (type: string) => void;
@@ -483,7 +482,7 @@ export default function Banquet({ onBookNow }: BanquetProps) {
               <p className="mt-tiny mb-small">
                 Nestled in the heart of Kota, our banquet halls redefine grandeur. Whether you're planning a royal wedding or an intimate corporate gala, we blend immersive luxury, exceptional service, and striking architecture to create unforgettable moments.
               </p>
-              <a href="#events" className="btn btn--regular" onClick={(e) => { e.preventDefault(); scrollToTarget(document.querySelector('#events'), -70); }}>
+              <a href="#events" className="btn btn--regular" onClick={(e) => { e.preventDefault(); scrollToTarget('#events', -70); }}>
                 Explore Venues
               </a>
             </div>

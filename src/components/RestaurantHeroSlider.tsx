@@ -2,10 +2,10 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 /* ── image URLs ─────────────────────────────────────────── */
 const PHOTOS = [
-  "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=1600", // Fine Dining
-  "https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&q=80&w=1600", // Plated Food
-  "https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&q=80&w=1600", // Rooftop Terrace
-  "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&q=80&w=1600", // Wine Cellar
+  "/images/restaurant-dining.png", // Fine Dining
+  "/images/gourmet-garlic-naan.png", // Plated Food
+  "/images/restaurant-dining-2.png", // Restaurant Ambience
+  "/images/restaurant-img.jpeg", // Dining Hall
   "/images/restaurant-hero-5.jpeg", // Intimate Dining
 ];
 

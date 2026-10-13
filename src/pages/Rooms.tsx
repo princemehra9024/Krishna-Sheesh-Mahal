@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import { HERO_POSTER, WHATSAPP_BOOKING_LINK } from "../data";
 import QuoteSlider from "../components/QuoteSlider";
 
-const U = "https://thepopuphotel.com/wp-content/uploads";
-const ROOM_SINGLE = `${U}/2026/03/Monza13-2560x1440.webp`;
-const ROOM_DOUBLE = `${U}/2026/03/img-5-1600x900.webp`;
-const ROOM_SUITE = `${U}/2026/03/The-Pop-Up-Hotel-Silverstone-1600x900.webp`;
+const ROOM_HERO = "/images/rooms/room-hero-page-img.png";
+const ROOM_DELUXE = "/images/rooms/deluxe-room.png";
+const ROOM_SUPER_DELUXE = "/images/rooms/super-deluxe-room.png";
+const ROOM_PREMIUM = "/images/rooms/premium-room.png";
+const ROOM_SUITE = "/images/rooms/Suite.png";
+const ROOM_EXPERIENCES = "/images/rooms/Experiences.png";
 
 interface RoomsProps {
   onBookNow?: (type: string) => void;
@@ -687,7 +689,7 @@ export default function Rooms({ onBookNow }: RoomsProps) {
           </div>
           
           <div className="rg-media-block">
-            <img src={ROOM_SUITE} alt="Luxury Room" />
+            <img src={ROOM_HERO} alt="Luxury Room" />
           </div>
         </div>
 
@@ -735,7 +737,7 @@ export default function Rooms({ onBookNow }: RoomsProps) {
         <section id="deluxe">
           <div className="room-card">
             <div className="room-image-wrapper">
-              <img src={ROOM_SINGLE} alt="Deluxe Room" className="room-img" loading="lazy" />
+              <img src={ROOM_DELUXE} alt="Deluxe Room" className="room-img" loading="lazy" />
             </div>
             
             <div className="room-content">
@@ -767,7 +769,7 @@ export default function Rooms({ onBookNow }: RoomsProps) {
         <section id="super-deluxe">
           <div className="room-card room-card--reverse">
             <div className="room-image-wrapper">
-              <img src={ROOM_DOUBLE} alt="Super Deluxe Room" className="room-img" loading="lazy" />
+              <img src={ROOM_SUPER_DELUXE} alt="Super Deluxe Room" className="room-img" loading="lazy" />
             </div>
             
             <div className="room-content">
@@ -799,7 +801,7 @@ export default function Rooms({ onBookNow }: RoomsProps) {
         <section id="premium">
           <div className="room-card">
             <div className="room-image-wrapper">
-              <img src={ROOM_SUITE} alt="Premium Room" className="room-img" loading="lazy" />
+              <img src={ROOM_PREMIUM} alt="Premium Room" className="room-img" loading="lazy" />
             </div>
             
             <div className="room-content">
@@ -867,7 +869,7 @@ export default function Rooms({ onBookNow }: RoomsProps) {
             
             {/* Block 1 (Large Intro) */}
             <button onClick={(e) => { e.preventDefault(); onBookNow?.("Room"); }} className="srv-block srv-block--large" style={{ background: 'transparent', border: 'none', cursor: 'pointer' }}>
-              <div className="srv-block-bg" style={{ backgroundImage: `url(${ROOM_SUITE})` }}></div>
+              <div className="srv-block-bg" style={{ backgroundImage: `url(${ROOM_HERO})` }}></div>
               <div className="srv-overlay"></div>
               <div className="srv-content" style={{ justifyContent: 'flex-end' }}>
                 <h3 className="srv-title">Book an<br/>Experience</h3>
@@ -926,7 +928,7 @@ export default function Rooms({ onBookNow }: RoomsProps) {
 
             {/* Block 6 (Experiences - Large Right) */}
             <a href="#experiences" className="srv-block srv-block--large">
-              <div className="srv-block-bg" style={{ backgroundImage: `url(${ROOM_SINGLE})` }}></div>
+              <div className="srv-block-bg" style={{ backgroundImage: `url(${ROOM_EXPERIENCES})` }}></div>
               <div className="srv-overlay"></div>
               <div className="srv-content" style={{ justifyContent: 'flex-end' }}>
                 <h3 className="srv-title">Experiences</h3>

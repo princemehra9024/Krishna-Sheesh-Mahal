@@ -740,7 +740,7 @@ export default function Cafe({ onBookNow }: CafeProps) {
         /* ── CAFE CTA ── */
         .cafe-cta {
           padding: 140px 5vw;
-          background: url('/images/cafe/cafe_booking_plate.jpg') center/cover fixed;
+          background: url('/images/cafe/join-us-for-a-cup-bg.png') center/cover fixed;
           position: relative;
           text-align: center;
           color: #F3EDE4;
@@ -889,7 +889,7 @@ export default function Cafe({ onBookNow }: CafeProps) {
       <div className="cafe-page">
         {/* ── HERO ── */}
         <section className="cafe-hero">
-          <img src="/images/cafe/cafe_hero.jpg" alt="Cafe Hero" className="cafe-hero__bg" />
+          <img src="/images/cafe/neon-lit-cafe-lounge-interior.png" alt="Cafe Hero" className="cafe-hero__bg" />
           <div className="cafe-hero__content">
             <span className="cafe-hero__subtitle">Artisanal Brews & Bites</span>
             <h1 className="cafe-hero__title">
@@ -939,8 +939,8 @@ export default function Cafe({ onBookNow }: CafeProps) {
         {/* ── STORY ── */}
         <section className="cafe-story">
           <div className="cafe-story__images">
-            <img src="/images/cafe/cafe_story_1.jpg" alt="Barista preparing coffee" className="cafe-story__img-1" />
-            <img src="/images/cafe/cafe_story_2.jpg" alt="Cozy cafe seating" className="cafe-story__img-2" />
+            <img src="/images/cafe/our-passion-img1.png" alt="Barista preparing coffee" className="cafe-story__img-1" />
+            <img src="/images/cafe/our-passion-img2.png" alt="Cozy cafe seating" className="cafe-story__img-2" />
           </div>
           <div className="cafe-story__content">
             <p className="cafe-story__eyebrow">Our Passion</p>
@@ -1019,17 +1019,17 @@ export default function Cafe({ onBookNow }: CafeProps) {
 
             <div className="crazy-images">
               <div className="crazy-img-wrap crazy-img-1">
-                <img src="/images/cafe/cafe_hero.jpg" alt="Atmosphere" />
+                <img src="/images/cafe/the-art-one.png" alt="Atmosphere" />
                 <div className="crazy-tag">Vibe</div>
               </div>
 
               <div className="crazy-img-wrap crazy-img-2">
-                <img src="/images/cafe/cafe_special.jpg" alt="Latte Art" />
+                <img src="/images/cafe/the-art-tow.png" alt="Latte Art" />
                 <div className="crazy-tag">Art</div>
               </div>
 
               <div className="crazy-img-wrap crazy-img-3">
-                <img src="/images/cafe/cafe_story_1.jpg" alt="Hand Pour" />
+                <img src="/images/cafe/the-art-three.png" alt="Hand Pour" />
                 <div className="crazy-tag">Craft</div>
               </div>
             </div>

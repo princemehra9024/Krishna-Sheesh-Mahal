@@ -1,7 +1,7 @@
 const U = "https://thepopuphotel.com/wp-content/uploads";
 
 export const HERO_VIDEO = "/videos/home-video.mp4";
-export const HERO_POSTER = `${U}/2026/03/img-4-1600x900.webp`;
+export const HERO_POSTER = "/images/hotel-exterior.png";
 
 export const WHATSAPP_BOOKING_LINK = "https://api.whatsapp.com/send/?phone=919024546041&text=Hello!%20I%20would%20like%20to%20book%20a%20room%20at%20Hotel%20Krishna%20Sheesh%20Mahal.%0A%0A*Name:*%20%0A*Check-in%20Date:*%20%0A*Check-out%20Date:*%20%0A*Room%20Type:*%20%0A*Number%20of%20Guests:*%20%0A*Special%20Requests:*";
 
@@ -50,11 +50,11 @@ export const IMAGE_LINK_ROWS: ImageLink[][] = [
     { title: "Restaurant", href: "/restaurant", src: "/images/restaurant-img.jpeg", alt: "Restaurant" },
   ],
   [
-    { title: "Super Deluxe", href: "#rooms", src: `${U}/2026/03/img-5-1600x900.webp`, alt: "Super Deluxe" },
-    { title: "Cafe", href: "/cafe", src: `/images/cafe/cafe_hero.jpg`, alt: "Cafe" },
+    { title: "Super Deluxe", href: "/rooms#super-deluxe", src: "/images/rooms/super-deluxe-room.png", alt: "Super Deluxe" },
+    { title: "Cafe", href: "/cafe", src: `/images/cafe/neon-lit-cafe-lounge-interior.png`, alt: "Cafe" },
   ],
   [
-    { title: "Banquet", href: "/banquet", src: "/banquet-hero.jpg", alt: "Banquet" },
+    { title: "Banquet", href: "/banquet", src: "/images/banquet/wedding-canopy.png", alt: "Banquet" },
   ],
 ];
 
@@ -74,10 +74,10 @@ export const LOGOS: { src: string; alt: string }[] = [
 ];
 
 export const ABOUT_IMAGES = {
-  primary: `${U}/2026/03/img-2-655x862.webp`,
-  primary2x: `${U}/2026/03/img-2-770x1012.webp`,
-  secondary: `/images/hotel_receptionist.jpg`,
-  secondary2x: `/images/hotel_receptionist.jpg`,
+  primary: "/images/hotel-exterior.png",
+  primary2x: "/images/hotel-exterior.png",
+  secondary: "/images/hotel-reception-lobby.png",
+  secondary2x: "/images/hotel-reception-lobby.png",
 };
 
 export interface Quote {
@@ -122,17 +122,17 @@ export const QUOTES: Quote[] = [
     imageCaption: "Garden Fresh Breakfast & Ambience",
   },
   {
-    img: "/images/quote-sarfing.jpg",
+    img: "/images/hotel-exterior.png",
     logo: `${U}/2026/03/VOGUE_LOGO.svg`,
     logoW: 1543,
     logoH: 409,
-    text: "Location rating score: 9.1 Exceptional central location in Kota with serene royal sheesh vibes.",
+    text: "Experience the timeless charm of royal Rajasthan with modern luxury, exquisite comfort, and attentive hospitality at Krishna Sheesh Mahal.",
     source: "Verified Guest Review • Vogue Spotlight",
-    score: "9.1 / 10 Prime Location",
+    score: "9.8 / 10 Royal Experience",
     rating: 5,
-    tag: "City Landmark & Stay",
+    tag: "Luxury Hotel & Stay",
     badge: "Vogue Spotlight",
-    imageCaption: "Panoramic City & Riverfront Retreat",
+    imageCaption: "Krishna Sheesh Mahal Landmark Facade",
   },
 ];
 
@@ -146,23 +146,51 @@ export interface Article {
 }
 
 export const PRIMARY_ARTICLE: Article = {
-  title: "Kota Bridge: A Landmark to Visit",
-  date: "2.8 km away",
-  term: "Landmarks",
-  img: `${U}/2024/05/glastonbury-facts-1-520x296.jpg`,
-  img2x: `${U}/2024/05/glastonbury-facts-1-1060x600.jpg`,
-  href: "#news",
+  title: "Hotel Krishna Sheesh Mahal: Royal Living in Kota",
+  date: "Signature Landmark • RK Puram",
+  term: "Hotel Living",
+  img: "/images/hotel-exterior.png",
+  img2x: "/images/hotel-exterior.png",
+  href: "/rooms",
 };
 
 export const SECONDARY_ARTICLES: Article[] = [
-  { title: "Chambal Gardens", date: "3.1 km away", term: "Landmarks", img: `${U}/2026/07/DSC00316-520x296.jpg`, img2x: `${U}/2026/07/DSC00316-1060x600.jpg`, href: "#news" },
-  { title: "Kotah Garh (City Palace)", date: "4.6 km away", term: "Landmarks", img: `${U}/2026/07/Monza-IGP-520x296.webp`, img2x: `${U}/2026/07/Monza-IGP-1060x600.webp`, href: "#news" },
-  { title: "Jagmandir Palace", date: "5.7 km away", term: "Landmarks", img: `${U}/2026/07/Miele-1-520x296.webp`, img2x: `${U}/2026/07/Miele-1-1060x600.webp`, href: "#news" },
-  { title: "Kishor Sagar", date: "5.8 km away", term: "Landmarks", img: `${U}/2026/02/OodExterior2-520x296.jpg`, img2x: `${U}/2026/02/OodExterior2-1060x600.jpg`, href: "#news" },
+  {
+    title: "Luxury Rooms & Royal Deluxe Suites",
+    date: "Modern Comfort • 24/7 Room Service",
+    term: "Suites & Stay",
+    img: "/images/rooms/room-hero-page-img.png",
+    img2x: "/images/rooms/room-hero-page-img.png",
+    href: "/rooms",
+  },
+  {
+    title: "Grand Banquet & Wedding Canopy Lawn",
+    date: "Celebrations & Meets • 50-80+ Guests",
+    term: "Royal Banquets",
+    img: "/images/banquet/wedding-canopy.png",
+    img2x: "/images/banquet/wedding-canopy.png",
+    href: "/banquet",
+  },
+  {
+    title: "Flavors of Sheesh Mahal: Multi-Cuisine Dining",
+    date: "Fine Dining • Artisanal Cafe & Lounge",
+    term: "Dining & Cafe",
+    img: "/images/restaurant-dining-2.png",
+    img2x: "/images/restaurant-dining-2.png",
+    href: "/restaurant",
+  },
+  {
+    title: "Warm Royal Welcome & Concierge Lobby",
+    date: "24-Hour Hospitality • Prime Location",
+    term: "Palace Welcome",
+    img: "/images/hotel-reception-lobby.png",
+    img2x: "/images/hotel-reception-lobby.png",
+    href: "/about",
+  },
 ];
 
-export const FOOTER_AVATAR = `/images/hotel_receptionist.jpg`;
-export const POPUP_IMAGE = `/images/hotel_receptionist.jpg`;
+export const FOOTER_AVATAR = `/images/hotel-reception-lobby.png`;
+export const POPUP_IMAGE = `/images/hotel-reception-lobby.png`;
 
 export const FOOTER_MENUS: { title: string; items: { label: string; href: string; external?: boolean }[] }[] = [
   {
