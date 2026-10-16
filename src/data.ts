@@ -1,7 +1,9 @@
 const U = "https://thepopuphotel.com/wp-content/uploads";
 
 export const HERO_VIDEO = "/videos/home-video.mp4";
-export const HERO_POSTER = "/images/hotel-exterior.png";
+export const HERO_YOUTUBE_ID = "PohFY6vM8lk";
+export const HERO_YOUTUBE_URL = "https://youtube.com/shorts/PohFY6vM8lk?si=LrvExaU0zAKhsPu9";
+export const HERO_POSTER = "https://img.youtube.com/vi/PohFY6vM8lk/maxresdefault.jpg";
 
 export const WHATSAPP_BOOKING_LINK = "https://api.whatsapp.com/send/?phone=919024546041&text=Hello!%20I%20would%20like%20to%20book%20a%20room%20at%20Hotel%20Krishna%20Sheesh%20Mahal.%0A%0A*Name:*%20%0A*Check-in%20Date:*%20%0A*Check-out%20Date:*%20%0A*Room%20Type:*%20%0A*Number%20of%20Guests:*%20%0A*Special%20Requests:*";
 
