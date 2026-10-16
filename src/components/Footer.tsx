@@ -27,8 +27,8 @@ export default function Footer() {
         ...menu,
         items: [
           ...menu.items,
-          { label: "WhatsApp", href: "https://api.whatsapp.com/send/?phone=%2B919024546041", external: true },
-          { label: "Phone", href: "tel:+919024546041", external: true },
+          { label: "WhatsApp", href: "https://api.whatsapp.com/send/?phone=%2B918302903734", external: true },
+          { label: "Phone", href: "tel:+918302903734", external: true },
           { label: "Location", href: "https://share.google/SjYib0PPddAqTZfFZ", external: true },
         ]
       };
@@ -112,7 +112,7 @@ export default function Footer() {
               </div>
               <div className="contact-cta__btn">
                 <a
-                  href="https://api.whatsapp.com/send/?phone=%2B919024546041&text&type=phone_number&app_absent=0"
+                  href="https://api.whatsapp.com/send/?phone=%2B918302903734&text&type=phone_number&app_absent=0"
                   className="premium-btn inline-block"
                   target="_blank"
                   rel="noreferrer"

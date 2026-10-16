@@ -5,7 +5,10 @@ export const HERO_YOUTUBE_ID = "PohFY6vM8lk";
 export const HERO_YOUTUBE_URL = "https://youtube.com/shorts/PohFY6vM8lk?si=LrvExaU0zAKhsPu9";
 export const HERO_POSTER = "https://img.youtube.com/vi/PohFY6vM8lk/maxresdefault.jpg";
 
-export const WHATSAPP_BOOKING_LINK = "https://api.whatsapp.com/send/?phone=919024546041&text=Hello!%20I%20would%20like%20to%20book%20a%20room%20at%20Hotel%20Krishna%20Sheesh%20Mahal.%0A%0A*Name:*%20%0A*Check-in%20Date:*%20%0A*Check-out%20Date:*%20%0A*Room%20Type:*%20%0A*Number%20of%20Guests:*%20%0A*Special%20Requests:*";
+export const HOTEL_PHONE = "+91 83029 03734";
+export const HOTEL_PHONE_RAW = "918302903734";
+
+export const WHATSAPP_BOOKING_LINK = "https://api.whatsapp.com/send/?phone=918302903734&text=Hello!%20I%20would%20like%20to%20book%20a%20room%20at%20Hotel%20Krishna%20Sheesh%20Mahal.%0A%0A*Name:*%20%0A*Check-in%20Date:*%20%0A*Check-out%20Date:*%20%0A*Room%20Type:*%20%0A*Number%20of%20Guests:*%20%0A*Special%20Requests:*";
 
 export function generateWhatsAppLink(details: {
   type: string;
@@ -14,7 +17,7 @@ export function generateWhatsAppLink(details: {
   guests: string;
   requests: string;
 }) {
-  const phone = "919024546041";
+  const phone = "918302903734";
   const intro = `Hello! I would like to make a ${details.type} booking at Hotel Krishna Sheesh Mahal.`;
   const message = `${intro}\n\n*Name:* ${details.name}\n*Date:* ${details.date}\n*Number of Guests:* ${details.guests}\n*Special Requests:* ${details.requests || 'None'}`;
   return `https://api.whatsapp.com/send/?phone=${phone}&text=${encodeURIComponent(message)}`;
@@ -342,3 +345,148 @@ export const DISHES: Dish[] = [
     ],
   }
 ];
+
+export type MealPlanCode = "EP" | "CP" | "AMP";
+
+export interface MealPlanDetails {
+  code: MealPlanCode;
+  name: string;
+  fullName: string;
+  tagline: string;
+  description: string;
+  inclusions: string[];
+  foodHighlights: string[];
+  badge?: string;
+}
+
+export const MEAL_PLANS: Record<MealPlanCode, MealPlanDetails> = {
+  EP: {
+    code: "EP",
+    name: "EP Plan",
+    fullName: "European Plan (Room Only)",
+    tagline: "Pure Luxury Living",
+    description: "Royal stay with complete in-room comforts, high-speed Wi-Fi, Smart TV, and 24/7 attentive service.",
+    badge: "Room Only",
+    inclusions: [
+      "Royal room accommodation with premium bedding",
+      "High-speed complimentary Wi-Fi & Smart TV",
+      "Air conditioning & electric tea/coffee kettle",
+      "24-Hour room service & concierge support"
+    ],
+    foodHighlights: ["Room Only", "All in-room amenities"]
+  },
+  CP: {
+    code: "CP",
+    name: "CP Plan",
+    fullName: "Continental Plan (Bed & Breakfast)",
+    tagline: "Stay + Authentic Royal Breakfast",
+    description: "Wake up to a freshly prepared traditional breakfast including stuffed Aloo Parathas, Kota Kadhi Kachori, and Tea/Coffee.",
+    badge: "Breakfast Included",
+    inclusions: [
+      "All EP accommodation benefits & amenities",
+      "Freshly prepared hot Aloo Paratha with curd & pickle",
+      "Crispy & flavorful Kota Kadhi Kachori",
+      "Freshly brewed Masala Tea & premium Coffee"
+    ],
+    foodHighlights: [
+      "Aloo Paratha with fresh curd",
+      "Famous Kota Kadhi Kachori",
+      "Steaming Masala Tea & Coffee"
+    ]
+  },
+  AMP: {
+    code: "AMP",
+    name: "AMP Plan",
+    fullName: "Modified American Plan (Breakfast + Super Deluxe Thali)",
+    tagline: "Stay + Breakfast + Royal Feast",
+    description: "The complete royal vacation package: morning breakfast plus our signature multi-course Super Deluxe Thali for lunch or dinner.",
+    badge: "Best Value Royal Feast",
+    inclusions: [
+      "All EP room amenities & royal comfort",
+      "Complete Morning Breakfast (Aloo Paratha, Kadhi Kachori, Tea & Coffee)",
+      "Royal Super Deluxe Thali for Lunch or Dinner",
+      "Choice of fine paneer curry, dal tadka/makhani, seasonal sabzi, butter rotis/parathas, aromatic rice, raita, salad & traditional sweet dessert"
+    ],
+    foodHighlights: [
+      "Breakfast: Aloo Paratha + Kadhi Kachori + Tea/Coffee",
+      "Lunch / Dinner: Royal Super Deluxe Thali",
+      "Rich Curries, Dal, Paneer, Rice, Rotis & Sweets"
+    ]
+  }
+};
+
+export interface RoomTariffInfo {
+  id: string;
+  name: string;
+  nameEm: string;
+  subtitle: string;
+  size: string;
+  desc: string;
+  image: string;
+  features: string[];
+  prices: Record<MealPlanCode, number>;
+}
+
+export const ROOMS_TARIFF_DATA: RoomTariffInfo[] = [
+  {
+    id: "deluxe",
+    name: "Deluxe",
+    nameEm: "Room",
+    subtitle: "COMFORT & STYLE",
+    size: "19m²",
+    desc: "Perfect for your stay, offering comfort and style with modern amenities.",
+    image: "/images/rooms/deluxe-room.png",
+    features: ["Free Wi-Fi", "Smart TV", "AC & Tea Kettle"],
+    prices: {
+      EP: 1200,
+      CP: 1400,
+      AMP: 1500
+    }
+  },
+  {
+    id: "super-deluxe",
+    name: "Super Deluxe",
+    nameEm: "Room",
+    subtitle: "SPACIOUS LUXURY",
+    size: "20m²",
+    desc: "Provides ample space and premium comfort for relaxing evenings.",
+    image: "/images/rooms/super-deluxe-room.png",
+    features: ["Free Wi-Fi", "Smart TV", "AC & Tea Kettle"],
+    prices: {
+      EP: 1500,
+      CP: 1700,
+      AMP: 2000
+    }
+  },
+  {
+    id: "premium",
+    name: "Premium",
+    nameEm: "Room",
+    subtitle: "ELEVATED COMFORT",
+    size: "22m²",
+    desc: "Elevate your experience with upgraded amenities and additional space.",
+    image: "/images/rooms/premium-room.png",
+    features: ["Free Wi-Fi", "Smart TV", "AC & Tea Kettle"],
+    prices: {
+      EP: 1800,
+      CP: 2000,
+      AMP: 2500
+    }
+  },
+  {
+    id: "suite",
+    name: "Suite",
+    nameEm: "",
+    subtitle: "ULTIMATE EXPERIENCE",
+    size: "25m²",
+    desc: "Experience the pinnacle of luxury with a spacious layout for an unforgettable stay.",
+    image: "/images/rooms/Suite.png",
+    features: ["Free Wi-Fi", "Smart TV", "AC & Tea Kettle"],
+    prices: {
+      EP: 2800,
+      CP: 3300,
+      AMP: 3500
+    }
+  }
+];
+

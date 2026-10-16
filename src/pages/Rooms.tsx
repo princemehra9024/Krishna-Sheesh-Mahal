@@ -1,6 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { HERO_POSTER, WHATSAPP_BOOKING_LINK } from "../data";
+import { HERO_POSTER, WHATSAPP_BOOKING_LINK, MEAL_PLANS, ROOMS_TARIFF_DATA, MealPlanCode } from "../data";
 import QuoteSlider from "../components/QuoteSlider";
 
 const ROOM_HERO = "/images/rooms/room-hero-page-img.png";
@@ -18,6 +18,14 @@ import { useSEO } from "../hooks/useSEO";
 
 export default function Rooms({ onBookNow }: RoomsProps) {
   useSEO("Luxury Rooms & Suites | Krishna Sheesh Mahal Kota", "Book your luxurious stay in Kota. Explore our Premium, Super Deluxe, and Deluxe rooms featuring world-class amenities, stunning views, and royal comfort.");
+  
+  const [roomPlans, setRoomPlans] = useState<Record<string, MealPlanCode>>({
+    deluxe: "EP",
+    "super-deluxe": "EP",
+    premium: "EP",
+    suite: "EP",
+  });
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -147,18 +155,287 @@ export default function Rooms({ onBookNow }: RoomsProps) {
             border-radius: 50%;
           }
           .price-tag {
-            font-size: 1.75rem;
+            font-size: 2.2rem;
             font-family: var(--font-2);
-            color: var(--heading-color);
-            margin-bottom: 5px;
+            color: var(--maroon);
+            margin-bottom: 2px;
+            font-weight: 700;
+            line-height: 1;
           }
           .price-label {
-            font-size: 0.875rem;
+            font-size: 0.825rem;
             text-transform: uppercase;
             letter-spacing: 0.1em;
             color: color-mix(in srgb, var(--text-color) 85%, transparent);
             font-weight: 600;
           }
+
+          /* --- MEAL PLAN SELECTOR STYLES --- */
+          .plan-switcher {
+            margin: 18px 0 14px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+          }
+          .plan-switcher-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 700;
+            color: var(--maroon);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+          .plan-tabs {
+            display: flex;
+            background: rgba(0, 0, 0, 0.05);
+            padding: 4px;
+            border-radius: 12px;
+            gap: 6px;
+          }
+          .plan-tab-btn {
+            flex: 1;
+            border: 1px solid transparent;
+            background: transparent;
+            padding: 8px 10px;
+            border-radius: 9px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.25s cubic-bezier(0.2, 1, 0.2, 1);
+            font-family: inherit;
+          }
+          .plan-tab-btn:hover {
+            background: rgba(255, 255, 255, 0.6);
+          }
+          .plan-tab-btn.active {
+            background: #fff;
+            border-color: rgba(123, 17, 19, 0.15);
+            box-shadow: 0 4px 12px rgba(123, 17, 19, 0.1);
+          }
+          .plan-tab-code {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--heading-color);
+            transition: color 0.2s ease;
+          }
+          .plan-tab-btn.active .plan-tab-code {
+            color: var(--maroon);
+          }
+          .plan-tab-price {
+            font-size: 0.8rem;
+            color: var(--text-color);
+            font-weight: 600;
+          }
+          .plan-tab-btn.active .plan-tab-price {
+            color: var(--maroon);
+            font-weight: 700;
+          }
+          .plan-inclusion-box {
+            background: #fff8f6;
+            border: 1px dashed rgba(123, 17, 19, 0.25);
+            border-radius: 10px;
+            padding: 10px 14px;
+            font-size: 0.825rem;
+            color: var(--heading-color);
+            line-height: 1.45;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            margin-top: 2px;
+          }
+          .plan-inclusion-icon {
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            line-height: 1;
+            margin-top: 1px;
+          }
+
+          /* --- TARIFF & MEAL PLANS SHOWCASE SECTION --- */
+          .tariff-section {
+            padding: 90px 5% 100px;
+            background: linear-gradient(180deg, #fbf7f4 0%, #fff 100%);
+            border-top: 1px solid rgba(0,0,0,0.06);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+          }
+          .tariff-container {
+            max-width: 1200px;
+            margin: 0 auto;
+          }
+          .tariff-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+          }
+          .tariff-subtitle {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--maroon);
+            font-weight: 700;
+            margin-bottom: 12px;
+          }
+          .tariff-title {
+            font-size: clamp(2.2rem, 3.8vw, 3.4rem);
+            font-family: var(--font-2);
+            color: var(--heading-color);
+            line-height: 1.15;
+            margin-bottom: 16px;
+          }
+          .tariff-desc {
+            font-size: 1.05rem;
+            color: color-mix(in srgb, var(--text-color) 80%, transparent);
+            line-height: 1.6;
+          }
+          .tariff-plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+          }
+          .tariff-plan-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 36px 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            border: 1px solid rgba(0,0,0,0.06);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+          }
+          .tariff-plan-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 18px 40px rgba(123, 17, 19, 0.08);
+          }
+          .tariff-plan-card.featured {
+            border: 2px solid var(--maroon);
+            background: linear-gradient(180deg, #fff 0%, #fffbfa 100%);
+          }
+          .tariff-plan-badge {
+            position: absolute;
+            top: -12px;
+            left: 30px;
+            background: var(--maroon);
+            color: #fff;
+            font-size: 0.725rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 4px 14px;
+            border-radius: 20px;
+          }
+          .tariff-card-name {
+            font-size: 1.5rem;
+            font-family: var(--font-2);
+            color: var(--heading-color);
+            margin-bottom: 6px;
+          }
+          .tariff-card-tagline {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--maroon);
+            margin-bottom: 16px;
+          }
+          .tariff-rates-box {
+            background: #fbf7f4;
+            border-radius: 12px;
+            padding: 14px 16px;
+            margin-bottom: 20px;
+          }
+          .tariff-rates-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #777;
+            font-weight: 700;
+            margin-bottom: 8px;
+          }
+          .tariff-rate-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.875rem;
+            padding: 4px 0;
+            border-bottom: 1px dashed rgba(0,0,0,0.06);
+            color: var(--heading-color);
+          }
+          .tariff-rate-row:last-child {
+            border-bottom: none;
+          }
+          .tariff-rate-row strong {
+            color: var(--maroon);
+            font-weight: 700;
+          }
+          .tariff-inclusions-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 24px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+          }
+          .tariff-inclusion-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.875rem;
+            color: var(--text-color);
+            line-height: 1.45;
+          }
+          .tariff-check {
+            color: var(--maroon);
+            font-weight: bold;
+            font-size: 1rem;
+            line-height: 1;
+            margin-top: 1px;
+          }
+          .tariff-matrix-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 35px 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.06);
+            overflow-x: auto;
+          }
+          .tariff-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 680px;
+          }
+          .tariff-table th {
+            padding: 16px 20px;
+            text-align: left;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--heading-color);
+            border-bottom: 2px solid #ede1db;
+            background: #faf5f2;
+          }
+          .tariff-table th:first-child {
+            border-top-left-radius: 10px;
+          }
+          .tariff-table th:last-child {
+            border-top-right-radius: 10px;
+          }
+          .tariff-table td {
+            padding: 18px 20px;
+            border-bottom: 1px solid #f2e9e4;
+            color: var(--text-color);
+            font-size: 0.95rem;
+          }
+          .tariff-table tr:hover td {
+            background-color: #fdfaf8;
+          }
+          .tariff-table-price {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--maroon);
+          }
+
 
           /* --- ROOMS GRID HERO --- */
           .rooms-hero-grid {
@@ -745,21 +1022,100 @@ export default function Rooms({ onBookNow }: RoomsProps) {
               <h3 style={{ fontSize: 'var(--h3)', lineHeight: '1.1', marginBottom: '10px', fontFamily: 'var(--font-2)', color: 'var(--heading-color)' }}>
                 Deluxe <em style={{ fontFamily: 'var(--font-3)', fontStyle: 'italic', fontWeight: '300' }}>Room</em>
               </h3>
-              <div style={{ width: '40px', height: '2px', backgroundColor: 'var(--maroon)', margin: '20px 0' }}></div>
-              <p style={{ fontSize: '1.05rem', lineHeight: '1.7', marginBottom: '20px', color: 'color-mix(in srgb, var(--text-color) 70%, transparent)' }}>
+              <div style={{ width: '40px', height: '2px', backgroundColor: 'var(--maroon)', margin: '14px 0' }}></div>
+              <p style={{ fontSize: '1rem', lineHeight: '1.6', marginBottom: '16px', color: 'color-mix(in srgb, var(--text-color) 70%, transparent)' }}>
                 Perfect for your stay, offering comfort and style with modern amenities. Size: 19m²
               </p>
-              <ul className="feature-list">
+              <ul className="feature-list" style={{ marginBottom: '14px' }}>
                 <li className="feature-item"><div className="feature-dot"></div> Free Wi-Fi</li>
                 <li className="feature-item"><div className="feature-dot"></div> Smart TV</li>
                 <li className="feature-item"><div className="feature-dot"></div> AC & Tea Kettle</li>
               </ul>
-              <div style={{ marginTop: '30px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '15px' }}>
-                <div>
-                  <div className="price-tag">₹1200</div>
-                  <div className="price-label">Per Night</div>
+
+              {/* Meal Plan Switcher */}
+              <div className="plan-switcher">
+                <div className="plan-switcher-title">
+                  <span>Select Meal Plan</span>
+                  <span style={{ color: 'var(--maroon)' }}>{roomPlans["deluxe"]} Plan</span>
                 </div>
-                <button onClick={(e) => { e.preventDefault(); onBookNow?.("Room"); }} className="btn btn--regular" style={{ backgroundColor: 'var(--heading-color)', color: '#fff', border: 'none', padding: '12px 30px', borderRadius: '30px' }}>Book Now</button>
+                <div className="plan-tabs">
+                  <button
+                    type="button"
+                    className={`plan-tab-btn ${roomPlans["deluxe"] === "EP" ? "active" : ""}`}
+                    onClick={() => setRoomPlans((prev) => ({ ...prev, deluxe: "EP" }))}
+                  >
+                    <span className="plan-tab-code">EP</span>
+                    <span className="plan-tab-price">₹1200</span>
+                  </button>
+                  <button
+                    type="button"
+                    className={`plan-tab-btn ${roomPlans["deluxe"] === "CP" ? "active" : ""}`}
+                    onClick={() => setRoomPlans((prev) => ({ ...prev, deluxe: "CP" }))}
+                  >
+                    <span className="plan-tab-code">CP</span>
+                    <span className="plan-tab-price">₹1400</span>
+                  </button>
+                  <button
+                    type="button"
+                    className={`plan-tab-btn ${roomPlans["deluxe"] === "AMP" ? "active" : ""}`}
+                    onClick={() => setRoomPlans((prev) => ({ ...prev, deluxe: "AMP" }))}
+                  >
+                    <span className="plan-tab-code">AMP</span>
+                    <span className="plan-tab-price">₹1500</span>
+                  </button>
+                </div>
+
+                <div className="plan-inclusion-box">
+                  <span className="plan-inclusion-icon">
+                    {roomPlans["deluxe"] === "EP" && "🛏️"}
+                    {roomPlans["deluxe"] === "CP" && "🥞"}
+                    {roomPlans["deluxe"] === "AMP" && "🍛"}
+                  </span>
+                  <div>
+                    {roomPlans["deluxe"] === "EP" && (
+                      <>
+                        <strong>EP (Room Only):</strong> Pure royal living with all in-room amenities, AC, Smart TV, Wi-Fi & 24/7 room service.
+                      </>
+                    )}
+                    {roomPlans["deluxe"] === "CP" && (
+                      <>
+                        <strong>CP (Bed & Breakfast):</strong> Includes hot Stuffed Aloo Paratha with fresh curd, iconic Kota Kadhi Kachori, and Tea / Coffee.
+                      </>
+                    )}
+                    {roomPlans["deluxe"] === "AMP" && (
+                      <>
+                        <strong>AMP (Breakfast + Super Deluxe Thali):</strong> Morning Breakfast + Grand Royal Super Deluxe Thali (Lunch or Dinner).
+                      </>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              <div style={{ marginTop: '20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '15px' }}>
+                <div>
+                  <div className="price-tag">
+                    ₹{roomPlans["deluxe"] === "EP" ? "1200" : roomPlans["deluxe"] === "CP" ? "1400" : "1500"}
+                  </div>
+                  <div className="price-label">Per Night ({roomPlans["deluxe"]} Plan)</div>
+                </div>
+                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                  <Link
+                    to={`/booking?type=rooms&room=deluxe&plan=${roomPlans["deluxe"]}`}
+                    className="btn btn--regular"
+                    style={{ backgroundColor: 'var(--heading-color)', color: '#fff', border: 'none', padding: '10px 22px', borderRadius: '30px', textDecoration: 'none', fontSize: '0.9rem' }}
+                  >
+                    Book Now
+                  </Link>
+                  <a
+                    href={`https://wa.me/918302903734?text=${encodeURIComponent(`Hello Krishna Sheesh Mahal, I would like to book Deluxe Room on ${roomPlans["deluxe"]} Plan at ₹${roomPlans["deluxe"] === "EP" ? "1200" : roomPlans["deluxe"] === "CP" ? "1400" : "1500"}/night.`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn--regular"
+                    style={{ backgroundColor: '#25D366', color: '#fff', border: 'none', padding: '10px 18px', borderRadius: '30px', textDecoration: 'none', fontSize: '0.85rem' }}
+                  >
+                    WhatsApp
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -777,21 +1133,100 @@ export default function Rooms({ onBookNow }: RoomsProps) {
               <h3 style={{ fontSize: 'var(--h3)', lineHeight: '1.1', marginBottom: '10px', fontFamily: 'var(--font-2)', color: 'var(--heading-color)' }}>
                 Super Deluxe <em style={{ fontFamily: 'var(--font-3)', fontStyle: 'italic', fontWeight: '300' }}>Room</em>
               </h3>
-              <div style={{ width: '40px', height: '2px', backgroundColor: 'var(--maroon)', margin: '20px 0' }}></div>
-              <p style={{ fontSize: '1.05rem', lineHeight: '1.7', marginBottom: '20px', color: 'color-mix(in srgb, var(--text-color) 70%, transparent)' }}>
+              <div style={{ width: '40px', height: '2px', backgroundColor: 'var(--maroon)', margin: '14px 0' }}></div>
+              <p style={{ fontSize: '1rem', lineHeight: '1.6', marginBottom: '16px', color: 'color-mix(in srgb, var(--text-color) 70%, transparent)' }}>
                 Provides ample space and premium comfort for relaxing evenings. Size: 20m²
               </p>
-              <ul className="feature-list">
+              <ul className="feature-list" style={{ marginBottom: '14px' }}>
                 <li className="feature-item"><div className="feature-dot"></div> Free Wi-Fi</li>
                 <li className="feature-item"><div className="feature-dot"></div> Smart TV</li>
                 <li className="feature-item"><div className="feature-dot"></div> AC & Tea Kettle</li>
               </ul>
-              <div style={{ marginTop: '30px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '15px' }}>
-                <div>
-                  <div className="price-tag">₹1500</div>
-                  <div className="price-label">Per Night</div>
+
+              {/* Meal Plan Switcher */}
+              <div className="plan-switcher">
+                <div className="plan-switcher-title">
+                  <span>Select Meal Plan</span>
+                  <span style={{ color: 'var(--maroon)' }}>{roomPlans["super-deluxe"]} Plan</span>
                 </div>
-                <button onClick={(e) => { e.preventDefault(); onBookNow?.("Room"); }} className="btn btn--regular" style={{ backgroundColor: 'var(--heading-color)', color: '#fff', border: 'none', padding: '12px 30px', borderRadius: '30px' }}>Book Now</button>
+                <div className="plan-tabs">
+                  <button
+                    type="button"
+                    className={`plan-tab-btn ${roomPlans["super-deluxe"] === "EP" ? "active" : ""}`}
+                    onClick={() => setRoomPlans((prev) => ({ ...prev, "super-deluxe": "EP" }))}
+                  >
+                    <span className="plan-tab-code">EP</span>
+                    <span className="plan-tab-price">₹1500</span>
+                  </button>
+                  <button
+                    type="button"
+                    className={`plan-tab-btn ${roomPlans["super-deluxe"] === "CP" ? "active" : ""}`}
+                    onClick={() => setRoomPlans((prev) => ({ ...prev, "super-deluxe": "CP" }))}
+                  >
+                    <span className="plan-tab-code">CP</span>
+                    <span className="plan-tab-price">₹1700</span>
+                  </button>
+                  <button
+                    type="button"
+                    className={`plan-tab-btn ${roomPlans["super-deluxe"] === "AMP" ? "active" : ""}`}
+                    onClick={() => setRoomPlans((prev) => ({ ...prev, "super-deluxe": "AMP" }))}
+                  >
+                    <span className="plan-tab-code">AMP</span>
+                    <span className="plan-tab-price">₹2000</span>
+                  </button>
+                </div>
+
+                <div className="plan-inclusion-box">
+                  <span className="plan-inclusion-icon">
+                    {roomPlans["super-deluxe"] === "EP" && "🛏️"}
+                    {roomPlans["super-deluxe"] === "CP" && "🥞"}
+                    {roomPlans["super-deluxe"] === "AMP" && "🍛"}
+                  </span>
+                  <div>
+                    {roomPlans["super-deluxe"] === "EP" && (
+                      <>
+                        <strong>EP (Room Only):</strong> Pure royal living with all in-room amenities, AC, Smart TV, Wi-Fi & 24/7 room service.
+                      </>
+                    )}
+                    {roomPlans["super-deluxe"] === "CP" && (
+                      <>
+                        <strong>CP (Bed & Breakfast):</strong> Includes hot Stuffed Aloo Paratha with fresh curd, iconic Kota Kadhi Kachori, and Tea / Coffee.
+                      </>
+                    )}
+                    {roomPlans["super-deluxe"] === "AMP" && (
+                      <>
+                        <strong>AMP (Breakfast + Super Deluxe Thali):</strong> Morning Breakfast + Grand Royal Super Deluxe Thali (Lunch or Dinner).
+                      </>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              <div style={{ marginTop: '20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '15px' }}>
+                <div>
+                  <div className="price-tag">
+                    ₹{roomPlans["super-deluxe"] === "EP" ? "1500" : roomPlans["super-deluxe"] === "CP" ? "1700" : "2000"}
+                  </div>
+                  <div className="price-label">Per Night ({roomPlans["super-deluxe"]} Plan)</div>
+                </div>
+                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                  <Link
+                    to={`/booking?type=rooms&room=super-deluxe&plan=${roomPlans["super-deluxe"]}`}
+                    className="btn btn--regular"
+                    style={{ backgroundColor: 'var(--heading-color)', color: '#fff', border: 'none', padding: '10px 22px', borderRadius: '30px', textDecoration: 'none', fontSize: '0.9rem' }}
+                  >
+                    Book Now
+                  </Link>
+                  <a
+                    href={`https://wa.me/918302903734?text=${encodeURIComponent(`Hello Krishna Sheesh Mahal, I would like to book Super Deluxe Room on ${roomPlans["super-deluxe"]} Plan at ₹${roomPlans["super-deluxe"] === "EP" ? "1500" : roomPlans["super-deluxe"] === "CP" ? "1700" : "2000"}/night.`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn--regular"
+                    style={{ backgroundColor: '#25D366', color: '#fff', border: 'none', padding: '10px 18px', borderRadius: '30px', textDecoration: 'none', fontSize: '0.85rem' }}
+                  >
+                    WhatsApp
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -809,21 +1244,100 @@ export default function Rooms({ onBookNow }: RoomsProps) {
               <h3 style={{ fontSize: 'var(--h3)', lineHeight: '1.1', marginBottom: '10px', fontFamily: 'var(--font-2)', color: 'var(--heading-color)' }}>
                 Premium <em style={{ fontFamily: 'var(--font-3)', fontStyle: 'italic', fontWeight: '300' }}>Room</em>
               </h3>
-              <div style={{ width: '40px', height: '2px', backgroundColor: 'var(--maroon)', margin: '20px 0' }}></div>
-              <p style={{ fontSize: '1.05rem', lineHeight: '1.7', marginBottom: '20px', color: 'color-mix(in srgb, var(--text-color) 70%, transparent)' }}>
+              <div style={{ width: '40px', height: '2px', backgroundColor: 'var(--maroon)', margin: '14px 0' }}></div>
+              <p style={{ fontSize: '1rem', lineHeight: '1.6', marginBottom: '16px', color: 'color-mix(in srgb, var(--text-color) 70%, transparent)' }}>
                 Elevate your experience with upgraded amenities and additional space. Size: 22m²
               </p>
-              <ul className="feature-list">
+              <ul className="feature-list" style={{ marginBottom: '14px' }}>
                 <li className="feature-item"><div className="feature-dot"></div> Free Wi-Fi</li>
                 <li className="feature-item"><div className="feature-dot"></div> Smart TV</li>
                 <li className="feature-item"><div className="feature-dot"></div> AC & Tea Kettle</li>
               </ul>
-              <div style={{ marginTop: '30px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '15px' }}>
-                <div>
-                  <div className="price-tag">₹1800</div>
-                  <div className="price-label">Per Night</div>
+
+              {/* Meal Plan Switcher */}
+              <div className="plan-switcher">
+                <div className="plan-switcher-title">
+                  <span>Select Meal Plan</span>
+                  <span style={{ color: 'var(--maroon)' }}>{roomPlans["premium"]} Plan</span>
                 </div>
-                <button onClick={(e) => { e.preventDefault(); onBookNow?.("Room"); }} className="btn btn--regular" style={{ backgroundColor: 'var(--heading-color)', color: '#fff', border: 'none', padding: '12px 30px', borderRadius: '30px' }}>Book Now</button>
+                <div className="plan-tabs">
+                  <button
+                    type="button"
+                    className={`plan-tab-btn ${roomPlans["premium"] === "EP" ? "active" : ""}`}
+                    onClick={() => setRoomPlans((prev) => ({ ...prev, premium: "EP" }))}
+                  >
+                    <span className="plan-tab-code">EP</span>
+                    <span className="plan-tab-price">₹1800</span>
+                  </button>
+                  <button
+                    type="button"
+                    className={`plan-tab-btn ${roomPlans["premium"] === "CP" ? "active" : ""}`}
+                    onClick={() => setRoomPlans((prev) => ({ ...prev, premium: "CP" }))}
+                  >
+                    <span className="plan-tab-code">CP</span>
+                    <span className="plan-tab-price">₹2000</span>
+                  </button>
+                  <button
+                    type="button"
+                    className={`plan-tab-btn ${roomPlans["premium"] === "AMP" ? "active" : ""}`}
+                    onClick={() => setRoomPlans((prev) => ({ ...prev, premium: "AMP" }))}
+                  >
+                    <span className="plan-tab-code">AMP</span>
+                    <span className="plan-tab-price">₹2500</span>
+                  </button>
+                </div>
+
+                <div className="plan-inclusion-box">
+                  <span className="plan-inclusion-icon">
+                    {roomPlans["premium"] === "EP" && "🛏️"}
+                    {roomPlans["premium"] === "CP" && "🥞"}
+                    {roomPlans["premium"] === "AMP" && "🍛"}
+                  </span>
+                  <div>
+                    {roomPlans["premium"] === "EP" && (
+                      <>
+                        <strong>EP (Room Only):</strong> Pure royal living with all in-room amenities, AC, Smart TV, Wi-Fi & 24/7 room service.
+                      </>
+                    )}
+                    {roomPlans["premium"] === "CP" && (
+                      <>
+                        <strong>CP (Bed & Breakfast):</strong> Includes hot Stuffed Aloo Paratha with fresh curd, iconic Kota Kadhi Kachori, and Tea / Coffee.
+                      </>
+                    )}
+                    {roomPlans["premium"] === "AMP" && (
+                      <>
+                        <strong>AMP (Breakfast + Super Deluxe Thali):</strong> Morning Breakfast + Grand Royal Super Deluxe Thali (Lunch or Dinner).
+                      </>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              <div style={{ marginTop: '20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '15px' }}>
+                <div>
+                  <div className="price-tag">
+                    ₹{roomPlans["premium"] === "EP" ? "1800" : roomPlans["premium"] === "CP" ? "2000" : "2500"}
+                  </div>
+                  <div className="price-label">Per Night ({roomPlans["premium"]} Plan)</div>
+                </div>
+                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                  <Link
+                    to={`/booking?type=rooms&room=premium&plan=${roomPlans["premium"]}`}
+                    className="btn btn--regular"
+                    style={{ backgroundColor: 'var(--heading-color)', color: '#fff', border: 'none', padding: '10px 22px', borderRadius: '30px', textDecoration: 'none', fontSize: '0.9rem' }}
+                  >
+                    Book Now
+                  </Link>
+                  <a
+                    href={`https://wa.me/918302903734?text=${encodeURIComponent(`Hello Krishna Sheesh Mahal, I would like to book Premium Room on ${roomPlans["premium"]} Plan at ₹${roomPlans["premium"] === "EP" ? "1800" : roomPlans["premium"] === "CP" ? "2000" : "2500"}/night.`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn--regular"
+                    style={{ backgroundColor: '#25D366', color: '#fff', border: 'none', padding: '10px 18px', borderRadius: '30px', textDecoration: 'none', fontSize: '0.85rem' }}
+                  >
+                    WhatsApp
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -841,26 +1355,303 @@ export default function Rooms({ onBookNow }: RoomsProps) {
               <h3 style={{ fontSize: 'var(--h3)', lineHeight: '1.1', marginBottom: '10px', fontFamily: 'var(--font-2)', color: 'var(--heading-color)' }}>
                 Suite <em style={{ fontFamily: 'var(--font-3)', fontStyle: 'italic', fontWeight: '300' }}></em>
               </h3>
-              <div style={{ width: '40px', height: '2px', backgroundColor: 'var(--maroon)', margin: '20px 0' }}></div>
-              <p style={{ fontSize: '1.05rem', lineHeight: '1.7', marginBottom: '20px', color: 'color-mix(in srgb, var(--text-color) 70%, transparent)' }}>
+              <div style={{ width: '40px', height: '2px', backgroundColor: 'var(--maroon)', margin: '14px 0' }}></div>
+              <p style={{ fontSize: '1rem', lineHeight: '1.6', marginBottom: '16px', color: 'color-mix(in srgb, var(--text-color) 70%, transparent)' }}>
                 Experience the pinnacle of luxury with a spacious layout for an unforgettable stay. Size: 25m²
               </p>
-              <ul className="feature-list">
+              <ul className="feature-list" style={{ marginBottom: '14px' }}>
                 <li className="feature-item"><div className="feature-dot"></div> Free Wi-Fi</li>
                 <li className="feature-item"><div className="feature-dot"></div> Smart TV</li>
                 <li className="feature-item"><div className="feature-dot"></div> AC & Tea Kettle</li>
               </ul>
-              <div style={{ marginTop: '30px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '15px' }}>
-                <div>
-                  <div className="price-tag">₹3500</div>
-                  <div className="price-label">Per Night</div>
+
+              {/* Meal Plan Switcher */}
+              <div className="plan-switcher">
+                <div className="plan-switcher-title">
+                  <span>Select Meal Plan</span>
+                  <span style={{ color: 'var(--maroon)' }}>{roomPlans["suite"]} Plan</span>
                 </div>
-                <button onClick={(e) => { e.preventDefault(); onBookNow?.("Room"); }} className="btn btn--regular" style={{ backgroundColor: 'var(--heading-color)', color: '#fff', border: 'none', padding: '12px 30px', borderRadius: '30px' }}>Book Now</button>
+                <div className="plan-tabs">
+                  <button
+                    type="button"
+                    className={`plan-tab-btn ${roomPlans["suite"] === "EP" ? "active" : ""}`}
+                    onClick={() => setRoomPlans((prev) => ({ ...prev, suite: "EP" }))}
+                  >
+                    <span className="plan-tab-code">EP</span>
+                    <span className="plan-tab-price">₹2800</span>
+                  </button>
+                  <button
+                    type="button"
+                    className={`plan-tab-btn ${roomPlans["suite"] === "CP" ? "active" : ""}`}
+                    onClick={() => setRoomPlans((prev) => ({ ...prev, suite: "CP" }))}
+                  >
+                    <span className="plan-tab-code">CP</span>
+                    <span className="plan-tab-price">₹3300</span>
+                  </button>
+                  <button
+                    type="button"
+                    className={`plan-tab-btn ${roomPlans["suite"] === "AMP" ? "active" : ""}`}
+                    onClick={() => setRoomPlans((prev) => ({ ...prev, suite: "AMP" }))}
+                  >
+                    <span className="plan-tab-code">AMP</span>
+                    <span className="plan-tab-price">₹3500</span>
+                  </button>
+                </div>
+
+                <div className="plan-inclusion-box">
+                  <span className="plan-inclusion-icon">
+                    {roomPlans["suite"] === "EP" && "🛏️"}
+                    {roomPlans["suite"] === "CP" && "🥞"}
+                    {roomPlans["suite"] === "AMP" && "🍛"}
+                  </span>
+                  <div>
+                    {roomPlans["suite"] === "EP" && (
+                      <>
+                        <strong>EP (Room Only):</strong> Pure royal living with all in-room amenities, AC, Smart TV, Wi-Fi & 24/7 room service.
+                      </>
+                    )}
+                    {roomPlans["suite"] === "CP" && (
+                      <>
+                        <strong>CP (Bed & Breakfast):</strong> Includes hot Stuffed Aloo Paratha with fresh curd, iconic Kota Kadhi Kachori, and Tea / Coffee.
+                      </>
+                    )}
+                    {roomPlans["suite"] === "AMP" && (
+                      <>
+                        <strong>AMP (Breakfast + Super Deluxe Thali):</strong> Morning Breakfast + Grand Royal Super Deluxe Thali (Lunch or Dinner).
+                      </>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              <div style={{ marginTop: '20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '15px' }}>
+                <div>
+                  <div className="price-tag">
+                    ₹{roomPlans["suite"] === "EP" ? "2800" : roomPlans["suite"] === "CP" ? "3300" : "3500"}
+                  </div>
+                  <div className="price-label">Per Night ({roomPlans["suite"]} Plan)</div>
+                </div>
+                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                  <Link
+                    to={`/booking?type=rooms&room=suite&plan=${roomPlans["suite"]}`}
+                    className="btn btn--regular"
+                    style={{ backgroundColor: 'var(--heading-color)', color: '#fff', border: 'none', padding: '10px 22px', borderRadius: '30px', textDecoration: 'none', fontSize: '0.9rem' }}
+                  >
+                    Book Now
+                  </Link>
+                  <a
+                    href={`https://wa.me/918302903734?text=${encodeURIComponent(`Hello Krishna Sheesh Mahal, I would like to book Suite on ${roomPlans["suite"]} Plan at ₹${roomPlans["suite"] === "EP" ? "2800" : roomPlans["suite"] === "CP" ? "3300" : "3500"}/night.`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn--regular"
+                    style={{ backgroundColor: '#25D366', color: '#fff', border: 'none', padding: '10px 18px', borderRadius: '30px', textDecoration: 'none', fontSize: '0.85rem' }}
+                  >
+                    WhatsApp
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </section>
       </div>
+
+      {/* Royal Meal Plans & Tariff Schedule Section */}
+      <section id="tariff-plans" className="tariff-section">
+        <div className="tariff-container">
+          <div className="tariff-header">
+            <div className="tariff-subtitle">Royal Living & Dining Packages</div>
+            <h2 className="tariff-title">Tariff Schedule & <em>Meal Plans</em></h2>
+            <p className="tariff-desc">
+              Transparent hospitality packages tailored to your comfort. Choose between pure room accommodation (EP), our authentic Rajasthani morning breakfast feast (CP), or all-inclusive royal dining featuring our signature Super Deluxe Thali (AMP).
+            </p>
+          </div>
+
+          {/* 3 Meal Plan Feature Cards */}
+          <div className="tariff-plans-grid">
+            {/* EP Plan */}
+            <div className="tariff-plan-card">
+              <span className="tariff-plan-badge" style={{ backgroundColor: '#555' }}>Room Only</span>
+              <h3 className="tariff-card-name">EP Plan</h3>
+              <div className="tariff-card-tagline">European Plan • Pure Luxury Stay</div>
+              
+              <div className="tariff-rates-box">
+                <div className="tariff-rates-title">Package Tariffs (Per Night)</div>
+                <div className="tariff-rate-row"><span>Deluxe Room:</span><strong>₹1,200</strong></div>
+                <div className="tariff-rate-row"><span>Super Deluxe Room:</span><strong>₹1,500</strong></div>
+                <div className="tariff-rate-row"><span>Premium Room:</span><strong>₹1,800</strong></div>
+                <div className="tariff-rate-row"><span>Royal Suite:</span><strong>₹2,800</strong></div>
+              </div>
+
+              <ul className="tariff-inclusions-list">
+                <li className="tariff-inclusion-item"><span className="tariff-check">✓</span> Plush bedding & regal room interiors</li>
+                <li className="tariff-inclusion-item"><span className="tariff-check">✓</span> High-speed complimentary Wi-Fi & Smart TV</li>
+                <li className="tariff-inclusion-item"><span className="tariff-check">✓</span> Air conditioning & in-room tea/coffee kettle</li>
+                <li className="tariff-inclusion-item"><span className="tariff-check">✓</span> 24/7 Room service & concierge support</li>
+              </ul>
+
+              <Link
+                to="/booking?type=rooms&plan=EP"
+                className="btn btn--regular"
+                style={{ marginTop: 'auto', textAlign: 'center', backgroundColor: '#333', color: '#fff', borderRadius: '30px', padding: '12px 24px', textDecoration: 'none' }}
+              >
+                Book EP Plan
+              </Link>
+            </div>
+
+            {/* CP Plan */}
+            <div className="tariff-plan-card featured">
+              <span className="tariff-plan-badge">Popular Choice</span>
+              <h3 className="tariff-card-name">CP Plan</h3>
+              <div className="tariff-card-tagline">Continental Plan • Stay + Breakfast</div>
+              
+              <div className="tariff-rates-box">
+                <div className="tariff-rates-title">Package Tariffs (Per Night)</div>
+                <div className="tariff-rate-row"><span>Deluxe Room:</span><strong>₹1,400</strong></div>
+                <div className="tariff-rate-row"><span>Super Deluxe Room:</span><strong>₹1,700</strong></div>
+                <div className="tariff-rate-row"><span>Premium Room:</span><strong>₹2,000</strong></div>
+                <div className="tariff-rate-row"><span>Royal Suite:</span><strong>₹3,300</strong></div>
+              </div>
+
+              <ul className="tariff-inclusions-list">
+                <li className="tariff-inclusion-item"><span className="tariff-check">✓</span> All EP room amenities & luxury comforts</li>
+                <li className="tariff-inclusion-item"><span className="tariff-check">🥞</span> <strong>Hot Stuffed Aloo Paratha</strong> with fresh curd & pickle</li>
+                <li className="tariff-inclusion-item"><span className="tariff-check">🍲</span> <strong>Famous Kota Kadhi Kachori</strong> (crisp & spicy)</li>
+                <li className="tariff-inclusion-item"><span className="tariff-check">☕</span> <strong>Fresh Masala Tea & Artisanal Coffee</strong></li>
+              </ul>
+
+              <Link
+                to="/booking?type=rooms&plan=CP"
+                className="btn btn--regular"
+                style={{ marginTop: 'auto', textAlign: 'center', backgroundColor: 'var(--maroon)', color: '#fff', borderRadius: '30px', padding: '12px 24px', textDecoration: 'none' }}
+              >
+                Book CP Plan
+              </Link>
+            </div>
+
+            {/* AMP Plan */}
+            <div className="tariff-plan-card featured" style={{ borderColor: '#b8860b' }}>
+              <span className="tariff-plan-badge" style={{ backgroundColor: '#b8860b' }}>Royal Feast</span>
+              <h3 className="tariff-card-name">AMP Plan</h3>
+              <div className="tariff-card-tagline">Modified American Plan • Stay + Breakfast + Thali</div>
+              
+              <div className="tariff-rates-box">
+                <div className="tariff-rates-title">Package Tariffs (Per Night)</div>
+                <div className="tariff-rate-row"><span>Deluxe Room:</span><strong>₹1,500</strong></div>
+                <div className="tariff-rate-row"><span>Super Deluxe Room:</span><strong>₹2,000</strong></div>
+                <div className="tariff-rate-row"><span>Premium Room:</span><strong>₹2,500</strong></div>
+                <div className="tariff-rate-row"><span>Royal Suite:</span><strong>₹3,500</strong></div>
+              </div>
+
+              <ul className="tariff-inclusions-list">
+                <li className="tariff-inclusion-item"><span className="tariff-check">✓</span> All EP room amenities & royal accommodations</li>
+                <li className="tariff-inclusion-item"><span className="tariff-check">🥞</span> <strong>Complete Morning Breakfast</strong> (Aloo Paratha, Kadhi Kachori, Tea & Coffee)</li>
+                <li className="tariff-inclusion-item"><span className="tariff-check">👑</span> <strong>Grand Super Deluxe Thali</strong> (Lunch or Dinner)</li>
+                <li className="tariff-inclusion-item"><span className="tariff-check">🍛</span> Paneer butter masala/shahi paneer, dal makhani, seasonal sabzi, hot butter rotis, fragrant basmati rice, raita, salad & sweet dessert</li>
+              </ul>
+
+              <Link
+                to="/booking?type=rooms&plan=AMP"
+                className="btn btn--regular"
+                style={{ marginTop: 'auto', textAlign: 'center', backgroundColor: '#8a151b', color: '#fff', borderRadius: '30px', padding: '12px 24px', textDecoration: 'none' }}
+              >
+                Book AMP Plan
+              </Link>
+            </div>
+          </div>
+
+          {/* Master Comparison Matrix Table */}
+          <div className="tariff-matrix-card">
+            <div style={{ marginBottom: '24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
+              <div>
+                <h3 style={{ fontSize: '1.4rem', fontFamily: 'var(--font-2)', color: 'var(--heading-color)', margin: 0 }}>
+                  Complete Tariff Comparison Matrix
+                </h3>
+                <p style={{ margin: '4px 0 0', fontSize: '0.9rem', color: '#666' }}>
+                  All rates in INR (₹) per room per night. Taxes as applicable.
+                </p>
+              </div>
+              <a
+                href="https://wa.me/918302903734?text=Hello%20Krishna%20Sheesh%20Mahal,%20I%20have%20an%20enquiry%20regarding%20room%20tariffs%20and%20meal%20plans."
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: '#25D366', fontWeight: 600, textDecoration: 'none', fontSize: '0.95rem' }}
+              >
+                Direct WhatsApp Inquiry →
+              </a>
+            </div>
+
+            <table className="tariff-table">
+              <thead>
+                <tr>
+                  <th>Room Category</th>
+                  <th>EP (Room Only)</th>
+                  <th>CP (With Breakfast)</th>
+                  <th>AMP (Breakfast + Super Deluxe Thali)</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <strong>Deluxe Room</strong>
+                    <div style={{ fontSize: '0.8rem', color: '#888' }}>19m² • Smart TV & AC</div>
+                  </td>
+                  <td><span className="tariff-table-price">₹1,200</span></td>
+                  <td><span className="tariff-table-price">₹1,400</span></td>
+                  <td><span className="tariff-table-price">₹1,500</span></td>
+                  <td>
+                    <Link to="/booking?type=rooms&room=deluxe" className="btn btn--small" style={{ textDecoration: 'none', padding: '8px 18px', borderRadius: '20px', backgroundColor: 'var(--heading-color)', color: '#fff', fontSize: '0.85rem' }}>
+                      Book Room
+                    </Link>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong>Super Deluxe Room</strong>
+                    <div style={{ fontSize: '0.8rem', color: '#888' }}>20m² • Spacious Comfort</div>
+                  </td>
+                  <td><span className="tariff-table-price">₹1,500</span></td>
+                  <td><span className="tariff-table-price">₹1,700</span></td>
+                  <td><span className="tariff-table-price">₹2,000</span></td>
+                  <td>
+                    <Link to="/booking?type=rooms&room=super-deluxe" className="btn btn--small" style={{ textDecoration: 'none', padding: '8px 18px', borderRadius: '20px', backgroundColor: 'var(--heading-color)', color: '#fff', fontSize: '0.85rem' }}>
+                      Book Room
+                    </Link>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong>Premium Room</strong>
+                    <div style={{ fontSize: '0.8rem', color: '#888' }}>22m² • Elevated Luxury</div>
+                  </td>
+                  <td><span className="tariff-table-price">₹1,800</span></td>
+                  <td><span className="tariff-table-price">₹2,000</span></td>
+                  <td><span className="tariff-table-price">₹2,500</span></td>
+                  <td>
+                    <Link to="/booking?type=rooms&room=premium" className="btn btn--small" style={{ textDecoration: 'none', padding: '8px 18px', borderRadius: '20px', backgroundColor: 'var(--heading-color)', color: '#fff', fontSize: '0.85rem' }}>
+                      Book Room
+                    </Link>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong>Royal Suite</strong>
+                    <div style={{ fontSize: '0.8rem', color: '#888' }}>25m² • Pinnacle Luxury</div>
+                  </td>
+                  <td><span className="tariff-table-price">₹2,800</span></td>
+                  <td><span className="tariff-table-price">₹3,300</span></td>
+                  <td><span className="tariff-table-price">₹3,500</span></td>
+                  <td>
+                    <Link to="/booking?type=rooms&room=suite" className="btn btn--small" style={{ textDecoration: 'none', padding: '8px 18px', borderRadius: '20px', backgroundColor: 'var(--heading-color)', color: '#fff', fontSize: '0.85rem' }}>
+                      Book Room
+                    </Link>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
 
       {/* Services & Amenities Grid */}
       <section className="services-section">

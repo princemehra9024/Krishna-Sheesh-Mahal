@@ -1,17 +1,10 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { MEAL_PLANS, ROOMS_TARIFF_DATA, MealPlanCode } from "../data";
 
 export default function Booking() {
   const location = useLocation();
   const [type, setType] = useState("rooms");
-
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const category = params.get("type");
-    if (category) {
-      setType(category);
-    }
-  }, [location]);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -19,72 +12,141 @@ export default function Booking() {
     date: "",
     guests: "",
     details: "",
-    subType: "", // Room type, Event type, etc.
+    subType: "Deluxe Room", // Default room type
+    mealPlan: "EP" as MealPlanCode, // EP, CP, or AMP
   });
 
-  // Reset subType when main type changes
   useEffect(() => {
-    setFormData(prev => ({ ...prev, subType: "" }));
+    const params = new URLSearchParams(location.search);
+    const category = params.get("type");
+    const roomParam = params.get("room")?.toLowerCase();
+    const planParam = params.get("plan")?.toUpperCase();
+
+    if (category) {
+      setType(category);
+    }
+
+    if (roomParam) {
+      const match = ROOMS_TARIFF_DATA.find((r) => r.id === roomParam);
+      if (match) {
+        setFormData((prev) => ({
+          ...prev,
+          subType: `${match.name} ${match.nameEm}`.trim(),
+        }));
+      }
+    }
+
+    if (planParam && (planParam === "EP" || planParam === "CP" || planParam === "AMP")) {
+      setFormData((prev) => ({
+        ...prev,
+        mealPlan: planParam as MealPlanCode,
+      }));
+    }
+  }, [location]);
+
+  // Reset subType when main type changes if switching away from rooms
+  useEffect(() => {
+    if (type !== "rooms") {
+      setFormData((prev) => ({ ...prev, subType: "" }));
+    } else if (!formData.subType) {
+      setFormData((prev) => ({ ...prev, subType: "Deluxe Room" }));
+    }
   }, [type]);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  // Find selected room and tariff
+  const selectedRoomObj = ROOMS_TARIFF_DATA.find(
+    (r) => `${r.name} ${r.nameEm}`.trim().toLowerCase() === formData.subType.toLowerCase()
+  ) || ROOMS_TARIFF_DATA[0];
+
+  const currentPlan = MEAL_PLANS[formData.mealPlan] || MEAL_PLANS.EP;
+  const currentPrice = selectedRoomObj ? selectedRoomObj.prices[formData.mealPlan] : 1200;
+
   const handleWhatsApp = () => {
-    const { name, phone, date, guests, details, subType } = formData;
+    const { name, phone, date, guests, details, subType, mealPlan } = formData;
     let categoryName = "Rooms & Suites";
     if (type === "banquet") categoryName = "Banquet & Events";
     if (type === "dining") categoryName = "Fine Dining";
     if (type === "cafe") categoryName = "Cafe";
 
     let text = `Hello Krishna Sheesh Mahal,\nI would like to enquire about ${categoryName}.\n\n`;
-    if (name) text += `Name: ${name}\n`;
-    if (phone) text += `Phone: ${phone}\n`;
-    
-    // Add specific fields based on category
-    if (type === "rooms" && subType) text += `Room Type: ${subType}\n`;
-    if (type === "banquet" && subType) text += `Event Type: ${subType}\n`;
-    
-    if (date) text += (type === 'rooms' ? `Check-in Date: ${date}\n` : `Date & Time: ${date}\n`);
-    if (guests) text += (type === 'rooms' ? `Guests: ${guests}\n` : `Pax: ${guests}\n`);
-    if (details) text += `Details: ${details}\n`;
+    if (name) text += `*Name:* ${name}\n`;
+    if (phone) text += `*Phone:* ${phone}\n`;
 
-    const url = `https://wa.me/919024546041?text=${encodeURIComponent(text)}`;
-    window.open(url, '_blank');
+    // Add specific fields based on category
+    if (type === "rooms") {
+      text += `*Room Type:* ${subType || selectedRoomObj.name}\n`;
+      text += `*Meal Plan:* ${currentPlan.code} - ${currentPlan.fullName}\n`;
+      text += `*Inclusions:* ${currentPlan.foodHighlights.join(", ")}\n`;
+      text += `*Tariff Rate:* ₹${currentPrice} / night\n`;
+    }
+    if (type === "banquet" && subType) text += `*Event Type:* ${subType}\n`;
+
+    if (date) text += (type === "rooms" ? `*Check-in Date:* ${date}\n` : `*Date & Time:* ${date}\n`);
+    if (guests) text += (type === "rooms" ? `*Number of Guests:* ${guests}\n` : `*Pax:* ${guests}\n`);
+    if (details) text += `*Special Requests:* ${details}\n`;
+
+    const url = `https://wa.me/918302903734?text=${encodeURIComponent(text)}`;
+    window.open(url, "_blank");
   };
 
   const inputStyle: React.CSSProperties = {
-    width: '100%',
-    padding: '16px 20px',
-    borderRadius: '8px',
-    border: '1px solid #ddd',
-    fontSize: '16px',
-    backgroundColor: '#fff',
-    outline: 'none',
-    boxShadow: '0 2px 5px rgba(0,0,0,0.02) inset',
-    fontFamily: 'inherit',
-    marginBottom: '20px',
-    transition: 'border-color 0.3s'
+    width: "100%",
+    padding: "16px 20px",
+    borderRadius: "8px",
+    border: "1px solid #ddd",
+    fontSize: "16px",
+    backgroundColor: "#fff",
+    outline: "none",
+    boxShadow: "0 2px 5px rgba(0,0,0,0.02) inset",
+    fontFamily: "inherit",
+    marginBottom: "20px",
+    transition: "border-color 0.3s",
   };
 
   return (
-    <main className="main" style={{ paddingTop: '150px', paddingBottom: '100px', backgroundColor: '#fafafa', minHeight: '100vh' }}>
-      <div className="container" style={{ maxWidth: '700px', margin: '0 auto' }}>
-        <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-          <h1 className="txt-script" style={{ fontSize: '48px', color: '#333', marginBottom: '10px' }}>Book Your Experience</h1>
-          <p style={{ color: '#666', fontSize: '18px' }}>Fill in the details below and we will connect with you on WhatsApp instantly.</p>
+    <main
+      className="main"
+      style={{
+        paddingTop: "150px",
+        paddingBottom: "100px",
+        backgroundColor: "#fafafa",
+        minHeight: "100vh",
+      }}
+    >
+      <div className="container" style={{ maxWidth: "720px", margin: "0 auto", padding: "0 20px" }}>
+        <div style={{ textAlign: "center", marginBottom: "40px" }}>
+          <h1 className="txt-script" style={{ fontSize: "48px", color: "#333", marginBottom: "10px" }}>
+            Book Your Experience
+          </h1>
+          <p style={{ color: "#666", fontSize: "18px" }}>
+            Select your preferred package below and connect directly with our royal reception.
+          </p>
         </div>
 
-        <div style={{ backgroundColor: '#fff', padding: '40px', borderRadius: '16px', boxShadow: '0 10px 40px rgba(0,0,0,0.06)' }}>
-          <div style={{ marginBottom: '20px' }}>
-            <label style={{ display: 'block', marginBottom: '8px', fontWeight: '600', color: '#444' }}>Category</label>
-            <select 
-              name="type" 
-              value={type} 
-              onChange={(e) => setType(e.target.value)} 
-              style={{ ...inputStyle, border: '1px solid #maroon' }}
+        <div
+          style={{
+            backgroundColor: "#fff",
+            padding: "40px",
+            borderRadius: "16px",
+            boxShadow: "0 10px 40px rgba(0,0,0,0.06)",
+          }}
+        >
+          <div style={{ marginBottom: "20px" }}>
+            <label style={{ display: "block", marginBottom: "8px", fontWeight: "600", color: "#444" }}>
+              Category
+            </label>
+            <select
+              name="type"
+              value={type}
+              onChange={(e) => setType(e.target.value)}
+              style={{ ...inputStyle, border: "1px solid var(--maroon, #7b1113)" }}
             >
               <option value="rooms">Rooms & Suites</option>
               <option value="banquet">Banquet & Events</option>
@@ -92,23 +154,146 @@ export default function Booking() {
               <option value="cafe">Cafe</option>
             </select>
           </div>
-          
+
           {/* Dynamic Field based on Category */}
           {type === "rooms" && (
             <div>
-              <label style={{ display: 'block', marginBottom: '8px', fontWeight: '600', color: '#444' }}>Room Preference</label>
-              <select name="subType" value={formData.subType} onChange={handleInputChange} style={inputStyle}>
-                <option value="">Select Room Type (Optional)</option>
-                <option value="Deluxe Room">Deluxe Room</option>
-                <option value="Super Deluxe Room">Super Deluxe Room</option>
-                <option value="Premium Room">Premium Room</option>
-              </select>
+              <div style={{ marginBottom: "20px" }}>
+                <label style={{ display: "block", marginBottom: "8px", fontWeight: "600", color: "#444" }}>
+                  Room Preference
+                </label>
+                <select
+                  name="subType"
+                  value={formData.subType}
+                  onChange={handleInputChange}
+                  style={inputStyle}
+                >
+                  <option value="Deluxe Room">Deluxe Room (19m² • Smart TV & AC)</option>
+                  <option value="Super Deluxe Room">Super Deluxe Room (20m² • Spacious)</option>
+                  <option value="Premium Room">Premium Room (22m² • Elevated Luxury)</option>
+                  <option value="Suite">Royal Suite (25m² • Pinnacle Comfort)</option>
+                </select>
+              </div>
+
+              {/* Meal Plan Selector */}
+              <div style={{ marginBottom: "24px" }}>
+                <label style={{ display: "block", marginBottom: "10px", fontWeight: "600", color: "#444" }}>
+                  Choose Meal Plan (Tariff Package)
+                </label>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "12px" }}>
+                  {(["EP", "CP", "AMP"] as MealPlanCode[]).map((pCode) => {
+                    const plan = MEAL_PLANS[pCode];
+                    const isSelected = formData.mealPlan === pCode;
+                    const price = selectedRoomObj ? selectedRoomObj.prices[pCode] : 0;
+                    return (
+                      <div
+                        key={pCode}
+                        onClick={() => setFormData((prev) => ({ ...prev, mealPlan: pCode }))}
+                        style={{
+                          border: isSelected ? "2px solid #7b1113" : "1px solid #e0e0e0",
+                          backgroundColor: isSelected ? "#fff9f9" : "#fff",
+                          borderRadius: "10px",
+                          padding: "16px",
+                          cursor: "pointer",
+                          transition: "all 0.25s ease",
+                          boxShadow: isSelected ? "0 4px 14px rgba(123, 17, 19, 0.15)" : "none",
+                          position: "relative",
+                        }}
+                      >
+                        {plan.badge && (
+                          <span
+                            style={{
+                              position: "absolute",
+                              top: "-10px",
+                              right: "10px",
+                              backgroundColor: isSelected ? "#7b1113" : "#666",
+                              color: "#fff",
+                              fontSize: "10px",
+                              padding: "2px 8px",
+                              borderRadius: "12px",
+                              textTransform: "uppercase",
+                              fontWeight: "700",
+                              letterSpacing: "0.5px",
+                            }}
+                          >
+                            {plan.badge}
+                          </span>
+                        )}
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "6px" }}>
+                          <span style={{ fontWeight: "700", color: isSelected ? "#7b1113" : "#222", fontSize: "16px" }}>
+                            {plan.name}
+                          </span>
+                          <span style={{ fontWeight: "800", color: "#7b1113", fontSize: "17px" }}>
+                            ₹{price}
+                          </span>
+                        </div>
+                        <div style={{ fontSize: "12px", color: "#666", marginBottom: "8px" }}>
+                          {pCode === "EP" && "Room Only"}
+                          {pCode === "CP" && "Room + Breakfast"}
+                          {pCode === "AMP" && "Breakfast + Super Deluxe Thali"}
+                        </div>
+                        <div style={{ fontSize: "11px", color: isSelected ? "#444" : "#888", lineHeight: "1.4" }}>
+                          {pCode === "EP" && "Stay in royal comfort with Smart TV, AC & Wi-Fi."}
+                          {pCode === "CP" && "Includes hot Aloo Paratha, Kadhi Kachori, Tea & Coffee."}
+                          {pCode === "AMP" && "Includes Breakfast + Royal Super Deluxe Thali (Lunch/Dinner)."}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Highlight summary card */}
+              <div
+                style={{
+                  backgroundColor: "#fcf8f6",
+                  borderLeft: "4px solid #7b1113",
+                  padding: "16px 20px",
+                  borderRadius: "0 8px 8px 0",
+                  marginBottom: "24px",
+                }}
+              >
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "8px" }}>
+                  <div>
+                    <div style={{ fontSize: "13px", color: "#888", textTransform: "uppercase", letterSpacing: "1px", fontWeight: "600" }}>
+                      Selected Package
+                    </div>
+                    <div style={{ fontSize: "17px", fontWeight: "700", color: "#222" }}>
+                      {formData.subType} • {currentPlan.fullName}
+                    </div>
+                  </div>
+                  <div style={{ textAlign: "right" }}>
+                    <span style={{ fontSize: "24px", fontWeight: "800", color: "#7b1113" }}>₹{currentPrice}</span>
+                    <span style={{ fontSize: "13px", color: "#666", marginLeft: "4px" }}>/ night</span>
+                  </div>
+                </div>
+                <div style={{ marginTop: "10px", fontSize: "13px", color: "#555", display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
+                  <span style={{ fontWeight: "600", color: "#7b1113" }}>Package Inclusions:</span>
+                  {currentPlan.foodHighlights.map((f, i) => (
+                    <span
+                      key={i}
+                      style={{
+                        backgroundColor: "#fff",
+                        padding: "3px 10px",
+                        borderRadius: "15px",
+                        fontSize: "12px",
+                        border: "1px solid #ebd4cb",
+                        color: "#444",
+                      }}
+                    >
+                      ✓ {f}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
           )}
 
           {type === "banquet" && (
             <div>
-              <label style={{ display: 'block', marginBottom: '8px', fontWeight: '600', color: '#444' }}>Event Type</label>
+              <label style={{ display: "block", marginBottom: "8px", fontWeight: "600", color: "#444" }}>
+                Event Type
+              </label>
               <select name="subType" value={formData.subType} onChange={handleInputChange} style={inputStyle}>
                 <option value="">Select Event Type (Optional)</option>
                 <option value="Corporate Event">Corporate Event</option>
@@ -120,100 +305,108 @@ export default function Booking() {
           )}
 
           <div>
-            <label style={{ display: 'block', marginBottom: '8px', fontWeight: '600', color: '#444' }}>Full Name</label>
-            <input 
-              type="text" 
+            <label style={{ display: "block", marginBottom: "8px", fontWeight: "600", color: "#444" }}>
+              Full Name
+            </label>
+            <input
+              type="text"
               name="name"
               value={formData.name}
               onChange={handleInputChange}
-              placeholder="Your Full Name" 
-              style={inputStyle} 
+              placeholder="Your Full Name"
+              style={inputStyle}
             />
           </div>
 
           <div>
-            <label style={{ display: 'block', marginBottom: '8px', fontWeight: '600', color: '#444' }}>Phone Number</label>
-            <input 
-              type="tel" 
+            <label style={{ display: "block", marginBottom: "8px", fontWeight: "600", color: "#444" }}>
+              Phone Number
+            </label>
+            <input
+              type="tel"
               name="phone"
               value={formData.phone}
               onChange={handleInputChange}
-              placeholder="+91 98765 43210" 
-              style={inputStyle} 
+              placeholder="+91 98765 43210"
+              style={inputStyle}
             />
           </div>
 
-          <div style={{ display: 'flex', gap: '20px' }}>
+          <div style={{ display: "flex", gap: "20px" }}>
             <div style={{ flex: 1 }}>
-              <label style={{ display: 'block', marginBottom: '8px', fontWeight: '600', color: '#444' }}>
-                {type === 'rooms' ? 'Check-in Date' : 'Date & Time'}
+              <label style={{ display: "block", marginBottom: "8px", fontWeight: "600", color: "#444" }}>
+                {type === "rooms" ? "Check-in Date" : "Date & Time"}
               </label>
-              <input 
-                type={type === 'rooms' ? 'date' : 'datetime-local'}
+              <input
+                type={type === "rooms" ? "date" : "datetime-local"}
                 name="date"
                 value={formData.date}
                 onChange={handleInputChange}
-                style={inputStyle} 
+                style={inputStyle}
               />
             </div>
             <div style={{ flex: 1 }}>
-              <label style={{ display: 'block', marginBottom: '8px', fontWeight: '600', color: '#444' }}>
-                {type === 'rooms' ? 'Guests' : 'Pax'}
+              <label style={{ display: "block", marginBottom: "8px", fontWeight: "600", color: "#444" }}>
+                {type === "rooms" ? "Guests" : "Pax"}
               </label>
-              <input 
-                type="number" 
+              <input
+                type="number"
                 name="guests"
                 value={formData.guests}
                 onChange={handleInputChange}
-                placeholder="2" 
-                style={inputStyle} 
+                placeholder="2"
+                style={inputStyle}
               />
             </div>
           </div>
 
           <div>
-            <label style={{ display: 'block', marginBottom: '8px', fontWeight: '600', color: '#444' }}>
+            <label style={{ display: "block", marginBottom: "8px", fontWeight: "600", color: "#444" }}>
               Additional Details
             </label>
-            <textarea 
+            <textarea
               name="details"
               value={formData.details}
               onChange={handleInputChange}
-              placeholder={type === 'rooms' ? "Any specific preferences like extra bed, early check-in?" : "Tell us more about your requirements..."} 
+              placeholder={
+                type === "rooms"
+                  ? "Any specific preferences like extra bed, early check-in, or meal timing?"
+                  : "Tell us more about your requirements..."
+              }
               rows={4}
-              style={{ ...inputStyle, resize: 'none' }} 
+              style={{ ...inputStyle, resize: "none" }}
             />
           </div>
 
-          <button 
+          <button
             onClick={handleWhatsApp}
             style={{
-              width: '100%',
-              padding: '18px',
-              backgroundColor: '#25D366',
-              color: '#fff',
-              border: 'none',
-              borderRadius: '8px',
-              cursor: 'pointer',
-              fontWeight: '600',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '12px',
-              fontSize: '18px',
-              letterSpacing: '0.5px',
-              boxShadow: '0 8px 20px rgba(37, 211, 102, 0.3)',
-              transition: 'transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease'
+              width: "100%",
+              padding: "18px",
+              backgroundColor: "#25D366",
+              color: "#fff",
+              border: "none",
+              borderRadius: "8px",
+              cursor: "pointer",
+              fontWeight: "600",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "12px",
+              fontSize: "18px",
+              letterSpacing: "0.5px",
+              boxShadow: "0 8px 20px rgba(37, 211, 102, 0.3)",
+              transition: "transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'translateY(-2px)';
-              e.currentTarget.style.boxShadow = '0 12px 24px rgba(37, 211, 102, 0.4)';
-              e.currentTarget.style.backgroundColor = '#20bd5a';
+              e.currentTarget.style.transform = "translateY(-2px)";
+              e.currentTarget.style.boxShadow = "0 12px 24px rgba(37, 211, 102, 0.4)";
+              e.currentTarget.style.backgroundColor = "#20bd5a";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 8px 20px rgba(37, 211, 102, 0.3)';
-              e.currentTarget.style.backgroundColor = '#25D366';
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = "0 8px 20px rgba(37, 211, 102, 0.3)";
+              e.currentTarget.style.backgroundColor = "#25D366";
             }}
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="currentColor">

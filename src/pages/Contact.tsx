@@ -21,8 +21,8 @@ export default function Contact() {
       image: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
     },
     {
-      question: "Breakfast Inclusions",
-      answer: "This depends on the package you choose. We offer both room-only rates and rates inclusive of a complimentary buffet breakfast.",
+      question: "Meal Plans & Breakfast Inclusions (EP, CP, AMP)",
+      answer: "We offer three flexible plans: EP (Room Only), CP (Continental Plan with delicious breakfast featuring hot Aloo Parathas, Kota Kadhi Kachori, and Tea/Coffee), and AMP (Modified American Plan with Breakfast plus our signature Royal Super Deluxe Thali for lunch or dinner).",
       image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
     },
     {
@@ -41,22 +41,31 @@ export default function Contact() {
 
   const nextStep = () => {
     if (step < totalSteps && !isAnimating) {
-      // Basic validation before moving
       if (step === 0 && (!formData.firstName.trim() || !formData.lastName.trim())) return;
       if (step === 1 && !formData.email.trim()) return;
       if (step === 2 && !formData.message.trim()) {
-         // handle submit
-         setStep(3); // Success step
-         return;
+        handleSubmitMessage();
+        return;
       }
 
       setIsAnimating(true);
       setTimeout(() => {
         setStep((s) => s + 1);
         setIsAnimating(false);
-      }, 400); // matches CSS transition
+      }, 400);
     }
   };
+
+  const handleSubmitMessage = () => {
+    if (!formData.message.trim()) return;
+    const { firstName, lastName, email, message } = formData;
+    const fullName = `${firstName} ${lastName}`.trim();
+    const text = `Hello Hotel Krishna Sheesh Mahal,\n\nI have an enquiry from your website contact form:\n\n*Name:* ${fullName}\n*Email:* ${email}\n*Message:* ${message}`;
+    const url = `https://wa.me/918302903734?text=${encodeURIComponent(text)}`;
+    window.open(url, '_blank');
+    setStep(3);
+  };
+
 
   const prevStep = () => {
     if (step > 0 && !isAnimating) {
@@ -929,7 +938,7 @@ export default function Contact() {
               </div>
               <div className="contact-item-text">
                 <span className="contact-item-title">Phone Number</span>
-                <a href="tel:+919024546041" className="contact-item-detail">+91 90245 46041</a>
+                <a href="tel:+918302903734" className="contact-item-detail">+91 83029 03734</a>
               </div>
             </div>
 
@@ -959,7 +968,7 @@ export default function Contact() {
               </div>
             </div>
 
-            <a href="https://wa.me/919024546041" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none'}}>
+            <a href="https://wa.me/918302903734" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none'}}>
               <div className="contact-list-item whatsapp-item">
                 <div className="contact-icon-wrapper">
                   <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -1097,10 +1106,10 @@ export default function Contact() {
                   </button>
                   <button 
                     className="tf-btn" 
-                    onClick={() => setStep(3)}
+                    onClick={handleSubmitMessage}
                     disabled={!formData.message.trim()}
                   >
-                    Submit
+                    Submit & Send Message
                   </button>
                 </div>
               </>
@@ -1115,19 +1124,30 @@ export default function Contact() {
                   </svg>
                 </div>
                 <h2 className="question-title" style={{ marginBottom: '1rem' }}>Message Sent!</h2>
-                <p className="info-subtext" style={{ fontSize: 'var(--text-regular)' }}>
-                  Thanks for reaching out, {formData.firstName}. We'll get back to you shortly.
+                <p className="info-subtext" style={{ fontSize: 'var(--text-regular)', marginBottom: '1.5rem' }}>
+                  Thanks for reaching out, {formData.firstName}. We have connected with you and will get back to you shortly on +91 83029 03734.
                 </p>
-                <button 
-                  className="tf-btn" 
-                  onClick={() => {
-                    setFormData({ firstName: "", lastName: "", email: "", message: "" });
-                    setStep(0);
-                  }}
-                  style={{ backgroundColor: 'var(--text-color)' }}
-                >
-                  Send another message
-                </button>
+                <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
+                  <a 
+                    href={`https://wa.me/918302903734?text=${encodeURIComponent(`Hello Hotel Krishna Sheesh Mahal,\n\nI have an enquiry from your website:\n*Name:* ${formData.firstName} ${formData.lastName}\n*Email:* ${formData.email}\n*Message:* ${formData.message}`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="tf-btn"
+                    style={{ textDecoration: 'none', backgroundColor: '#25D366', color: '#fff' }}
+                  >
+                    Chat on WhatsApp
+                  </a>
+                  <button 
+                    className="tf-btn" 
+                    onClick={() => {
+                      setFormData({ firstName: "", lastName: "", email: "", message: "" });
+                      setStep(0);
+                    }}
+                    style={{ backgroundColor: 'var(--text-color)' }}
+                  >
+                    Send another message
+                  </button>
+                </div>
               </div>
             )}
 
