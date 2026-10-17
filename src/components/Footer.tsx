@@ -193,10 +193,10 @@ export default function Footer() {
             <div className="footer__bottom-menu">
               <ul className="menu flex flex-wrap gap-x-8 gap-y-3">
                 <li className="menu-item">
-                  <a href="#footer" onClick={(e) => e.preventDefault()} className="premium-menu-link text-[13px]">Privacy Policy</a>
+                  <a href="/privacy-policy" onClick={(e) => go(e, "/privacy-policy")} className="premium-menu-link text-[13px]">Privacy Policy</a>
                 </li>
                 <li className="menu-item">
-                  <a href="#footer" onClick={(e) => e.preventDefault()} className="premium-menu-link text-[13px]">Terms &amp; Conditions</a>
+                  <a href="/terms" onClick={(e) => go(e, "/terms")} className="premium-menu-link text-[13px]">Terms &amp; Conditions</a>
                 </li>
               </ul>
             </div>

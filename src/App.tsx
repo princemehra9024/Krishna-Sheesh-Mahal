@@ -16,6 +16,9 @@ import Cafe from "./pages/Cafe";
 import Banquet from "./pages/Banquet";
 import Team from "./pages/Team";
 import Booking from "./pages/Booking";
+import NotFound from "./pages/NotFound";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsConditions from "./pages/TermsConditions";
 import { WHATSAPP_BOOKING_LINK } from "./data";
 
 function ScrollRevealHandler() {
@@ -70,6 +73,9 @@ export default function App() {
           <Route path="/banquet" element={<Banquet onBookNow={openBook} />} />
           <Route path="/team" element={<Team />} />
           <Route path="/booking" element={<Booking />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms" element={<TermsConditions />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
       <Footer />

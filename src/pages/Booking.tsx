@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { MEAL_PLANS, ROOMS_TARIFF_DATA, MealPlanCode } from "../data";
+import { useSEO } from "../hooks/useSEO";
 
 export default function Booking() {
+  useSEO("Book Now | Krishna Sheesh Mahal Kota", "Book your luxurious stay, banquet, or dining experience at Krishna Sheesh Mahal. Choose from premium rooms, royal banquet halls, and fine dining in Kota.");
   const location = useLocation();
   const [type, setType] = useState("rooms");
+
 
   const [formData, setFormData] = useState({
     name: "",
