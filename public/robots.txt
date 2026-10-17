@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /booking?*
 
-Sitemap: https://krishnasheeshmahal.com/sitemap.xml
+Sitemap: https://krishna-sheesh-mahal.vercel.app/sitemap.xml
