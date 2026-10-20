@@ -299,10 +299,12 @@ export default function Booking() {
               </label>
               <select name="subType" value={formData.subType} onChange={handleInputChange} style={inputStyle}>
                 <option value="">Select Event Type (Optional)</option>
+                <option value="Kitty Party">Kitty Party (₹299 / ₹330 / ₹350)</option>
+                <option value="Party & Banquet Feast">Party & Banquet Feast (Unlimited: ₹350 / ₹450 / ₹600)</option>
+                <option value="Birthday / Anniversary">Birthday / Anniversary</option>
                 <option value="Corporate Event">Corporate Event</option>
                 <option value="Wedding / Reception">Wedding / Reception</option>
-                <option value="Birthday / Anniversary">Birthday / Anniversary</option>
-                <option value="Other">Other</option>
+                <option value="Other">Other Private Celebration</option>
               </select>
             </div>
           )}
