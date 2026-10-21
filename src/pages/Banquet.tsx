@@ -49,7 +49,7 @@ export default function Banquet({ onBookNow }: BanquetProps) {
             width: 65%;
             height: 60%;
             object-fit: cover;
-            border: 8px solid #fff;
+            border: 8px solid #FAF7F2;
             border-radius: 12px;
             box-shadow: 0 40px 80px rgba(0,0,0,0.12);
             z-index: 2;
@@ -63,7 +63,7 @@ export default function Banquet({ onBookNow }: BanquetProps) {
             aspect-ratio: 1;
             object-fit: cover;
             border-radius: 50%;
-            border: 12px solid #f5f2ef;
+            border: 12px solid #FAF7F2;
             box-shadow: 0 20px 50px rgba(0,0,0,0.15);
             z-index: 3;
             transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
@@ -95,9 +95,10 @@ export default function Banquet({ onBookNow }: BanquetProps) {
           
           /* Events Grid */
           .event-card {
-            background: #fff;
+            background: #FAF7F2;
             padding: var(--spacing-small);
-            border: 1px solid rgba(52,69,65,0.1);
+            border: 1px solid rgba(197, 160, 89, 0.25);
+            border-radius: 16px;
             transition: transform 0.4s ease, box-shadow 0.4s ease;
           }
           .event-card:hover {
@@ -485,7 +486,7 @@ export default function Banquet({ onBookNow }: BanquetProps) {
               </picture>
               <div className="img-w-txt__img-secondary">
                 <div data-scroll data-scroll-speed="0.15">
-                  <img loading="lazy" className="img-full" src={IMG_CORPORATE} alt="Corporate setup" style={{ border: '8px solid #fff' }} />
+                  <img loading="lazy" className="img-full" src={IMG_CORPORATE} alt="Corporate setup" style={{ border: '8px solid #FAF7F2', borderRadius: '12px' }} />
                 </div>
               </div>
             </div>
@@ -506,10 +507,10 @@ export default function Banquet({ onBookNow }: BanquetProps) {
                 <li style={{ marginBottom: '10px' }}><strong>Banquet Concierge:</strong> Ronak (+91 9799788514) / Front (+91 8302903734)</li>
               </ul>
               <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-                <a href="tel:+919799788514" className="btn btn--regular">
+                <a href="tel:+919799788514" className="btn btn--regular btn--red">
                   Call Ronak
                 </a>
-                <a href="tel:+918302903734" className="btn btn--regular" style={{ background: 'transparent', border: '1px solid var(--heading-color)', color: 'var(--heading-color)' }}>
+                <a href="tel:+918302903734" className="btn btn--regular" style={{ background: '#FAF7F2', border: '1px solid var(--heading-color)', color: 'var(--heading-color)' }}>
                   Hotel Reception
                 </a>
               </div>
@@ -522,7 +523,7 @@ export default function Banquet({ onBookNow }: BanquetProps) {
           <div className="section section--tiny">
             <h2 className="subtitle">Plan Your Event</h2>
             <h3 className="h2" style={{ marginBottom: 'var(--spacing-small)' }}>Your Grand Celebration <em>Awaits</em></h3>
-            <button onClick={() => onBookNow?.("Banquet")} className="btn btn--regular" style={{ background: 'transparent', border: '1px solid var(--heading-color)', color: 'var(--heading-color)', cursor: 'pointer' }}>Book Now</button>
+            <button onClick={() => onBookNow?.("Banquet")} className="btn btn--regular btn--red" style={{ cursor: 'pointer' }}>Book Now</button>
           </div>
         </section>
 

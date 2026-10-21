@@ -103,9 +103,9 @@ export default function Booking() {
     width: "100%",
     padding: "16px 20px",
     borderRadius: "8px",
-    border: "1px solid #ddd",
+    border: "1px solid rgba(197, 160, 89, 0.35)",
     fontSize: "16px",
-    backgroundColor: "#fff",
+    backgroundColor: "#FDFBF7",
     outline: "none",
     boxShadow: "0 2px 5px rgba(0,0,0,0.02) inset",
     fontFamily: "inherit",
@@ -119,13 +119,13 @@ export default function Booking() {
       style={{
         paddingTop: "150px",
         paddingBottom: "100px",
-        backgroundColor: "#fafafa",
+        backgroundColor: "#FAF7F2",
         minHeight: "100vh",
       }}
     >
       <div className="container" style={{ maxWidth: "720px", margin: "0 auto", padding: "0 20px" }}>
         <div style={{ textAlign: "center", marginBottom: "40px" }}>
-          <h1 className="txt-script" style={{ fontSize: "48px", color: "#333", marginBottom: "10px" }}>
+          <h1 className="txt-script" style={{ fontSize: "48px", color: "var(--charcoal, #251C19)", marginBottom: "10px" }}>
             Book Your Experience
           </h1>
           <p style={{ color: "#666", fontSize: "18px" }}>
@@ -135,10 +135,11 @@ export default function Booking() {
 
         <div
           style={{
-            backgroundColor: "#fff",
+            backgroundColor: "#FAF7F2",
             padding: "40px",
             borderRadius: "16px",
             boxShadow: "0 10px 40px rgba(0,0,0,0.06)",
+            border: "1px solid rgba(197, 160, 89, 0.25)",
           }}
         >
           <div style={{ marginBottom: "20px" }}>
@@ -149,7 +150,7 @@ export default function Booking() {
               name="type"
               value={type}
               onChange={(e) => setType(e.target.value)}
-              style={{ ...inputStyle, border: "1px solid var(--maroon, #7b1113)" }}
+              style={{ ...inputStyle, border: "1px solid var(--red, #C51D24)" }}
             >
               <option value="rooms">Rooms & Suites</option>
               <option value="banquet">Banquet & Events</option>
@@ -193,13 +194,13 @@ export default function Booking() {
                         key={pCode}
                         onClick={() => setFormData((prev) => ({ ...prev, mealPlan: pCode }))}
                         style={{
-                          border: isSelected ? "2px solid #7b1113" : "1px solid #e0e0e0",
-                          backgroundColor: isSelected ? "#fff9f9" : "#fff",
+                          border: isSelected ? "2px solid #C51D24" : "1px solid rgba(197, 160, 89, 0.3)",
+                          backgroundColor: isSelected ? "#FDF2F2" : "#FAF7F2",
                           borderRadius: "10px",
                           padding: "16px",
                           cursor: "pointer",
                           transition: "all 0.25s ease",
-                          boxShadow: isSelected ? "0 4px 14px rgba(123, 17, 19, 0.15)" : "none",
+                          boxShadow: isSelected ? "0 4px 14px rgba(197, 29, 36, 0.18)" : "none",
                           position: "relative",
                         }}
                       >
@@ -209,8 +210,8 @@ export default function Booking() {
                               position: "absolute",
                               top: "-10px",
                               right: "10px",
-                              backgroundColor: isSelected ? "#7b1113" : "#666",
-                              color: "#fff",
+                              backgroundColor: isSelected ? "#C51D24" : "#666",
+                              color: "#FAF7F2",
                               fontSize: "10px",
                               padding: "2px 8px",
                               borderRadius: "12px",

@@ -87,9 +87,9 @@ export default function About() {
 
           /* --- Studio Animation Hero (Jesper Landberg exact clone) --- */
           :root {
-            --about-light: #f5f3ed;
+            --about-light: #FAF7F2;
             --about-text: #111111;
-            --about-accent: var(--maroon);
+            --about-accent: var(--red, #C51D24);
           }
 
           .jl-hero {
@@ -165,7 +165,7 @@ export default function About() {
             height: 55vh;
             margin-top: -27.5vh;
             margin-left: -15vw;
-            background: #fff;
+            background: #FAF7F2;
             border-radius: 6px;
             overflow: visible; 
             box-shadow: 0 20px 40px rgba(0,0,0,0.15);
@@ -292,13 +292,13 @@ export default function About() {
             margin: 0 auto; 
           }
           .pillar-card { 
-            background: #ffffff;
+            background: #FAF7F2;
             padding: 3.5rem 2.5rem;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.03);
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
-            border: 1px solid rgba(0,0,0,0.04);
+            border: 1px solid rgba(197, 160, 89, 0.25);
             overflow: hidden;
             text-align: left;
           }
@@ -356,7 +356,7 @@ export default function About() {
           .stack-section {
             position: relative;
             height: 400vh; /* 4 cards = 400vh scroll distance */
-            background-color: #fff;
+            background-color: #FAF7F2;
             z-index: 10;
             font-family: var(--font-1), sans-serif;
           }

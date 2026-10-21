@@ -72,10 +72,10 @@ export default function Team() {
             transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1); 
             border-radius: 16px; 
             padding: 24px; 
-            background: #fff; 
+            background: #FAF7F2; 
             cursor: pointer; 
             box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-            border: 1px solid rgba(0,0,0,0.02);
+            border: 1px solid rgba(197, 160, 89, 0.25);
             position: relative;
             overflow: hidden;
           }
@@ -83,13 +83,13 @@ export default function Team() {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; height: 4px;
-            background: var(--terracotta);
+            background: var(--red, #C51D24);
             transform: scaleX(0);
             transform-origin: left;
             transition: transform 0.5s ease;
           }
           .team-card:hover { 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.08); 
+            box-shadow: 0 20px 50px rgba(197, 29, 36, 0.12); 
             transform: translateY(-8px); 
           }
           .team-card:hover::before {
@@ -110,8 +110,8 @@ export default function Team() {
             border-radius: 30px;
           }
           .team-card:hover .team-card-link { 
-            background: var(--terracotta);
-            color: #fff !important;
+            background: var(--red, #C51D24);
+            color: #FAF7F2 !important;
           }
           .team-card-link-arrow { transition: transform 0.3s ease; }
           .team-card:hover .team-card-link-arrow { transform: translate(3px, -3px); }
@@ -123,7 +123,7 @@ export default function Team() {
             transform: scale(1.05);
           }
           .team-book-box {
-            display: flex; flex-wrap: wrap; justify-content: space-between; alignItems: center; margin-bottom: 120px; gap: 40px; padding: clamp(20px, 5vw, 60px); background: #fff; border-radius: 16px; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+            display: flex; flex-wrap: wrap; justify-content: space-between; alignItems: center; margin-bottom: 120px; gap: 40px; padding: clamp(20px, 5vw, 60px); background: #FAF7F2; border-radius: 16px; border: 1px solid rgba(197, 160, 89, 0.25); box-shadow: 0 10px 40px rgba(0,0,0,0.03);
           }
           .team-book-title {
             font-size: clamp(2rem, 8vw, 4rem); line-height: 1.1; text-transform: uppercase; display: flex; flex-wrap: wrap; align-items: flex-start; gap: 10px; font-family: var(--font-2); color: var(--charcoal); word-break: break-word; hyphens: auto;
@@ -274,11 +274,11 @@ export default function Team() {
               <div 
                 key={i} 
                 style={{ 
-                  background: openFaq === i ? "#fff" : "transparent",
-                  border: openFaq === i ? "1px solid rgba(0,0,0,0.05)" : "1px solid rgba(0,0,0,0.15)",
+                  background: openFaq === i ? "#FAF7F2" : "transparent",
+                  border: openFaq === i ? "1px solid rgba(197, 160, 89, 0.35)" : "1px solid rgba(0,0,0,0.15)",
                   borderRadius: "16px",
                   padding: "10px 30px",
-                  boxShadow: openFaq === i ? "0 20px 40px rgba(0,0,0,0.05)" : "none",
+                  boxShadow: openFaq === i ? "0 20px 40px rgba(197, 29, 36, 0.08)" : "none",
                   transition: "all 0.4s ease",
                   overflow: "hidden"
                 }}
@@ -286,18 +286,18 @@ export default function Team() {
                 <button 
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
                   style={{ width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center", padding: "20px 0", background: "none", border: "none", color: "var(--charcoal)", fontSize: "1.15rem", cursor: "pointer", textAlign: "left", fontWeight: "600", transition: "color 0.3s" }}
-                  onMouseEnter={e => e.currentTarget.style.color = "var(--terracotta)"}
+                  onMouseEnter={e => e.currentTarget.style.color = "var(--red, #C51D24)"}
                   onMouseLeave={e => e.currentTarget.style.color = "var(--charcoal)"}
                 >
                   <span style={{ display: "flex", gap: "20px", alignItems: "center" }}>
-                    <span style={{ color: "var(--terracotta)", opacity: 0.5, fontSize: "0.9rem", fontFamily: "var(--font-2)" }}>0{i + 1}</span>
+                    <span style={{ color: "var(--red, #C51D24)", opacity: 0.8, fontSize: "0.9rem", fontFamily: "var(--font-2)", fontWeight: "700" }}>0{i + 1}</span>
                     {faq.q}
                   </span>
                   <span style={{ 
                     display: "flex", justifyContent: "center", alignItems: "center",
                     width: "36px", height: "36px", borderRadius: "50%", 
-                    background: openFaq === i ? "var(--terracotta)" : "rgba(0,0,0,0.05)",
-                    color: openFaq === i ? "#fff" : "var(--charcoal)",
+                    background: openFaq === i ? "linear-gradient(135deg, #C51D24 0%, #8C1C24 100%)" : "rgba(0,0,0,0.05)",
+                    color: openFaq === i ? "#FAF7F2" : "var(--charcoal)",
                     fontSize: "1.2rem", fontWeight: 300, 
                     transition: "all 0.4s ease",
                     transform: openFaq === i ? "rotate(135deg)" : "rotate(0)" 

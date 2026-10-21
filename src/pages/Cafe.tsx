@@ -135,9 +135,9 @@ export default function Cafe({ onBookNow }: CafeProps) {
           transition: background 0.4s, transform 0.4s;
         }
         .cafe-feat:hover {
-          background: #fff;
+          background: #FAF7F2;
           transform: translateY(-5px);
-          box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+          box-shadow: 0 10px 30px rgba(197, 29, 36, 0.08);
           z-index: 1;
           position: relative;
         }
@@ -250,9 +250,9 @@ export default function Cafe({ onBookNow }: CafeProps) {
         .cafe-story__structured-box {
           position: relative;
           padding: 30px;
-          border: 1px solid rgba(94, 32, 45, 0.15);
+          border: 1px solid rgba(197, 160, 89, 0.3);
           border-radius: 4px;
-          background: #fff;
+          background: #FAF7F2;
           margin-top: 35px;
           box-shadow: 0 10px 30px rgba(0,0,0,0.03);
         }
@@ -547,7 +547,7 @@ export default function Cafe({ onBookNow }: CafeProps) {
           gap: 40px;
         }
         .cafe-item {
-          background: #fff;
+          background: #FAF7F2;
           border-radius: 20px;
           padding: 0 30px 40px;
           text-align: center;
@@ -556,11 +556,11 @@ export default function Cafe({ onBookNow }: CafeProps) {
           position: relative;
           z-index: 1;
           margin-top: 80px;
-          border: 1px solid rgba(37, 28, 25, 0.03);
+          border: 1px solid rgba(197, 160, 89, 0.25);
         }
         .cafe-item:hover {
           transform: translateY(-15px);
-          box-shadow: 0 20px 50px rgba(37, 28, 25, 0.1);
+          box-shadow: 0 20px 50px rgba(197, 29, 36, 0.12);
           z-index: 2;
         }
         @media (min-width: 900px) {
@@ -577,7 +577,7 @@ export default function Cafe({ onBookNow }: CafeProps) {
           margin: -60px auto 30px;
           border-radius: 50%;
           overflow: hidden;
-          border: 8px solid #fff;
+          border: 8px solid #FAF7F2;
           box-shadow: 0 15px 35px rgba(0,0,0,0.15);
           position: relative;
         }
@@ -789,9 +789,10 @@ export default function Cafe({ onBookNow }: CafeProps) {
           text-decoration: none;
         }
         .cafe-cta__btn:hover {
-          background: #fff;
+          background: #FAF7F2;
+          color: var(--red, #C51D24);
           transform: translateY(-4px);
-          box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+          box-shadow: 0 15px 30px rgba(197, 29, 36, 0.35);
         }
         .cafe-cta__btn svg {
           transition: transform 0.4s ease;

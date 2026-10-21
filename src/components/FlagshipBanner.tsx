@@ -56,10 +56,11 @@ export default function FlagshipBanner() {
             className="flagship-banner__title-inline"
             style={{
               textAlign: "center",
-              color: "rgba(255,255,255,0.9)",
+              color: "rgba(255,255,255,0.95)",
               marginBottom: "-2rem",
               zIndex: 2,
               position: "relative",
+              textShadow: "0 2px 12px rgba(0,0,0,0.85), 0 1px 3px rgba(0,0,0,0.9)",
             }}
             data-scroll
             data-scroll-speed="0.3"
@@ -79,7 +80,7 @@ export default function FlagshipBanner() {
                 textAlign: "center",
                 textTransform: "uppercase",
                 margin: 0,
-                textShadow: "0 10px 30px rgba(0,0,0,0.4)",
+                textShadow: "0 4px 25px rgba(0,0,0,0.8), 0 1px 4px rgba(0,0,0,0.95)",
               }}
             >
               Krishna
@@ -93,9 +94,6 @@ export default function FlagshipBanner() {
           <div className="flagship-banner__txt-cols section section--large">
             <div className="flagship-banner__txt-col">
               <p>Experience the perfect blend of quality, luxury, and design in every room.</p>
-            </div>
-            <div className="flagship-banner__txt-col">
-              <p>We guarantee to revamp your stay and cater to your unique taste and lifestyle.</p>
             </div>
           </div>
 

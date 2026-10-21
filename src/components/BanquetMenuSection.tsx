@@ -70,11 +70,12 @@ export default function BanquetMenuSection({ onBookNow }: BanquetMenuSectionProp
           background: #FAF7F2;
           background-image: 
             radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.05) 0%, transparent 40%),
-            radial-gradient(circle at 90% 80%, rgba(140, 38, 51, 0.04) 0%, transparent 40%),
+            radial-gradient(circle at 90% 80%, rgba(197, 29, 36, 0.04) 0%, transparent 40%),
             url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16 0l4 12 12 4-12 4-4 12-4-12L0 16l12-4z' fill='%23d4af37' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
-          padding: 80px 20px 100px;
+          padding: clamp(35px, 4.2vh, 52px) 20px clamp(45px, 5.5vh, 70px);
           color: #1A1311;
           overflow: hidden;
+          scroll-margin-top: 85px;
         }
 
         .banquet-menu-inner {
@@ -85,43 +86,43 @@ export default function BanquetMenuSection({ onBookNow }: BanquetMenuSectionProp
         /* ── HEADER ── */
         .menu-hero-header {
           text-align: center;
-          margin-bottom: 45px;
+          margin-bottom: 22px;
         }
         .menu-pill-subtitle {
           display: inline-flex;
           align-items: center;
           gap: 8px;
-          background: rgba(140, 38, 51, 0.08);
-          border: 1px solid rgba(140, 38, 51, 0.2);
-          color: #8C2633;
+          background: rgba(197, 29, 36, 0.08);
+          border: 1px solid rgba(197, 29, 36, 0.22);
+          color: #9B1C23;
           font-family: var(--font-1, sans-serif);
-          font-size: 0.8rem;
+          font-size: 0.78rem;
           font-weight: 700;
           text-transform: uppercase;
-          letter-spacing: 0.18em;
-          padding: 6px 18px;
+          letter-spacing: 0.16em;
+          padding: 5px 16px;
           border-radius: 30px;
-          margin-bottom: 14px;
+          margin-bottom: 10px;
         }
         .menu-main-title {
           font-family: var(--font-2, serif);
-          font-size: clamp(2.2rem, 5vw, 3.8rem);
+          font-size: clamp(2rem, 3.8vw, 3rem);
           font-weight: 500;
           line-height: 1.15;
           color: #1A1311;
-          margin: 0 0 14px 0;
+          margin: 0 0 8px 0;
         }
         .menu-main-title em {
           font-family: var(--font-3, italic);
           font-style: italic;
-          color: #8C2633;
+          color: #C51D24;
           font-weight: 400;
         }
         .menu-desc {
-          max-width: 680px;
-          margin: 0 auto 30px;
-          font-size: 1.05rem;
-          line-height: 1.6;
+          max-width: 660px;
+          margin: 0 auto 18px;
+          font-size: 0.95rem;
+          line-height: 1.5;
           color: #554844;
         }
 
@@ -129,8 +130,8 @@ export default function BanquetMenuSection({ onBookNow }: BanquetMenuSectionProp
         .category-switcher {
           display: inline-flex;
           background: #EFE9DF;
-          padding: 6px;
-          border-radius: 60px;
+          padding: 4px;
+          border-radius: 50px;
           box-shadow: inset 0 2px 6px rgba(0,0,0,0.06);
           border: 1px solid rgba(197, 160, 89, 0.35);
           box-sizing: border-box;
@@ -139,22 +140,22 @@ export default function BanquetMenuSection({ onBookNow }: BanquetMenuSectionProp
         .category-btn {
           display: flex;
           align-items: center;
-          gap: 10px;
-          padding: 12px 28px;
-          border-radius: 50px;
+          gap: 8px;
+          padding: 9px 24px;
+          border-radius: 40px;
           border: none;
           background: transparent;
           cursor: pointer;
           font-family: var(--font-1, sans-serif);
-          font-size: 0.95rem;
+          font-size: 0.9rem;
           font-weight: 600;
           color: #5A4A45;
           transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .category-btn.active {
-          background: #8C2633;
+          background: linear-gradient(135deg, #C51D24 0%, #9B1C23 100%);
           color: #FFFFFF;
-          box-shadow: 0 8px 20px rgba(140, 38, 51, 0.3);
+          box-shadow: 0 6px 18px rgba(197, 29, 36, 0.32);
           transform: translateY(-1px);
         }
         .category-btn.active .category-badge-chip {
@@ -162,11 +163,11 @@ export default function BanquetMenuSection({ onBookNow }: BanquetMenuSectionProp
           color: #FFF;
         }
         .category-badge-chip {
-          font-size: 0.72rem;
+          font-size: 0.7rem;
           text-transform: uppercase;
           letter-spacing: 0.05em;
-          padding: 3px 9px;
-          border-radius: 12px;
+          padding: 2px 8px;
+          border-radius: 10px;
           background: rgba(0,0,0,0.07);
           font-weight: 700;
         }
@@ -177,9 +178,9 @@ export default function BanquetMenuSection({ onBookNow }: BanquetMenuSectionProp
           justify-content: space-between;
           align-items: center;
           flex-wrap: wrap;
-          gap: 18px;
-          margin-bottom: 35px;
-          padding-bottom: 22px;
+          gap: 14px;
+          margin-bottom: 18px;
+          padding-bottom: 14px;
           border-bottom: 1px solid rgba(0,0,0,0.07);
         }
 
@@ -191,131 +192,254 @@ export default function BanquetMenuSection({ onBookNow }: BanquetMenuSectionProp
         }
         .view-mode-toggle {
           display: inline-flex;
-          background: #FFFFFF;
-          border: 1px solid rgba(0,0,0,0.1);
+          background: #FAF7F2;
+          border: 1px solid rgba(197, 160, 89, 0.3);
           border-radius: 30px;
-          padding: 4px;
+          padding: 3px;
         }
         .view-btn {
           display: flex;
           align-items: center;
           gap: 6px;
-          padding: 8px 16px;
+          padding: 7px 14px;
           border: none;
           background: transparent;
           border-radius: 20px;
-          font-size: 0.85rem;
+          font-size: 0.82rem;
           font-weight: 600;
           color: #665;
           cursor: pointer;
           transition: all 0.2s ease;
         }
         .view-btn.active {
-          background: #2B1F17;
+          background: #1A1311;
           color: #FFD78C;
         }
         .download-flyer-btn {
           display: inline-flex;
           align-items: center;
           gap: 7px;
-          padding: 10px 18px;
-          background: #FFFFFF;
+          padding: 8px 16px;
+          background: #FAF7F2;
           border: 1px solid #C5A059;
-          color: #7A1C28;
+          color: #C51D24;
           border-radius: 30px;
-          font-size: 0.85rem;
+          font-size: 0.82rem;
           font-weight: 600;
           text-decoration: none;
           transition: all 0.25s ease;
         }
         .download-flyer-btn:hover {
-          background: #7A1C28;
-          color: #FFF;
-          box-shadow: 0 4px 15px rgba(122, 28, 40, 0.25);
+          background: #C51D24;
+          color: #FAF7F2;
+          box-shadow: 0 4px 15px rgba(197, 29, 36, 0.35);
         }
 
-        /* ── LUXURY CARDS GRID ── */
+        /* ── SINGLE ROYAL FRAME CONTAINER ── */
+        .banquet-single-frame {
+          position: relative;
+          background: #FFFFFF;
+          border: 2px solid #C5A059;
+          border-radius: 22px;
+          box-shadow: 
+            0 0 0 4px rgba(197, 160, 89, 0.14),
+            0 16px 45px rgba(26, 19, 17, 0.06);
+          padding: 20px 22px 18px;
+          margin-bottom: 24px;
+          scroll-margin-top: 85px;
+        }
+        .banquet-single-frame::before {
+          content: "";
+          position: absolute;
+          inset: 5px;
+          border: 1px solid rgba(197, 160, 89, 0.32);
+          border-radius: 17px;
+          pointer-events: none;
+        }
+        .single-frame-topbar {
+          position: relative;
+          z-index: 1;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          gap: 10px;
+          padding: 9px 16px;
+          background: linear-gradient(135deg, rgba(197, 29, 36, 0.05) 0%, rgba(197, 160, 89, 0.1) 100%);
+          border: 1px solid rgba(197, 160, 89, 0.3);
+          border-radius: 12px;
+          margin-bottom: 18px;
+        }
+        .frame-crest-title {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          font-family: var(--font-1, sans-serif);
+          font-size: 0.78rem;
+          font-weight: 800;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: #9B1C23;
+        }
+        .frame-crest-sep {
+          color: #C5A059;
+        }
+        .frame-crest-sub {
+          color: #6C5D58;
+          font-weight: 600;
+          font-size: 0.74rem;
+          letter-spacing: 0.06em;
+        }
+        .frame-highlights-pills {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          flex-wrap: wrap;
+        }
+        .frame-highlight-pill {
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+          background: #FAF7F2;
+          border: 1px solid rgba(197, 160, 89, 0.35);
+          color: #4A3A34;
+          font-size: 0.72rem;
+          font-weight: 700;
+          padding: 3px 9px;
+          border-radius: 12px;
+        }
+
+        .single-frame-bottombar {
+          position: relative;
+          z-index: 1;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          gap: 12px;
+          margin-top: 18px;
+          padding-top: 14px;
+          border-top: 1px dashed rgba(197, 160, 89, 0.4);
+          font-size: 0.82rem;
+          color: #5A4A45;
+        }
+        .frame-bottom-note {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          flex: 1;
+          min-width: 260px;
+        }
+        .frame-bottom-cta {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+        .frame-wa-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          color: #128C7E;
+          background: rgba(37, 211, 102, 0.09);
+          border: 1px solid rgba(37, 211, 102, 0.35);
+          padding: 5px 12px;
+          border-radius: 20px;
+          font-weight: 700;
+          font-size: 0.76rem;
+          text-decoration: none;
+          transition: all 0.2s ease;
+        }
+        .frame-wa-link:hover {
+          background: #25D366;
+          color: #FFFFFF;
+        }
+
+        /* ── LUXURY CARDS GRID (INSIDE SINGLE FRAME) ── */
         .banquet-cards-grid {
+          position: relative;
+          z-index: 1;
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          gap: 28px;
+          gap: 18px;
           align-items: stretch;
         }
 
         /* Single Package Card */
         .pkg-card {
           position: relative;
-          background: #FFFFFF;
+          background: #FAF7F2;
           border: 1px solid rgba(197, 160, 89, 0.35);
-          border-radius: 20px;
-          padding: 32px 28px 28px;
+          border-radius: 16px;
+          padding: 22px 18px 18px;
           display: flex;
           flex-direction: column;
-          box-shadow: 0 12px 30px rgba(0,0,0,0.04);
-          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+          box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+          transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .pkg-card:hover {
-          transform: translateY(-8px);
-          box-shadow: 0 24px 50px rgba(140, 38, 51, 0.12), 0 0 0 1px #C5A059;
+          transform: translateY(-4px);
+          box-shadow: 0 14px 30px rgba(197, 29, 36, 0.12), 0 0 0 1px #C51D24;
         }
         .pkg-card.popular {
-          background: linear-gradient(180deg, #FFFFFF 0%, #FFFDF9 100%);
+          background: linear-gradient(180deg, #FFFFFF 0%, #FAF5ED 100%);
           border: 2px solid #C5A059;
-          box-shadow: 0 18px 45px rgba(197, 160, 89, 0.2);
+          box-shadow: 0 8px 24px rgba(197, 160, 89, 0.2);
         }
 
         /* Ribbons & Badges */
         .pkg-floating-badge {
           position: absolute;
-          top: -14px;
+          top: -12px;
           left: 50%;
           transform: translateX(-50%);
-          background: linear-gradient(135deg, #8C2633 0%, #5A1F2B 100%);
+          background: linear-gradient(135deg, #C51D24 0%, #9B1C23 100%);
           color: #FFFFFF;
-          font-size: 0.72rem;
-          font-weight: 700;
-          letter-spacing: 0.12em;
+          font-size: 0.68rem;
+          font-weight: 800;
+          letter-spacing: 0.1em;
           text-transform: uppercase;
-          padding: 5px 16px;
+          padding: 4px 14px;
           border-radius: 20px;
-          box-shadow: 0 4px 12px rgba(140, 38, 51, 0.3);
+          box-shadow: 0 4px 10px rgba(197, 29, 36, 0.3);
           display: flex;
           align-items: center;
           gap: 5px;
           white-space: nowrap;
           z-index: 2;
+          border: 1px solid rgba(255, 215, 140, 0.4);
         }
         .pkg-card.popular .pkg-floating-badge {
           background: linear-gradient(135deg, #C5A059 0%, #9B7834 100%);
           color: #1A1311;
+          border: 1px solid #FFE6A3;
         }
 
         .pkg-header {
           display: flex;
           justify-content: space-between;
-          align-items: flex-start;
-          margin-bottom: 14px;
+          align-items: center;
+          margin-bottom: 10px;
         }
         .pkg-menu-no {
           font-family: var(--font-1, sans-serif);
-          font-size: 0.85rem;
+          font-size: 0.82rem;
           font-weight: 800;
-          letter-spacing: 0.15em;
+          letter-spacing: 0.12em;
           text-transform: uppercase;
-          color: #8C2633;
+          color: #9B1C23;
           display: flex;
           align-items: center;
           gap: 6px;
         }
         .pkg-unlimited-pill {
-          background: rgba(34, 139, 34, 0.1);
-          color: #206d20;
+          background: rgba(34, 139, 34, 0.09);
+          color: #1b631b;
           border: 1px solid rgba(34, 139, 34, 0.3);
-          font-size: 0.7rem;
+          font-size: 0.68rem;
           font-weight: 700;
           text-transform: uppercase;
           letter-spacing: 0.05em;
-          padding: 3px 9px;
+          padding: 3px 8px;
           border-radius: 12px;
           display: inline-flex;
           align-items: center;
@@ -324,89 +448,96 @@ export default function BanquetMenuSection({ onBookNow }: BanquetMenuSectionProp
 
         .pkg-title {
           font-family: var(--font-2, serif);
-          font-size: 1.55rem;
-          line-height: 1.25;
+          font-size: 1.35rem;
+          line-height: 1.22;
           color: #1A1311;
-          margin: 0 0 8px 0;
+          margin: 0 0 6px 0;
           font-weight: 600;
+          min-height: 44px;
+          display: flex;
+          align-items: center;
         }
         .pkg-tagline {
-          font-size: 0.88rem;
+          font-size: 0.82rem;
           color: #6C5D58;
-          line-height: 1.45;
-          margin-bottom: 20px;
-          min-height: 40px;
+          line-height: 1.35;
+          margin-bottom: 12px;
+          min-height: 38px;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
         }
 
         /* Price Box */
         .pkg-price-box {
-          background: #FAF6F0;
-          border-radius: 14px;
-          padding: 14px 18px;
+          background: rgba(197, 160, 89, 0.08);
+          border-radius: 12px;
+          padding: 10px 14px;
           display: flex;
           align-items: baseline;
           justify-content: space-between;
-          margin-bottom: 24px;
+          margin-bottom: 14px;
           border: 1px dashed rgba(197, 160, 89, 0.5);
         }
         .pkg-price-amount {
           font-family: var(--font-2, serif);
-          font-size: 2.2rem;
+          font-size: 1.95rem;
           font-weight: 700;
-          color: #8C2633;
+          color: #9B1C23;
           line-height: 1;
         }
         .pkg-price-label {
-          font-size: 0.8rem;
+          font-size: 0.74rem;
           color: #776A65;
           text-transform: uppercase;
           letter-spacing: 0.05em;
-          font-weight: 600;
+          font-weight: 700;
         }
 
         /* Inclusions List */
         .pkg-features-list {
           list-style: none;
           padding: 0;
-          margin: 0 0 24px 0;
+          margin: 0 0 16px 0;
           flex-grow: 1;
           display: flex;
           flex-direction: column;
-          gap: 12px;
+          gap: 7px;
         }
         .pkg-feature-item {
           display: flex;
           align-items: flex-start;
-          gap: 10px;
-          font-size: 0.92rem;
-          line-height: 1.4;
+          gap: 8px;
+          font-size: 0.84rem;
+          line-height: 1.32;
           color: #2D221E;
         }
         .pkg-feature-icon {
           flex-shrink: 0;
-          margin-top: 3px;
-          width: 18px;
-          height: 18px;
+          margin-top: 2px;
+          width: 17px;
+          height: 17px;
           border-radius: 50%;
-          background: rgba(140, 38, 51, 0.1);
-          color: #8C2633;
+          background: rgba(197, 29, 36, 0.09);
+          color: #C51D24;
           display: flex;
           align-items: center;
           justify-content: center;
         }
         .pkg-card.popular .pkg-feature-icon {
-          background: rgba(197, 160, 89, 0.2);
-          color: #7A5814;
+          background: rgba(197, 160, 89, 0.22);
+          color: #8C6A1D;
         }
 
         /* Expanded Details Accordion */
         .pkg-details-drawer {
           background: #FAF7F2;
           border-radius: 12px;
-          padding: 16px;
-          margin-bottom: 20px;
+          padding: 14px;
+          margin-bottom: 16px;
           border: 1px solid rgba(0,0,0,0.06);
-          font-size: 0.85rem;
+          font-size: 0.82rem;
           animation: fadeIn 0.3s ease;
         }
         @keyframes fadeIn {
@@ -414,8 +545,8 @@ export default function BanquetMenuSection({ onBookNow }: BanquetMenuSectionProp
           to { opacity: 1; transform: translateY(0); }
         }
         .drawer-row {
-          margin-bottom: 10px;
-          padding-bottom: 8px;
+          margin-bottom: 9px;
+          padding-bottom: 7px;
           border-bottom: 1px dashed rgba(0,0,0,0.07);
         }
         .drawer-row:last-child {
@@ -425,76 +556,77 @@ export default function BanquetMenuSection({ onBookNow }: BanquetMenuSectionProp
         }
         .drawer-label {
           font-weight: 700;
-          color: #8C2633;
+          color: #9B1C23;
           display: flex;
           align-items: center;
           gap: 6px;
           margin-bottom: 3px;
-          font-size: 0.78rem;
+          font-size: 0.76rem;
           text-transform: uppercase;
           letter-spacing: 0.05em;
         }
         .drawer-val {
           color: #332724;
-          line-height: 1.35;
+          line-height: 1.32;
         }
 
         /* Card Action Buttons */
         .pkg-cta-stack {
           display: flex;
           flex-direction: column;
-          gap: 10px;
+          gap: 8px;
           margin-top: auto;
         }
         .btn-book-pkg {
           width: 100%;
-          padding: 14px;
-          border-radius: 12px;
-          background: #8C2633;
+          padding: 11px 14px;
+          border-radius: 10px;
+          background: linear-gradient(135deg, #C51D24 0%, #9B1C23 100%);
           color: #FFFFFF;
           font-family: var(--font-1, sans-serif);
           font-weight: 700;
-          font-size: 0.95rem;
-          letter-spacing: 0.05em;
-          border: none;
+          font-size: 0.9rem;
+          letter-spacing: 0.04em;
+          border: 1px solid rgba(255, 215, 140, 0.35);
           cursor: pointer;
           display: flex;
           align-items: center;
           justify-content: center;
-          gap: 8px;
+          gap: 7px;
+          box-shadow: 0 4px 14px rgba(197, 29, 36, 0.25);
           transition: all 0.25s ease;
         }
         .btn-book-pkg:hover {
-          background: #6A1A24;
-          box-shadow: 0 6px 20px rgba(140, 38, 51, 0.35);
+          background: linear-gradient(135deg, #D4262E 0%, #A81E26 100%);
+          box-shadow: 0 8px 20px rgba(197, 29, 36, 0.4);
           transform: translateY(-2px);
         }
         .pkg-card.popular .btn-book-pkg {
-          background: linear-gradient(135deg, #8C2633 0%, #6E1B26 100%);
+          background: linear-gradient(135deg, #C51D24 0%, #8C191E 100%);
         }
         .btn-toggle-details {
           background: transparent;
-          border: 1px solid rgba(0,0,0,0.12);
+          border: 1px solid rgba(0,0,0,0.1);
           color: #554844;
-          border-radius: 10px;
-          padding: 8px;
-          font-size: 0.8rem;
+          border-radius: 8px;
+          padding: 6px 10px;
+          font-size: 0.76rem;
           font-weight: 600;
           cursor: pointer;
           display: flex;
           align-items: center;
           justify-content: center;
-          gap: 6px;
+          gap: 5px;
           transition: all 0.2s ease;
         }
         .btn-toggle-details:hover {
-          background: #F0ECE4;
+          background: #EFE9DF;
           color: #1A1311;
         }
 
         /* ── EXECUTIVE COMPARISON TABLE ── */
         .comparison-table-wrapper {
-          background: #FFFFFF;
+          background: #FAF7F2;
           border-radius: 20px;
           box-shadow: 0 15px 40px rgba(0,0,0,0.06);
           border: 1px solid rgba(197, 160, 89, 0.3);
@@ -621,7 +753,7 @@ export default function BanquetMenuSection({ onBookNow }: BanquetMenuSectionProp
           gap: 6px;
         }
         .col-jump-btn {
-          background: #FFFFFF;
+          background: #FAF7F2;
           border: 1px solid #C5A059;
           color: #1A1311;
           border-radius: 10px;
@@ -633,9 +765,9 @@ export default function BanquetMenuSection({ onBookNow }: BanquetMenuSectionProp
           transition: all 0.2s ease;
         }
         .col-jump-btn:active, .col-jump-btn:hover {
-          background: #8C2633;
-          color: #FFF;
-          border-color: #8C2633;
+          background: #C51D24;
+          color: #FAF7F2;
+          border-color: #C51D24;
         }
 
         /* ── FOOTER CALLOUT & AMENITIES ── */
@@ -775,6 +907,10 @@ export default function BanquetMenuSection({ onBookNow }: BanquetMenuSectionProp
 
         /* ── RESPONSIVE MEDIA QUERIES (TABLETS & PHONES) ── */
         @media (max-width: 1024px) {
+          .banquet-single-frame {
+            padding: 16px 14px 14px;
+            border-radius: 18px;
+          }
           .banquet-cards-grid {
             grid-template-columns: repeat(2, 1fr);
           }
@@ -788,17 +924,37 @@ export default function BanquetMenuSection({ onBookNow }: BanquetMenuSectionProp
 
         @media (max-width: 768px) {
           .banquet-menus-wrapper {
-            padding: 45px 14px 60px;
+            padding: 35px 12px 50px;
           }
           .menu-hero-header {
-            margin-bottom: 28px;
+            margin-bottom: 20px;
           }
           .menu-main-title {
-            font-size: 2.1rem;
+            font-size: 1.95rem;
           }
           .menu-desc {
-            font-size: 0.95rem;
-            margin-bottom: 22px;
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+          }
+
+          /* Single Frame on mobile */
+          .banquet-single-frame {
+            padding: 14px 10px 12px;
+            border-radius: 16px;
+          }
+          .single-frame-topbar {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+            padding: 10px 12px;
+          }
+          .frame-crest-sep {
+            display: none;
+          }
+          .single-frame-bottombar {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
           }
 
           /* Tab Switcher on Mobile: 2-column full-width grid */
@@ -845,8 +1001,8 @@ export default function BanquetMenuSection({ onBookNow }: BanquetMenuSectionProp
             flex-direction: column;
             align-items: stretch;
             gap: 12px;
-            margin-bottom: 22px;
-            padding-bottom: 14px;
+            margin-bottom: 18px;
+            padding-bottom: 12px;
           }
           .actions-sub-group {
             width: 100%;
@@ -861,41 +1017,42 @@ export default function BanquetMenuSection({ onBookNow }: BanquetMenuSectionProp
           }
           .view-btn {
             justify-content: center;
-            padding: 9px;
-            font-size: 0.82rem;
+            padding: 8px;
+            font-size: 0.8rem;
           }
           .download-flyer-btn {
             width: 100%;
             justify-content: center;
-            padding: 11px;
-            font-size: 0.85rem;
+            padding: 10px;
+            font-size: 0.82rem;
             box-sizing: border-box;
           }
 
           /* Cards on mobile */
           .banquet-cards-grid {
             grid-template-columns: 1fr;
-            gap: 22px;
+            gap: 16px;
           }
           .pkg-card {
-            padding: 26px 18px 20px;
-            border-radius: 16px;
+            padding: 20px 15px 16px;
+            border-radius: 14px;
           }
           .pkg-title {
-            font-size: 1.4rem;
+            font-size: 1.25rem;
+            min-height: auto;
           }
           .pkg-tagline {
             min-height: auto;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
           }
           .pkg-price-amount {
-            font-size: 1.9rem;
+            font-size: 1.75rem;
           }
           .pkg-features-list {
-            gap: 10px;
+            gap: 6px;
           }
           .pkg-feature-item {
-            font-size: 0.88rem;
+            font-size: 0.82rem;
           }
 
           /* Comparison Table on Mobile */
@@ -1040,9 +1197,31 @@ export default function BanquetMenuSection({ onBookNow }: BanquetMenuSectionProp
           </div>
         </div>
 
-        {/* ── CARD VIEW ── */}
+        {/* ── CARD VIEW ENCLOSED IN SINGLE ROYAL FRAME ── */}
         {viewMode === "cards" ? (
-          <div className="banquet-cards-grid">
+          <div className="banquet-single-frame">
+            {/* Top Frame Banner */}
+            <div className="single-frame-topbar">
+              <div className="frame-crest-title">
+                <Crown size={15} />
+                <span>{activeTab === "party" ? "Rajputana Royal Banquet Feasts" : "Curated Kitty Party Celebrations"}</span>
+                <span className="frame-crest-sep">•</span>
+                <span className="frame-crest-sub">All-Inclusive Luxury Dining Spread</span>
+              </div>
+              <div className="frame-highlights-pills">
+                <span className="frame-highlight-pill">
+                  <Check size={12} color="#C51D24" /> 100% Pure Veg
+                </span>
+                <span className="frame-highlight-pill">
+                  <Sparkles size={12} color="#C5A059" /> Unlimited Refills
+                </span>
+                <span className="frame-highlight-pill">
+                  <Utensils size={12} color="#C51D24" /> Live Kitchen
+                </span>
+              </div>
+            </div>
+
+            <div className="banquet-cards-grid">
             {currentPackages.map((pkg) => {
               const isExpanded = expandedId === pkg.id;
               return (
@@ -1252,6 +1431,28 @@ export default function BanquetMenuSection({ onBookNow }: BanquetMenuSectionProp
                 </div>
               );
             })}
+            </div>
+
+            {/* Integrated Frame Bottom Footnote Bar */}
+            <div className="single-frame-bottombar">
+              <div className="frame-bottom-note">
+                <HeartHandshake size={15} color="#C51D24" />
+                <span>
+                  <strong>Guest Guarantee:</strong> 100% Pure Vegetarian dining. Jain & No Onion-Garlic preparations available on request. Additional customized dishes charged extra.
+                </span>
+              </div>
+              <div className="frame-bottom-cta">
+                <span style={{ fontSize: "0.8rem", color: "#6C5D58", fontWeight: 500 }}>Custom guest count or menu?</span>
+                <a
+                  href={getWhatsAppUrl()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="frame-wa-link"
+                >
+                  <MessageCircle size={13} /> Chat with Banquet Chef
+                </a>
+              </div>
+            </div>
           </div>
         ) : (
           /* ── COMPARISON TABLE VIEW ── */
@@ -1477,12 +1678,14 @@ export default function BanquetMenuSection({ onBookNow }: BanquetMenuSectionProp
           </div>
         )}
 
-        <div className="extra-charge-notice">
-          <HeartHandshake size={15} color="#8C2633" />
-          <span>
-            <strong>Note:</strong> Additional items charged extra. Customized menus and Jain / No Onion-Garlic preparations are readily available on request.
-          </span>
-        </div>
+        {viewMode === "table" && (
+          <div className="extra-charge-notice">
+            <HeartHandshake size={15} color="#C51D24" />
+            <span>
+              <strong>Note:</strong> Additional items charged extra. Customized menus and Jain / No Onion-Garlic preparations are readily available on request.
+            </span>
+          </div>
+        )}
 
         {/* ── BANQUET HALL AMENITIES & CONCIERGE STRIP ── */}
         <div className="banquet-bottom-strip">

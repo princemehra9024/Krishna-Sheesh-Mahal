@@ -112,11 +112,12 @@ export default function Header({ onBookNow }: HeaderProps) {
 
   return (
     <header className="header header--has-title">
+      <div className="header-top-accent" style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '3px', background: 'linear-gradient(90deg, #9B1C23 0%, #C51D24 30%, #C59D3A 50%, #C51D24 70%, #9B1C23 100%)', zIndex: 999 }} />
       <div className="header__inner">
         <div className="header__section header__section--hamburger">
           <style>{`
             .premium-hamburger-wrap { width: 50px; height: 50px; border-radius: 50%; border: 1px solid rgba(255, 215, 140, 0.4); display: flex; align-items: center; justify-content: center; margin: 0 auto; transition: all 0.4s ease; box-shadow: 0 0 10px rgba(255, 215, 140, 0.1); cursor: pointer; }
-            .premium-hamburger-wrap:hover { background: rgba(255, 215, 140, 0.1); box-shadow: 0 0 20px rgba(255, 215, 140, 0.4); transform: scale(1.05); }
+            .premium-hamburger-wrap:hover { background: rgba(197, 29, 36, 0.15); border-color: rgba(197, 29, 36, 0.5); box-shadow: 0 0 20px rgba(197, 29, 36, 0.3); transform: scale(1.05); }
             
             .main-menu .menu {
               background-color: transparent !important;
@@ -162,7 +163,31 @@ export default function Header({ onBookNow }: HeaderProps) {
 
         <div className="header__section header__section--book">
           <div className="header__link" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <button className="btn btn--regular" style={{ height: '36px', padding: '0 20px', fontSize: '0.75rem', borderRadius: '40px', backgroundColor: 'var(--maroon)', color: '#F3EDE4', border: '1px solid rgba(255, 215, 140, 0.4)', transition: 'all 0.3s' }} onMouseEnter={(e) => e.currentTarget.style.boxShadow = '0 0 15px rgba(255, 215, 140, 0.4)'} onMouseLeave={(e) => e.currentTarget.style.boxShadow = 'none'} onClick={() => { setMenuOpen(false); onBookNow(); }}>BOOK NOW</button>
+            <button
+              className="btn btn--regular btn--red"
+              style={{
+                height: '36px',
+                padding: '0 22px',
+                fontSize: '0.75rem',
+                borderRadius: '40px',
+                background: 'linear-gradient(135deg, #C51D24 0%, #8C1C24 100%)',
+                color: '#FAF7F2',
+                border: '1px solid rgba(255, 215, 140, 0.5)',
+                boxShadow: '0 2px 10px rgba(197, 29, 36, 0.35)',
+                transition: 'all 0.3s'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.boxShadow = '0 4px 18px rgba(197, 29, 36, 0.6), 0 0 15px rgba(255, 215, 140, 0.4)';
+                e.currentTarget.style.transform = 'translateY(-1px)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.boxShadow = '0 2px 10px rgba(197, 29, 36, 0.35)';
+                e.currentTarget.style.transform = 'none';
+              }}
+              onClick={() => { setMenuOpen(false); onBookNow(); }}
+            >
+              BOOK NOW
+            </button>
           </div>
         </div>
 

@@ -44,7 +44,7 @@ export default function PopupModal({ open, onClose }: PopupModalProps) {
             <p>Experience unparalleled comfort and unforgettable moments at the world's greatest events.</p>
           </div>
           <div className="popup-modal__content-form">
-            <button className="btn btn--regular btn--full" onClick={onClose} type="button">
+            <button className="btn btn--regular btn--full btn--red" onClick={onClose} type="button">
               <span>Enter Site</span>
             </button>
           </div>

@@ -212,9 +212,9 @@ export default function Rooms({ onBookNow }: RoomsProps) {
             background: rgba(255, 255, 255, 0.6);
           }
           .plan-tab-btn.active {
-            background: #fff;
-            border-color: rgba(123, 17, 19, 0.15);
-            box-shadow: 0 4px 12px rgba(123, 17, 19, 0.1);
+            background: #FAF7F2;
+            border-color: rgba(197, 29, 36, 0.25);
+            box-shadow: 0 4px 12px rgba(197, 29, 36, 0.12);
           }
           .plan-tab-code {
             font-size: 0.85rem;
@@ -223,7 +223,7 @@ export default function Rooms({ onBookNow }: RoomsProps) {
             transition: color 0.2s ease;
           }
           .plan-tab-btn.active .plan-tab-code {
-            color: var(--maroon);
+            color: var(--red, #C51D24);
           }
           .plan-tab-price {
             font-size: 0.8rem;
@@ -231,12 +231,12 @@ export default function Rooms({ onBookNow }: RoomsProps) {
             font-weight: 600;
           }
           .plan-tab-btn.active .plan-tab-price {
-            color: var(--maroon);
+            color: var(--red, #C51D24);
             font-weight: 700;
           }
           .plan-inclusion-box {
-            background: #fff8f6;
-            border: 1px dashed rgba(123, 17, 19, 0.25);
+            background: #FAF6F1;
+            border: 1px dashed rgba(197, 29, 36, 0.25);
             border-radius: 10px;
             padding: 10px 14px;
             font-size: 0.825rem;
@@ -257,7 +257,7 @@ export default function Rooms({ onBookNow }: RoomsProps) {
           /* --- TARIFF & MEAL PLANS SHOWCASE SECTION --- */
           .tariff-section {
             padding: 90px 5% 100px;
-            background: linear-gradient(180deg, #fbf7f4 0%, #fff 100%);
+            background: linear-gradient(180deg, #FAF7F2 0%, #F5EFEB 100%);
             border-top: 1px solid rgba(0,0,0,0.06);
             border-bottom: 1px solid rgba(0,0,0,0.06);
           }
@@ -297,11 +297,11 @@ export default function Rooms({ onBookNow }: RoomsProps) {
             margin-bottom: 50px;
           }
           .tariff-plan-card {
-            background: #fff;
+            background: #FAF7F2;
             border-radius: 20px;
             padding: 36px 30px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-            border: 1px solid rgba(0,0,0,0.06);
+            border: 1px solid rgba(197, 160, 89, 0.25);
             display: flex;
             flex-direction: column;
             position: relative;
@@ -309,24 +309,25 @@ export default function Rooms({ onBookNow }: RoomsProps) {
           }
           .tariff-plan-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 18px 40px rgba(123, 17, 19, 0.08);
+            box-shadow: 0 18px 40px rgba(197, 29, 36, 0.12);
           }
           .tariff-plan-card.featured {
-            border: 2px solid var(--maroon);
-            background: linear-gradient(180deg, #fff 0%, #fffbfa 100%);
+            border: 2px solid var(--red, #C51D24);
+            background: linear-gradient(180deg, #FAF7F2 0%, #FAF0E8 100%);
           }
           .tariff-plan-badge {
             position: absolute;
             top: -12px;
             left: 30px;
-            background: var(--maroon);
-            color: #fff;
+            background: linear-gradient(135deg, #C51D24 0%, #8C1C24 100%);
+            color: #FAF7F2;
             font-size: 0.725rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.1em;
             padding: 4px 14px;
             border-radius: 20px;
+            box-shadow: 0 3px 10px rgba(197, 29, 36, 0.3);
           }
           .tariff-card-name {
             font-size: 1.5rem;
@@ -393,11 +394,11 @@ export default function Rooms({ onBookNow }: RoomsProps) {
             margin-top: 1px;
           }
           .tariff-matrix-card {
-            background: #fff;
+            background: #FAF7F2;
             border-radius: 20px;
             padding: 35px 30px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.05);
-            border: 1px solid rgba(0,0,0,0.06);
+            border: 1px solid rgba(197, 160, 89, 0.25);
             overflow-x: auto;
           }
           .tariff-table {

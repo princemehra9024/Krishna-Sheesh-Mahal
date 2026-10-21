@@ -821,10 +821,10 @@ export default function Contact() {
             transition: transform 0.3s ease;
           }
           .cta-btn-unique:hover {
-            background-color: #fff;
-            color: var(--heading-color);
+            background-color: #FAF7F2;
+            color: var(--red, #C51D24);
             transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(197, 157, 58, 0.4);
+            box-shadow: 0 15px 30px rgba(197, 29, 36, 0.3);
           }
           .cta-btn-unique:hover svg {
             transform: translateX(5px);

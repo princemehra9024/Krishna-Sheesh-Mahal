@@ -41,8 +41,9 @@ export default function Restaurant({ onBookNow }: RestaurantProps) {
           transition: background 0.4s, transform 0.4s;
         }
         .rest-feat:hover {
-          background: #fff;
+          background: #FAF7F2;
           transform: translateY(-4px);
+          box-shadow: 0 10px 30px rgba(197, 29, 36, 0.08);
         }
         .rest-feat__icon {
           width: 44px; height: 44px;

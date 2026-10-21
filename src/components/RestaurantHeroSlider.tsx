@@ -309,8 +309,8 @@ export default function RestaurantHeroSlider() {
           position: absolute;
           bottom: -30px; left: -30px;
           width: 100px; height: 100px;
-          border-radius: 50%; border: 1px solid rgba(0,0,0,0.05);
-          background: #fff; z-index: 10;
+          border-radius: 50%; border: 1px solid rgba(197, 160, 89, 0.35);
+          background: #FAF7F2; z-index: 10;
           display: flex; align-items: center; justify-content: center; text-align: center;
           box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }

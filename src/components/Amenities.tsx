@@ -239,14 +239,15 @@ export default function Amenities() {
         }
         
         .amenity-item:hover {
-          background-color: #ffffff;
+          background-color: #FAF7F2;
         }
         
         .amenity-icon-wrap {
           width: 55px;
           height: 55px;
           border-radius: 50%;
-          background: #ffffff;
+          background: #FAF7F2;
+          border: 1px solid rgba(197, 160, 89, 0.35);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -257,17 +258,17 @@ export default function Amenities() {
         
         .amenity-item:hover .amenity-icon-wrap {
           transform: translateY(-5px) scale(1.1);
-          background: var(--maroon, #5E202D);
-          box-shadow: 0 10px 25px rgba(94, 32, 45, 0.2);
+          background: linear-gradient(135deg, #C51D24 0%, #8C1C24 100%);
+          box-shadow: 0 10px 25px rgba(197, 29, 36, 0.35);
         }
         
         .amenity-icon-wrap svg {
-          color: var(--maroon, #5E202D);
+          color: var(--red, #C51D24);
           transition: color 0.4s ease;
         }
         
         .amenity-item:hover .amenity-icon-wrap svg {
-          color: #ffffff;
+          color: #FAF7F2;
         }
         
         .amenity-item-title {
