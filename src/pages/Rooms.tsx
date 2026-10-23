@@ -1054,7 +1054,7 @@ export default function Rooms({ onBookNow }: RoomsProps) {
                     onClick={() => setRoomPlans((prev) => ({ ...prev, deluxe: "CP" }))}
                   >
                     <span className="plan-tab-code">CP</span>
-                    <span className="plan-tab-price">₹1400</span>
+                    <span className="plan-tab-price">₹1500</span>
                   </button>
                   <button
                     type="button"
@@ -1062,7 +1062,7 @@ export default function Rooms({ onBookNow }: RoomsProps) {
                     onClick={() => setRoomPlans((prev) => ({ ...prev, deluxe: "AMP" }))}
                   >
                     <span className="plan-tab-code">AMP</span>
-                    <span className="plan-tab-price">₹1500</span>
+                    <span className="plan-tab-price">₹1800</span>
                   </button>
                 </div>
 
@@ -1095,7 +1095,7 @@ export default function Rooms({ onBookNow }: RoomsProps) {
               <div style={{ marginTop: '20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '15px' }}>
                 <div>
                   <div className="price-tag">
-                    ₹{roomPlans["deluxe"] === "EP" ? "1200" : roomPlans["deluxe"] === "CP" ? "1400" : "1500"}
+                    ₹{roomPlans["deluxe"] === "EP" ? "1200" : roomPlans["deluxe"] === "CP" ? "1500" : "1800"}
                   </div>
                   <div className="price-label">Per Night ({roomPlans["deluxe"]} Plan)</div>
                 </div>
@@ -1108,7 +1108,7 @@ export default function Rooms({ onBookNow }: RoomsProps) {
                     Book Now
                   </Link>
                   <a
-                    href={`https://wa.me/918302903734?text=${encodeURIComponent(`Hello Krishna Sheesh Mahal, I would like to book Deluxe Room on ${roomPlans["deluxe"]} Plan at ₹${roomPlans["deluxe"] === "EP" ? "1200" : roomPlans["deluxe"] === "CP" ? "1400" : "1500"}/night.`)}`}
+                    href={`https://wa.me/918302903734?text=${encodeURIComponent(`Hello Krishna Sheesh Mahal, I would like to book Deluxe Room on ${roomPlans["deluxe"]} Plan at ₹${roomPlans["deluxe"] === "EP" ? "1200" : roomPlans["deluxe"] === "CP" ? "1500" : "1800"}/night.`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn btn--regular"
@@ -1165,7 +1165,7 @@ export default function Rooms({ onBookNow }: RoomsProps) {
                     onClick={() => setRoomPlans((prev) => ({ ...prev, "super-deluxe": "CP" }))}
                   >
                     <span className="plan-tab-code">CP</span>
-                    <span className="plan-tab-price">₹1700</span>
+                    <span className="plan-tab-price">₹1800</span>
                   </button>
                   <button
                     type="button"
@@ -1173,7 +1173,7 @@ export default function Rooms({ onBookNow }: RoomsProps) {
                     onClick={() => setRoomPlans((prev) => ({ ...prev, "super-deluxe": "AMP" }))}
                   >
                     <span className="plan-tab-code">AMP</span>
-                    <span className="plan-tab-price">₹2000</span>
+                    <span className="plan-tab-price">₹2100</span>
                   </button>
                 </div>
 
@@ -1206,7 +1206,7 @@ export default function Rooms({ onBookNow }: RoomsProps) {
               <div style={{ marginTop: '20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '15px' }}>
                 <div>
                   <div className="price-tag">
-                    ₹{roomPlans["super-deluxe"] === "EP" ? "1500" : roomPlans["super-deluxe"] === "CP" ? "1700" : "2000"}
+                    ₹{roomPlans["super-deluxe"] === "EP" ? "1500" : roomPlans["super-deluxe"] === "CP" ? "1800" : "2100"}
                   </div>
                   <div className="price-label">Per Night ({roomPlans["super-deluxe"]} Plan)</div>
                 </div>
@@ -1219,7 +1219,7 @@ export default function Rooms({ onBookNow }: RoomsProps) {
                     Book Now
                   </Link>
                   <a
-                    href={`https://wa.me/918302903734?text=${encodeURIComponent(`Hello Krishna Sheesh Mahal, I would like to book Super Deluxe Room on ${roomPlans["super-deluxe"]} Plan at ₹${roomPlans["super-deluxe"] === "EP" ? "1500" : roomPlans["super-deluxe"] === "CP" ? "1700" : "2000"}/night.`)}`}
+                    href={`https://wa.me/918302903734?text=${encodeURIComponent(`Hello Krishna Sheesh Mahal, I would like to book Super Deluxe Room on ${roomPlans["super-deluxe"]} Plan at ₹${roomPlans["super-deluxe"] === "EP" ? "1500" : roomPlans["super-deluxe"] === "CP" ? "1800" : "2100"}/night.`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn btn--regular"
@@ -1276,7 +1276,7 @@ export default function Rooms({ onBookNow }: RoomsProps) {
                     onClick={() => setRoomPlans((prev) => ({ ...prev, premium: "CP" }))}
                   >
                     <span className="plan-tab-code">CP</span>
-                    <span className="plan-tab-price">₹2000</span>
+                    <span className="plan-tab-price">₹2100</span>
                   </button>
                   <button
                     type="button"
@@ -1284,7 +1284,7 @@ export default function Rooms({ onBookNow }: RoomsProps) {
                     onClick={() => setRoomPlans((prev) => ({ ...prev, premium: "AMP" }))}
                   >
                     <span className="plan-tab-code">AMP</span>
-                    <span className="plan-tab-price">₹2500</span>
+                    <span className="plan-tab-price">₹2400</span>
                   </button>
                 </div>
 
@@ -1317,7 +1317,7 @@ export default function Rooms({ onBookNow }: RoomsProps) {
               <div style={{ marginTop: '20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '15px' }}>
                 <div>
                   <div className="price-tag">
-                    ₹{roomPlans["premium"] === "EP" ? "1800" : roomPlans["premium"] === "CP" ? "2000" : "2500"}
+                    ₹{roomPlans["premium"] === "EP" ? "1800" : roomPlans["premium"] === "CP" ? "2100" : "2400"}
                   </div>
                   <div className="price-label">Per Night ({roomPlans["premium"]} Plan)</div>
                 </div>
@@ -1330,7 +1330,7 @@ export default function Rooms({ onBookNow }: RoomsProps) {
                     Book Now
                   </Link>
                   <a
-                    href={`https://wa.me/918302903734?text=${encodeURIComponent(`Hello Krishna Sheesh Mahal, I would like to book Premium Room on ${roomPlans["premium"]} Plan at ₹${roomPlans["premium"] === "EP" ? "1800" : roomPlans["premium"] === "CP" ? "2000" : "2500"}/night.`)}`}
+                    href={`https://wa.me/918302903734?text=${encodeURIComponent(`Hello Krishna Sheesh Mahal, I would like to book Premium Room on ${roomPlans["premium"]} Plan at ₹${roomPlans["premium"] === "EP" ? "1800" : roomPlans["premium"] === "CP" ? "2100" : "2400"}/night.`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn btn--regular"
@@ -1379,7 +1379,7 @@ export default function Rooms({ onBookNow }: RoomsProps) {
                     onClick={() => setRoomPlans((prev) => ({ ...prev, suite: "EP" }))}
                   >
                     <span className="plan-tab-code">EP</span>
-                    <span className="plan-tab-price">₹2800</span>
+                    <span className="plan-tab-price">₹3199</span>
                   </button>
                   <button
                     type="button"
@@ -1387,7 +1387,7 @@ export default function Rooms({ onBookNow }: RoomsProps) {
                     onClick={() => setRoomPlans((prev) => ({ ...prev, suite: "CP" }))}
                   >
                     <span className="plan-tab-code">CP</span>
-                    <span className="plan-tab-price">₹3300</span>
+                    <span className="plan-tab-price">₹3499</span>
                   </button>
                   <button
                     type="button"
@@ -1395,7 +1395,7 @@ export default function Rooms({ onBookNow }: RoomsProps) {
                     onClick={() => setRoomPlans((prev) => ({ ...prev, suite: "AMP" }))}
                   >
                     <span className="plan-tab-code">AMP</span>
-                    <span className="plan-tab-price">₹3500</span>
+                    <span className="plan-tab-price">₹3799</span>
                   </button>
                 </div>
 
@@ -1428,7 +1428,7 @@ export default function Rooms({ onBookNow }: RoomsProps) {
               <div style={{ marginTop: '20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '15px' }}>
                 <div>
                   <div className="price-tag">
-                    ₹{roomPlans["suite"] === "EP" ? "2800" : roomPlans["suite"] === "CP" ? "3300" : "3500"}
+                    ₹{roomPlans["suite"] === "EP" ? "3199" : roomPlans["suite"] === "CP" ? "3499" : "3799"}
                   </div>
                   <div className="price-label">Per Night ({roomPlans["suite"]} Plan)</div>
                 </div>
@@ -1441,7 +1441,7 @@ export default function Rooms({ onBookNow }: RoomsProps) {
                     Book Now
                   </Link>
                   <a
-                    href={`https://wa.me/918302903734?text=${encodeURIComponent(`Hello Krishna Sheesh Mahal, I would like to book Suite on ${roomPlans["suite"]} Plan at ₹${roomPlans["suite"] === "EP" ? "2800" : roomPlans["suite"] === "CP" ? "3300" : "3500"}/night.`)}`}
+                    href={`https://wa.me/918302903734?text=${encodeURIComponent(`Hello Krishna Sheesh Mahal, I would like to book Suite on ${roomPlans["suite"]} Plan at ₹${roomPlans["suite"] === "EP" ? "3199" : roomPlans["suite"] === "CP" ? "3499" : "3799"}/night.`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn btn--regular"
@@ -1480,7 +1480,7 @@ export default function Rooms({ onBookNow }: RoomsProps) {
                 <div className="tariff-rate-row"><span>Deluxe Room:</span><strong>₹1,200</strong></div>
                 <div className="tariff-rate-row"><span>Super Deluxe Room:</span><strong>₹1,500</strong></div>
                 <div className="tariff-rate-row"><span>Premium Room:</span><strong>₹1,800</strong></div>
-                <div className="tariff-rate-row"><span>Royal Suite:</span><strong>₹2,800</strong></div>
+                <div className="tariff-rate-row"><span>Royal Suite:</span><strong>₹3,199</strong></div>
               </div>
 
               <ul className="tariff-inclusions-list">
@@ -1507,10 +1507,10 @@ export default function Rooms({ onBookNow }: RoomsProps) {
               
               <div className="tariff-rates-box">
                 <div className="tariff-rates-title">Package Tariffs (Per Night)</div>
-                <div className="tariff-rate-row"><span>Deluxe Room:</span><strong>₹1,400</strong></div>
-                <div className="tariff-rate-row"><span>Super Deluxe Room:</span><strong>₹1,700</strong></div>
-                <div className="tariff-rate-row"><span>Premium Room:</span><strong>₹2,000</strong></div>
-                <div className="tariff-rate-row"><span>Royal Suite:</span><strong>₹3,300</strong></div>
+                <div className="tariff-rate-row"><span>Deluxe Room:</span><strong>₹1,500</strong></div>
+                <div className="tariff-rate-row"><span>Super Deluxe Room:</span><strong>₹1,800</strong></div>
+                <div className="tariff-rate-row"><span>Premium Room:</span><strong>₹2,100</strong></div>
+                <div className="tariff-rate-row"><span>Royal Suite:</span><strong>₹3,499</strong></div>
               </div>
 
               <ul className="tariff-inclusions-list">
@@ -1537,10 +1537,10 @@ export default function Rooms({ onBookNow }: RoomsProps) {
               
               <div className="tariff-rates-box">
                 <div className="tariff-rates-title">Package Tariffs (Per Night)</div>
-                <div className="tariff-rate-row"><span>Deluxe Room:</span><strong>₹1,500</strong></div>
-                <div className="tariff-rate-row"><span>Super Deluxe Room:</span><strong>₹2,000</strong></div>
-                <div className="tariff-rate-row"><span>Premium Room:</span><strong>₹2,500</strong></div>
-                <div className="tariff-rate-row"><span>Royal Suite:</span><strong>₹3,500</strong></div>
+                <div className="tariff-rate-row"><span>Deluxe Room:</span><strong>₹1,800</strong></div>
+                <div className="tariff-rate-row"><span>Super Deluxe Room:</span><strong>₹2,100</strong></div>
+                <div className="tariff-rate-row"><span>Premium Room:</span><strong>₹2,400</strong></div>
+                <div className="tariff-rate-row"><span>Royal Suite:</span><strong>₹3,799</strong></div>
               </div>
 
               <ul className="tariff-inclusions-list">
@@ -1598,8 +1598,8 @@ export default function Rooms({ onBookNow }: RoomsProps) {
                     <div style={{ fontSize: '0.8rem', color: '#888' }}>19m² • Smart TV & AC</div>
                   </td>
                   <td><span className="tariff-table-price">₹1,200</span></td>
-                  <td><span className="tariff-table-price">₹1,400</span></td>
                   <td><span className="tariff-table-price">₹1,500</span></td>
+                  <td><span className="tariff-table-price">₹1,800</span></td>
                   <td>
                     <Link to="/booking?type=rooms&room=deluxe" className="btn btn--small" style={{ textDecoration: 'none', padding: '8px 18px', borderRadius: '20px', backgroundColor: 'var(--heading-color)', color: '#fff', fontSize: '0.85rem' }}>
                       Book Room
@@ -1612,8 +1612,8 @@ export default function Rooms({ onBookNow }: RoomsProps) {
                     <div style={{ fontSize: '0.8rem', color: '#888' }}>20m² • Spacious Comfort</div>
                   </td>
                   <td><span className="tariff-table-price">₹1,500</span></td>
-                  <td><span className="tariff-table-price">₹1,700</span></td>
-                  <td><span className="tariff-table-price">₹2,000</span></td>
+                  <td><span className="tariff-table-price">₹1,800</span></td>
+                  <td><span className="tariff-table-price">₹2,100</span></td>
                   <td>
                     <Link to="/booking?type=rooms&room=super-deluxe" className="btn btn--small" style={{ textDecoration: 'none', padding: '8px 18px', borderRadius: '20px', backgroundColor: 'var(--heading-color)', color: '#fff', fontSize: '0.85rem' }}>
                       Book Room
@@ -1626,8 +1626,8 @@ export default function Rooms({ onBookNow }: RoomsProps) {
                     <div style={{ fontSize: '0.8rem', color: '#888' }}>22m² • Elevated Luxury</div>
                   </td>
                   <td><span className="tariff-table-price">₹1,800</span></td>
-                  <td><span className="tariff-table-price">₹2,000</span></td>
-                  <td><span className="tariff-table-price">₹2,500</span></td>
+                  <td><span className="tariff-table-price">₹2,100</span></td>
+                  <td><span className="tariff-table-price">₹2,400</span></td>
                   <td>
                     <Link to="/booking?type=rooms&room=premium" className="btn btn--small" style={{ textDecoration: 'none', padding: '8px 18px', borderRadius: '20px', backgroundColor: 'var(--heading-color)', color: '#fff', fontSize: '0.85rem' }}>
                       Book Room
@@ -1639,9 +1639,9 @@ export default function Rooms({ onBookNow }: RoomsProps) {
                     <strong>Royal Suite</strong>
                     <div style={{ fontSize: '0.8rem', color: '#888' }}>25m² • Pinnacle Luxury</div>
                   </td>
-                  <td><span className="tariff-table-price">₹2,800</span></td>
-                  <td><span className="tariff-table-price">₹3,300</span></td>
-                  <td><span className="tariff-table-price">₹3,500</span></td>
+                  <td><span className="tariff-table-price">₹3,199</span></td>
+                  <td><span className="tariff-table-price">₹3,499</span></td>
+                  <td><span className="tariff-table-price">₹3,799</span></td>
                   <td>
                     <Link to="/booking?type=rooms&room=suite" className="btn btn--small" style={{ textDecoration: 'none', padding: '8px 18px', borderRadius: '20px', backgroundColor: 'var(--heading-color)', color: '#fff', fontSize: '0.85rem' }}>
                       Book Room

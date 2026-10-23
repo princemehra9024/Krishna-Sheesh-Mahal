@@ -8,6 +8,9 @@ export const HERO_POSTER = "https://img.youtube.com/vi/PohFY6vM8lk/maxresdefault
 export const HOTEL_PHONE = "+91 83029 03734";
 export const HOTEL_PHONE_RAW = "918302903734";
 
+export const BANQUET_RESTAURANT_PHONE = "+91 86903 93739";
+export const BANQUET_RESTAURANT_PHONE_RAW = "918690393739";
+
 export const WHATSAPP_BOOKING_LINK = "https://api.whatsapp.com/send/?phone=918302903734&text=Hello!%20I%20would%20like%20to%20book%20a%20room%20at%20Hotel%20Krishna%20Sheesh%20Mahal.%0A%0A*Name:*%20%0A*Check-in%20Date:*%20%0A*Check-out%20Date:*%20%0A*Room%20Type:*%20%0A*Number%20of%20Guests:*%20%0A*Special%20Requests:*";
 
 export function generateWhatsAppLink(details: {
@@ -17,7 +20,10 @@ export function generateWhatsAppLink(details: {
   guests: string;
   requests: string;
 }) {
-  const phone = "918302903734";
+  const isBanquetOrDiningOrRooftop = ["banquet", "dining", "restaurant", "cafe", "rooftop", "lounge"].some((t) =>
+    (details.type || "").toLowerCase().includes(t)
+  );
+  const phone = isBanquetOrDiningOrRooftop ? BANQUET_RESTAURANT_PHONE_RAW : HOTEL_PHONE_RAW;
   const intro = `Hello! I would like to make a ${details.type} booking at Hotel Krishna Sheesh Mahal.`;
   const message = `${intro}\n\n*Name:* ${details.name}\n*Date:* ${details.date}\n*Number of Guests:* ${details.guests}\n*Special Requests:* ${details.requests || 'None'}`;
   return `https://api.whatsapp.com/send/?phone=${phone}&text=${encodeURIComponent(message)}`;
@@ -36,7 +42,7 @@ export const MENU: MenuItem[] = [
     href: "/rooms",
   },
   { label: "Restaurant", href: "/restaurant" },
-  { label: "Cafe", href: "/cafe" },
+  { label: "Rama's Sky Lounge", href: "/cafe" },
   { label: "Banquet", href: "/banquet" },
   { label: "Team", href: "/team" },
   { label: "About Us", href: "/about" },
@@ -55,8 +61,8 @@ export const IMAGE_LINK_ROWS: ImageLink[][] = [
     { title: "Restaurant", href: "/restaurant", src: "/images/restaurant-img.jpeg", alt: "Restaurant" },
   ],
   [
-    { title: "Super Deluxe", href: "/rooms#super-deluxe", src: "/images/rooms/super-deluxe-room.png", alt: "Super Deluxe" },
-    { title: "Cafe", href: "/cafe", src: `/images/cafe/neon-lit-cafe-lounge-interior.png`, alt: "Cafe" },
+    { title: "Rooms", href: "/rooms", src: "/images/rooms/super-deluxe-room.png", alt: "Rooms" },
+    { title: "Rama's Sky Lounge", href: "/cafe", src: `/images/cafe/neon-lit-cafe-lounge-interior.png`, alt: "Rama's Sky Lounge" },
   ],
   [
     { title: "Banquet", href: "/banquet", src: "/images/banquet/wedding-canopy.png", alt: "Banquet" },
@@ -112,19 +118,6 @@ export const QUOTES: Quote[] = [
     tag: "Culinary & Dining",
     badge: "Agoda Choice",
     imageCaption: "Live Wok Artistry & Fine Dining",
-  },
-  {
-    img: "/images/quote-fruit-sald.jpeg",
-    logo: `${U}/2026/03/logo-the-times.svg`,
-    logoW: 100,
-    logoH: 48,
-    text: "Exceptionally good hotel with reasonable amenities, attentive staff, and timeless heritage elegance.",
-    source: "A. K. • The Times Feature",
-    score: "4.9 / 5.0",
-    rating: 5,
-    tag: "Heritage & Comfort",
-    badge: "The Times Feature",
-    imageCaption: "Garden Fresh Breakfast & Ambience",
   },
   {
     img: "/images/hotel-exterior.png",
@@ -203,7 +196,7 @@ export const FOOTER_MENUS: { title: string; items: { label: string; href: string
     items: [
       { label: "Premium", href: "/rooms#premium" },
       { label: "Super Deluxe", href: "/rooms#super-deluxe" },
-      { label: "Cafe", href: "/cafe" },
+      { label: "Rama's Sky Lounge", href: "/cafe" },
       { label: "Deluxe", href: "/rooms#deluxe" },
     ],
   },
@@ -439,8 +432,8 @@ export const ROOMS_TARIFF_DATA: RoomTariffInfo[] = [
     features: ["Free Wi-Fi", "Smart TV", "AC & Tea Kettle"],
     prices: {
       EP: 1200,
-      CP: 1400,
-      AMP: 1500
+      CP: 1500,
+      AMP: 1800
     }
   },
   {
@@ -454,8 +447,8 @@ export const ROOMS_TARIFF_DATA: RoomTariffInfo[] = [
     features: ["Free Wi-Fi", "Smart TV", "AC & Tea Kettle"],
     prices: {
       EP: 1500,
-      CP: 1700,
-      AMP: 2000
+      CP: 1800,
+      AMP: 2100
     }
   },
   {
@@ -469,8 +462,8 @@ export const ROOMS_TARIFF_DATA: RoomTariffInfo[] = [
     features: ["Free Wi-Fi", "Smart TV", "AC & Tea Kettle"],
     prices: {
       EP: 1800,
-      CP: 2000,
-      AMP: 2500
+      CP: 2100,
+      AMP: 2400
     }
   },
   {
@@ -483,9 +476,9 @@ export const ROOMS_TARIFF_DATA: RoomTariffInfo[] = [
     image: "/images/rooms/Suite.png",
     features: ["Free Wi-Fi", "Smart TV", "AC & Tea Kettle"],
     prices: {
-      EP: 2800,
-      CP: 3300,
-      AMP: 3500
+      EP: 3199,
+      CP: 3499,
+      AMP: 3799
     }
   }
 ];

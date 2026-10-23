@@ -4,9 +4,9 @@ import { useCallback, useEffect, useRef, useState } from "react";
 const PHOTOS = [
   "/images/restaurant-dining.png", // Fine Dining
   "/images/gourmet-garlic-naan.png", // Plated Food
-  "/images/restaurant-dining-2.png", // Restaurant Ambience
-  "/images/restaurant-img.jpeg", // Dining Hall
-  "/images/restaurant-hero-5.jpeg", // Intimate Dining
+  "/images/sunset-terrace.jpg", // Sunset Terrace Rooftop
+  "/images/multi-cuisine-spread.jpg", // Multi-Cuisine Chinese, Tandoori, South Indian
+  "/images/restaurant-img.jpeg", // Intimate Dining
 ];
 
 /* ── slide data ─────────────────────────────────────────── */
@@ -27,7 +27,7 @@ const SLIDES: Slide[] = [
     headBold: "Fine Dining",
     headItalic: "Reimagined",
     desc: "An exquisite culinary journey that blends tradition with innovation, set against a backdrop of refined elegance.",
-    bullets: ["Chef-curated tasting menus", "Live open kitchen", "Panoramic city views"],
+    bullets: ["Chef-curated tasting menus", "Authentic Royal Recipes", "Panoramic city views"],
     cta: "RESERVE A TABLE",
     badge: "Open 7 – 11 PM",
   },
@@ -50,13 +50,13 @@ const SLIDES: Slide[] = [
     badge: "Rooftop · 6 PM",
   },
   {
-    eyebrow: "200+ LABEL CELLAR",
-    headBold: "Curated",
-    headItalic: "Cellar",
-    desc: "An award-winning wine program featuring over 200 labels, expertly paired by our in-house sommelier.",
-    bullets: ["Sommelier pairing", "Private tasting room", "Rare vintages"],
-    cta: "EXPLORE WINES",
-    badge: "Wine Cellar",
+    eyebrow: "WORLD OF FLAVORS",
+    headBold: "Multi-Cuisine",
+    headItalic: "Delights",
+    desc: "A rich culinary feast featuring fiery Chinese wok specialties, sizzling Tandoori platters, and authentic South Indian classics.",
+    bullets: ["Chinese wok & noodles", "Sizzling Tandoori platters", "Authentic South Indian"],
+    cta: "VIEW MENU",
+    badge: "Multi-Cuisine",
   },
   {
     eyebrow: "TABLE FOR TWO?",
@@ -93,6 +93,36 @@ export default function RestaurantHeroSlider() {
   const reducedMotion = useRef(false);
   const sliderRef = useRef<HTMLElement>(null);
   const isScrolling = useRef(false);
+
+  const [formDate, setFormDate] = useState("");
+  const [formGuests, setFormGuests] = useState("2");
+  const [formPhone, setFormPhone] = useState("");
+
+  const handleAvailabilitySubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    let text = `Hello Krishna Sheesh Mahal,\nI would like to check table availability for Restaurant / Rooftop dining.\n\n`;
+    if (formDate) text += `*Date:* ${formDate}\n`;
+    if (formGuests) text += `*Guests:* ${formGuests}\n`;
+    if (formPhone) text += `*Phone:* ${formPhone}\n`;
+    window.open(`https://wa.me/918690393739?text=${encodeURIComponent(text)}`, "_blank");
+  };
+
+  const handleSlideCta = (slide: Slide) => {
+    if (slide.cta === "VIEW MENU") {
+      const el = document.getElementById("restaurant-menu");
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      } else {
+        window.location.hash = "restaurant-menu";
+      }
+      return;
+    }
+    const isRooftop = slide.headBold.toLowerCase().includes("sunset") || slide.badge.toLowerCase().includes("rooftop");
+    const msg = isRooftop
+      ? "Hello Krishna Sheesh Mahal, I would like to book a table at the Sunset Terrace Rooftop."
+      : "Hello Krishna Sheesh Mahal, I would like to reserve a table at the Fine Dining Restaurant.";
+    window.open(`https://wa.me/918690393739?text=${encodeURIComponent(msg)}`, "_blank");
+  };
 
   /* check prefers-reduced-motion once */
   useEffect(() => {
@@ -391,6 +421,8 @@ export default function RestaurantHeroSlider() {
         className="rhs"
         id="restaurant-hero"
         aria-label="Restaurant hero slider"
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
         onTouchStart={(e) => { touchRef.current = e.touches[0].clientX; }}
         onTouchEnd={(e) => {
           const diff = e.changedTouches[0].clientX - touchRef.current;
@@ -425,11 +457,36 @@ export default function RestaurantHeroSlider() {
                         <div className="rhs__form-wrap rhs-anim delay-2">
                           <h3 className="rhs__form-title">RESERVE TONIGHT</h3>
                           <p className="rhs__form-desc">Secure your table at Krishna Sheesh Mahal — an intimate dining experience awaits.</p>
-                          <form className="rhs__form" onSubmit={(e) => e.preventDefault()}>
-                            <input className="rhs__input" type="date" aria-label="Date" />
-                            <input className="rhs__input" type="number" min={1} max={20} placeholder="Guests" aria-label="Number of guests" />
-                            <input className="rhs__input" type="tel" placeholder="Phone number" aria-label="Phone number" />
+                          <form className="rhs__form" onSubmit={handleAvailabilitySubmit}>
+                            <input 
+                              className="rhs__input" 
+                              type="date" 
+                              aria-label="Date"
+                              value={formDate}
+                              onChange={(e) => setFormDate(e.target.value)}
+                            />
+                            <input 
+                              className="rhs__input" 
+                              type="number" 
+                              min={1} 
+                              max={20} 
+                              placeholder="Guests" 
+                              aria-label="Number of guests"
+                              value={formGuests}
+                              onChange={(e) => setFormGuests(e.target.value)}
+                            />
+                            <input 
+                              className="rhs__input" 
+                              type="tel" 
+                              placeholder="Phone number" 
+                              aria-label="Phone number"
+                              value={formPhone}
+                              onChange={(e) => setFormPhone(e.target.value)}
+                            />
                             <button className="rhs__submit" type="submit">CHECK AVAILABILITY</button>
+                            <div style={{ textAlign: "center", marginTop: "10px", fontSize: "12px", color: "#251C19", opacity: 0.8 }}>
+                              Direct Table Booking: <a href="tel:+918690393739" style={{ color: "inherit", fontWeight: "bold" }}>+91 86903 93739</a>
+                            </div>
                           </form>
                         </div>
                       </div>
@@ -441,7 +498,7 @@ export default function RestaurantHeroSlider() {
                         <div className="rhs__img-wrap">
                           <img src={PHOTOS[i]} alt={slide.headBold} loading={i === 0 ? "eager" : "lazy"} />
                         </div>
-                        {(i === 1 || i === 3) && (
+                        {i === 1 && (
                           <div className="rhs__img-wrap-secondary">
                             <img src={PHOTOS[(i + 1) % TOTAL]} alt="" loading="lazy" />
                           </div>
@@ -479,7 +536,7 @@ export default function RestaurantHeroSlider() {
                               ))}
                             </ul>
                           )}
-                          <button className="rhs__cta" type="button">
+                          <button className="rhs__cta" type="button" onClick={() => handleSlideCta(slide)}>
                             {slide.cta}
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                           </button>

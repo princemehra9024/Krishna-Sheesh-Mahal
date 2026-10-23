@@ -677,13 +677,21 @@ export default function BookFlipMenu() {
                 <div className="book-backcover-info-row">
                   <span className="book-backcover-info-icon">{renderPhoneCallSVG()}</span>
                   <div>
-                    <strong>Reservations & Orders:</strong> +91 91161 39777 / 0744-2470777
+                    <strong>Reservations & Orders:</strong>{" "}
+                    <a href="tel:+918690393739" style={{ color: "#E9D29F", textDecoration: "none", fontWeight: 700 }}>
+                      +91 86903 93739
+                    </a>
                   </div>
                 </div>
               </div>
 
               <div>
-                <a href="#restaurant-hero" className="book-backcover-cta-btn">
+                <a
+                  href={`https://wa.me/918690393739?text=${encodeURIComponent("Hello Krishna Sheesh Mahal, I would like to reserve a table at the Restaurant.")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="book-backcover-cta-btn"
+                >
                   <span>RESERVE YOUR TABLE</span>
                   <span style={{ display: "inline-flex", alignItems: "center" }}>{renderChevronRightSVG()}</span>
                 </a>

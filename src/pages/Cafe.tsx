@@ -8,7 +8,7 @@ interface CafeProps {
 import { useSEO } from "../hooks/useSEO";
 
 export default function Cafe({ onBookNow }: CafeProps) {
-  useSEO("The Cafe | Krishna Sheesh Mahal Kota", "Relax and unwind at our premium cafe in Kota. Enjoy artisan coffee, delicious pastries, and a serene atmosphere perfect for business or leisure.");
+  useSEO("Rama's Sky Lounge | Krishna Sheesh Mahal Kota", "Relax and unwind at Rama's Sky Lounge in Kota. Enjoy artisan coffee, delicious mocktails, signature bites, and a serene ambient lounge atmosphere.");
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -522,7 +522,9 @@ export default function Cafe({ onBookNow }: CafeProps) {
           font-family: var(--font-1);
           font-size: 1.15rem;
           line-height: 1.7;
-          opacity: 0.85;
+          color: #FAF7F2 !important;
+          opacity: 0.95;
+          text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
         }
 
         /* ── MENU PREVIEW ── */
@@ -763,12 +765,14 @@ export default function Cafe({ onBookNow }: CafeProps) {
           margin-bottom: 25px;
           color: #fff;
         }
-        .cafe-cta__desc {
+        .cafe-cta__desc, .cafe-cta p {
           font-family: var(--font-1);
           font-size: 1.15rem;
           margin-bottom: 40px;
-          line-height: 1.6;
-          opacity: 0.9;
+          line-height: 1.7;
+          color: #FAF7F2 !important;
+          opacity: 0.95;
+          text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
         }
         .cafe-cta__btn {
           display: inline-flex;
@@ -892,9 +896,9 @@ export default function Cafe({ onBookNow }: CafeProps) {
         <section className="cafe-hero">
           <img src="/images/cafe/neon-lit-cafe-lounge-interior.png" alt="Cafe Hero" className="cafe-hero__bg" />
           <div className="cafe-hero__content">
-            <span className="cafe-hero__subtitle">Artisanal Brews & Bites</span>
+            <span className="cafe-hero__subtitle">Artisanal Brews & Lounge</span>
             <h1 className="cafe-hero__title">
-              The Cafe <em>Experience</em>
+              Rama's Sky <em>Lounge</em>
             </h1>
           </div>
           <div className="cafe-tear" aria-hidden="true">
@@ -916,17 +920,17 @@ export default function Cafe({ onBookNow }: CafeProps) {
           </div>
           <div className="cafe-feat">
             <svg className="cafe-feat__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle>
             </svg>
-            <h3 className="cafe-feat__title">Fresh Bakery</h3>
-            <p className="cafe-feat__desc">Warm pastries, cakes, and breads baked fresh in-house daily.</p>
+            <h3 className="cafe-feat__title">Private Birthday Parties</h3>
+            <p className="cafe-feat__desc">Celebrate your special moments with private party setups, decorations & custom menus.</p>
           </div>
           <div className="cafe-feat">
             <svg className="cafe-feat__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
               <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
             </svg>
-            <h3 className="cafe-feat__title">All-Day Dining</h3>
-            <p className="cafe-feat__desc">From quick morning bites to relaxing evening conversations.</p>
+            <h3 className="cafe-feat__title">Open 2 PM - 11 PM</h3>
+            <p className="cafe-feat__desc">Afternoon vibes to late-night hangouts, every day of the week.</p>
           </div>
           <div className="cafe-feat">
             <svg className="cafe-feat__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -945,13 +949,13 @@ export default function Cafe({ onBookNow }: CafeProps) {
           </div>
           <div className="cafe-story__content">
             <p className="cafe-story__eyebrow">Our Passion</p>
-            <h2 className="cafe-story__title">Brewed with <span className="outline-text">Love</span>,<br/>Served with <span className="outline-text">Joy</span>.</h2>
+            <h2 className="cafe-story__title">Crafted with <span className="outline-text">Love</span>,<br/>Served with <span className="outline-text">Joy</span>.</h2>
             
             <p className="cafe-story__text-lead">
-              At our cafe, we believe that every cup of coffee tells a story.
+              At Rama's Sky Lounge, every moment is crafted to perfection.
             </p>
             <p className="cafe-story__text">
-              From sourcing the finest beans to the careful art of brewing, we are dedicated to providing an experience that awakens the senses and comforts the soul.
+              From signature shakes and refreshing mocktails to sizzling starters and cozy conversations, we provide an experience that lingers long after you leave.
             </p>
             
             <div className="cafe-story__structured-box">
@@ -960,7 +964,7 @@ export default function Cafe({ onBookNow }: CafeProps) {
                   <svg className="cafe-story__list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline>
                   </svg>
-                  <span><strong>Artisanal Pairings:</strong> Complement your beverage with our selection of pastries and bites, crafted for quality and flavor.</span>
+                  <span><strong>Party-Ready Vibes:</strong> Book private birthday celebrations with custom decorations, DJ music, and exclusive party menus.</span>
                 </li>
                 <li>
                   <svg className="cafe-story__list-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -977,7 +981,7 @@ export default function Cafe({ onBookNow }: CafeProps) {
         <section className="cafe-crazy">
           <div className="cafe-crazy__bg-text-wrapper">
             <div className="cafe-crazy__bg-text" aria-hidden="true">
-              ROAST • BREW • SIP • ROAST • BREW • SIP •
+              CHILL • VIBE • SIP • PARTY • CELEBRATE • ENJOY •
             </div>
           </div>
 
@@ -986,7 +990,7 @@ export default function Cafe({ onBookNow }: CafeProps) {
               <path id="circlePath" fill="none" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" />
               <text>
                 <textPath href="#circlePath" startOffset="0%" textLength="232" style={{fontSize: '10px', letterSpacing: '2px', fontWeight: 'bold', fill: '#FFD78C'}}>
-                  ARTISAN COFFEE • PREMIUM ROAST • FRESH BAKE • 
+                  SKY LOUNGE • MOCKTAILS • CELEBRATIONS • 
                 </textPath>
               </text>
             </svg>
@@ -995,24 +999,24 @@ export default function Cafe({ onBookNow }: CafeProps) {
           <div className="cafe-crazy__container">
             <div className="crazy-text-block">
               <h2 className="crazy-title">
-                The Art <span>Of</span> Roasting
+                The Sky <span>Lounge</span> Experience
               </h2>
               <p className="crazy-desc">
-                Step into a world where coffee is an experience, not just a drink. Bold flavors, careful craftsmanship, and a space designed to inspire.
+                Step into a world of neon lights, signature vibes, and unforgettable moments. Your evening starts here.
               </p>
               
               <div className="crazy-profile">
                 <div className="crazy-profile-item">
-                  <span className="label">Origin</span>
-                  <span className="value">Ethiopia & Colombia</span>
+                  <span className="label">Hours</span>
+                  <span className="value">2 PM – 11 PM</span>
                 </div>
                 <div className="crazy-profile-item">
-                  <span className="label">Roast Level</span>
-                  <span className="value">Medium-Dark</span>
+                  <span className="label">Speciality</span>
+                  <span className="value">Shakes & Mocktails</span>
                 </div>
                 <div className="crazy-profile-item">
-                  <span className="label">Flavor Notes</span>
-                  <span className="value">Dark Chocolate, Caramel, Berry</span>
+                  <span className="label">Events</span>
+                  <span className="value">Birthday Parties & Celebrations</span>
                 </div>
               </div>
             </div>
@@ -1039,9 +1043,9 @@ export default function Cafe({ onBookNow }: CafeProps) {
         {/* ── HIGHLIGHT ── */}
         <section className="cafe-highlight">
           <div className="cafe-highlight__inner">
-            <h2 className="cafe-highlight__title">“A perfect blend of warmth and flavor.”</h2>
+            <h2 className="cafe-highlight__title">“Where every evening feels like a celebration.”</h2>
             <p className="cafe-highlight__desc">
-              Discover a space where time slows down, and every sip brings you closer to the perfect moment. Join us for a taste of handcrafted excellence.
+              Discover a space where neon lights set the mood, signature shakes refresh your senses, and every visit becomes a memory worth keeping.
             </p>
           </div>
         </section>
@@ -1049,33 +1053,33 @@ export default function Cafe({ onBookNow }: CafeProps) {
         {/* ── MENU PREVIEW ── */}
         <section className="cafe-menu-preview">
           <div className="cafe-menu__header">
-            <h2 className="cafe-menu__title">Cafe Favorites</h2>
+            <h2 className="cafe-menu__title">Lounge Favorites</h2>
             <p className="cafe-menu__subtitle">A glimpse of what we offer</p>
           </div>
           <div className="cafe-menu__grid">
             <div className="cafe-item">
               <div className="cafe-item__img-wrap">
-                <img src="/images/cafe/cafe_special.jpg" alt="Signature Latte" className="cafe-item__img" />
+                <img src="/images/cafe/cafe_special.jpg" alt="Pan Shake" className="cafe-item__img" />
               </div>
-              <h3 className="cafe-item__title">Signature Latte</h3>
-              <p className="cafe-item__desc">Rich espresso poured over steamed milk with a delicate art finish.</p>
-              <div className="cafe-item__price">₹350</div>
+              <h3 className="cafe-item__title">Pan Shake</h3>
+              <p className="cafe-item__desc">Our Sheeshmahal Special — refreshing paan flavor blended into a creamy, unforgettable shake.</p>
+              <div className="cafe-item__price">₹180</div>
             </div>
             <div className="cafe-item">
               <div className="cafe-item__img-wrap">
-                <img src="/images/cafe/cafe_booking_plate.jpg" alt="Artisan Pastries" className="cafe-item__img" />
+                <img src="/images/cafe/cafe_booking_plate.jpg" alt="Paneer Tikka Roasted" className="cafe-item__img" />
               </div>
-              <h3 className="cafe-item__title">Artisan Pastries</h3>
-              <p className="cafe-item__desc">Flaky, buttery croissants and sweet treats baked fresh every morning.</p>
-              <div className="cafe-item__price">₹250</div>
+              <h3 className="cafe-item__title">Paneer Tikka Roasted</h3>
+              <p className="cafe-item__desc">Smoky, chargrilled paneer marinated in signature spices — a sizzling crowd-favorite starter.</p>
+              <div className="cafe-item__price">₹300</div>
             </div>
             <div className="cafe-item">
               <div className="cafe-item__img-wrap">
-                <img src="/images/cafe/cafe_contact.jpg" alt="Craft Cold Brews" className="cafe-item__img" />
+                <img src="/images/cafe/cafe_contact.jpg" alt="Mint Mojito" className="cafe-item__img" />
               </div>
-              <h3 className="cafe-item__title">Craft Cold Brews</h3>
-              <p className="cafe-item__desc">Slow-steeped for 18 hours to bring out a smooth, bold flavor.</p>
-              <div className="cafe-item__price">₹280</div>
+              <h3 className="cafe-item__title">Mint Mojito</h3>
+              <p className="cafe-item__desc">Cool, refreshing blend of fresh mint, lime, and soda — the perfect evening cooler.</p>
+              <div className="cafe-item__price">₹180</div>
             </div>
           </div>
         </section>
@@ -1083,24 +1087,24 @@ export default function Cafe({ onBookNow }: CafeProps) {
         {/* ── PROCESS ── */}
         <section className="cafe-process">
           <div className="cafe-process__header">
-            <p className="cafe-process__header-subtitle">The Journey</p>
-            <h2 className="cafe-process__header-title">From Bean to Cup</h2>
+            <p className="cafe-process__header-subtitle">The Experience</p>
+            <h2 className="cafe-process__header-title">Your Evening at Sky Lounge</h2>
           </div>
           <div className="cafe-process__inner">
             <div className="cafe-process__step">
               <div className="cafe-process__num">01</div>
-              <h3 className="cafe-process__title">Sourcing</h3>
-              <p className="cafe-process__desc">We partner directly with farmers to source the highest quality, ethically grown beans from around the world.</p>
+              <h3 className="cafe-process__title">Arrive</h3>
+              <p className="cafe-process__desc">Step into the neon-lit ambience and feel the vibe shift — comfortable seating, mood lighting, and great music set the tone.</p>
             </div>
             <div className="cafe-process__step">
               <div className="cafe-process__num">02</div>
-              <h3 className="cafe-process__title">Roasting</h3>
-              <p className="cafe-process__desc">Our beans are meticulously roasted in small batches to unlock their unique, complex flavor profiles.</p>
+              <h3 className="cafe-process__title">Indulge</h3>
+              <p className="cafe-process__desc">Pick from our signature shakes, refreshing mocktails, sizzling tandoori starters, and crispy Chinese bites — all prepared fresh.</p>
             </div>
             <div className="cafe-process__step">
               <div className="cafe-process__num">03</div>
-              <h3 className="cafe-process__title">Brewing</h3>
-              <p className="cafe-process__desc">Our expert baristas carefully craft each cup, ensuring the perfect balance of aroma, body, and taste.</p>
+              <h3 className="cafe-process__title">Celebrate</h3>
+              <p className="cafe-process__desc">Host private birthday parties, anniversary celebrations, or simply unwind with friends in an exclusive, cozy atmosphere.</p>
             </div>
           </div>
         </section>
@@ -1108,12 +1112,27 @@ export default function Cafe({ onBookNow }: CafeProps) {
         {/* ── CTA ── */}
         <section className="cafe-cta">
           <div className="cafe-cta__content">
-            <h2 className="cafe-cta__title">Join Us for a Cup</h2>
-            <p className="cafe-cta__desc">Whether you're looking for a quiet morning coffee or an afternoon treat, we have a table waiting for you.</p>
-            <button className="cafe-cta__btn" onClick={() => window.open(WHATSAPP_BOOKING_LINK, '_blank')}>
-              Reserve a Table
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </button>
+            <h2 className="cafe-cta__title">Join Us Tonight</h2>
+            <p className="cafe-cta__desc" style={{ color: '#FAF7F2' }}>Whether you're planning a birthday bash or just craving a signature shake — Rama's Sky Lounge has a spot reserved for you. Open daily 2 PM – 11 PM.</p>
+            <div style={{ display: 'flex', gap: '15px', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <button 
+                className="cafe-cta__btn" 
+                onClick={() => {
+                  const url = `https://wa.me/918690393739?text=${encodeURIComponent("Hello Krishna Sheesh Mahal, I would like to reserve a table at Rama's Sky Lounge (Rooftop).")}`;
+                  window.open(url, '_blank');
+                }}
+              >
+                Reserve a Table
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </button>
+              <a 
+                href="tel:+918690393739" 
+                className="cafe-cta__btn" 
+                style={{ background: 'transparent', border: '1px solid #FFD78C', color: '#FFD78C' }}
+              >
+                Call: +91 86903 93739
+              </a>
+            </div>
           </div>
         </section>
       </div>

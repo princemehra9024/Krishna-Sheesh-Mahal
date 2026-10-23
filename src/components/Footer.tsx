@@ -11,6 +11,13 @@ export default function Footer() {
   const location = useLocation();
   const isRestaurant = location.pathname === "/restaurant";
 
+  const isBanquetOrDiningOrRooftop =
+    location.pathname === "/restaurant" ||
+    location.pathname === "/cafe" ||
+    location.pathname === "/banquet";
+
+  const footerWhatsAppPhone = isBanquetOrDiningOrRooftop ? "%2B918690393739" : "%2B918302903734";
+
   const menus = FOOTER_MENUS.map(menu => {
     if (isRestaurant && menu.title === "Rooms") {
       return {
@@ -27,8 +34,9 @@ export default function Footer() {
         ...menu,
         items: [
           ...menu.items,
-          { label: "WhatsApp", href: "https://api.whatsapp.com/send/?phone=%2B918302903734", external: true },
-          { label: "Phone", href: "tel:+918302903734", external: true },
+          { label: "Rooms: +91 83029 03734", href: "tel:+918302903734", external: true },
+          { label: "Banquet / Dine: +91 86903 93739", href: "tel:+918690393739", external: true },
+          { label: "WhatsApp", href: `https://api.whatsapp.com/send/?phone=${footerWhatsAppPhone}`, external: true },
           { label: "Location", href: "https://share.google/SjYib0PPddAqTZfFZ", external: true },
         ]
       };
@@ -112,7 +120,7 @@ export default function Footer() {
               </div>
               <div className="contact-cta__btn">
                 <a
-                  href="https://api.whatsapp.com/send/?phone=%2B918302903734&text&type=phone_number&app_absent=0"
+                  href={`https://api.whatsapp.com/send/?phone=${footerWhatsAppPhone}&text&type=phone_number&app_absent=0`}
                   className="premium-btn inline-block"
                   target="_blank"
                   rel="noreferrer"

@@ -274,10 +274,10 @@ export const PARTY_BANQUET_PACKAGES: BanquetPackage[] = [
 ];
 
 export const BANQUET_CONTACT = {
-  coordinator: "Ronak",
-  phone: "+91 9799788514",
-  cleanPhone: "919799788514",
-  hotelPhone: "+91 8302903734",
+  coordinator: "Event Manager",
+  phone: "+91 86903 93739",
+  cleanPhone: "918690393739",
+  hotelPhone: "+91 83029 03734",
   hotelCleanPhone: "918302903734",
   capacity: "50 to 80 Guests",
   kittyMenuPdf: "/menus/kitty-party-menu.pdf",

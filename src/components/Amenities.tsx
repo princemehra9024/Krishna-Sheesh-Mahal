@@ -2,7 +2,7 @@ import { Wifi, Car, Utensils, Clock, Wind, Coffee } from 'lucide-react';
 
 const amenitiesData = [
   { icon: Wifi, title: "High-Speed Wi-Fi", description: "Seamless connectivity throughout the entire property." },
-  { icon: Car, title: "Valet Parking", description: "Complimentary secure parking and valet service." },
+  { icon: Car, title: "Parking", description: "Complimentary secure on-site parking for all guests." },
   { icon: Utensils, title: "In-House Restaurant", description: "Award-winning local and multi-cuisine dining." },
   { icon: Clock, title: "24/7 Concierge", description: "Round-the-clock service for your every need." },
   { icon: Wind, title: "Climate Control", description: "Personalized comfort in every suite." },

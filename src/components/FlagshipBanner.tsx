@@ -56,11 +56,12 @@ export default function FlagshipBanner() {
             className="flagship-banner__title-inline"
             style={{
               textAlign: "center",
-              color: "rgba(255,255,255,0.95)",
+              color: "#ffffff",
               marginBottom: "-2rem",
               zIndex: 2,
               position: "relative",
-              textShadow: "0 2px 12px rgba(0,0,0,0.85), 0 1px 3px rgba(0,0,0,0.9)",
+              textShadow: "0 2px 6px rgba(0,0,0,0.98), 0 4px 18px rgba(0,0,0,0.95), 0 0 30px rgba(0,0,0,0.85)",
+              letterSpacing: "0.04em",
             }}
             data-scroll
             data-scroll-speed="0.3"
@@ -75,12 +76,13 @@ export default function FlagshipBanner() {
                 lineHeight: "1",
                 fontWeight: 400,
                 fontFamily: "var(--font-2)",
-                color: "#fff",
+                color: "#ffffff",
                 letterSpacing: "0.05em",
                 textAlign: "center",
                 textTransform: "uppercase",
                 margin: 0,
-                textShadow: "0 4px 25px rgba(0,0,0,0.8), 0 1px 4px rgba(0,0,0,0.95)",
+                textShadow:
+                  "0 3px 6px rgba(0,0,0,0.98), 0 8px 30px rgba(0,0,0,0.95), 0 0 50px rgba(0,0,0,0.9)",
               }}
             >
               Krishna

@@ -26,7 +26,11 @@ export default function Booking() {
     const planParam = params.get("plan")?.toUpperCase();
 
     if (category) {
-      setType(category);
+      if (category === "rooftop") {
+        setType("cafe");
+      } else {
+        setType(category);
+      }
     }
 
     if (roomParam) {
@@ -74,9 +78,21 @@ export default function Booking() {
   const handleWhatsApp = () => {
     const { name, phone, date, guests, details, subType, mealPlan } = formData;
     let categoryName = "Rooms & Suites";
-    if (type === "banquet") categoryName = "Banquet & Events";
-    if (type === "dining") categoryName = "Fine Dining";
-    if (type === "cafe") categoryName = "Cafe";
+    let targetPhone = "918302903734";
+
+    if (type === "banquet") {
+      categoryName = "Banquet & Events";
+      targetPhone = "918690393739";
+    } else if (type === "dining" || type === "restaurant") {
+      categoryName = "Fine Dining Restaurant";
+      targetPhone = "918690393739";
+    } else if (type === "cafe" || type === "rooftop") {
+      categoryName = "Rooftop Lounge (Rama's Sky Lounge)";
+      targetPhone = "918690393739";
+    } else {
+      categoryName = "Rooms & Suites";
+      targetPhone = "918302903734";
+    }
 
     let text = `Hello Krishna Sheesh Mahal,\nI would like to enquire about ${categoryName}.\n\n`;
     if (name) text += `*Name:* ${name}\n`;
@@ -95,7 +111,7 @@ export default function Booking() {
     if (guests) text += (type === "rooms" ? `*Number of Guests:* ${guests}\n` : `*Pax:* ${guests}\n`);
     if (details) text += `*Special Requests:* ${details}\n`;
 
-    const url = `https://wa.me/918302903734?text=${encodeURIComponent(text)}`;
+    const url = `https://wa.me/${targetPhone}?text=${encodeURIComponent(text)}`;
     window.open(url, "_blank");
   };
 
@@ -152,10 +168,10 @@ export default function Booking() {
               onChange={(e) => setType(e.target.value)}
               style={{ ...inputStyle, border: "1px solid var(--red, #C51D24)" }}
             >
-              <option value="rooms">Rooms & Suites</option>
-              <option value="banquet">Banquet & Events</option>
-              <option value="dining">Fine Dining</option>
-              <option value="cafe">Cafe</option>
+              <option value="rooms">Rooms & Suites (+91 83029 03734)</option>
+              <option value="banquet">Banquet & Events (+91 86903 93739)</option>
+              <option value="dining">Fine Dining Restaurant (+91 86903 93739)</option>
+              <option value="cafe">Rooftop Lounge · Rama's Sky Lounge (+91 86903 93739)</option>
             </select>
           </div>
 
@@ -382,6 +398,15 @@ export default function Booking() {
               rows={4}
               style={{ ...inputStyle, resize: "none" }}
             />
+          </div>
+
+          <div style={{ textAlign: "center", marginBottom: "14px", fontSize: "14px", color: "#666" }}>
+            Booking Desk:{" "}
+            <strong style={{ color: "#7b1113" }}>
+              {type === "rooms"
+                ? "Rooms Reservation Desk (+91 83029 03734)"
+                : "Banquet / Rooftop / Restaurant Desk (+91 86903 93739)"}
+            </strong>
           </div>
 
           <button

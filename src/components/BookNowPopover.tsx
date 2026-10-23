@@ -8,7 +8,7 @@ const HOTELS = [
   { title: "Rooms & Suites", src: "/images/rooms/room-hero-page-img.png", href: "/booking?type=rooms" },
   { title: "Banquet & Events", src: "/images/banquet/wedding-canopy.png", href: "/booking?type=banquet" },
   { title: "Fine Dining", src: "/images/restaurant-img.jpeg", href: "/booking?type=dining" },
-  { title: "Cafe", src: "/images/cafe/neon-lit-cafe-lounge-interior.png", href: "/booking?type=cafe" },
+  { title: "Rama's Sky Lounge", src: "/images/cafe/neon-lit-cafe-lounge-interior.png", href: "/booking?type=cafe" },
 ];
 
 interface Props {

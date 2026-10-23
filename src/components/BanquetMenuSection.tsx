@@ -1750,7 +1750,7 @@ export default function BanquetMenuSection({ onBookNow }: BanquetMenuSectionProp
             {/* Event Coordinator Contact Card */}
             <div className="coordinator-card">
               <div className="coordinator-title">Banquet & Kitty Concierge</div>
-              <div className="coordinator-name">Mr. {BANQUET_CONTACT.coordinator}</div>
+              <div className="coordinator-name">{BANQUET_CONTACT.coordinator}</div>
               <p style={{ color: "rgba(255, 255, 255, 0.8)", fontSize: "0.85rem", marginBottom: "18px", lineHeight: 1.4 }}>
                 Ready to plan your menu tasting or reserve your date? Speak directly with our dedicated event manager.
               </p>

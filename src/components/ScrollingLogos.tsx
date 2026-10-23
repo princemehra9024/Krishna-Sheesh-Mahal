@@ -44,7 +44,7 @@ const DESKTOP_SPACES: SpaceCard[] = [
   },
   {
     id: "cafe-lounge",
-    title: "Cafe & Lounge",
+    title: "Rama's Sky Lounge",
     subtitle: "Bistro Bites & Relaxed Vibes",
     category: "dining",
     tag: "Cozy Bistro",
@@ -172,7 +172,7 @@ const MOBILE_COL_1: SpaceCard[] = [
   },
   {
     id: "mob-cafe-lounge",
-    title: "Cafe & Lounge",
+    title: "Rama's Sky Lounge",
     subtitle: "Social Bistro & Mocktails",
     category: "dining",
     tag: "Cozy Bistro",

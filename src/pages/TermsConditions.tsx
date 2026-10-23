@@ -119,7 +119,7 @@ export default function TermsConditions() {
         <h2>2. Check-in & Check-out</h2>
         <ul>
           <li>
-            <strong>Check-in:</strong> 12:00 PM (Noon)
+            <strong>Check-in:</strong> 11:00 AM
           </li>
           <li>
             <strong>Check-out:</strong> 11:00 AM

@@ -369,7 +369,12 @@ export default function Restaurant({ onBookNow }: RestaurantProps) {
               <p className="rest-sig__body">
                 Every dish at Krishna Sheesh Mahal tells a story — of locally sourced ingredients, time-honored recipes, and a relentless pursuit of culinary excellence. Our chefs blend traditional Rajasthani flavors with contemporary techniques to create an experience that lingers long after the last bite.
               </p>
-              <a href="#restaurant-hero" className="rest-sig__cta">
+              <a
+                href={`https://wa.me/918690393739?text=${encodeURIComponent("Hello Krishna Sheesh Mahal, I would like to reserve a table at the Fine Dining Restaurant.")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rest-sig__cta"
+              >
                 RESERVE YOUR TABLE
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
               </a>

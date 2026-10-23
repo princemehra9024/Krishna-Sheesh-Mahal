@@ -22,6 +22,7 @@ export default function Header({ onBookNow }: HeaderProps) {
     "Rooms": "/images/rooms/room-hero-page-img.png",
     "Restaurant": "/images/restaurant-dining-2.png",
     "Cafe": "/images/cafe/neon-lit-cafe-lounge-interior.png",
+    "Rama's Sky Lounge": "/images/cafe/neon-lit-cafe-lounge-interior.png",
     "Banquet": "/images/banquet/wedding-canopy.png",
     "Team": "/images/hotel-reception-lobby.png",
     "About Us": "/images/hotel-exterior.png",

@@ -36,7 +36,7 @@ const FAQS = [
   },
   {
     q: "What are the check-in and check-out timings?",
-    a: "Our standard check-in time is 2:00 PM and check-out is at 11:00 AM. Early check-in or late check-out can be arranged based on availability.",
+    a: "Our standard check-in time is 11:00 AM and check-out is at 11:00 AM (11 AM to 11 AM). Early check-in or late check-out can be arranged based on availability.",
   },
   {
     q: "Is parking available at the property?",

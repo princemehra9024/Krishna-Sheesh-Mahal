@@ -364,8 +364,8 @@ export default function Banquet({ onBookNow }: BanquetProps) {
               <div className="subtitle" style={{ fontSize: '10px' }}>Kitty (₹299-₹350) • Party (₹350-₹600)</div>
             </div>
             <div>
-              <div className="h3">+91 9799788514</div>
-              <div className="subtitle" style={{ fontSize: '10px' }}>Event Concierge (Ronak)</div>
+              <div className="h3">+91 86903 93739</div>
+              <div className="subtitle" style={{ fontSize: '10px' }}>Banquet & Events Desk</div>
             </div>
           </div>
         </section>
@@ -504,14 +504,14 @@ export default function Banquet({ onBookNow }: BanquetProps) {
                 <li style={{ marginBottom: '10px' }}><strong>Kitty Party Packages:</strong> ₹299, ₹330, and ₹350 per guest</li>
                 <li style={{ marginBottom: '10px' }}><strong>Grand Banquet Packages:</strong> ₹350, ₹450, and ₹600 (Unlimited Feast)</li>
                 <li style={{ marginBottom: '10px' }}><strong>Facilities & Amenities:</strong> Central AC, DJ, Sound System, Royal Decoration & Live Kitchen</li>
-                <li style={{ marginBottom: '10px' }}><strong>Banquet Concierge:</strong> Ronak (+91 9799788514) / Front (+91 8302903734)</li>
+                <li style={{ marginBottom: '10px' }}><strong>Banquet Desk:</strong> +91 86903 93739 / <strong>Hotel Reception:</strong> +91 83029 03734</li>
               </ul>
               <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-                <a href="tel:+919799788514" className="btn btn--regular btn--red">
-                  Call Ronak
+                <a href="tel:+918690393739" className="btn btn--regular btn--red">
+                  Call Banquet (+91 86903 93739)
                 </a>
                 <a href="tel:+918302903734" className="btn btn--regular" style={{ background: '#FAF7F2', border: '1px solid var(--heading-color)', color: 'var(--heading-color)' }}>
-                  Hotel Reception
+                  Hotel Reception (+91 83029 03734)
                 </a>
               </div>
             </div>

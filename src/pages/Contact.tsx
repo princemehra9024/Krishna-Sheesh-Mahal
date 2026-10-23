@@ -12,7 +12,7 @@ export default function Contact() {
   const faqs = [
     {
       question: "Check-in & Check-out Times",
-      answer: "Check-in time is 12:00 PM and check-out time is 11:00 AM. Early check-in or late check-out is subject to availability and may incur additional charges.",
+      answer: "Check-in time is 11:00 AM and check-out time is 11:00 AM (24-hour cycle: 11 AM to 11 AM). Early check-in or late check-out is subject to availability and may incur additional charges.",
       image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
     },
     {
@@ -937,8 +937,20 @@ export default function Contact() {
                 </svg>
               </div>
               <div className="contact-item-text">
-                <span className="contact-item-title">Phone Number</span>
+                <span className="contact-item-title">Rooms Booking & Reception</span>
                 <a href="tel:+918302903734" className="contact-item-detail">+91 83029 03734</a>
+              </div>
+            </div>
+
+            <div className="contact-list-item">
+              <div className="contact-icon-wrapper">
+                <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+              </div>
+              <div className="contact-item-text">
+                <span className="contact-item-title">Banquet, Rooftop & Restaurant</span>
+                <a href="tel:+918690393739" className="contact-item-detail">+91 86903 93739</a>
               </div>
             </div>
 
@@ -968,19 +980,35 @@ export default function Contact() {
               </div>
             </div>
 
-            <a href="https://wa.me/918302903734" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none'}}>
-              <div className="contact-list-item whatsapp-item">
-                <div className="contact-icon-wrapper">
-                  <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-                  </svg>
+            <div style={{ display: 'flex', gap: '10px', flexDirection: 'column' }}>
+              <a href="https://wa.me/918302903734" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none'}}>
+                <div className="contact-list-item whatsapp-item">
+                  <div className="contact-icon-wrapper">
+                    <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                    </svg>
+                  </div>
+                  <div className="contact-item-text">
+                    <span className="contact-item-title">Rooms Booking WhatsApp</span>
+                    <span className="contact-item-detail">+91 83029 03734</span>
+                  </div>
                 </div>
-                <div className="contact-item-text">
-                  <span className="contact-item-title">WhatsApp</span>
-                  <span className="contact-item-detail">Chat with us on WhatsApp</span>
+              </a>
+
+              <a href="https://wa.me/918690393739" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none'}}>
+                <div className="contact-list-item whatsapp-item">
+                  <div className="contact-icon-wrapper">
+                    <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                    </svg>
+                  </div>
+                  <div className="contact-item-text">
+                    <span className="contact-item-title">Banquet / Dine / Rooftop WhatsApp</span>
+                    <span className="contact-item-detail">+91 86903 93739</span>
+                  </div>
                 </div>
-              </div>
-            </a>
+              </a>
+            </div>
 
           </div>
         </div>
@@ -1125,7 +1153,7 @@ export default function Contact() {
                 </div>
                 <h2 className="question-title" style={{ marginBottom: '1rem' }}>Message Sent!</h2>
                 <p className="info-subtext" style={{ fontSize: 'var(--text-regular)', marginBottom: '1.5rem' }}>
-                  Thanks for reaching out, {formData.firstName}. We have connected with you and will get back to you shortly on +91 83029 03734.
+                  Thanks for reaching out, {formData.firstName}. We have received your message. You can also connect directly: Rooms: +91 83029 03734 | Banquet, Rooftop & Restaurant: +91 86903 93739.
                 </p>
                 <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
                   <a 
@@ -1210,7 +1238,7 @@ export default function Contact() {
                 <span className="policy-item-num">1.</span>
                 <div className="policy-item-content">
                   <h4 className="policy-item-title">Check-in Time</h4>
-                  <p className="policy-item-text">12:00 PM. Guests must present a valid photo ID upon check-in. Early check-in is subject to availability.</p>
+                  <p className="policy-item-text">11:00 AM. Guests must present a valid photo ID upon check-in. Early check-in is subject to availability.</p>
                 </div>
               </div>
               <div className="policy-item item-right">
