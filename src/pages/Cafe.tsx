@@ -1119,7 +1119,7 @@ export default function Cafe({ onBookNow }: CafeProps) {
                 className="cafe-cta__btn" 
                 onClick={() => {
                   const url = `https://wa.me/918690393739?text=${encodeURIComponent("Hello Krishna Sheesh Mahal, I would like to reserve a table at Rama's Sky Lounge (Rooftop).")}`;
-                  window.open(url, '_blank');
+                  window.open(url, '_blank', 'noopener,noreferrer');
                 }}
               >
                 Reserve a Table

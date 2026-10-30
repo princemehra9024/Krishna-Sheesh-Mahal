@@ -104,7 +104,7 @@ export default function RestaurantHeroSlider() {
     if (formDate) text += `*Date:* ${formDate}\n`;
     if (formGuests) text += `*Guests:* ${formGuests}\n`;
     if (formPhone) text += `*Phone:* ${formPhone}\n`;
-    window.open(`https://wa.me/918690393739?text=${encodeURIComponent(text)}`, "_blank");
+    window.open(`https://wa.me/918690393739?text=${encodeURIComponent(text)}`, "_blank", "noopener,noreferrer");
   };
 
   const handleSlideCta = (slide: Slide) => {
@@ -121,7 +121,7 @@ export default function RestaurantHeroSlider() {
     const msg = isRooftop
       ? "Hello Krishna Sheesh Mahal, I would like to book a table at the Sunset Terrace Rooftop."
       : "Hello Krishna Sheesh Mahal, I would like to reserve a table at the Fine Dining Restaurant.";
-    window.open(`https://wa.me/918690393739?text=${encodeURIComponent(msg)}`, "_blank");
+    window.open(`https://wa.me/918690393739?text=${encodeURIComponent(msg)}`, "_blank", "noopener,noreferrer");
   };
 
   /* check prefers-reduced-motion once */

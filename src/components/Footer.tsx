@@ -123,7 +123,7 @@ export default function Footer() {
                   href={`https://api.whatsapp.com/send/?phone=${footerWhatsAppPhone}&text&type=phone_number&app_absent=0`}
                   className="premium-btn inline-block"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                 >
                   Open WhatsApp
                 </a>
@@ -140,7 +140,7 @@ export default function Footer() {
                         <a
                           href={item.href}
                           target={item.external ? "_blank" : undefined}
-                          rel={item.external ? "noreferrer" : undefined}
+                          rel={item.external ? "noopener noreferrer" : undefined}
                           onClick={(e) => go(e, item.href, item.external)}
                           className="premium-menu-link inline-block"
                         >
@@ -219,6 +219,9 @@ export default function Footer() {
                 </li>
                 <li className="menu-item">
                   <a href="/terms" onClick={(e) => go(e, "/terms")} className="premium-menu-link text-[13px]">Terms &amp; Conditions</a>
+                </li>
+                <li className="menu-item">
+                  <a href="/sitemap" onClick={(e) => go(e, "/sitemap")} className="premium-menu-link text-[13px]">Sitemap</a>
                 </li>
               </ul>
             </div>

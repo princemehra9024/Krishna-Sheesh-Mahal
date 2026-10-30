@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { MEAL_PLANS, ROOMS_TARIFF_DATA, MealPlanCode } from "../data";
 import { useSEO } from "../hooks/useSEO";
+import { sanitizeName, sanitizePhone, sanitizeGuests, sanitizeText, buildWhatsAppUrl } from "../utils/security";
 
 export default function Booking() {
   useSEO("Book Now | Krishna Sheesh Mahal Kota", "Book your luxurious stay, banquet, or dining experience at Krishna Sheesh Mahal. Choose from premium rooms, royal banquet halls, and fine dining in Kota.");
@@ -64,7 +65,13 @@ export default function Booking() {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    // Sanitize per-field to prevent injection into WhatsApp message
+    let sanitized = value;
+    if (name === "name") sanitized = sanitizeName(value);
+    else if (name === "phone") sanitized = sanitizePhone(value);
+    else if (name === "guests") sanitized = sanitizeGuests(value);
+    else if (name === "details") sanitized = sanitizeText(value);
+    setFormData((prev) => ({ ...prev, [name]: sanitized }));
   };
 
   // Find selected room and tariff
@@ -111,8 +118,8 @@ export default function Booking() {
     if (guests) text += (type === "rooms" ? `*Number of Guests:* ${guests}\n` : `*Pax:* ${guests}\n`);
     if (details) text += `*Special Requests:* ${details}\n`;
 
-    const url = `https://wa.me/${targetPhone}?text=${encodeURIComponent(text)}`;
-    window.open(url, "_blank");
+    const url = buildWhatsAppUrl(targetPhone, text);
+    window.open(url, "_blank", "noopener,noreferrer");
   };
 
   const inputStyle: React.CSSProperties = {

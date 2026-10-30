@@ -1406,7 +1406,7 @@ export default function BanquetMenuSection({ onBookNow }: BanquetMenuSectionProp
                         if (onBookNow) {
                           onBookNow("Banquet");
                         } else {
-                          window.open(getWhatsAppUrl(pkg), "_blank");
+                          window.open(getWhatsAppUrl(pkg), "_blank", "noopener,noreferrer");
                         }
                       }}
                     >
@@ -1663,7 +1663,7 @@ export default function BanquetMenuSection({ onBookNow }: BanquetMenuSectionProp
                             if (onBookNow) {
                               onBookNow("Banquet");
                             } else {
-                              window.open(getWhatsAppUrl(pkg), "_blank");
+                              window.open(getWhatsAppUrl(pkg), "_blank", "noopener,noreferrer");
                             }
                           }}
                         >

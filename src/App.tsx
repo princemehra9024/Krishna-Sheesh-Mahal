@@ -19,6 +19,7 @@ import Booking from "./pages/Booking";
 import NotFound from "./pages/NotFound";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsConditions from "./pages/TermsConditions";
+import Sitemap from "./pages/Sitemap";
 import { WHATSAPP_BOOKING_LINK } from "./data";
 
 function ScrollRevealHandler() {
@@ -75,6 +76,7 @@ export default function App() {
           <Route path="/booking" element={<Booking />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms" element={<TermsConditions />} />
+          <Route path="/sitemap" element={<Sitemap />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>

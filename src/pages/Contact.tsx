@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-
 import { useSEO } from "../hooks/useSEO";
+import { sanitizeName, sanitizeEmail, sanitizeText, isValidEmail, buildWhatsAppUrl } from "../utils/security";
 
 export default function Contact() {
   useSEO("Contact Us | Krishna Sheesh Mahal Kota", "Get in touch with Krishna Sheesh Mahal. Bookings, inquiries, location details, and support for your luxurious stay in Kota.");
@@ -36,13 +36,19 @@ export default function Contact() {
   const totalSteps = 3;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    // Sanitize input on change to prevent stored XSS and injection
+    let sanitized = value;
+    if (name === "firstName" || name === "lastName") sanitized = sanitizeName(value);
+    else if (name === "email") sanitized = sanitizeEmail(value);
+    else if (name === "message") sanitized = sanitizeText(value);
+    setFormData({ ...formData, [name]: sanitized });
   };
 
   const nextStep = () => {
     if (step < totalSteps && !isAnimating) {
       if (step === 0 && (!formData.firstName.trim() || !formData.lastName.trim())) return;
-      if (step === 1 && !formData.email.trim()) return;
+      if (step === 1 && (!formData.email.trim() || !isValidEmail(formData.email))) return;
       if (step === 2 && !formData.message.trim()) {
         handleSubmitMessage();
         return;
@@ -59,10 +65,12 @@ export default function Contact() {
   const handleSubmitMessage = () => {
     if (!formData.message.trim()) return;
     const { firstName, lastName, email, message } = formData;
-    const fullName = `${firstName} ${lastName}`.trim();
-    const text = `Hello Hotel Krishna Sheesh Mahal,\n\nI have an enquiry from your website contact form:\n\n*Name:* ${fullName}\n*Email:* ${email}\n*Message:* ${message}`;
-    const url = `https://wa.me/918302903734?text=${encodeURIComponent(text)}`;
-    window.open(url, '_blank');
+    const fullName = `${sanitizeName(firstName)} ${sanitizeName(lastName)}`.trim();
+    const safeEmail = sanitizeEmail(email);
+    const safeMessage = sanitizeText(message);
+    const text = `Hello Hotel Krishna Sheesh Mahal,\n\nI have an enquiry from your website contact form:\n\n*Name:* ${fullName}\n*Email:* ${safeEmail}\n*Message:* ${safeMessage}`;
+    const url = buildWhatsAppUrl("918302903734", text);
+    window.open(url, '_blank', 'noopener,noreferrer');
     setStep(3);
   };
 
