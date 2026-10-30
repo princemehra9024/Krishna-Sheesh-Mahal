@@ -158,7 +158,7 @@ export default function IngredientsShowcase() {
   };
 
   return (
-    <section ref={container} className="ishow-section" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
+    <section id="ishow-section" ref={container} className="ishow-section" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
       <style>{`
         .ishow-section { position: relative; width: 100%; height: 100vh; background: #1A1311; overflow: hidden; color: #F3EDE4; font-family: var(--font-1, sans-serif); }
         .ishow-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(243, 237, 228, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(243, 237, 228, 0.03) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; z-index: 0; }

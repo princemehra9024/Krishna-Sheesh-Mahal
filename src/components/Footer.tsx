@@ -192,8 +192,22 @@ export default function Footer() {
           </div>
 
           <div className="footer__logo mt-24">
-            <div className="premium-logo-text">
-              Krishna Sheesh Mahal
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '20px' }}>
+              <img
+                src="/Krishna Sheesh Mahal Emblem.png"
+                alt="Krishna Sheesh Mahal Emblem"
+                style={{
+                  width: '90px',
+                  height: '90px',
+                  borderRadius: '50%',
+                  objectFit: 'cover',
+                  border: '2px solid rgba(255, 215, 140, 0.6)',
+                  boxShadow: '0 0 30px rgba(255, 215, 140, 0.35), 0 10px 25px rgba(0,0,0,0.8)'
+                }}
+              />
+              <div className="premium-logo-text" style={{ width: '100%' }}>
+                Krishna Sheesh Mahal
+              </div>
             </div>
           </div>
 

@@ -193,8 +193,36 @@ export default function Header({ onBookNow }: HeaderProps) {
         </div>
 
         <div className="header__section header__section--center">
-          <a className="header__logo" href="#top" aria-label="Krishna Sheesh Mahal" onClick={(e) => { e.preventDefault(); scrollToTarget(0); }} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-            <img src="/logo.jpg" alt="Krishna Sheesh Mahal Logo" style={{ height: '50px', objectFit: 'contain' }} />
+          <a
+            className="header__logo"
+            href="#top"
+            aria-label="Krishna Sheesh Mahal"
+            onClick={(e) => { e.preventDefault(); scrollToTarget(0); }}
+            style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}
+          >
+            <img
+              src="/Krishna Sheesh Mahal Emblem.png"
+              alt="Krishna Sheesh Mahal Emblem"
+              style={{
+                height: '48px',
+                width: '48px',
+                borderRadius: '50%',
+                objectFit: 'cover',
+                border: '1.5px solid #D4AF37',
+                boxShadow: '0 2px 8px rgba(0,0,0,0.25), 0 0 10px rgba(212, 175, 55, 0.35)',
+                flexShrink: 0,
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'scale(1.08)';
+                e.currentTarget.style.boxShadow = '0 4px 14px rgba(0,0,0,0.35), 0 0 16px rgba(212, 175, 55, 0.6)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'scale(1)';
+                e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.25), 0 0 10px rgba(212, 175, 55, 0.35)';
+              }}
+            />
+            <span className="header__logo-text">Krishna Sheesh Mahal</span>
           </a>
         </div>
 
@@ -221,10 +249,19 @@ export default function Header({ onBookNow }: HeaderProps) {
                 </span>
               </li>
               <li className="menu-item menu-item--mobile" style={{ marginTop: 'auto', paddingTop: '40px' }}>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '15px', opacity: 0.8 }}>
-                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                  </svg>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '15px', opacity: 0.9 }}>
+                  <img
+                    src="/Krishna Sheesh Mahal Emblem.png"
+                    alt="Krishna Sheesh Mahal"
+                    style={{
+                      width: '56px',
+                      height: '56px',
+                      borderRadius: '50%',
+                      objectFit: 'cover',
+                      border: '1.5px solid var(--gold)',
+                      boxShadow: '0 0 16px rgba(255, 215, 140, 0.4)'
+                    }}
+                  />
                   <span style={{ fontFamily: 'var(--font-3)', color: 'var(--gold)', fontSize: '1.5rem', fontStyle: 'italic' }}>Experience Royalty</span>
                 </div>
               </li>

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useMemo, useRef } from "react";
 import { useSEO } from "../hooks/useSEO";
 import { motion, useMotionValue, useTransform, useSpring, useScroll } from "framer-motion";
+import HeritageTimeline from "../components/HeritageTimeline";
 
 export default function About() {
   useSEO("About Us | Krishna Sheesh Mahal Kota", "Experience an era of royal elegance reimagined for the modern traveler.");
@@ -599,6 +600,9 @@ export default function About() {
           <div className="quote-mark right">”</div>
         </motion.div>
       </section>
+
+      {/* Heritage Journey Timeline: Starting from Krishna Namkeen */}
+      <HeritageTimeline />
 
       {/* Core Pillars Grid */}
       <section className="about-pillars">

@@ -281,7 +281,7 @@ h1 em, h2 em, h3 em, h4 em, h5 em, h6 em, .h1 em, .h2 em, .h3 em, .h4 em, .artic
 .header__menu-toggle.active::after { transform: translateY(-3.5px) rotate(-45deg); }
 .header__link { height: 100%; width: 100%; }
 .header__link a, .header__link span { display: flex; align-items: center; justify-content: center; height: 100%; padding: 0 30px; cursor: pointer; font-family: var(--font-1); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; color: var(--text-color); }
-.header__logo { width: 90%; max-width: 286px; display: block; }
+.header__logo { width: auto; max-width: none; display: flex; align-items: center; justify-content: center; gap: 10px; }
 .header__logo svg { width: 100%; height: auto; display: block; }
 .header__logo svg * { fill: var(--logo-color); transition: fill ease 0.25s; }
 .header__icon { position: relative; display: block; cursor: pointer; }
