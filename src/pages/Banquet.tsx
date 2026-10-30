@@ -12,10 +12,27 @@ interface BanquetProps {
 }
 
 import { useSEO } from "../hooks/useSEO";
+import { getBanquetSchema, getBreadcrumbSchema } from "../utils/seoSchemas";
 import BanquetMenuSection from "../components/BanquetMenuSection";
 
 export default function Banquet({ onBookNow }: BanquetProps) {
-  useSEO("Banquet & Events | Krishna Sheesh Mahal Kota", "Host your dream wedding, corporate event, or private party at our majestic banquet hall. State-of-the-art facilities and royal catering in Kota.");
+  useSEO({
+    title: "Banquet Hall & Wedding Venue in Kota | Krishna Sheesh Mahal",
+    description:
+      "Host grand weddings, receptions & corporate events at Krishna Sheesh Mahal Banquet Hall in Kota. Royal catering, lush event spaces & custom party packages.",
+    canonicalPath: "/banquet",
+    keywords:
+      "Banquet hall in Kota, Wedding venue Kota, Event space Kota Rajasthan, Party hall Kota, Krishna Sheesh Mahal banquet, Marriage hall Kota, Best banquet in Shrinath Puram Kota",
+    ogImage: "/images/banquet/wedding-canopy.png",
+    ogImageAlt: "Grand Banquet Hall and Wedding Venue at Krishna Sheesh Mahal Kota",
+    schema: [
+      getBreadcrumbSchema([
+        { name: "Home", path: "/" },
+        { name: "Banquet & Events", path: "/banquet" },
+      ]),
+      getBanquetSchema(),
+    ],
+  });
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -332,7 +349,7 @@ export default function Banquet({ onBookNow }: BanquetProps) {
         <section className="banquet-hero section-colorway-gray">
           <div className="section section--large banquet-hero-grid">
             <div className="content" data-scroll data-scroll-speed="0.1">
-              <h2 className="subtitle">Krishna Sheesh Mahal</h2>
+              <p className="subtitle">Krishna Sheesh Mahal Kota</p>
               <h1 className="h1">
                 A Venue for <em>Legendary</em> Celebrations.
               </h1>
@@ -345,9 +362,9 @@ export default function Banquet({ onBookNow }: BanquetProps) {
             </div>
             
             <div className="banquet-collage" data-scroll data-scroll-speed="0.2">
-              <img src={IMG_HERO} alt="Banquet Hall" className="banquet-collage__img-1" />
-              <img src={IMG_TABLE} alt="Luxury Table Setup" className="banquet-collage__img-2" />
-              <img src={IMG_WEDDING} alt="Wedding Setup" className="banquet-collage__img-3" />
+              <img src={IMG_HERO} alt="Krishna Sheesh Mahal grand banquet hall in Kota Rajasthan" className="banquet-collage__img-1" />
+              <img src={IMG_TABLE} alt="Luxury banquet table setup and royal dining in Kota" className="banquet-collage__img-2" />
+              <img src={IMG_WEDDING} alt="Royal wedding celebration venue and canopy lawn at Krishna Sheesh Mahal Kota" className="banquet-collage__img-3" />
             </div>
           </div>
         </section>
@@ -396,7 +413,7 @@ export default function Banquet({ onBookNow }: BanquetProps) {
                   <div className="brutal-card__desc">Transform your most cherished day into an unforgettable legend.</div>
                   
                   <div className="brutal-card__image" data-scroll data-scroll-speed="0.05">
-                    <img src={IMG_WEDDING} alt="Royal Weddings" />
+                    <img src={IMG_WEDDING} alt="Royal Wedding celebrations at Krishna Sheesh Mahal Banquet Kota" />
                   </div>
                   
                   <div className="brutal-card__vert">WEDDING</div>
@@ -426,7 +443,7 @@ export default function Banquet({ onBookNow }: BanquetProps) {
                   <div className="brutal-card__desc">Elevate your brand with events that leave an impression.</div>
                   
                   <div className="brutal-card__image" data-scroll data-scroll-speed="0.05">
-                    <img src={IMG_CORPORATE} alt="Corporate Galas" />
+                    <img src={IMG_CORPORATE} alt="Corporate events and conferences at Krishna Sheesh Mahal Kota" />
                   </div>
                   
                   <div className="brutal-card__vert">CORPORATE</div>
@@ -456,7 +473,7 @@ export default function Banquet({ onBookNow }: BanquetProps) {
                   <div className="brutal-card__desc">Birthdays, anniversaries, reunions — intimate or grand.</div>
                   
                   <div className="brutal-card__image" data-scroll data-scroll-speed="0.05">
-                    <img src={IMG_TABLE} alt="Social Soirées" />
+                    <img src={IMG_TABLE} alt="Social parties and kitty celebrations at Krishna Sheesh Mahal Kota" />
                   </div>
                   
                   <div className="brutal-card__vert">SOIREE</div>
@@ -482,11 +499,11 @@ export default function Banquet({ onBookNow }: BanquetProps) {
           <div className="img-w-txt img-w-txt--img-pair img-w-txt--align-left section section--large">
             <div className="img-w-txt__img">
               <picture>
-                <img loading="lazy" className="img-full" src={IMG_HERO} alt="Banquet setup" />
+                <img loading="lazy" className="img-full" src={IMG_HERO} alt="Krishna Sheesh Mahal Banquet hall interior setup Kota" />
               </picture>
               <div className="img-w-txt__img-secondary">
                 <div data-scroll data-scroll-speed="0.15">
-                  <img loading="lazy" className="img-full" src={IMG_CORPORATE} alt="Corporate setup" style={{ border: '8px solid #FAF7F2', borderRadius: '12px' }} />
+                  <img loading="lazy" className="img-full" src={IMG_CORPORATE} alt="Corporate event setup at Krishna Sheesh Mahal Kota" style={{ border: '8px solid #FAF7F2', borderRadius: '12px' }} />
                 </div>
               </div>
             </div>

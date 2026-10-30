@@ -1,12 +1,19 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSEO } from "../hooks/useSEO";
+import { getBreadcrumbSchema } from "../utils/seoSchemas";
 
 export default function PrivacyPolicy() {
-  useSEO(
-    "Privacy Policy | Krishna Sheesh Mahal Kota",
-    "Read the Privacy Policy of Krishna Sheesh Mahal. Learn how we collect, use, and protect your personal information when you use our website and services."
-  );
+  useSEO({
+    title: "Privacy Policy | Krishna Sheesh Mahal Kota",
+    description:
+      "Read the Privacy Policy of Krishna Sheesh Mahal Kota. Learn how we collect, use, and protect your personal information when using our website and services.",
+    canonicalPath: "/privacy-policy",
+    schema: getBreadcrumbSchema([
+      { name: "Home", path: "/" },
+      { name: "Privacy Policy", path: "/privacy-policy" },
+    ]),
+  });
 
   useEffect(() => {
     window.scrollTo(0, 0);

@@ -2,10 +2,24 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { MEAL_PLANS, ROOMS_TARIFF_DATA, MealPlanCode } from "../data";
 import { useSEO } from "../hooks/useSEO";
+import { getBreadcrumbSchema } from "../utils/seoSchemas";
 import { sanitizeName, sanitizePhone, sanitizeGuests, sanitizeText, buildWhatsAppUrl } from "../utils/security";
 
 export default function Booking() {
-  useSEO("Book Now | Krishna Sheesh Mahal Kota", "Book your luxurious stay, banquet, or dining experience at Krishna Sheesh Mahal. Choose from premium rooms, royal banquet halls, and fine dining in Kota.");
+  useSEO({
+    title: "Book Hotel Rooms & Events in Kota | Krishna Sheesh Mahal",
+    description:
+      "Book your stay or event directly with Krishna Sheesh Mahal Kota. Best guaranteed rates for deluxe rooms, suites, banquet hall & rooftop dining in Rajasthan.",
+    canonicalPath: "/booking",
+    keywords:
+      "Hotel booking in Kota, Book room Krishna Sheesh Mahal, Reserve hotel Kota Rajasthan, Hotel booking Shrinath Puram Kota, Online hotel reservation Kota",
+    ogImage: "/images/rooms/room-hero-page-img.png",
+    ogImageAlt: "Book Rooms and Events at Krishna Sheesh Mahal Kota",
+    schema: getBreadcrumbSchema([
+      { name: "Home", path: "/" },
+      { name: "Book Now", path: "/booking" },
+    ]),
+  });
   const location = useLocation();
   const [type, setType] = useState("rooms");
 

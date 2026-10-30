@@ -33,7 +33,7 @@ export default function PopupModal({ open, onClose }: PopupModalProps) {
       <span className="popup-modal__overlay" onClick={onClose} />
       <div className="popup-modal__inner bg-colorway-white">
         <div className="popup-modal__img">
-          <img loading="lazy" className="img-full" width={520} height={684} src={POPUP_IMAGE} alt="" />
+          <img loading="lazy" className="img-full" width={520} height={684} src={POPUP_IMAGE} alt="Krishna Sheesh Mahal Luxury Reception Lobby Kota" />
         </div>
         <div className="popup-modal__content">
           <i className="popup-modal__close" role="button" aria-label="Close" onClick={onClose} />

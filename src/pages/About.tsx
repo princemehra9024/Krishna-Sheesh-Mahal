@@ -3,11 +3,25 @@ import QuoteSlider from "../components/QuoteSlider";
 import { Link } from "react-router-dom";
 import { useMemo, useRef } from "react";
 import { useSEO } from "../hooks/useSEO";
+import { getBreadcrumbSchema } from "../utils/seoSchemas";
 import { motion, useMotionValue, useTransform, useSpring, useScroll } from "framer-motion";
 import HeritageTimeline from "../components/HeritageTimeline";
 
 export default function About() {
-  useSEO("About Us | Krishna Sheesh Mahal Kota", "Experience an era of royal elegance reimagined for the modern traveler.");
+  useSEO({
+    title: "About Krishna Sheesh Mahal | Luxury Heritage Hotel in Kota",
+    description:
+      "Discover the heritage, story, and royal hospitality of Krishna Sheesh Mahal in Shrinath Puram, Kota, Rajasthan. Experience timeless regal charm and modern comfort.",
+    canonicalPath: "/about",
+    keywords:
+      "About Krishna Sheesh Mahal Kota, Heritage hotel Rajasthan, Luxury hotel Kota story, Hotel in Shrinath Puram Kota, Best hotel in Kota",
+    ogImage: "/images/hotel-exterior.png",
+    ogImageAlt: "Krishna Sheesh Mahal Luxury Heritage Hotel in Kota Rajasthan",
+    schema: getBreadcrumbSchema([
+      { name: "Home", path: "/" },
+      { name: "About Us", path: "/about" },
+    ]),
+  });
 
   const statement = "Born from a passion for creating unforgettable memories, our journey began in Kota, where we sought to transform how people experience hospitality.";
   const words = useMemo(() => statement.split(" "), [statement]);
@@ -539,7 +553,7 @@ export default function About() {
 
       {/* Jesper Landberg Clone Hero */}
       <section className="jl-hero">
-        <span className="jl-ui jl-ui-tl">KRISHNA SHEESH MAHAL</span>
+        <h1 className="jl-ui jl-ui-tl" style={{ margin: 0, fontSize: "11px", letterSpacing: "0.25em", fontWeight: 600 }}>KRISHNA SHEESH MAHAL KOTA</h1>
         <span className="jl-ui jl-ui-tr">PROFILE</span>
         <span className="jl-ui jl-ui-bl">FEATURED / FULL</span>
         <span className="jl-ui jl-ui-br">DRAG TO EXPLORE</span>
@@ -562,7 +576,7 @@ export default function About() {
                   className="jl-card"
                   style={{ transform: `rotateY(${c.angle}deg) translateZ(var(--radius))` }}
                 >
-                  <img src={c.img} alt={c.title} />
+                  <img src={c.img} alt={`${c.title} - ${c.subtitle} at Krishna Sheesh Mahal Kota`} />
                   <h2 className="jl-card-title">{c.title}</h2>
                   <div className="jl-card-subtitle">{c.subtitle}</div>
                 </div>
@@ -714,7 +728,7 @@ export default function About() {
             {/* Card 1: Base */}
             <motion.div className="stack-card" style={{ zIndex: 1, boxShadow: shadowVals[4] }}>
               <Link to="/rooms" style={{ display: 'block', width: '100%', height: '100%', color: 'inherit', textDecoration: 'none' }}>
-                <img src="/images/rooms/room-hero-page-img.png" alt="Luxury Stays" />
+                <img src="/images/rooms/room-hero-page-img.png" alt="Luxury hotel rooms and suites at Krishna Sheesh Mahal Kota" />
                 <h3 className="stack-card-title">Luxury Stays</h3>
                 <div className="stack-card-arrow">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -727,7 +741,7 @@ export default function About() {
             {/* Card 2 */}
             <motion.div className="stack-card" style={{ zIndex: 2, y: y2, rotate: rot2, scale: scale2, boxShadow: shadow2 }}>
               <Link to="/restaurant" style={{ display: 'block', width: '100%', height: '100%', color: 'inherit', textDecoration: 'none' }}>
-                <img src="/images/restaurant-dining-2.png" alt="Dining" />
+                <img src="/images/restaurant-dining-2.png" alt="Fine multi-cuisine dining at Krishna Sheesh Mahal Kota" />
                 <h3 className="stack-card-title">Dining</h3>
                 <div className="stack-card-arrow">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -740,7 +754,7 @@ export default function About() {
             {/* Card 3 */}
             <motion.div className="stack-card" style={{ zIndex: 3, y: y3, rotate: rot3, scale: scale3, boxShadow: shadow3 }}>
               <Link to="/banquet" style={{ display: 'block', width: '100%', height: '100%', color: 'inherit', textDecoration: 'none' }}>
-                <img src="/images/banquet/wedding-canopy.png" alt="Events" />
+                <img src="/images/banquet/wedding-canopy.png" alt="Grand banquet and wedding celebrations in Kota" />
                 <h3 className="stack-card-title">Events</h3>
                 <div className="stack-card-arrow">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -753,7 +767,7 @@ export default function About() {
             {/* Card 4 */}
             <motion.div className="stack-card" style={{ zIndex: 4, y: y4, rotate: rot4, scale: scale4, boxShadow: shadow4 }}>
               <Link to="/about" style={{ display: 'block', width: '100%', height: '100%', color: 'inherit', textDecoration: 'none' }}>
-                <img src="/images/hotel-ceiling.png" alt="Heritage" />
+                <img src="/images/hotel-ceiling.png" alt="Royal architectural heritage at Krishna Sheesh Mahal Kota" />
                 <h3 className="stack-card-title">Heritage</h3>
                 <div className="stack-card-arrow">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

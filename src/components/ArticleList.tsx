@@ -60,6 +60,7 @@ export default function ArticleList() {
         .section-article-list.compact-frame .intro {
           margin-bottom: clamp(14px, 2vh, 22px) !important;
         }
+        .section-article-list.compact-frame .intro h2,
         .section-article-list.compact-frame .intro h4 {
           font-size: clamp(2rem, 3vw, 2.7rem);
           line-height: 1.1;
@@ -173,9 +174,9 @@ export default function ArticleList() {
       `}</style>
       <div className="intro intro--align-left mb-small">
         <div className="intro__content content">
-          <h4>
+          <h2>
             <em>Presenting</em> Krishna Sheesh Mahal
-          </h4>
+          </h2>
         </div>
       </div>
       <div className="section section--large">

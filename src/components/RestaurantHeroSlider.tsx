@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 const PHOTOS = [
   "/images/restaurant-dining.png", // Fine Dining
   "/images/gourmet-garlic-naan.png", // Plated Food
-  "/images/sunset-terrace.jpg", // Sunset Terrace Rooftop
+  "/images/cafe/neon-lit-cafe-lounge-interior.png", // Rooftop Terrace (Rama's Sky Lounge)
   "/images/multi-cuisine-spread.jpg", // Multi-Cuisine Chinese, Tandoori, South Indian
   "/images/restaurant-img.jpeg", // Intimate Dining
 ];
@@ -449,7 +449,7 @@ export default function RestaurantHeroSlider() {
                         </h2>
                         <div className="rhs__img-container rhs-anim delay-3">
                           <div className="rhs__img-wrap">
-                            <img src={PHOTOS[i]} alt={slide.headBold} loading="lazy" />
+                            <img src={PHOTOS[i]} alt={`${slide.headBold} ${slide.headItalic} at Krishna Sheesh Mahal Restaurant Kota`} loading="lazy" />
                           </div>
                         </div>
                       </div>
@@ -496,11 +496,11 @@ export default function RestaurantHeroSlider() {
                     <>
                       <div className="rhs__img-container">
                         <div className="rhs__img-wrap">
-                          <img src={PHOTOS[i]} alt={slide.headBold} loading={i === 0 ? "eager" : "lazy"} />
+                          <img src={PHOTOS[i]} alt={`${slide.headBold} ${slide.headItalic} at Krishna Sheesh Mahal Restaurant Kota`} loading={i === 0 ? "eager" : "lazy"} />
                         </div>
                         {i === 1 && (
                           <div className="rhs__img-wrap-secondary">
-                            <img src={PHOTOS[(i + 1) % TOTAL]} alt="" loading="lazy" />
+                            <img src={PHOTOS[(i + 1) % TOTAL]} alt="Gourmet multi-cuisine culinary dish at Krishna Sheesh Mahal Kota" loading="lazy" />
                           </div>
                         )}
                         {i !== 4 && slide.badge && (
@@ -519,10 +519,17 @@ export default function RestaurantHeroSlider() {
                       
                       <div className="rhs__content">
                         <p className="rhs__eyebrow rhs-anim delay-1">{slide.eyebrow}</p>
-                        <h2 className="rhs__headline rhs-anim delay-2">
-                          {slide.headBold}
-                          <em>{slide.headItalic}</em>
-                        </h2>
+                        {i === 0 ? (
+                          <h1 className="rhs__headline rhs-anim delay-2">
+                            {slide.headBold}
+                            <em>{slide.headItalic}</em>
+                          </h1>
+                        ) : (
+                          <h2 className="rhs__headline rhs-anim delay-2">
+                            {slide.headBold}
+                            <em>{slide.headItalic}</em>
+                          </h2>
+                        )}
                         
                         <div className="rhs__desc-box rhs-anim delay-3">
                           <p className="rhs__desc">{slide.desc}</p>

@@ -1,12 +1,19 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSEO } from "../hooks/useSEO";
+import { getBreadcrumbSchema } from "../utils/seoSchemas";
 
 export default function TermsConditions() {
-  useSEO(
-    "Terms & Conditions | Krishna Sheesh Mahal Kota",
-    "Read the Terms & Conditions for booking and staying at Krishna Sheesh Mahal. Understand our policies on check-in, cancellation, refunds, and property rules."
-  );
+  useSEO({
+    title: "Terms & Conditions | Krishna Sheesh Mahal Kota",
+    description:
+      "Read the Terms & Conditions for booking and staying at Krishna Sheesh Mahal in Kota, Rajasthan. Understand our policies on check-in, cancellation, refunds, and property rules.",
+    canonicalPath: "/terms",
+    schema: getBreadcrumbSchema([
+      { name: "Home", path: "/" },
+      { name: "Terms & Conditions", path: "/terms" },
+    ]),
+  });
 
   useEffect(() => {
     window.scrollTo(0, 0);

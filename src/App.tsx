@@ -20,6 +20,7 @@ import NotFound from "./pages/NotFound";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsConditions from "./pages/TermsConditions";
 import Sitemap from "./pages/Sitemap";
+import GoogleAnalytics from "./components/GoogleAnalytics";
 import { WHATSAPP_BOOKING_LINK } from "./data";
 
 function ScrollRevealHandler() {
@@ -61,6 +62,7 @@ export default function App() {
 
   return (
     <BrowserRouter>
+      <GoogleAnalytics />
       <ScrollRevealHandler />
       <div className="page-wrap" id="top">
         <Header onBookNow={openBook} />

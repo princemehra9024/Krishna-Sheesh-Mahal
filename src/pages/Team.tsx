@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { generateWhatsAppLink } from "../data";
 import { useSEO } from "../hooks/useSEO";
+import { getBreadcrumbSchema, getFAQSchema } from "../utils/seoSchemas";
 
 const TEAM_MEMBERS = [
   {
@@ -45,7 +46,23 @@ const FAQS = [
 ];
 
 export default function Team() {
-  useSEO("Our Team | Krishna Sheesh Mahal Kota", "Meet the dedicated experts behind the magic at Krishna Sheesh Mahal. Discover our management, chefs, and operations team delivering royal hospitality.");
+  useSEO({
+    title: "Our Hospitality Team | Krishna Sheesh Mahal Kota",
+    description:
+      "Meet the passionate team behind Krishna Sheesh Mahal in Kota, dedicated to providing warm Rajasthani hospitality and an unforgettable royal experience.",
+    canonicalPath: "/team",
+    keywords:
+      "Krishna Sheesh Mahal team, Hotel staff Kota, Hospitality team Krishna Sheesh Mahal Kota",
+    ogImage: "/images/hotel-reception-lobby.png",
+    ogImageAlt: "Hospitality Team at Krishna Sheesh Mahal Kota",
+    schema: [
+      getBreadcrumbSchema([
+        { name: "Home", path: "/" },
+        { name: "Our Team", path: "/team" },
+      ]),
+      getFAQSchema(FAQS.map(f => ({ question: f.q, answer: f.a }))),
+    ],
+  });
   const [openFaq, setOpenFaq] = useState<number | null>(1);
   const [phone, setPhone] = useState("");
 

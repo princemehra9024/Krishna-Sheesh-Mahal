@@ -6,9 +6,26 @@ interface CafeProps {
 }
 
 import { useSEO } from "../hooks/useSEO";
+import { getCafeSchema, getBreadcrumbSchema } from "../utils/seoSchemas";
 
 export default function Cafe({ onBookNow }: CafeProps) {
-  useSEO("Rama's Sky Lounge | Krishna Sheesh Mahal Kota", "Relax and unwind at Rama's Sky Lounge in Kota. Enjoy artisan coffee, delicious mocktails, signature bites, and a serene ambient lounge atmosphere.");
+  useSEO({
+    title: "Rama's Sky Lounge & Cafe in Kota | Krishna Sheesh Mahal",
+    description:
+      "Unwind at Rama's Sky Lounge, Kota's premier rooftop cafe & lounge at Krishna Sheesh Mahal. Enjoy artisan coffee, delicious mocktails, signature bites & panoramic views.",
+    canonicalPath: "/cafe",
+    keywords:
+      "Rooftop cafe in Kota, Rama's Sky Lounge Kota, Cafe in Kota Rajasthan, Best cafe in Kota, Rooftop restaurant Kota, Krishna Sheesh Mahal lounge, Best cafe in Shrinath Puram",
+    ogImage: "/images/cafe/neon-lit-cafe-lounge-interior.png",
+    ogImageAlt: "Rama's Sky Lounge Rooftop Cafe at Krishna Sheesh Mahal Kota",
+    schema: [
+      getBreadcrumbSchema([
+        { name: "Home", path: "/" },
+        { name: "Rama's Sky Lounge", path: "/cafe" },
+      ]),
+      getCafeSchema(),
+    ],
+  });
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -894,7 +911,7 @@ export default function Cafe({ onBookNow }: CafeProps) {
       <div className="cafe-page">
         {/* ── HERO ── */}
         <section className="cafe-hero">
-          <img src="/images/cafe/neon-lit-cafe-lounge-interior.png" alt="Cafe Hero" className="cafe-hero__bg" />
+          <img src="/images/cafe/neon-lit-cafe-lounge-interior.png" alt="Rama's Sky Lounge rooftop cafe and restaurant at Krishna Sheesh Mahal Kota" className="cafe-hero__bg" />
           <div className="cafe-hero__content">
             <span className="cafe-hero__subtitle">Artisanal Brews & Lounge</span>
             <h1 className="cafe-hero__title">
@@ -944,8 +961,8 @@ export default function Cafe({ onBookNow }: CafeProps) {
         {/* ── STORY ── */}
         <section className="cafe-story">
           <div className="cafe-story__images">
-            <img src="/images/cafe/our-passion-img1.png" alt="Barista preparing coffee" className="cafe-story__img-1" />
-            <img src="/images/cafe/our-passion-img2.png" alt="Cozy cafe seating" className="cafe-story__img-2" />
+            <img src="/images/cafe/our-passion-img1.png" alt="Barista preparing artisan coffee at Rama's Sky Lounge Kota" className="cafe-story__img-1" />
+            <img src="/images/cafe/our-passion-img2.png" alt="Cozy rooftop lounge seating at Rama's Sky Lounge Kota" className="cafe-story__img-2" />
           </div>
           <div className="cafe-story__content">
             <p className="cafe-story__eyebrow">Our Passion</p>
@@ -1024,17 +1041,17 @@ export default function Cafe({ onBookNow }: CafeProps) {
 
             <div className="crazy-images">
               <div className="crazy-img-wrap crazy-img-1">
-                <img src="/images/cafe/the-art-one.png" alt="Atmosphere" />
+                <img src="/images/cafe/the-art-one.png" alt="Rooftop evening ambiance at Rama's Sky Lounge Kota" />
                 <div className="crazy-tag">Vibe</div>
               </div>
 
               <div className="crazy-img-wrap crazy-img-2">
-                <img src="/images/cafe/the-art-tow.png" alt="Latte Art" />
+                <img src="/images/cafe/the-art-tow.png" alt="Specialty latte art at Rama's Sky Lounge Kota" />
                 <div className="crazy-tag">Art</div>
               </div>
 
               <div className="crazy-img-wrap crazy-img-3">
-                <img src="/images/cafe/the-art-three.png" alt="Hand Pour" />
+                <img src="/images/cafe/the-art-three.png" alt="Hand pour artisan coffee at Rama's Sky Lounge Kota" />
                 <div className="crazy-tag">Craft</div>
               </div>
             </div>
@@ -1059,7 +1076,7 @@ export default function Cafe({ onBookNow }: CafeProps) {
           <div className="cafe-menu__grid">
             <div className="cafe-item">
               <div className="cafe-item__img-wrap">
-                <img src="/images/cafe/cafe_special.jpg" alt="Pan Shake" className="cafe-item__img" />
+                <img src="/images/cafe/cafe_special.jpg" alt="Signature Pan Shake at Rama's Sky Lounge Kota" className="cafe-item__img" />
               </div>
               <h3 className="cafe-item__title">Pan Shake</h3>
               <p className="cafe-item__desc">Our Sheeshmahal Special — refreshing paan flavor blended into a creamy, unforgettable shake.</p>
@@ -1067,7 +1084,7 @@ export default function Cafe({ onBookNow }: CafeProps) {
             </div>
             <div className="cafe-item">
               <div className="cafe-item__img-wrap">
-                <img src="/images/cafe/cafe_booking_plate.jpg" alt="Paneer Tikka Roasted" className="cafe-item__img" />
+                <img src="/images/cafe/cafe_booking_plate.jpg" alt="Paneer Tikka Roasted at Rama's Sky Lounge Kota" className="cafe-item__img" />
               </div>
               <h3 className="cafe-item__title">Paneer Tikka Roasted</h3>
               <p className="cafe-item__desc">Smoky, chargrilled paneer marinated in signature spices — a sizzling crowd-favorite starter.</p>
@@ -1075,7 +1092,7 @@ export default function Cafe({ onBookNow }: CafeProps) {
             </div>
             <div className="cafe-item">
               <div className="cafe-item__img-wrap">
-                <img src="/images/cafe/cafe_contact.jpg" alt="Mint Mojito" className="cafe-item__img" />
+                <img src="/images/cafe/cafe_contact.jpg" alt="Refreshing Mint Mojito at Rama's Sky Lounge Kota" className="cafe-item__img" />
               </div>
               <h3 className="cafe-item__title">Mint Mojito</h3>
               <p className="cafe-item__desc">Cool, refreshing blend of fresh mint, lime, and soda — the perfect evening cooler.</p>

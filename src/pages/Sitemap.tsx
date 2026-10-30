@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSEO } from "../hooks/useSEO";
+import { getBreadcrumbSchema } from "../utils/seoSchemas";
 
 interface SitemapLink {
   label: string;
@@ -62,10 +63,17 @@ const SECTIONS: SitemapSection[] = [
 ];
 
 export default function Sitemap() {
-  useSEO(
-    "Sitemap | Krishna Sheesh Mahal Kota",
-    "Browse all pages of Krishna Sheesh Mahal — hotel rooms, dining, banquet halls, and more in Kota, Rajasthan."
-  );
+  useSEO({
+    title: "HTML Sitemap | Krishna Sheesh Mahal Kota",
+    description:
+      "Browse all pages and sections of the Krishna Sheesh Mahal website — luxury rooms, fine dining, banquet, rooftop cafe, contact, and hotel policies in Kota, Rajasthan.",
+    canonicalPath: "/sitemap",
+    keywords: "Krishna Sheesh Mahal sitemap, Hotel pages Kota, Krishna Sheesh Mahal website navigation",
+    schema: getBreadcrumbSchema([
+      { name: "Home", path: "/" },
+      { name: "Sitemap", path: "/sitemap" },
+    ]),
+  });
 
   useEffect(() => {
     window.scrollTo(0, 0);

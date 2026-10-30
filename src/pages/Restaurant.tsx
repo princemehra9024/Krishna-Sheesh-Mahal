@@ -10,9 +10,26 @@ interface RestaurantProps {
 }
 
 import { useSEO } from "../hooks/useSEO";
+import { getRestaurantSchema, getBreadcrumbSchema } from "../utils/seoSchemas";
 
 export default function Restaurant({ onBookNow }: RestaurantProps) {
-  useSEO("Fine Dining Restaurant | Krishna Sheesh Mahal Kota", "Indulge in an exquisite culinary journey at Krishna Sheesh Mahal's flagship restaurant in Kota. Enjoy authentic multi-cuisine delicacies in a royal ambiance.");
+  useSEO({
+    title: "Fine Dining Restaurant in Kota | Krishna Sheesh Mahal",
+    description:
+      "Experience royal culinary hospitality at Krishna Sheesh Mahal's multi-cuisine restaurant in Kota. Authentic Rajasthani delicacies, North Indian, tandoor & chef specials.",
+    canonicalPath: "/restaurant",
+    keywords:
+      "Restaurant in Kota, Best dining in Kota, Multi-cuisine restaurant Kota, Krishna Sheesh Mahal restaurant, Family dining Kota Rajasthan, Best food in Shrinath Puram Kota",
+    ogImage: "/images/restaurant-dining-2.png",
+    ogImageAlt: "Fine Dining Multi-Cuisine Restaurant at Krishna Sheesh Mahal Kota",
+    schema: [
+      getBreadcrumbSchema([
+        { name: "Home", path: "/" },
+        { name: "Restaurant", path: "/restaurant" },
+      ]),
+      getRestaurantSchema(),
+    ],
+  });
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -354,7 +371,7 @@ export default function Restaurant({ onBookNow }: RestaurantProps) {
           <div className="rest-sig__img">
             <img
               src="/images/paan-shake.jpeg"
-              alt="Paan Shake at Krishna Sheesh Mahal"
+              alt="Signature Paan Shake fine dining beverage at Krishna Sheesh Mahal Kota"
               loading="lazy"
             />
           </div>

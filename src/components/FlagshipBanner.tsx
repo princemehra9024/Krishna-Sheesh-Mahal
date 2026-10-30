@@ -32,7 +32,7 @@ export default function FlagshipBanner() {
               {/* High-res poster preview while YouTube iframe initializes */}
               <img
                 src={HERO_POSTER}
-                alt="Krishna Sheesh Mahal"
+                alt="Krishna Sheesh Mahal luxury heritage hotel in Shrinath Puram, Kota Rajasthan"
                 className={`flagship-banner__poster ${videoLoaded ? "is-hidden" : ""}`}
                 loading="eager"
               />
@@ -52,7 +52,7 @@ export default function FlagshipBanner() {
         </div>
 
         <div className="flagship-banner__inner" style={{ paddingTop: "10vh" }}>
-          <h2
+          <p
             className="flagship-banner__title-inline"
             style={{
               textAlign: "center",
@@ -67,7 +67,7 @@ export default function FlagshipBanner() {
             data-scroll-speed="0.3"
           >
             <em>Your Comfort, Our Priority</em>
-          </h2>
+          </p>
 
           <div className="flagship-banner__logo" data-scroll data-scroll-speed="0.5">
             <h1

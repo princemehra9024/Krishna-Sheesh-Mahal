@@ -1,14 +1,10 @@
 import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSEO } from "../hooks/useSEO";
+import { getBreadcrumbSchema, getFAQSchema } from "../utils/seoSchemas";
 import { sanitizeName, sanitizeEmail, sanitizeText, isValidEmail, buildWhatsAppUrl } from "../utils/security";
 
 export default function Contact() {
-  useSEO("Contact Us | Krishna Sheesh Mahal Kota", "Get in touch with Krishna Sheesh Mahal. Bookings, inquiries, location details, and support for your luxurious stay in Kota.");
-  const [formData, setFormData] = useState({ firstName: "", lastName: "", email: "", message: "" });
-  const [step, setStep] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
-
   const faqs = [
     {
       question: "Check-in & Check-out Times",
@@ -31,6 +27,26 @@ export default function Contact() {
       image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
     }
   ];
+
+  useSEO({
+    title: "Contact Us & Location in Kota | Krishna Sheesh Mahal",
+    description:
+      "Contact Krishna Sheesh Mahal in Shrinath Puram, Kota, Rajasthan. Call +91 83029 03734 for room bookings or +91 86903 93739 for banquets. Get directions on Google Maps.",
+    canonicalPath: "/contact",
+    keywords:
+      "Krishna Sheesh Mahal contact number, Hotel location Kota Rajasthan, Shrinath Puram hotel Kota contact, Hotel phone number Kota",
+    ogImage: "/images/hotel-exterior.png",
+    ogImageAlt: "Krishna Sheesh Mahal Reception and Contact in Kota",
+    schema: [
+      getBreadcrumbSchema([
+        { name: "Home", path: "/" },
+        { name: "Contact Us", path: "/contact" },
+      ]),
+      getFAQSchema(faqs),
+    ],
+  });
+
+  const [formData, setFormData] = useState({ firstName: "", lastName: "", email: "", message: "" });
 
   // Total steps before submission (0: Name, 1: Email, 2: Message)
   const totalSteps = 3;

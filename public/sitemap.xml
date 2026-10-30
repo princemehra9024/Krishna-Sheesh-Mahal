@@ -1,88 +1,155 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd
+        http://www.google.com/schemas/sitemap-image/1.1
+        http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd">
 
-  <!-- ===== PRIMARY PAGES ===== -->
+  <!-- ===== HOME PAGE ===== -->
   <url>
     <loc>https://krishna-sheesh-mahal.vercel.app/</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://krishna-sheesh-mahal.vercel.app/images/hotel-exterior.png</image:loc>
+      <image:title>Krishna Sheesh Mahal Landmark Hotel Facade Kota</image:title>
+      <image:caption>Krishna Sheesh Mahal luxury hotel in Shrinath Puram, Kota, Rajasthan</image:caption>
+      <image:geo_location>Kota, Rajasthan, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://krishna-sheesh-mahal.vercel.app/images/hotel-reception-lobby.png</image:loc>
+      <image:title>Krishna Sheesh Mahal Reception and Grand Lobby</image:title>
+      <image:caption>24/7 reception desk and royal lobby welcome at Krishna Sheesh Mahal Kota</image:caption>
+      <image:geo_location>Kota, Rajasthan, India</image:geo_location>
+    </image:image>
   </url>
 
-  <!-- ===== ROOMS & BOOKING ===== -->
+  <!-- ===== ROOMS & SUITES ===== -->
   <url>
     <loc>https://krishna-sheesh-mahal.vercel.app/rooms</loc>
     <lastmod>2026-10-30</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://krishna-sheesh-mahal.vercel.app/images/rooms/deluxe-room.png</image:loc>
+      <image:title>Deluxe Room at Krishna Sheesh Mahal Kota</image:title>
+      <image:caption>Comfortable and stylish deluxe room with king bed, AC, and Smart TV in Kota</image:caption>
+      <image:geo_location>Kota, Rajasthan, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://krishna-sheesh-mahal.vercel.app/images/rooms/super-deluxe-room.png</image:loc>
+      <image:title>Super Deluxe Room Krishna Sheesh Mahal</image:title>
+      <image:caption>Spacious luxury super deluxe hotel room in Kota Rajasthan</image:caption>
+      <image:geo_location>Kota, Rajasthan, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://krishna-sheesh-mahal.vercel.app/images/rooms/premium-room.png</image:loc>
+      <image:title>Premium Luxury Room Krishna Sheesh Mahal Kota</image:title>
+      <image:caption>Elevated comfort with premium bedding and royal hospitality</image:caption>
+      <image:geo_location>Kota, Rajasthan, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://krishna-sheesh-mahal.vercel.app/images/rooms/Suite.png</image:loc>
+      <image:title>Royal Luxury Suite Krishna Sheesh Mahal</image:title>
+      <image:caption>Pinnacle of luxury royal suite in Kota Rajasthan</image:caption>
+      <image:geo_location>Kota, Rajasthan, India</image:geo_location>
+    </image:image>
   </url>
+
+  <!-- ===== DINING & RESTAURANT ===== -->
+  <url>
+    <loc>https://krishna-sheesh-mahal.vercel.app/restaurant</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://krishna-sheesh-mahal.vercel.app/images/restaurant-dining-2.png</image:loc>
+      <image:title>Fine Dining Multi-Cuisine Restaurant Kota</image:title>
+      <image:caption>Authentic North Indian, Rajasthani, and Tandoori dining at Krishna Sheesh Mahal</image:caption>
+      <image:geo_location>Kota, Rajasthan, India</image:geo_location>
+    </image:image>
+  </url>
+
+  <!-- ===== RAMA'S SKY LOUNGE (CAFE) ===== -->
+  <url>
+    <loc>https://krishna-sheesh-mahal.vercel.app/cafe</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://krishna-sheesh-mahal.vercel.app/images/cafe/neon-lit-cafe-lounge-interior.png</image:loc>
+      <image:title>Rama's Sky Lounge Rooftop Cafe Kota</image:title>
+      <image:caption>Vibrant rooftop lounge and cafe offering artisan coffee and mocktails</image:caption>
+      <image:geo_location>Kota, Rajasthan, India</image:geo_location>
+    </image:image>
+  </url>
+
+  <!-- ===== BANQUET & EVENTS ===== -->
+  <url>
+    <loc>https://krishna-sheesh-mahal.vercel.app/banquet</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://krishna-sheesh-mahal.vercel.app/images/banquet/wedding-canopy.png</image:loc>
+      <image:title>Grand Wedding Canopy and Banquet Lawn Kota</image:title>
+      <image:caption>Royal wedding celebration venue and party banquet in Kota Rajasthan</image:caption>
+      <image:geo_location>Kota, Rajasthan, India</image:geo_location>
+    </image:image>
+  </url>
+
+  <!-- ===== DIRECT BOOKING ===== -->
   <url>
     <loc>https://krishna-sheesh-mahal.vercel.app/booking</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- ===== DINING ===== -->
-  <url>
-    <loc>https://krishna-sheesh-mahal.vercel.app/restaurant</loc>
-    <lastmod>2026-10-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://krishna-sheesh-mahal.vercel.app/cafe</loc>
-    <lastmod>2026-10-30</lastmod>
-    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- ===== EVENTS ===== -->
-  <url>
-    <loc>https://krishna-sheesh-mahal.vercel.app/banquet</loc>
-    <lastmod>2026-10-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- ===== ABOUT & INFO ===== -->
-  <url>
-    <loc>https://krishna-sheesh-mahal.vercel.app/about</loc>
-    <lastmod>2026-10-30</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://krishna-sheesh-mahal.vercel.app/team</loc>
-    <lastmod>2026-10-30</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
+  <!-- ===== CONTACT US & MAP LOCATION ===== -->
   <url>
     <loc>https://krishna-sheesh-mahal.vercel.app/contact</loc>
     <lastmod>2026-10-30</lastmod>
-    <changefreq>yearly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- ===== SITEMAP PAGE ===== -->
+  <!-- ===== ABOUT US ===== -->
+  <url>
+    <loc>https://krishna-sheesh-mahal.vercel.app/about</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- ===== OUR TEAM ===== -->
+  <url>
+    <loc>https://krishna-sheesh-mahal.vercel.app/team</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- ===== HTML SITEMAP ===== -->
   <url>
     <loc>https://krishna-sheesh-mahal.vercel.app/sitemap</loc>
     <lastmod>2026-10-30</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
 
-  <!-- ===== LEGAL ===== -->
+  <!-- ===== LEGAL: PRIVACY POLICY ===== -->
   <url>
     <loc>https://krishna-sheesh-mahal.vercel.app/privacy-policy</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
+
+  <!-- ===== LEGAL: TERMS & CONDITIONS ===== -->
   <url>
     <loc>https://krishna-sheesh-mahal.vercel.app/terms</loc>
     <lastmod>2026-10-30</lastmod>

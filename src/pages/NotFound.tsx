@@ -12,10 +12,11 @@ const QUICK_LINKS = [
 ];
 
 export default function NotFound() {
-  useSEO(
-    "404 — Page Not Found | Krishna Sheesh Mahal",
-    "This page doesn't exist. Return to Krishna Sheesh Mahal — Luxury Hotel in Kota, Rajasthan."
-  );
+  useSEO({
+    title: "404 — Page Not Found | Krishna Sheesh Mahal Kota",
+    description: "This page does not exist. Return to Krishna Sheesh Mahal luxury hotel in Kota, Rajasthan.",
+    noindex: true,
+  });
 
   const navigate = useNavigate();
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -442,7 +443,7 @@ export default function NotFound() {
         <div className="nf-brand">
           <img
             src="/logo.png"
-            alt="Krishna Sheesh Mahal"
+            alt="Krishna Sheesh Mahal Logo"
             className="nf-brand__logo"
             loading="lazy"
           />

@@ -15,9 +15,26 @@ interface RoomsProps {
 }
 
 import { useSEO } from "../hooks/useSEO";
+import { getRoomsPageSchema, getBreadcrumbSchema } from "../utils/seoSchemas";
 
 export default function Rooms({ onBookNow }: RoomsProps) {
-  useSEO("Luxury Rooms & Suites | Krishna Sheesh Mahal Kota", "Book your luxurious stay in Kota. Explore our Premium, Super Deluxe, and Deluxe rooms featuring world-class amenities, stunning views, and royal comfort.");
+  useSEO({
+    title: "Rooms & Suites in Kota | Krishna Sheesh Mahal Rajasthan",
+    description:
+      "Book luxury rooms in Kota at Krishna Sheesh Mahal. Explore Deluxe, Super Deluxe, Premium Rooms and Royal Suites with Smart TV, AC, Wi-Fi & meal plans (EP, CP, AMP).",
+    canonicalPath: "/rooms",
+    keywords:
+      "Rooms in Kota Rajasthan, Hotel in Kota Rajasthan, Deluxe room Kota, Super deluxe room Kota, Hotel accommodation in Kota, Family hotel in Kota, Hotel booking in Kota, Best rooms in Shrinath Puram Kota",
+    ogImage: "/images/rooms/super-deluxe-room.png",
+    ogImageAlt: "Luxury Rooms at Krishna Sheesh Mahal Kota Rajasthan",
+    schema: [
+      getBreadcrumbSchema([
+        { name: "Home", path: "/" },
+        { name: "Rooms & Suites", path: "/rooms" },
+      ]),
+      getRoomsPageSchema(),
+    ],
+  });
   
   const [roomPlans, setRoomPlans] = useState<Record<string, MealPlanCode>>({
     deluxe: "EP",
@@ -949,14 +966,14 @@ export default function Rooms({ onBookNow }: RoomsProps) {
       <section className="rooms-hero-grid">
         <div className="rg-top-row">
           <div className="rg-text-block">
-            <h2 className="rg-subtitle">Krishna Sheesh Mahal</h2>
-            <h1 className="rg-title">Our <em>Rooms</em></h1>
+            <p className="rg-subtitle">Krishna Sheesh Mahal Kota</p>
+            <h1 className="rg-title">Our <em>Rooms &amp; Suites</em></h1>
             <p className="rg-desc">
               Discover a sanctuary of peace in the heart of Kota. Immerse yourself in refined luxury, 
               thoughtful amenities, and spaces designed for ultimate relaxation.
             </p>
             <div className="rg-buttons">
-              <a href="#single-room" className="rg-btn-primary">
+              <a href="#deluxe" className="rg-btn-primary">
                 Explore Rooms 
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -967,7 +984,7 @@ export default function Rooms({ onBookNow }: RoomsProps) {
           </div>
           
           <div className="rg-media-block">
-            <img src={ROOM_HERO} alt="Luxury Room" />
+            <img src={ROOM_HERO} alt="Luxury hotel room interior at Krishna Sheesh Mahal Kota" />
           </div>
         </div>
 
@@ -1015,7 +1032,7 @@ export default function Rooms({ onBookNow }: RoomsProps) {
         <section id="deluxe">
           <div className="room-card">
             <div className="room-image-wrapper">
-              <img src={ROOM_DELUXE} alt="Deluxe Room" className="room-img" loading="lazy" />
+              <img src={ROOM_DELUXE} alt="Deluxe Room at Krishna Sheesh Mahal Kota Rajasthan" className="room-img" loading="lazy" />
             </div>
             
             <div className="room-content">
@@ -1126,7 +1143,7 @@ export default function Rooms({ onBookNow }: RoomsProps) {
         <section id="super-deluxe">
           <div className="room-card room-card--reverse">
             <div className="room-image-wrapper">
-              <img src={ROOM_SUPER_DELUXE} alt="Super Deluxe Room" className="room-img" loading="lazy" />
+              <img src={ROOM_SUPER_DELUXE} alt="Super Deluxe Room with spacious comfort at Krishna Sheesh Mahal Kota" className="room-img" loading="lazy" />
             </div>
             
             <div className="room-content">
@@ -1237,7 +1254,7 @@ export default function Rooms({ onBookNow }: RoomsProps) {
         <section id="premium">
           <div className="room-card">
             <div className="room-image-wrapper">
-              <img src={ROOM_PREMIUM} alt="Premium Room" className="room-img" loading="lazy" />
+              <img src={ROOM_PREMIUM} alt="Premium Luxury Room with king bed at Krishna Sheesh Mahal Kota" className="room-img" loading="lazy" />
             </div>
             
             <div className="room-content">
@@ -1348,7 +1365,7 @@ export default function Rooms({ onBookNow }: RoomsProps) {
         <section id="suite">
           <div className="room-card room-card--reverse">
             <div className="room-image-wrapper">
-              <img src={ROOM_SUITE} alt="Suite" className="room-img" loading="lazy" />
+              <img src={ROOM_SUITE} alt="Royal Suite accommodation at Krishna Sheesh Mahal Kota Rajasthan" className="room-img" loading="lazy" />
             </div>
             
             <div className="room-content">

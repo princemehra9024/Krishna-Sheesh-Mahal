@@ -58,14 +58,14 @@ export interface ImageLink {
 
 export const IMAGE_LINK_ROWS: ImageLink[][] = [
   [
-    { title: "Restaurant", href: "/restaurant", src: "/images/restaurant-img.jpeg", alt: "Restaurant" },
+    { title: "Restaurant", href: "/restaurant", src: "/images/restaurant-img.jpeg", alt: "Fine Dining Multi-Cuisine Restaurant at Krishna Sheesh Mahal Kota" },
   ],
   [
-    { title: "Rooms", href: "/rooms", src: "/images/rooms/super-deluxe-room.png", alt: "Rooms" },
-    { title: "Rama's Sky Lounge", href: "/cafe", src: `/images/cafe/neon-lit-cafe-lounge-interior.png`, alt: "Rama's Sky Lounge" },
+    { title: "Rooms", href: "/rooms", src: "/images/rooms/super-deluxe-room.png", alt: "Luxury Hotel Rooms and Suites in Shrinath Puram Kota Rajasthan" },
+    { title: "Rama's Sky Lounge", href: "/cafe", src: `/images/cafe/neon-lit-cafe-lounge-interior.png`, alt: "Rama's Sky Lounge Rooftop Cafe and Restro in Kota" },
   ],
   [
-    { title: "Banquet", href: "/banquet", src: "/images/banquet/wedding-canopy.png", alt: "Banquet" },
+    { title: "Banquet", href: "/banquet", src: "/images/banquet/wedding-canopy.png", alt: "Grand Banquet Hall and Wedding Lawn at Krishna Sheesh Mahal Kota" },
   ],
 ];
 
