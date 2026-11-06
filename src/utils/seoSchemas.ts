@@ -3,7 +3,7 @@
  * Validated according to schema.org & Google Search Central guidelines.
  */
 
-export const SITE_URL = "https://krishna-sheesh-mahal.vercel.app";
+export const SITE_URL = "https://www.krishnasheeshmahal.in";
 export const HOTEL_NAME = "Krishna Sheesh Mahal";
 export const HOTEL_LEGAL_NAME = "Hotel Krishna Sheesh Mahal";
 export const HOTEL_LOGO = `${SITE_URL}/Krishna%20Sheesh%20Mahal%20Emblem.png`;

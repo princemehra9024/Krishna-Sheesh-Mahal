@@ -1,5 +1,5 @@
 # Robots.txt for Krishna Sheesh Mahal
-# Official Website: https://krishna-sheesh-mahal.vercel.app/
+# Official Website: https://www.krishnasheeshmahal.in/
 
 User-agent: *
 Allow: /
@@ -16,5 +16,5 @@ Allow: /
 Disallow: /booking?*
 
 # Reference Sitemap
-Sitemap: https://krishna-sheesh-mahal.vercel.app/sitemap.xml
-Host: https://krishna-sheesh-mahal.vercel.app
+Sitemap: https://www.krishnasheeshmahal.in/sitemap.xml
+Host: https://www.krishnasheeshmahal.in
