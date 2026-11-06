@@ -29,7 +29,20 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.youtube.com https://www.youtube-nocookie.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://images.unsplash.com https://img.youtube.com https://thepopuphotel.com https://www.google.com https://www.gstatic.com https://www.google-analytics.com https://www.googletagmanager.com; media-src 'self' blob: https://www.youtube.com https://www.youtube-nocookie.com; frame-src https://www.youtube.com https://www.youtube-nocookie.com https://www.google.com; connect-src 'self' https://api.whatsapp.com https://wa.me https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self' https://api.whatsapp.com https://wa.me;"
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.youtube.com https://www.youtube-nocookie.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://images.unsplash.com https://img.youtube.com https://thepopuphotel.com https://www.google.com https://www.gstatic.com https://www.google-analytics.com https://www.googletagmanager.com; media-src 'self' blob: https://www.youtube.com https://www.youtube-nocookie.com; frame-src https://www.youtube.com https://www.youtube-nocookie.com https://www.google.com https://maps.google.com; connect-src 'self' https://api.whatsapp.com https://wa.me https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self' https://api.whatsapp.com https://wa.me;"
+        }
+      ]
+    },
+    {
+      "source": "/fonts/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
         }
       ]
     },
@@ -93,7 +106,7 @@
   ],
   "rewrites": [
     {
-      "source": "/((?!api/.*|sitemap\\.xml|robots\\.txt|googlefc293d98ee90b11e\\.html|images/.*|new-food-slied/.*|videos/.*|menus/.*|.*\\.(?:png|jpg|jpeg|svg|ico|webp|pdf|mp4)).*)",
+      "source": "/((?!api/.*|sitemap\\.xml|robots\\.txt|googlefc293d98ee90b11e\\.html|fonts/.*|images/.*|new-food-slied/.*|videos/.*|menus/.*|.*\\.(?:png|jpg|jpeg|svg|ico|webp|pdf|mp4|woff2|woff|ttf)).*)",
       "destination": "/index.html"
     }
   ]

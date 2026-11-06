@@ -2,8 +2,6 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { lockScroll, scrollToTarget } from "../hooks/useScrollEngine";
 
-const U = "https://thepopuphotel.com/wp-content/uploads";
-
 const HOTELS = [
   { title: "Rooms & Suites", src: "/images/rooms/room-hero-page-img.png", href: "/booking?type=rooms" },
   { title: "Banquet & Events", src: "/images/banquet/wedding-canopy.png", href: "/booking?type=banquet" },
